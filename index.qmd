@@ -1,0 +1,17 @@
+---
+title: "Exeter Data Analytics Hub: Promoting Open and Reproducible Science"
+comments: false
+image: images/hex_sticker.png
+about:
+  template: solana
+---
+
+Welcome to the homepage of the Exeter Data Analytics Hub.
+
+## What is the Exeter Data Analytics Hub?
+
+We are an inter-college team of volunteers at the University of Exeter aiming to enhance ECR training in open and reproducible science.
+
+## Contact us
+
+If you want to help contribute to this project or have any questions about any of our content, please do not hesitate to contact us.
