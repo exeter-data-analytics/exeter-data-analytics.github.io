@@ -5,15 +5,23 @@ project:
 website:
   title: "ExeDataHub"
   navbar:
-    left:
+    right:
       - href: index.qmd
         text: Home
+      - href: post.qmd
+        text: Walkthroughs
+      - icon: github
+        href: https://github.com/exeter-data-analytics/exeter-data-analytics.github.io
 
 format:
   html:
     theme: custom.scss
     css: styles.css
     toc: true
+    
+comments:
+  giscus:
+    repo: exeter-data-analytics/exeter-data-analytics.github.io
 
 editor: visual
 
