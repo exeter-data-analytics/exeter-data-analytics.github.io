@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Stephen Lang">
+<meta name="dcterms.date" content="2023-01-03">
+<meta name="description" content="Manage your different research projects with R Studio and the {here} package">
+
+<title>ExeDataHub - intRos: Managing research projects with R Studio</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ExeDataHub</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html">
+ <span class="menu-text">Walkthroughs</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/exeter-data-analytics/exeter-data-analytics.github.io"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">intRos: Managing research projects with R Studio</h1>
+                  <div>
+        <div class="description">
+          Manage your different research projects with R Studio and the {here} package
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">RStudio projects</div>
+                <div class="quarto-category">tidyverse</div>
+                <div class="quarto-category">here</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      Stephen Lang 
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              University of Exeter
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 3, 2023</p>
+      </div>
+    </div>
+    
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">March 2, 2023</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#outline" id="toc-outline" class="nav-link active" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#managing-research-projects-in-r-studio" id="toc-managing-research-projects-in-r-studio" class="nav-link" data-scroll-target="#managing-research-projects-in-r-studio">Managing research projects in R Studio</a>
+  <ul class="collapse">
+  <li><a href="#whats-wrong-with-rmlist-ls-anyway" id="toc-whats-wrong-with-rmlist-ls-anyway" class="nav-link" data-scroll-target="#whats-wrong-with-rmlist-ls-anyway">What’s wrong with <code>rm(list = ls())</code> anyway?</a></li>
+  <li><a href="#the-magic-of-rstudio-and-projects" id="toc-the-magic-of-rstudio-and-projects" class="nav-link" data-scroll-target="#the-magic-of-rstudio-and-projects">The Magic of RStudio and Projects</a></li>
+  <li><a href="#best-practices-for-structuring-project-folders" id="toc-best-practices-for-structuring-project-folders" class="nav-link" data-scroll-target="#best-practices-for-structuring-project-folders">Best practices for structuring project folders</a></li>
+  <li><a href="#building-robust-filepaths-with-the-here-package" id="toc-building-robust-filepaths-with-the-here-package" class="nav-link" data-scroll-target="#building-robust-filepaths-with-the-here-package">Building robust filepaths with the <code>here</code> package</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next steps</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
+  <ul class="collapse">
+  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="outline" class="level1">
+<h1>Outline</h1>
+<p>When we’re doing research, we often find ourselves working on more than one research project at time. Managing multiple folders of data and code can be confusing enough, but when we throw R into the mix, things can get messy very quickly. A large part of the confusion comes from how most folks manage research projects on their own system — which was been aptly summarised by the wonderful <a href="https://twitter.com/JennyBryan">Jenny Bryan</a>:</p>
+<blockquote class="blockquote">
+<p><em>If the first line of your R script is</em></p>
+<p><code>setwd("C:\Users\jenny\path\that\only\I\have")</code></p>
+<p><em>I will come into your office and SET YOUR COMPUTER ON FIRE</em> 🔥.</p>
+<p><em>If the first line of your R script is</em></p>
+<p><code>rm(list = ls())</code></p>
+<p><em>I will come into your office and SET YOUR COMPUTER ON FIRE</em> 🔥.</p>
+</blockquote>
+<p>While I won’t come and set your computer on fire (especially because I have committed both of these coding crimes in the past), I do want to teach you about two really useful tools for making your life easier for managing research projects, and much nicer for sharing code with collaborators.These two tools are <strong>R Studio projects</strong> and the <strong><code>here</code></strong> package.</p>
+</section>
+<section id="prerequisites" class="level1">
+<h1>Prerequisites</h1>
+<ul>
+<li>Have <a href="https://posit.co/download/rstudio-desktop/">R and R Studio</a> installed</li>
+<li>Have the <code>tidyverse</code> and <code>here</code> packages installed</li>
+<li>Have a small research project that you’re ready to projectify, or some test code/data to make into a practice research project</li>
+</ul>
+</section>
+<section id="learning-objectives" class="level1">
+<h1>Learning objectives</h1>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Learning objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>This introduction should allow you to:</strong></p>
+<ul>
+<li>Create new R Studio projects</li>
+<li>Use the <code>here</code> package to create reproducible filepaths</li>
+<li>Use both tools together to create research projects that are stable, shareable and easy to work with!</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="managing-research-projects-in-r-studio" class="level1">
+<h1>Managing research projects in R Studio</h1>
+<section id="whats-wrong-with-rmlist-ls-anyway" class="level3">
+<h3 class="anchored" data-anchor-id="whats-wrong-with-rmlist-ls-anyway">What’s wrong with <code>rm(list = ls())</code> anyway?</h3>
+<p><code>rm(list = ls())</code> is built to do one thing: wipe the slate clean by nuking your entire R environment. While this might seem like good practice each time you start coding, it actually makes life tricky if you are in the middle of analysing one dataset and want to quickly jump into another research project to do something else; clearing your environment every time means you have to start from scratch, and if you forget to run it before diving into new code, any common variables will be overwritten and madness is likely to follow.</p>
+</section>
+<section id="the-magic-of-rstudio-and-projects" class="level2">
+<h2 class="anchored" data-anchor-id="the-magic-of-rstudio-and-projects">The Magic of RStudio and Projects</h2>
+<p>R Studio is great, and if you don’t already use it I’d highly recommend starting now! R Studio is what we’d call a IDE (Integrated Development Environment) that allows us to integrate with R to do much <a href="https://posit.co/products/open-source/rstudio/">more than execute code</a>. Despite its wide use in the science community, there’s one bit of functionality that seems to regularly overlooked by many folks: “Projects”. These files — which you can start to explore from the drop-down menu in the top-right of R Studio — are designed for compartmentalising your work into separate contexts, which are great if you have multiple research projects on the go at once.</p>
+<p>RStudio projects resolve the issue of <code>rm(list = ls())</code> by creating a separate R Studio instance for each new project, each with its own R session, environment, temporary files and working directory (see next section on the ‘here’ package for more on filepaths).</p>
+<p>If we navigate to <code>New Project...</code> (either from <code>File</code> or the drop-down Projects toolbar in the top-right), we are given the option of creating a new R Studio project in one of three ways:</p>
+<ul>
+<li>New directory (i.e.&nbsp;start from an empty folder)</li>
+<li>Existing directory (when you already have a folder of code and data that you want to turn into a project)</li>
+<li>Version control (when you want to start version control of a project — see Next steps section for more info on this)</li>
+</ul>
+<p>Most of the time you’ll be starting a new project in an empty folder, so we’ll use the <code>New Directory</code> option:</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="create_project.png" class="img-fluid figure-img" width="500"></p>
+</figure>
+</div>
+<p>Next you’re provided with a bunch of alternate project types, but we’ll go for the <code>New Project</code> option:</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="project_type.png" class="img-fluid figure-img" width="500"></p>
+</figure>
+</div>
+<p>Lastly, we get to choose the directory name (this is the name the project folder will have, so make sure it identifies your project clearly) and where this directory will be saved (i.e where on your computer you want to keep your research project folders):</p>
+<p><em>Note: If you tick the box to open in a new session (circled red), whatever you’re currently working on in R Studio won’t have to be saved and closed.</em></p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="create_new_project.png" class="img-fluid figure-img" width="500"></p>
+</figure>
+</div>
+<p>And that’s it! You now have a nice folder ready to fill with data and code, and never need to use <code>rm(list = ls())</code> ever again. R Studio also did a couple of things for us in the background when we hit the <code>Create Project</code> button:</p>
+<ol type="1">
+<li>Created an <code>.Rproj</code> file in the top level of the folder (can be used to directly open each project in a new session, and also contains various options for project-specific settings)</li>
+<li>Created a hidden directory <code>.Rproj.user</code> where project-specific temporary files are stored (useful if you have a session terminate unexpectedly)</li>
+<li>Loaded the project into R Studio, with the project name displayed in the Projects toolbar (top-right) and also in front of the RStudio icon in the task bar (appearance differs between macOS and Windows)</li>
+<li>While your root filepath would normally have started at the top of your disk drive, it should now start wherever the Project’s <code>.Rproj</code> file is (you’ll see this pathn when you first load <code>here</code>). So no more writing — <code>C:\extremely\long\filepath\that\only\I\have</code> every time (<strong>BUT</strong> see next section on the <code>here</code> package for making this even better).</li>
+</ol>
+</section>
+<section id="best-practices-for-structuring-project-folders" class="level2">
+<h2 class="anchored" data-anchor-id="best-practices-for-structuring-project-folders">Best practices for structuring project folders</h2>
+<p>Once a project is created, it’s worth adding folders to contain each of the relevant types of data for your research. For most of us this usually means something like the following: <code>raw_data</code>, <code>code</code>, <code>outputs</code> (folders should only contain data relevant to the research project).</p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" style="width:65.0%"></p>
+<p></p><figcaption class="figure-caption">Example of what your sub-folders might look like inside your Project folder (adapted from Martin Chan’s <a href="https://martinctc.github.io/blog/rstudio-projects-and-working-directories-a-beginner's-guide/">beginner’s guide to using R Studio projects</a>)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="building-robust-filepaths-with-the-here-package" class="level2">
+<h2 class="anchored" data-anchor-id="building-robust-filepaths-with-the-here-package">Building robust filepaths with the <code>here</code> package</h2>
+<p>R Studio projects go a long way to making simpler filepaths for our code by removing the need for <em>absolute</em> filepaths (which are specific to your system), and introducing <em>relative</em> filepaths (i.e.&nbsp;ones that start at the location of .Rproj file). That said, we can make things even better and more reproducible by making use of the <code>here</code> package. <code>here</code> helps make filepaths consistent between different operating systems. For example, while macOS users have filepaths separated by forward slashes (<code>/</code>), windows users have filepaths with backward slashes (<code>\</code>). This means that even with the shorter relative filepaths we get when using Projects, paths like <code>raw_data/2023.csv</code> will only work for macOS users, and if you share this fragile code with someone using Windows it will just throw errors.</p>
+<p>In comes the <code>here</code> package to the rescue — we can use it to make reproducible filepaths that work for everyone! <code>here</code> works in a similar way to <code>file.path</code>, where we build a path to a folder or file by listing elements of the path as arguments. For example, if we had some data in a project sub folder of <code>raw_data</code> called <code>2023.csv</code>, we’d make a reproducible filepath to it by writing <code>here("raw_data, "2023.csv")</code>. <code>here</code> does some helpful stuff in the background by a) adding our project’s root directory (which you can look at by just running <code>here()</code>), b) starts evaluating path from the project up (which <code>file.path</code> doesn’t), and c) all while using the right <code>/</code> or <code>\</code> delimiter depending on your system!</p>
+<p>When you want to actually use a filepath for say, reading some data with <code>read_csv</code>, you just have to provide the <code>here</code> function and folder arguments wherever you’d normally be putting a <code>Users/stephen's/long/winded/filepath/to/a/file</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"here"</span>) <span class="co">#install</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here) <span class="co">#load</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">here</span>() <span class="co">#this will magically show the project root directory on your machine</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">here</span>(<span class="st">"raw_data"</span>, <span class="st">"2019.csv"</span>) <span class="co">#this builds a filepath for where you want to go</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="fu">here</span>(<span class="st">"raw_data"</span>, <span class="st">"2019.csv"</span>)) <span class="co">#build this same filepath in read_csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
+<p>Using these two sets of tools together, you’re now primed to do some reproducible science on as many different projects as you want! But how can we go about sharing this with other researchers if we wanted to? While you can technically share the entire project folder with collaborators directly, we can also use version control software and online repositories to manage changes to our code and make it accessible. The main way folks do this is using <a href="https://git-scm.com/">git</a> and <a href="https://github.com/">GitHub</a>, and we will do a later post on how to get set up with both in due course.</p>
+<p><a href="https://exeter-data-analytics.github.io/intRos/posts.html">intRo to using git, GitHub &amp; R Studio (post coming soon)</a></p>
+</section>
+</section>
+<section id="summary" class="level1">
+<h1>Summary</h1>
+<p>We’ve had a full intRoduction to getting started with R Studio Projects and <code>here</code>. The next step is to try it out for yourself on a new research project! (Hopefully this knowledge will mean no more time spent crafting obnoxiously long filepaths for <code>setwd()</code> to reply with: <em><span style="color:red;">“Error: cannot change working directory”</span></em> 🤦)</p>
+<section id="additional-resources" class="level3">
+<h3 class="anchored" data-anchor-id="additional-resources">Additional Resources</h3>
+<ul>
+<li><a href="https://posit.co/">Posit</a> (previously known as RStudio) have a wealth of information on using the RStudio IDE, including <a href="https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects">this great how-to guide</a></li>
+<li><a href="https://github.com/krlmlr">Kirill Müller</a>, creator of the <code>here</code> package, has a great <a href="https://here.r-lib.org/">primer for getting started</a></li>
+</ul>
+</section>
+<section id="acknowledgements" class="level3">
+<h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
+<p>We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.</p>
+<ul>
+<li>Martin Chan’s <a href="https://martinctc.github.io/blog/rstudio-projects-and-working-directories-a-beginner's-guide/">beginner’s guide to using R Studio projects</a></li>
+<li>Jenny Bryan’s <a href="https://github.com/jennybc/here_here">‘Ode to the <code>here</code> package’</a></li>
+<li>Malcom Barret’s <a href="https://malco.io/2018/11/05/why-should-i-use-the-here-package-when-i-m-already-using-projects/">blog post</a> on using the <code>here</code> package alongside Projects</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="exeter-data-analytics/exeter-data-analytics.github.io" data-repo-id="R_kgDOJW1l0Q" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
