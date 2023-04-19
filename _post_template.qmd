@@ -1,0 +1,42 @@
+---
+title: ""
+author: 
+  - name:
+    affiliation: University of Exeter
+description: ""
+date: "MM/DD/YYYY"
+date-modified: last-modified
+categories: [add here]
+execute:
+  message: false
+  warning: false
+---
+
+# Outline
+
+This is where we discuss the need and rationale for this walkthrough.
+
+# Prerequisites
+
+# Learning objectives
+
+::: callout-note
+# Learning objectives
+
+**This introduction should allow you to:**
+
+-   Add here.
+:::
+
+# Add lecture here
+
+# Summary
+
+### Additional Resources
+
+### Acknowledgements
+
+We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.
+
+-   Add here.
+

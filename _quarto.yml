@@ -4,11 +4,13 @@ project:
 
 website:
   title: "ExeDataHub"
+  site-url: https://exeter-data-analytics.github.io/
+  repo-url: https://github.com/exeter-data-analytics/exeter-data-analytics.github.io
   navbar:
     right:
       - href: index.qmd
         text: Home
-      - href: post.qmd
+      - href: posts.qmd
         text: Walkthroughs
       - icon: github
         href: https://github.com/exeter-data-analytics/exeter-data-analytics.github.io

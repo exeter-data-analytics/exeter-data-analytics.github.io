@@ -1,5 +1,17 @@
 {
   "index.qmd": {
     "index.html": "54cc45aa"
+  },
+  "posts.qmd": {
+    "posts.html": "12b9c724"
+  },
+  "posts/intro_to_projects/index.qmd": {
+    "index.html": "9d27deba"
+  },
+  "posts/intro_to_ggplot2/index.qmd": {
+    "index.html": "8b6a274d"
+  },
+  "posts/intro_to_flextable/index.qmd": {
+    "index.html": "19ddd86a"
   }
 }

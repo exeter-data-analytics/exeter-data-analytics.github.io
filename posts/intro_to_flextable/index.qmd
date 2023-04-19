@@ -1,0 +1,285 @@
+---
+title: "intRos: Reproducible tables with flextable"
+author: 
+  - name: Daniel Padfield
+    affiliation: University of Exeter
+description: "Make reproducible tables of summary stats and contrasts tables with flextable in R"
+date: "02/14/2023"
+date-modified: last-modified
+categories: [flextable, R]
+execute:
+  message: false
+  warning: false
+---
+
+# Outline
+
+As scientists we make A LOT of tables, be it of summary statistics, model parameter values, contrast tables, or anything else. It used to be common practice to copy these individually into Excel or Word and then create a table to insert into your work, but this is prone to errors. No one is perfect after all.
+
+This problem has now been solved by a bunch of different packages that allow for tables to be created in R and exported to a variety of formats. This means that fewer mistakes are made, that tables can easily be remade if the data or stats change, and that the process of making your tables is completely reproducible. The R package we will introduce to do this today is **flextable**, but there are other options available we won't cover here such as [**gt**](https://gt.rstudio.com/articles/intro-creating-gt-tables.html) and [**huxtable**](https://hughjonesd.github.io/huxtable/huxtable.html). I love **flextable** because it seems infinitely customisable and produces tables that are formatted beautifully to go into research articles. 
+
+**flextable** provides an easy and flexible way to create tables for reporting and presentations. It allows for customization of the table appearance, including cell borders, font styles, background color, and more. The package also supports different formats such as HTML, Microsoft Word, and PowerPoint. It is well suited for creating reports and presentations with a high level of formatting, while still being simple and straightforward to use. Additionally, **flextable** has a number of features that make it particularly useful for data visualisation, including the ability to merge cells, add custom functions for data formatting, and control the appearance of the table based on data values (i.e. making p values that are <0.05 **bold**).
+
+*Note: There are likely to be more elegant ways to do some of the code we present here. If you know of a simpler/easier way then we would love for you to help contribute to this project.*
+
+# Prerequisites
+
+- Have R installed
+- Be using R for your research (or for funsies)
+- Hopefully have a table you want to make in R
+
+# Learning objectives
+
+::: callout-note
+# Learning objectives
+
+**This introduction should allow you to:**
+
+- make publication-ready tables in **flextable**
+- format tables in **flextable**
+- export tables created in **flextable**
+- know where to learn more about **flextable**
+
+:::
+
+# Using flextable
+
+This walkthrough will lean heavy on tools from the **tidyverse** for data wrangling, and the **palmerpenguins** package for the example data. The first thing we will do is load in the necessary packages and load in the dataset we will use to create our tables.
+
+```{r load_packages}
+# load in required packages
+library(flextable)
+library(tidyverse)
+library(emmeans)
+library(palmerpenguins)
+
+# load in data
+data("penguins")
+d <- penguins
+
+# have a look at the data
+glimpse(d)
+```
+This dataset contain data for 344 penguins, consisting of three species of penguins, collected from 3 islands in the Palmer Archipelago, Antarctica.
+
+## Make table of summary stats
+
+It is common to make tables summarising aspects of any given dataset. We will do that here with **flextable**. Lets say we want to know the averages and standard deviations of body mass, bill length and bill depth of the different penguins species split by sex. 
+
+We can easily do this using **group_by()** and **summarise()** in **dplyr**. More information on these functions can be found in our tidyverse intRo.
+
+Also because I dislike the behavious of factors in R sometimes, we will first convert all columns that are factors into characters.
+
+```{r summarise_data}
+# convert all columns that are factors into characters
+d <- mutate(d, across(where(is.factor), as.character))
+
+# create summary data
+d_summary <- group_by(d, species, sex) %>%
+  summarise(
+    # calculate number in each group
+    num_penguins = n(),
+    # can use across to apply the same functions to multiple columns
+    across(c(bill_length_mm, bill_depth_mm, body_mass_g), list(mean = ~mean(.x, na.rm = TRUE), sd = ~sd(.x, na.rm = TRUE))),
+    # specify we want to drop the groups
+    .groups = 'drop')
+
+# look at our table
+d_summary
+
+```
+
+We can see there are some NAs for the sex of the penguins. We can make these unknown using **replace_na()**.
+
+```{r wrangle_summary}
+# replace NAs in our sex column
+d_summary <- mutate(d_summary, sex = replace_na(sex, 'unknown'))
+
+```
+
+We can immediately make this into a flextable using the **flextable()** function.
+
+```{r}
+# make our table into a flex table
+table1 <- flextable(d_summary)
+
+table1
+```
+
+This already looks pretty good. But we can now add layers of formatting onto this table. The layers of formatting work much like the layers of **ggplot2**. You start with the base level and each new command creates new formatting of the whole table. Because of this, the order of the commands can make a big difference.
+
+For this table, we will do a few different things:
+
+- rename the column names
+- merge the species column vertically to only have one instance of species
+- round the numbers to 2 decimal places
+- change the font and font size
+- play around with the column names to create a tiered column name for each trait (bill length, bill depth, body mass)
+- add in some horizontal lines to split species apart
+
+We can do this by adding new layers using the **%>%**. Many of the functions involve you specifying what `part` you want the change to apply to ('all', 'body', or 'header'). Specific rows can be specified using the `i` argument, and columns using `j`.
+
+To add a new header row, we need to create a new object which contains the text we want to add.
+
+For each new thing we do, I have commented what the command is doing so that the code makes as much sense as possible.
+
+```{r}
+# text to be new header label
+# add same name for columns we want to merge later on
+pars <- as_paragraph(
+  as_chunk(c('Species', 'Sex', 'n', 'Bill Length (mm)', 'Beak Length (mm)', 'Body Mass (g)'))
+)
+
+
+# edit table1
+table1 <- flextable(d_summary) %>%
+  # rename all column names
+  set_header_labels(species = 'Species',
+                    sex = 'Sex',
+                    num_penguins = 'n',
+                    bill_length_mm_mean = 'mean',
+                    bill_length_mm_sd = 'sd',
+                    bill_depth_mm_mean = 'mean',
+                    bill_depth_mm_sd = 'sd',
+                    body_mass_g_mean = 'mean',
+                    body_mass_g_sd = 'sd') %>%
+  add_header_row(values = pars, colwidths = c(1, 1, 1, 2, 2, 2), top = TRUE) %>% # add header row
+  merge_v(j = c(1,2,3), part = 'header') %>%
+  merge_v(~species) %>% # merge multiple instances of the same species name
+  fix_border_issues() %>% # fix random border issues after merging
+  valign(valign = 'top', j = 1, part = 'body') %>% # align Species column
+  colformat_double(j = c(4,5,6,7,8,9), digits = 2) %>% # round numbers of specific columns to 2 decimal places
+  align(align = 'center', part = 'header') %>% # align column names centrally
+  align(align = 'left', part = 'body') %>% # align table output to the left
+  hline(i = c(3, 5), border = fp_border_default()) %>% # add in custom horizontal lines to split penguins up
+  font(fontname = 'Times', part = 'all') %>% # set font name for the table
+  fontsize(size = 12, part = 'all') %>% # set font size for the table
+  autofit()
+  
+# view table
+table1
+```
+
+This is looking really good now! We can now export this table in a variety of formats (suitable for word documents, as an image or for powerpoint). I will write an exhaustive list of them here, but I generally like using an image for as long as possible so that I do not have as many formatting issues when putting tables into Microsoft Word or Google Docs.
+
+```{r save_flextable_one}
+#| eval: false
+
+# save as image
+save_as_image(table1, 'where/to/save/table1.png', webshot = 'webshot2')
+
+# save for word document
+save_as_docx(table1, 'where/to/save/table1.docx', align = 'center')
+
+# save for powerpoint
+save_as_pptx(table1, path = 'where/to/save/table1.docx')
+
+```
+
+## Make table of model parameters
+
+We can use very similar methods to summarise parameters from statistical models. To demonstrate this, I will fit a linear model looking at how body mass is different between species of penguins. We will then use **emmeans()** to extract model parameters and put them into a table.
+
+```{r model_and_emmeans}
+# do models
+mod1 <- lm(body_mass_g ~ species, d)
+mod2 <- lm(body_mass_g ~ 1, d)
+
+# check for significance using an anova
+anova(mod1, mod2)
+# super different
+
+# grab estimates for each species using emmeans
+d_params <- emmeans(mod1, ~species)
+
+d_params
+
+```
+We can now turn this into a nice table using similar methods to those we used above.
+
+```{r}
+# text to be new header label
+# add same name for columns we want to merge later on
+pars <- as_paragraph(
+  as_chunk(c('Species', 'Body Mass (g)', 'd.f.'))
+)
+
+data.frame(d_params) %>%
+  # rejig column name orders to have degrees of freedom at the end
+  select(species, emmean, SE, lower.CL, upper.CL, df) %>%
+  flextable() %>%
+  set_header_labels(species = 'Species',
+                    emmean = 'Estimate',
+                    SE = 's.e.',
+                    df = 'd.f.',
+                    lower.CL = "2.5%CI",
+                    upper.CL = "97.5%CI") %>%
+  add_header_row(values = pars, colwidths = c(1, 4, 1), top = TRUE) %>% # add header row
+  merge_v(j = c(1,6), part = 'header') %>% # merge column names together
+  italic(j = c(3, 6), part = 'header') %>% # make some column names italic
+  colformat_double(j = c(2:5), digits = 2) %>% # round numbers of specific columns to 2 decimal places
+  align(align = 'center', part = 'header') %>% # align column names centrally
+  align(align = 'left', part = 'body') %>% # align table output to the left
+  font(fontname = 'Times', part = 'all') %>% # set font name for the table
+  fontsize(size = 12, part = 'all') %>% # set font size for the table
+  autofit() # fix any random size issues
+  
+```
+
+Nice. This table can easily be extended to have other parameters in, and this approach can be reused for countless types of models.
+
+## Make table of contrasts
+
+Another common thing we might want to do is look at which (if any) species have significantly different body mass to each other. We can do this by doing post-hoc contrasts between the different species, given we know there is a significant effect of species on body mass.
+
+Again we can look at this using **emmeans()**.
+
+```{r contrasts}
+contrasts <- emmeans(mod1, pairwise ~ species)
+contrasts$contrasts
+
+```
+We can easily turn this into a publication-ready table using **flextable()**. As the p values are so low, we will conver them to being <0.0001 where appropriate, and convert that column to a character. This gives us more control over how **flextable** prints the output.
+
+This is appropriate here but might not be the best way in other cases.
+
+```{r}
+contrasts$contrasts %>%
+  data.frame() %>%
+  mutate(p.value = ifelse(p.value < 0.0001, "<0.0001", as.character(round(p.value, 2)))) %>%
+  flextable() %>%
+  set_header_labels(contrast = 'Contrast',
+                    emmean = 'Estimate',
+                    SE = 's.e.',
+                    df = 'd.f.',
+                    t.ratio = "t-ratio",
+                    p.value = "p value") %>%
+  italic(j = c(3:6), part = 'header') %>% # make some column names italic
+  colformat_double(j = c(2:6), digits = 2) %>% # round numbers of specific columns to 2 decimal places
+  align(align = 'center', part = 'header') %>% # align column names centrally
+  align(align = 'left', part = 'body') %>% # align table output to the left
+  font(fontname = 'Times', part = 'all') %>% # set font name for the table
+  bold(~p.value == "<0.0001", j = "p.value") %>% # make significant p values bold
+  fontsize(size = 12, part = 'all') %>% # set font size for the table
+  autofit() # fix any random size issues
+```
+
+
+# Summary
+
+We have shown how to produce a range of publication-ready tables using **flextable** for summarising data, presenting model parameters, and contrast tables. Importantly all of these processes are reproducible and limit the chances of us making errors in our workflow.
+
+All of the code here can be used to create your own tables. Have fun!
+
+### Additional Resources
+
+- **flextable** [GitHub repository](https://github.com/davidgohel/flextable/)
+- **flextable** [website](https://davidgohel.github.io/flextable/index.html)
+- **flextable** [manual/book](https://ardata-fr.github.io/flextable-book/)
+
+### Acknowledgements
+
+We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.
+
+- Most of the inspiration for this was taken from David Gohel's great work in developing **flextable**
+- Tips for creating the post, website, and format for the walkthroughs were taken from Stephanie Hicks' Course [website](https://www.stephaniehicks.com/jhustatcomputing2022/) and [source code](https://github.com/stephaniehicks/jhustatcomputing2022).
