@@ -1,0 +1,67 @@
+---
+title: "intRos: Installing, R, RStudio, and Git"
+author: 
+  - name: Daniel Padfield
+    affiliation: University of Exeter
+description: "A primer on how to install R, RStudio, and Git on University of Exeter computers."
+date: "04/21/2023"
+date-modified: last-modified
+categories: [R, RStudio, git]
+execute:
+  message: false
+  warning: false
+draft: true
+---
+
+# Outline
+
+This post gives some details on how to install R, RStudio, and git. This information is mainly aggregated from other sources (see acknowledgements below), but there is some specific advice for Windows users for University of Exeter staff and students.
+
+# Prerequisites
+
+- Be willing to endure some pain when installing things.
+
+# Learning objectives
+
+::: callout-note
+# Learning objectives
+
+**This introduction should allow you to:**
+
+-     install R
+-     install RStudio
+-     install a terminal and git
+-     manage your R, RStudio, and package installation
+:::
+
+# Installing R
+
+## For Mac Users
+
+## For Windows Users
+
+# Installing RStudio
+
+## For Mac Users
+
+## For Windows Users
+
+## Some tips for Global Options of RStudio
+
+## Managing where your R packages install
+
+# Installing git
+
+## For Mac Users
+
+## For Windows Users
+
+# Summary
+
+### Additional Resources
+
+### Acknowledgements
+
+We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.
+
+-   Add here.
