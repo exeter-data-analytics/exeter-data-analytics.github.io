@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_projects/index.html</loc>
-    <lastmod>2023-04-19T10:22:34.449Z</lastmod>
+    <lastmod>2023-04-27T09:56:56.666Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_ggplot2/index.html</loc>
-    <lastmod>2023-04-19T10:22:35.500Z</lastmod>
+    <lastmod>2023-04-27T09:56:58.266Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_flextable/index.html</loc>
-    <lastmod>2023-04-19T10:22:36.574Z</lastmod>
+    <lastmod>2023-04-27T09:56:59.590Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/index.html</loc>
-    <lastmod>2023-04-19T10:22:36.872Z</lastmod>
+    <lastmod>2023-04-27T10:39:58.031Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts.html</loc>
-    <lastmod>2023-04-19T10:22:37.218Z</lastmod>
+    <lastmod>2023-04-27T10:27:36.400Z</lastmod>
+  </url>
+  <url>
+    <loc>https://exeter-data-analytics.github.io/series.html</loc>
+    <lastmod>2023-04-27T10:17:07.478Z</lastmod>
   </url>
 </urlset>

@@ -13,5 +13,11 @@
   },
   "posts/intro_to_flextable/index.qmd": {
     "index.html": "19ddd86a"
+  },
+  "series.qmd": {
+    "series.html": "eecf5bd2"
+  },
+  "posts/install_rstudio_git/index.qmd": {
+    "index.html": "cfe9763f"
   }
 }

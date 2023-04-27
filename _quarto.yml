@@ -10,6 +10,8 @@ website:
     right:
       - href: index.qmd
         text: Home
+      - href: series.qmd
+        text: Series
       - href: posts.qmd
         text: Walkthroughs
       - icon: github

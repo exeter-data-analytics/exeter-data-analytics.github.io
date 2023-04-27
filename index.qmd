@@ -12,6 +12,14 @@ Welcome to the homepage of the Exeter Data Analytics Hub.
 
 We are an inter-college team of volunteers at the University of Exeter aiming to enhance ECR training in open and reproducible science.
 
+## Open and Reproducible Science Series
+We host a monthly series of workshops and talks to promote Open and Reproducible Science throughout the life-cycle of a research project.
+
+Visit the [Series](series.html) page to find out more.
+
+## intRos Walkthroughs
+Find brief introductions and walkthroughs on common research programming activities on the [Walkthroughs](posts.html) page.
+
 ## Contact us
 
 If you want to help contribute to this project or have any questions about any of our content, please do not hesitate to contact us.
