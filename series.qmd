@@ -20,7 +20,7 @@ This series will include invited speakers from both within and outside the depar
 | ----:         | :----:          | :---------------    |
 |       9th May | Exchange Red    | The ghosts of journals past, present, and future         |
 |      6th June | ESI Trevithick  | Project management using R projects and version control  |
-|      4th July | Exchange Yellow | What is open science?                                    |
+|      4th July | Exchange Red    | What is open science?                                    |
 |    1st August | ESI Trevithick  | Coding with AI: using ChatGPT and co-pilot               |
 | 5th September | ESI Trevithick  | Reproducible outputs: publication ready figures & tables |
 |   3rd October | ESI Trevithick  | Cloud computing at Exeter                                |
