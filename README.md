@@ -4,7 +4,7 @@
 
 We are an inter-college team of volunteers at the University of Exeter aiming to enhance ECR training in open and reproducible science.
 
-This is the repository and code to make our Quarto website.
+This is the repository and code to make our [Quarto website](https://exeter-data-analytics.github.io/).
 
 ## Links for using quarto
 
