@@ -2,26 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_projects/index.html</loc>
-    <lastmod>2023-04-27T09:56:56.666Z</lastmod>
+    <lastmod>2023-05-03T20:38:39.556Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_ggplot2/index.html</loc>
-    <lastmod>2023-04-27T09:56:58.266Z</lastmod>
+    <lastmod>2023-05-03T20:38:40.904Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_flextable/index.html</loc>
-    <lastmod>2023-04-27T09:56:59.590Z</lastmod>
+    <lastmod>2023-05-03T20:38:42.103Z</lastmod>
   </url>
   <url>
-    <loc>https://exeter-data-analytics.github.io/index.html</loc>
-    <lastmod>2023-04-27T13:27:46.237Z</lastmod>
-  </url>
-  <url>
-    <loc>https://exeter-data-analytics.github.io/posts.html</loc>
-    <lastmod>2023-04-27T10:27:36.400Z</lastmod>
+    <loc>https://exeter-data-analytics.github.io/posts/install_rstudio_git/index.html</loc>
+    <lastmod>2023-05-03T20:38:43.131Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/series.html</loc>
-    <lastmod>2023-04-27T13:31:38.548Z</lastmod>
+    <lastmod>2023-05-03T20:38:43.410Z</lastmod>
+  </url>
+  <url>
+    <loc>https://exeter-data-analytics.github.io/index.html</loc>
+    <lastmod>2023-05-03T20:38:43.677Z</lastmod>
+  </url>
+  <url>
+    <loc>https://exeter-data-analytics.github.io/posts.html</loc>
+    <lastmod>2023-05-03T20:38:44.024Z</lastmod>
   </url>
 </urlset>

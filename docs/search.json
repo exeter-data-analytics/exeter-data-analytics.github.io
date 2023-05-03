@@ -105,6 +105,69 @@
     "text": "Make table of contrasts\nAnother common thing we might want to do is look at which (if any) species have significantly different body mass to each other. We can do this by doing post-hoc contrasts between the different species, given we know there is a significant effect of species on body mass.\nAgain we can look at this using emmeans().\n\ncontrasts <- emmeans(mod1, pairwise ~ species)\ncontrasts$contrasts\n\n contrast           estimate   SE  df t.ratio p.value\n Adelie - Chinstrap    -32.4 67.5 339  -0.480  0.8807\n Adelie - Gentoo     -1375.4 56.1 339 -24.495  <.0001\n Chinstrap - Gentoo  -1342.9 69.9 339 -19.224  <.0001\n\nP value adjustment: tukey method for comparing a family of 3 estimates \n\n\nWe can easily turn this into a publication-ready table using flextable(). As the p values are so low, we will conver them to being <0.0001 where appropriate, and convert that column to a character. This gives us more control over how flextable prints the output.\nThis is appropriate here but might not be the best way in other cases.\n\ncontrasts$contrasts %>%\n  data.frame() %>%\n  mutate(p.value = ifelse(p.value < 0.0001, \"<0.0001\", as.character(round(p.value, 2)))) %>%\n  flextable() %>%\n  set_header_labels(contrast = 'Contrast',\n                    emmean = 'Estimate',\n                    SE = 's.e.',\n                    df = 'd.f.',\n                    t.ratio = \"t-ratio\",\n                    p.value = \"p value\") %>%\n  italic(j = c(3:6), part = 'header') %>% # make some column names italic\n  colformat_double(j = c(2:6), digits = 2) %>% # round numbers of specific columns to 2 decimal places\n  align(align = 'center', part = 'header') %>% # align column names centrally\n  align(align = 'left', part = 'body') %>% # align table output to the left\n  font(fontname = 'Times', part = 'all') %>% # set font name for the table\n  bold(~p.value == \"<0.0001\", j = \"p.value\") %>% # make significant p values bold\n  fontsize(size = 12, part = 'all') %>% # set font size for the table\n  autofit() # fix any random size issues\n\n\nContrastestimates.e.d.f.t-ratiop valueAdelie - Chinstrap-32.4367.51339.00-0.480.88Adelie - Gentoo-1,375.3556.15339.00-24.50<0.0001Chinstrap - Gentoo-1,342.9369.86339.00-19.22<0.0001"
   },
   {
+    "objectID": "posts/install_rstudio_git/index.html",
+    "href": "posts/install_rstudio_git/index.html",
+    "title": "intRos: Installing, R, RStudio, and Git",
+    "section": "",
+    "text": "R is one of the most popular programming language for statistical programming in ecology, evolution, and conservation. It is also the language taught in the University of Exeter’s undergraduate and masters courses within the Centre for Ecology and Conservation.\nRStudio is probably the most popular IDE for people using R. An IDE is an integrated development environment, which allows users to combine multiple aspects of software development in one place to make it easier to use. For RStudio, that means you have different panes that contain the R Console, your script, a file explorer, a pane where plots appear, and much more.\nGit is a version control system that allows you to track versions of your files. It is popular when programming to be able to keep a history of all the changes you have made to your work, and be able to retrieve old instances of your work if you have made a mistake later down the line.\nThis post gives some details on how to install R, RStudio, and git. This information is mainly aggregated from other sources (see acknowledgements below), but there is some specific advice for Windows users for University of Exeter staff and students."
+  },
+  {
+    "objectID": "posts/install_rstudio_git/index.html#for-mac-users",
+    "href": "posts/install_rstudio_git/index.html#for-mac-users",
+    "title": "intRos: Installing, R, RStudio, and Git",
+    "section": "For Mac Users",
+    "text": "For Mac Users\nMac users should click the “Download R for macOS” link in the “Download and Install R” section. Click on the link for the latest version of R and click on the “Download R-[version].pkg” link to download the installer package. Open the downloaded file and follow the installation instructions. You can launch R by clicking the R icon on your Launchpad or in your Applications folder of your Finder, but we recommend using RStudio to code in R because it makes programming in R a much easier and more pleasant experience."
+  },
+  {
+    "objectID": "posts/install_rstudio_git/index.html#for-windows-users",
+    "href": "posts/install_rstudio_git/index.html#for-windows-users",
+    "title": "intRos: Installing, R, RStudio, and Git",
+    "section": "For Windows Users",
+    "text": "For Windows Users\nWindows users should click the “Download R for Windows” link in the “Download and Install R” section. Click on the “base” directory and click on the link for the latest version of R. Then click on the “Download R[version] for Windows” link, open the downloaded file and follow the installation instructions. You can launch R by double-clicking the R icon on your Desktop or in your start menu, but we recommend using RStudio to code in R because it makes programming in R a much easier and more pleasant experience."
+  },
+  {
+    "objectID": "posts/install_rstudio_git/index.html#some-general-tips-for-global-options-of-rstudio",
+    "href": "posts/install_rstudio_git/index.html#some-general-tips-for-global-options-of-rstudio",
+    "title": "intRos: Installing, R, RStudio, and Git",
+    "section": "Some general tips for Global Options of RStudio",
+    "text": "Some general tips for Global Options of RStudio\nWhen setting up RStudio, there are a bunch of things you can change to configure your RStudio to how you like it. Some of these are likely personal, but we have some settings we like to use. These are settings you can change by clicking Tools -> Global Options.\n\nUnclick “Restore .RData into workspace at startup”. This means that each time you start a new RStudio instance, your environment starts clean and you can be confident that any results you have, or weird R behaviour, is not due to any previous code or session.\n\n\n\n\nDo not restore Rdata\n\n\n\nUnclick “Restore most recently opened project at startup”. This means that when you start a new RStudio, it will open an RStudio not associated with a project. This is more of a personal preference of mine as more often than not I have multiple RStudio instances open not associated with the same work, and I got tired of closing the project of new RStudio instances.\n\n\n\n\nDo not restore most recent project\n\n\n\nIn the “Code” tab, tick “Soft-wrap R source files”. This means that instead of having long lines of code that go off of your source pane and require you to move from left-to-right to view them, the source pane instead “soft-wraps” them into a new line, while preserving the fact that they are, in fact, a single line of code.\n\n\n\n\nTurn on Soft wrap\n\n\n\nIn the “Code -> Display” tab, unclick “Show Margin” which will get rid of the annoying line that can be present in the Source pane sometimes.\n\n\n\n\nTurn off Show margin\n\n\n\nI leave the default colours on for RStudio, but you can change to black background (and loads of other alternatives) in the “Appearance” tab."
+  },
+  {
+    "objectID": "posts/install_rstudio_git/index.html#managing-where-your-r-packages-install",
+    "href": "posts/install_rstudio_git/index.html#managing-where-your-r-packages-install",
+    "title": "intRos: Installing, R, RStudio, and Git",
+    "section": "Managing where your R packages install",
+    "text": "Managing where your R packages install\nOver many years, I have helped a fair few people at the University try and work out how to install R packages on their University computers. This has mainly been on Windows machines, and is most likely due to the lack of read/write access wherever R by default chooses to install packages.\nConsequently, it might be good for you to choose a new location on your computer where your R packages will install. And if you cannot install R packages at the moment then we are here to help! You can learn how to do change the default location your R packages install into by watching this video, but we will whizz through the process here too.\n\nCheck where R is installing packages by typing .libPaths() into your R console.\nCreate a new folder which you would like to install packages, somewhere where you DEFINITELY have read/write access (e.g. “~/Desktop/r_packages”)\nWe can then change .libPaths() for this R session.\n\n\n\n\nChange where you R packages install in an individual session\n\n\n\nHowever, when we start a new R session, this change will be lost. To change it by default for R, we need to change our .Renviron file, which allows us to change variables that R looks for every time it starts. To easily manipulate this file, we will first install the R package usethis using install.packages(usethis). It should install into the new directory you have just created, for me it installed into “~/Desktop/r_packages”.\nRun usethis::edit_r_environ() in your Console and it should open your .Renviron file in your source pane. From here, add R_LIBS_USER=“~/Desktop/r_packages” to it (obviously change the folder name to the folder you have created), click Save, and close the file.\n\n\n\n\nRun usethis::edit_r_environ\n\n\n\nNow when you start a new R instance, your chosen folder should be present when you run .libPaths() and you should not have problems installing R packages anymore!\n\n\n\n\n.libPaths() changes by default"
+  },
+  {
+    "objectID": "posts/install_rstudio_git/index.html#for-mac-users-1",
+    "href": "posts/install_rstudio_git/index.html#for-mac-users-1",
+    "title": "intRos: Installing, R, RStudio, and Git",
+    "section": "For Mac Users",
+    "text": "For Mac Users\nGit can be installed on Mac from some of the options on the git website. Another alternative is GitHub Desktop, which will install the latest version of Git with itself if you do not already have it."
+  },
+  {
+    "objectID": "posts/install_rstudio_git/index.html#for-windows-users-1",
+    "href": "posts/install_rstudio_git/index.html#for-windows-users-1",
+    "title": "intRos: Installing, R, RStudio, and Git",
+    "section": "For Windows Users",
+    "text": "For Windows Users\nGit can be installed from gitforwindows, but if you install GitHub Desktop, the latest version of Git will be installed if you do not already have it. With GitHub Desktop, you get a command line version of Git with a robust GUI."
+  },
+  {
+    "objectID": "posts/install_rstudio_git/index.html#make-a-github-profile",
+    "href": "posts/install_rstudio_git/index.html#make-a-github-profile",
+    "title": "intRos: Installing, R, RStudio, and Git",
+    "section": "Make a GitHub profile",
+    "text": "Make a GitHub profile\nGit is version control on your local machine, to share code with other you should create a GitHub (or GitLab) profile. Information on setting up a GitHub account can be found here."
+  },
+  {
+    "objectID": "series.html",
+    "href": "series.html",
+    "title": "Open and Reproducible Science Series",
+    "section": "",
+    "text": "We are excited to host a new monthly series of workshops and talks to promote Open and Reproducible Science at the University of Exeter Penryn campus.\nThis series will include invited speakers from both within and outside the department, covering the life-cycle of a research project including Pre-registration, Project management, Reproducibility, ChatGPT (and AI in general), and more.\n\nSchedule\nWhere: Exeter University Penryn campus\nWhen: Tuesdays from 3:00-5:00pm, once a month\nFeed me?: yes, there will be tea, coffee, and snacks\n\n\n\n\n\n\n\n\nDate\nLocation\nTopic\n\n\n\n\n9th May\nExchange Red\nThe ghosts of journals past, present, and future\n\n\n6th June\nESI Trevithick\nProject management using R projects and version control\n\n\n4th July\nExchange Red\nWhat is open science?\n\n\n1st August\nESI Trevithick\nCoding with AI: using ChatGPT and co-pilot\n\n\n5th September\nESI Trevithick\nReproducible outputs: publication ready figures & tables\n\n\n3rd October\nESI Trevithick\nCloud computing at Exeter\n\n\nNovember\nTBC\nTBC\n\n\n\nScheduled talks subject to change as the series evolves. Please look out for calendar invites for confirmed bookings and locations.\n\n\nGet Involved\nWe welcome all levels of involvement in the series. If you would like to contribute a talk, workshop, or conversation topic on any subject linked to open and reproducible science, please get in touch with us by email or come and speak to us at an event.\nContact: a.trevail[@]exeter.ac.uk"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Exeter Data Analytics Hub: Promoting Open and Reproducible Science",
@@ -117,6 +180,20 @@
     "title": "Exeter Data Analytics Hub: Promoting Open and Reproducible Science",
     "section": "What is the Exeter Data Analytics Hub?",
     "text": "What is the Exeter Data Analytics Hub?\nWe are an inter-college team of volunteers at the University of Exeter aiming to enhance ECR training in open and reproducible science."
+  },
+  {
+    "objectID": "index.html#open-and-reproducible-science-series",
+    "href": "index.html#open-and-reproducible-science-series",
+    "title": "Exeter Data Analytics Hub: Promoting Open and Reproducible Science",
+    "section": "Open and Reproducible Science Series",
+    "text": "Open and Reproducible Science Series\nWe host a monthly series of workshops and talks to promote Open and Reproducible Science throughout the life-cycle of a research project.\nVisit the Series page to find out more."
+  },
+  {
+    "objectID": "index.html#intros-walkthroughs",
+    "href": "index.html#intros-walkthroughs",
+    "title": "Exeter Data Analytics Hub: Promoting Open and Reproducible Science",
+    "section": "intRos Walkthroughs",
+    "text": "intRos Walkthroughs\nFind brief introductions and walkthroughs on common research programming activities on the Walkthroughs page."
   },
   {
     "objectID": "index.html#contact-us",
@@ -138,26 +215,5 @@
     "title": "intRos: Walkthroughs",
     "section": "Get started",
     "text": "Get started\nAll of the available intRos can be found below. All of the reproducible quarto (.qmd) files can be found at the source GitHub repository for this website. You can navigate to each of the directories individually in the posts/ folder, or better still clone the repo using git clone and open the project in RStudio."
-  },
-  {
-    "objectID": "series.html",
-    "href": "series.html",
-    "title": "Open and Reproducible Science Series",
-    "section": "",
-    "text": "This series will include invited speakers from both within and outside the department, covering the life-cycle of a research project including Pre-registration, Project management, Reproducibility, ChatGPT (and AI in general), and more.\n\nSchedule\nWhere: Exeter University Penryn campus\nWhen: Tuesdays from 3:00-5:00pm, once a month\nFeed me?: yes, there will be tea, coffee, and snacks\n\n\n\n\n\n\n\n\nDate\nLocation\nTopic\n\n\n\n\n9th May\nExchange Red\nThe ghosts of journals past, present, and future\n\n\n6th June\nESI Trevithick\nProject management using R projects and version control\n\n\n4th July\nExchange Red\nWhat is open science?\n\n\n1st August\nESI Trevithick\nCoding with AI: using ChatGPT and co-pilot\n\n\n5th September\nESI Trevithick\nReproducible outputs: publication ready figures & tables\n\n\n3rd October\nESI Trevithick\nCloud computing at Exeter\n\n\nNovember\nTBC\nTBC\n\n\n\nScheduled talks subject to change as the series evolves. Please look out for calendar invites for confirmed bookings and locations.\n\n\nGet Involved\nWe welcome all levels of involvement in the series. If you would like to contribute a talk, workshop, or conversation topic on any subject linked to open and reproducible science, please get in touch with us by email or come and speak to us at an event.\nContact: a.trevail[@]exeter.ac.uk"
-  },
-  {
-    "objectID": "index.html#open-and-reproducible-science-series",
-    "href": "index.html#open-and-reproducible-science-series",
-    "title": "Exeter Data Analytics Hub: Promoting Open and Reproducible Science",
-    "section": "Open and Reproducible Science Series",
-    "text": "Open and Reproducible Science Series\nWe host a monthly series of workshops and talks to promote Open and Reproducible Science throughout the life-cycle of a research project.\nVisit the Series page to find out more."
-  },
-  {
-    "objectID": "index.html#intros-walkthroughs",
-    "href": "index.html#intros-walkthroughs",
-    "title": "Exeter Data Analytics Hub: Promoting Open and Reproducible Science",
-    "section": "intRos Walkthroughs",
-    "text": "intRos Walkthroughs\nFind brief introductions and walkthroughs on common research programming activities on the Walkthroughs page."
   }
 ]

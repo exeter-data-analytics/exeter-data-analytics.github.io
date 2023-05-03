@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.189">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Daniel Padfield">
 <meta name="dcterms.date" content="2023-04-21">
-<meta name="description" content="A primer on how to install R, RStudio, and Git on University of Exeter computers.">
+<meta name="description" content="A primer on how to install R, RStudio, and Git.">
 
 <title>ExeDataHub - intRos: Installing, R, RStudio, and Git</title>
 <style>
@@ -83,18 +83,21 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html">Home</a>
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../series.html">Series</a>
+    <a class="nav-link" href="../../series.html">
+ <span class="menu-text">Series</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html">Walkthroughs</a>
+    <a class="nav-link" href="../../posts.html">
+ <span class="menu-text">Walkthroughs</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/exeter-data-analytics/exeter-data-analytics.github.io"><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -109,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
       <h1 class="title">intRos: Installing, R, RStudio, and Git</h1>
                   <div>
         <div class="description">
-          A primer on how to install R, RStudio, and Git on University of Exeter computers.
+          A primer on how to install R, RStudio, and Git.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -143,6 +146,13 @@ ul.task-list li input[type="checkbox"] {
         <p class="date">April 21, 2023</p>
       </div>
     </div>
+    
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">May 3, 2023</p>
+      </div>
+    </div>
       
     </div>
     
@@ -165,15 +175,14 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#installing-rstudio" id="toc-installing-rstudio" class="nav-link" data-scroll-target="#installing-rstudio">Installing RStudio</a>
   <ul class="collapse">
-  <li><a href="#for-mac-users-1" id="toc-for-mac-users-1" class="nav-link" data-scroll-target="#for-mac-users-1">For Mac Users</a></li>
-  <li><a href="#for-windows-users-1" id="toc-for-windows-users-1" class="nav-link" data-scroll-target="#for-windows-users-1">For Windows Users</a></li>
-  <li><a href="#some-tips-for-global-options-of-rstudio" id="toc-some-tips-for-global-options-of-rstudio" class="nav-link" data-scroll-target="#some-tips-for-global-options-of-rstudio">Some tips for Global Options of RStudio</a></li>
+  <li><a href="#some-general-tips-for-global-options-of-rstudio" id="toc-some-general-tips-for-global-options-of-rstudio" class="nav-link" data-scroll-target="#some-general-tips-for-global-options-of-rstudio">Some general tips for Global Options of RStudio</a></li>
   <li><a href="#managing-where-your-r-packages-install" id="toc-managing-where-your-r-packages-install" class="nav-link" data-scroll-target="#managing-where-your-r-packages-install">Managing where your R packages install</a></li>
   </ul></li>
   <li><a href="#installing-git" id="toc-installing-git" class="nav-link" data-scroll-target="#installing-git">Installing git</a>
   <ul class="collapse">
-  <li><a href="#for-mac-users-2" id="toc-for-mac-users-2" class="nav-link" data-scroll-target="#for-mac-users-2">For Mac Users</a></li>
-  <li><a href="#for-windows-users-2" id="toc-for-windows-users-2" class="nav-link" data-scroll-target="#for-windows-users-2">For Windows Users</a></li>
+  <li><a href="#for-mac-users-1" id="toc-for-mac-users-1" class="nav-link" data-scroll-target="#for-mac-users-1">For Mac Users</a></li>
+  <li><a href="#for-windows-users-1" id="toc-for-windows-users-1" class="nav-link" data-scroll-target="#for-windows-users-1">For Windows Users</a></li>
+  <li><a href="#make-a-github-profile" id="toc-make-a-github-profile" class="nav-link" data-scroll-target="#make-a-github-profile">Make a GitHub profile</a></li>
   </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
   <ul class="collapse">
@@ -191,6 +200,9 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="outline" class="level1">
 <h1>Outline</h1>
+<p>R is one of the most popular programming language for statistical programming in ecology, evolution, and conservation. It is also the language taught in the University of Exeter’s undergraduate and masters courses within the Centre for Ecology and Conservation.</p>
+<p>RStudio is probably the most popular IDE for people using R. An IDE is an integrated development environment, which allows users to combine multiple aspects of software development in one place to make it easier to use. For RStudio, that means you have different panes that contain the R Console, your script, a file explorer, a pane where plots appear, and much more.</p>
+<p>Git is a version control system that allows you to track versions of your files. It is popular when programming to be able to keep a history of all the changes you have made to your work, and be able to retrieve old instances of your work if you have made a mistake later down the line.</p>
 <p>This post gives some details on how to install R, RStudio, and git. This information is mainly aggregated from other sources (see acknowledgements below), but there is some specific advice for Windows users for University of Exeter staff and students.</p>
 </section>
 <section id="prerequisites" class="level1">
@@ -213,57 +225,154 @@ Learning objectives
 <div class="callout-body-container callout-body">
 <p><strong>This introduction should allow you to:</strong></p>
 <ul>
-<li><pre><code>install R</code></pre></li>
-<li><pre><code>install RStudio</code></pre></li>
-<li><pre><code>install a terminal and git</code></pre></li>
-<li><pre><code>manage your R, RStudio, and package installation</code></pre></li>
+<li>install R</li>
+<li>install RStudio</li>
+<li>manage your R, RStudio, and package installation</li>
+<li>install git</li>
 </ul>
 </div>
 </div>
 </section>
 <section id="installing-r" class="level1">
 <h1>Installing R</h1>
+<p>R can be installed from the Comprehensive R Archive Network (CRAN) <a href="https://www.stats.bris.ac.uk/R/">here</a>.</p>
 <section id="for-mac-users" class="level2">
 <h2 class="anchored" data-anchor-id="for-mac-users">For Mac Users</h2>
+<p>Mac users should click the “Download R for macOS” link in the “Download and Install R” section. Click on the link for the latest version of R and click on the “Download R-[version].pkg” link to download the installer package. Open the downloaded file and follow the installation instructions. You can launch R by clicking the R icon on your Launchpad or in your Applications folder of your Finder, but we recommend using RStudio to code in R because it makes programming in R a much easier and more pleasant experience.</p>
 </section>
 <section id="for-windows-users" class="level2">
 <h2 class="anchored" data-anchor-id="for-windows-users">For Windows Users</h2>
+<p>Windows users should click the “Download R for Windows” link in the “Download and Install R” section. Click on the “base” directory and click on the link for the latest version of R. Then click on the “Download R[version] for Windows” link, open the downloaded file and follow the installation instructions. You can launch R by double-clicking the R icon on your Desktop or in your start menu, but we recommend using RStudio to code in R because it makes programming in R a much easier and more pleasant experience.</p>
 </section>
 </section>
 <section id="installing-rstudio" class="level1">
 <h1>Installing RStudio</h1>
-<section id="for-mac-users-1" class="level2">
-<h2 class="anchored" data-anchor-id="for-mac-users-1">For Mac Users</h2>
-</section>
-<section id="for-windows-users-1" class="level2">
-<h2 class="anchored" data-anchor-id="for-windows-users-1">For Windows Users</h2>
-</section>
-<section id="some-tips-for-global-options-of-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="some-tips-for-global-options-of-rstudio">Some tips for Global Options of RStudio</h2>
+<p>RStudio can be installed for free from the Posit (the company that was formerly known called RStudio) website <a href="https://posit.co/download/rstudio-desktop/">here</a>. RStudio is available for Windows, MacOS, and Linux. Just click the “Download RStudio” button and follow the simple instructions. Once you’ve installed RStudio, you can open it like any other program on your computer. <strong>Before you install RStudio, make sure you have installed R.</strong></p>
+<section id="some-general-tips-for-global-options-of-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="some-general-tips-for-global-options-of-rstudio">Some general tips for Global Options of RStudio</h2>
+<p>When setting up RStudio, there are a bunch of things you can change to configure your RStudio to how you like it. Some of these are likely personal, but we have some settings we like to use. These are settings you can change by clicking Tools -&gt; Global Options.</p>
+<ol type="1">
+<li>Unclick “Restore .RData into workspace at startup”. This means that each time you start a new RStudio instance, your environment starts clean and you can be confident that any results you have, or weird R behaviour, is not due to any previous code or session.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="restore_rdata.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<p></p><figcaption class="figure-caption">Do not restore Rdata</figcaption><p></p>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>Unclick “Restore most recently opened project at startup”. This means that when you start a new RStudio, it will open an RStudio not associated with a project. This is more of a personal preference of mine as more often than not I have multiple RStudio instances open not associated with the same work, and I got tired of closing the project of new RStudio instances.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="restore_project.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<p></p><figcaption class="figure-caption">Do not restore most recent project</figcaption><p></p>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>In the “Code” tab, tick “Soft-wrap R source files”. This means that instead of having long lines of code that go off of your source pane and require you to move from left-to-right to view them, the source pane instead “soft-wraps” them into a new line, while preserving the fact that they are, in fact, a single line of code.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="soft_wrap.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<p></p><figcaption class="figure-caption">Turn on Soft wrap</figcaption><p></p>
+</figure>
+</div>
+<ol start="4" type="1">
+<li>In the “Code -&gt; Display” tab, unclick “Show Margin” which will get rid of the annoying line that can be present in the Source pane sometimes.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="show_margin.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<p></p><figcaption class="figure-caption">Turn off Show margin</figcaption><p></p>
+</figure>
+</div>
+<ol start="5" type="1">
+<li>I leave the default colours on for RStudio, but you can change to black background (and loads of other alternatives) in the “Appearance” tab.</li>
+</ol>
 </section>
 <section id="managing-where-your-r-packages-install" class="level2">
 <h2 class="anchored" data-anchor-id="managing-where-your-r-packages-install">Managing where your R packages install</h2>
+<p>Over many years, I have helped a fair few people at the University try and work out how to install R packages on their University computers. This has mainly been on Windows machines, and is most likely due to the lack of read/write access wherever R by default chooses to install packages.</p>
+<p>Consequently, it might be good for you to choose a new location on your computer where your R packages will install. And if you cannot install R packages at the moment then we are here to help! You can learn how to do change the default location your R packages install into by watching <a href="https://rfortherestofus.com/2021/09/how-to-set-your-default-package-install-location-in-r/">this video</a>, but we will whizz through the process here too.</p>
+<ol type="1">
+<li><p>Check where R is installing packages by typing <strong>.libPaths()</strong> into your R console.</p></li>
+<li><p>Create a new folder which you would like to install packages, somewhere where you <strong>DEFINITELY</strong> have read/write access (e.g.&nbsp;“~/Desktop/r_packages”)</p></li>
+<li><p>We can then change <strong>.libPaths()</strong> for this R session.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="change_libpaths.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<p></p><figcaption class="figure-caption">Change where you R packages install in an individual session</figcaption><p></p>
+</figure>
+</div>
+<ol start="4" type="1">
+<li><p>However, when we start a new R session, this change will be lost. To change it by default for R, we need to change our .Renviron file, which allows us to change variables that R looks for every time it starts. To easily manipulate this file, we will first install the R package <strong>usethis</strong> using <strong>install.packages(usethis)</strong>. It should install into the new directory you have just created, for me it installed into “~/Desktop/r_packages”.</p></li>
+<li><p>Run <strong>usethis::edit_r_environ()</strong> in your Console and it should open your .Renviron file in your source pane. From here, add <strong>R_LIBS_USER=“~/Desktop/r_packages”</strong> to it (obviously change the folder name to the folder you have created), click Save, and close the file.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="edit_r_environ.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<p></p><figcaption class="figure-caption">Run usethis::edit_r_environ</figcaption><p></p>
+</figure>
+</div>
+<ol start="6" type="1">
+<li>Now when you start a new R instance, your chosen folder should be present when you run <strong>.libPaths()</strong> and you should not have problems installing R packages anymore!</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="libpaths2.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<p></p><figcaption class="figure-caption">.libPaths() changes by default</figcaption><p></p>
+</figure>
+</div>
 </section>
 </section>
 <section id="installing-git" class="level1">
 <h1>Installing git</h1>
-<section id="for-mac-users-2" class="level2">
-<h2 class="anchored" data-anchor-id="for-mac-users-2">For Mac Users</h2>
+<p>To check if Git is installed on a Windows or Mac machine, follow these steps:</p>
+<p>For Windows:</p>
+<ol type="1">
+<li>Open the Command Prompt by pressing the “Windows Key + R” and typing “cmd” in the “Run” dialog box, or open “Git Bash” (or use the Terminal tab of your RStudio).</li>
+<li>Type “git –version” and press Enter.</li>
+<li>If git is installed, the version number of git will be displayed in the Command Prompt.</li>
+</ol>
+<p>For Mac:</p>
+<ol type="1">
+<li>Open the Terminal application by finding it on your Launchpad or Applications folder in your Finder (or in the Terminal tab of your RStudio).</li>
+<li>Type “git –version” and press Enter.</li>
+<li>If git is installed, the version number of git will be displayed in the Terminal window.</li>
+</ol>
+<p>Even if git is installed, it is probably a good idea to update to the latest version. git has very good backwards compatibility so it is very unlikely that updating will break anything.</p>
+<section id="for-mac-users-1" class="level2">
+<h2 class="anchored" data-anchor-id="for-mac-users-1">For Mac Users</h2>
+<p>Git can be installed on Mac from some of the options on the git <a href="https://git-scm.com/download/mac">website</a>. Another alternative is <a href="https://desktop.github.com/">GitHub Desktop</a>, which will install the latest version of Git with itself if you do not already have it.</p>
 </section>
-<section id="for-windows-users-2" class="level2">
-<h2 class="anchored" data-anchor-id="for-windows-users-2">For Windows Users</h2>
+<section id="for-windows-users-1" class="level2">
+<h2 class="anchored" data-anchor-id="for-windows-users-1">For Windows Users</h2>
+<p>Git can be installed from <a href="https://gitforwindows.org/">gitforwindows</a>, but if you install <a href="https://desktop.github.com/">GitHub Desktop</a>, the latest version of Git will be installed if you do not already have it. With GitHub Desktop, you get a command line version of Git with a robust GUI.</p>
+</section>
+<section id="make-a-github-profile" class="level2">
+<h2 class="anchored" data-anchor-id="make-a-github-profile">Make a GitHub profile</h2>
+<p>Git is version control on your local machine, to share code with other you should create a GitHub (or GitLab) profile. Information on setting up a GitHub account can be found <a href="https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account">here</a>.</p>
 </section>
 </section>
 <section id="summary" class="level1">
 <h1>Summary</h1>
+<p>After this guide, you should have installed R, RStudio, and git on your machine, and also know a little more about how to check where your R packages are installing and some handy RStudio options.</p>
 <section id="additional-resources" class="level3">
 <h3 class="anchored" data-anchor-id="additional-resources">Additional Resources</h3>
+<ul>
+<li>This <a href="https://happygitwithr.com/">online book</a> about using R and RStudio and git is incredible.</li>
+</ul>
 </section>
 <section id="acknowledgements" class="level3">
 <h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
 <p>We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.</p>
 <ul>
-<li>Add here.</li>
+<li>We took inspiration from this <a href="https://www.r-bloggers.com/2019/05/my-rstudio-configuration/">blog post</a> about someone’s RStudio configuration.</li>
+<li>We watched <a href="https://rfortherestofus.com/2021/09/how-to-set-your-default-package-install-location-in-r/">this video</a> on how to change the location for installing R packages.</li>
+<li>We enjoyed <a href="https://community.rstudio.com/t/should-i-update-all-my-r-packages-frequently-yes-no-why/5856/6">this thread</a> on whether we should update our R packages regularly. In conclusion, yes probably.</li>
+<li>Some of the content was created using ChatGPT.</li>
 </ul>
 
 
@@ -312,7 +421,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -348,24 +474,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

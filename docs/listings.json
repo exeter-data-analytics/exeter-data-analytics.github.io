@@ -2,6 +2,7 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/install_rstudio_git/index.html",
       "/posts/intro_to_ggplot2/index.html",
       "/posts/intro_to_flextable/index.html",
       "/posts/intro_to_projects/index.html"
