@@ -16,16 +16,15 @@ This series will include invited speakers from both within and outside the depar
 
 **Feed me?**: yes, there will be tea, coffee, and snacks
 
-| Date          | Location        | Topic              |
-| ----:         | :----:          | :---------------    |
-|       9th May | Exchange Red    | The ghosts of journals past, present, and future         |
-|      6th June | ESI Trevithick  | Project management using R projects and version control  |
-|      4th July | Exchange Red    | What is open science?                                    |
-|    1st August | ESI Trevithick  | Coding with AI: using ChatGPT and co-pilot               |
-| 5th September | ESI Trevithick  | Reproducible outputs: publication ready figures & tables |
-|   3rd October | ESI Trevithick  | Cloud computing at Exeter                                |
-|      November |       TBC       | TBC   |
-
+|          Date |    Location    | Topic                                                    |
+|--------------:|:--------------:|:---------------------------------------------------------|
+|       9th May |  Exchange Red  | The ghosts of journals past, present, and future         |
+|      6th June | ESI Trevithick | Project management using R projects and version control  |
+|      4th July |  Exchange Red  | What is open science?                                    |
+|    1st August | ESI Trevithick | Let's build R-Shiny web apps. For science!               |
+| 5th September | ESI Trevithick | Reproducible outputs: publication ready figures & tables |
+|   3rd October | ESI Trevithick | Coding with AI: using ChatGPT and co-pilot               |
+|      November |      TBC       | Cloud computing at Exeter                                |
 
 Scheduled talks subject to change as the series evolves. Please look out for calendar invites for confirmed bookings and locations.
 
@@ -33,4 +32,4 @@ Scheduled talks subject to change as the series evolves. Please look out for cal
 
 We welcome all levels of involvement in the series. If you would like to contribute a talk, workshop, or conversation topic on any subject linked to open and reproducible science, please get in touch with us by email or come and speak to us at an event.
 
-Contact: a.trevail[@]exeter.ac.uk
+Contact: a.trevail\[\@\]exeter.ac.uk
