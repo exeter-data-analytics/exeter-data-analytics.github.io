@@ -17,10 +17,10 @@ This series will include invited speakers from both within and outside the depar
 **Feed me?**: yes, there will be tea, coffee, and snacks
 
 |          Date |    Location    | Topic                                                    |
-|--------------:|:--------------:|:---------------------------------------------------------|
+|-------------:|:--------------:|:-------------------------------------------|
 |       9th May |  Exchange Red  | The ghosts of journals past, present, and future         |
 |      6th June | ESI Trevithick | Project management using R projects and version control  |
-|      4th July |  Exchange Red  | What is open science?                                    |
+|      4th July |  Exchange Red  | An introduction to open science and preregistration      |
 |    1st August | ESI Trevithick | Let's build R-Shiny web apps. For science!               |
 | 5th September | ESI Trevithick | Reproducible outputs: publication ready figures & tables |
 |   3rd October | ESI Trevithick | Coding with AI: using ChatGPT and co-pilot               |
