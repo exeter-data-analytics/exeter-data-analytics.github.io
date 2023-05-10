@@ -17,8 +17,7 @@ This series will include invited speakers from both within and outside the depar
 **Feed me?**: yes, there will be tea, coffee, and snacks
 
 |          Date |    Location    | Topic                                                    |
-|-------------:|:--------------:|:-------------------------------------------|
-|       9th May |  Exchange Red  | The ghosts of journals past, present, and future         |
+|---------------:|:--------------:|:---------------------------------------|
 |      6th June | ESI Trevithick | Project management using R projects and version control  |
 |      4th July |  Exchange Red  | An introduction to open science and preregistration      |
 |    1st August | ESI Trevithick | Let's build R-Shiny web apps. For science!               |
@@ -26,7 +25,13 @@ This series will include invited speakers from both within and outside the depar
 |   3rd October | ESI Trevithick | Coding with AI: using ChatGPT and co-pilot               |
 |      November |      TBC       | Cloud computing at Exeter                                |
 
-Scheduled talks subject to change as the series evolves. Please look out for calendar invites for confirmed bookings and locations.
+Scheduled talks subject to change as the series evolves. Please check this website and look out for calendar invites for confirmed bookings and locations.
+
+### Previous workshops
+
+|         Date | Speakers                                           | Topic                                            | Resources                                                                                                                                                                                                          |
+|--------:|------------|:--------------------|-------------------------------|
+| 9th May 2023 | [Mark Hanson](https://mahansonresearch.weebly.com) | The ghosts of journals past, present, and future | [Talk recording](https://universityofexeteruk-my.sharepoint.com/:v:/g/personal/a_trevail_exeter_ac_uk/EfDcipY15c9Lg-PSu-MjoXYBdepHh-DYAe-SmXYydCXW9Q?e=FthcAO) (accessible with University of Exeter account only) |
 
 ### Get Involved
 
