@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.189">
+<meta name="generator" content="quarto-1.2.475">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -112,18 +112,21 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">Home</a>
+    <a class="nav-link" href="./index.html">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./series.html">Series</a>
+    <a class="nav-link" href="./series.html">
+ <span class="menu-text">Series</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" aria-current="page">Walkthroughs</a>
+    <a class="nav-link active" href="./posts.html" aria-current="page">
+ <span class="menu-text">Walkthroughs</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/exeter-data-analytics/exeter-data-analytics.github.io"><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -158,6 +161,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -180,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="R,RStudio,git" data-listing-date-sort="1682031600000" data-listing-file-modified-sort="1683210337864" data-listing-reading-time-sort="7.41">
+<div class="quarto-post image-right" data-index="0" data-categories="R,RStudio,git" data-listing-date-sort="1682031600000" data-listing-file-modified-sort="1683146393338" data-listing-reading-time-sort="7.41">
 <div class="body">
 <a href="./posts/install_rstudio_git/index.html">
 <h3 class="no-anchor listing-title">
@@ -205,7 +209,7 @@ intRos: Installing, R, RStudio, and Git
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="R,ggplot2,tidyverse" data-listing-date-sort="1677196800000" data-listing-file-modified-sort="1683210337879" data-listing-reading-time-sort="14.795">
+<div class="quarto-post image-right" data-index="1" data-categories="R,ggplot2,tidyverse" data-listing-date-sort="1677196800000" data-listing-file-modified-sort="1677849105080" data-listing-reading-time-sort="14.795">
 <div class="body">
 <a href="./posts/intro_to_ggplot2/index.html">
 <h3 class="no-anchor listing-title">
@@ -230,7 +234,7 @@ intRos: Publication ready plots using ggplot2
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="flextable,R" data-listing-date-sort="1676332800000" data-listing-file-modified-sort="1683210337871" data-listing-reading-time-sort="11.38">
+<div class="quarto-post image-right" data-index="2" data-categories="flextable,R" data-listing-date-sort="1676332800000" data-listing-file-modified-sort="1676382157889" data-listing-reading-time-sort="11.38">
 <div class="body">
 <a href="./posts/intro_to_flextable/index.html">
 <h3 class="no-anchor listing-title">
@@ -255,7 +259,7 @@ intRos: Reproducible tables with flextable
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="R,RStudio projects,tidyverse,here" data-listing-date-sort="1672704000000" data-listing-file-modified-sort="1683210337886" data-listing-reading-time-sort="9.295">
+<div class="quarto-post image-right" data-index="3" data-categories="R,RStudio projects,tidyverse,here" data-listing-date-sort="1672704000000" data-listing-file-modified-sort="1677790645425" data-listing-reading-time-sort="9.295">
 <div class="body">
 <a href="./posts/intro_to_projects/index.html">
 <h3 class="no-anchor listing-title">
@@ -326,7 +330,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -362,24 +383,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
