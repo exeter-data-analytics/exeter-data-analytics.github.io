@@ -150,6 +150,10 @@ Once you have set this, you can check it has stored properly using **gitcreds::g
 
 This should mean you are ready to roll (i.e. Git and GitHub like a boss), but if you are getting stuck some common troubleshoots can be found [here](https://happygitwithr.com/https-pat.html#pat-troubleshooting)
 
+One thing you can check is that RStudo knows where your git executable is. In Tools -> GLobal Options, you can check where git is stored and being accessed from.
+
+![Check where RStudio is looking for git](check_git_rstudio.png){width=60%}
+
 # Summary
 
 After this guide, you should have installed R, RStudio, and git on your machine, and also know a little more about how to check where your R packages are installing and some handy RStudio options.
