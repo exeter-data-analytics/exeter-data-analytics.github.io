@@ -525,6 +525,68 @@ $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 
 </div>
 </div>
 </section>
+<section id="control-legend-shapes-and-override-legend-appearance" class="level3">
+<h3 class="anchored" data-anchor-id="control-legend-shapes-and-override-legend-appearance">Control legend shapes and override legend appearance</h3>
+<p>Sometimes you colour text, lines, points with the same colours. When you do this, each of the legends for them get displayed in the legend overlaid with each other. To show this we will create a line plot of the relationship between</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;">ggplot</span>(d, <span class="fu" style="color: #4758AB;">aes</span>(body_mass_g, bill_length_mm, <span class="at" style="color: #657422;">col =</span> species)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb11-2">  <span class="fu" style="color: #4758AB;">geom_point</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb11-3">  <span class="fu" style="color: #4758AB;">stat_smooth</span>(<span class="at" style="color: #657422;">method =</span> <span class="st" style="color: #20794D;">'lm'</span>, <span class="at" style="color: #657422;">se =</span> <span class="cn" style="color: #8f5902;">FALSE</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb11-4">  <span class="fu" style="color: #4758AB;">theme_bw</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_ggplot2/index_files/figure-html/plot_legend-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I do not like the legend with multiple geoms, to me it looks like a tram stop sign. Luckily there are easy ways to manually edit the legend.</p>
+<p>First we can switch off the legend of any of the elements using the argument <code>show.legend</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;">ggplot</span>(d, <span class="fu" style="color: #4758AB;">aes</span>(body_mass_g, bill_length_mm, <span class="at" style="color: #657422;">col =</span> species)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-2">  <span class="fu" style="color: #4758AB;">geom_point</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-3">  <span class="fu" style="color: #4758AB;">stat_smooth</span>(<span class="at" style="color: #657422;">method =</span> <span class="st" style="color: #20794D;">'lm'</span>, <span class="at" style="color: #657422;">se =</span> <span class="cn" style="color: #8f5902;">FALSE</span>, <span class="at" style="color: #657422;">show.legend =</span> <span class="cn" style="color: #8f5902;">FALSE</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-4">  <span class="fu" style="color: #4758AB;">theme_bw</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_ggplot2/index_files/figure-html/plot_legend2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This looks nicer. An alternative to this is to use <code>key_glyph</code> which allows you to control the shape of the legend.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;">ggplot</span>(d, <span class="fu" style="color: #4758AB;">aes</span>(body_mass_g, bill_length_mm, <span class="at" style="color: #657422;">col =</span> species)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb13-2">  <span class="fu" style="color: #4758AB;">geom_point</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb13-3">  <span class="fu" style="color: #4758AB;">stat_smooth</span>(<span class="at" style="color: #657422;">method =</span> <span class="st" style="color: #20794D;">'lm'</span>, <span class="at" style="color: #657422;">se =</span> <span class="cn" style="color: #8f5902;">FALSE</span>,  <span class="at" style="color: #657422;">key_glyph =</span> <span class="st" style="color: #20794D;">'point'</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb13-4">  <span class="fu" style="color: #4758AB;">theme_bw</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_ggplot2/index_files/figure-html/plot_legend3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can also control the size of the shape in the legend by altering the legend defaults using the <strong>guides()</strong> function.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="fu" style="color: #4758AB;">ggplot</span>(d, <span class="fu" style="color: #4758AB;">aes</span>(body_mass_g, bill_length_mm, <span class="at" style="color: #657422;">col =</span> species)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb14-2">  <span class="fu" style="color: #4758AB;">geom_point</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb14-3">  <span class="fu" style="color: #4758AB;">stat_smooth</span>(<span class="at" style="color: #657422;">method =</span> <span class="st" style="color: #20794D;">'lm'</span>, <span class="at" style="color: #657422;">se =</span> <span class="cn" style="color: #8f5902;">FALSE</span>, <span class="at" style="color: #657422;">show.legend =</span> <span class="cn" style="color: #8f5902;">FALSE</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb14-4">  <span class="fu" style="color: #4758AB;">theme_bw</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb14-5">  <span class="fu" style="color: #4758AB;">guides</span>(<span class="at" style="color: #657422;">colour =</span> <span class="fu" style="color: #4758AB;">guide_legend</span>(<span class="at" style="color: #657422;">override.aes =</span> <span class="fu" style="color: #4758AB;">list</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">20</span>)))</span></code></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_ggplot2/index_files/figure-html/plot_legend4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Ok that last size is a bit much. But you get the idea and now have the tools to manually edit your legend.</p>
+</section>
 </section>
 <section id="awesome-ggplot2-extensions" class="level2">
 <h2 class="anchored" data-anchor-id="awesome-ggplot2-extensions">Awesome ggplot2 extensions</h2>
