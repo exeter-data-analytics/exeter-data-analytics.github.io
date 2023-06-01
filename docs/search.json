@@ -161,6 +161,13 @@
     "text": "Make a GitHub profile\nGit is version control on your local machine, to share code with other you should create a GitHub (or GitLab) profile. Information on setting up a GitHub account can be found here."
   },
   {
+    "objectID": "posts/install_rstudio_git/index.html#configure-github-with-local-git-and-rstudio",
+    "href": "posts/install_rstudio_git/index.html#configure-github-with-local-git-and-rstudio",
+    "title": "intRos: Installing, R, RStudio, and Git",
+    "section": "Configure GitHub with local git and RStudio",
+    "text": "Configure GitHub with local git and RStudio\nNow we have git, R, and RStudio installed, and an RStudio profile, we need to make sure they can all talk each other, and that you can communicate with your GitHub profile from your local machine. An extensive walkthrough is available here, but we will cover the main steps.\nFirst, we need to create an access token so that GitHub can securely link your local computer to GitHub. To do this go to https://github.com/settings/tokens and create an access token. For the scopes, I ticked most that I thought would be useful and understood, which were gist, repo, user, workflow. Make sure you name it something useful like “R:GitHubPAT” so that is makes sense if you ever need to make a new token.\nOnce this code is created, save it to your clipboard or in a text editor while we are storing it in your RStudio. Once you close the webpage you will never see this token again, so make sure you make a note of it! Then going forwards, treat this access token as you would a password. For some of you that might mean using a password manager, and for some of you that might mean a book, your hand, or post it notes on your computer screen.\nWe will use the R package gitcreds to associate your GitHub PAT with RStudio. First install gitcreds using install.packages(‘gitcreds’). If you want a way to be able to install and load R packages from CRAN, GitHub, and Bioconductor in a simpler way without calls to both install.packages() and library(), then I recommend looking at librarian!\nNext run gitcreds::gitcreds_set() and follow the prompts. Specifically make sure you copy in your GitHub PAT!\n Once you have set this, you can check it has stored properly using gitcreds::gitcreds::get().\nThis should mean you are ready to roll (i.e. Git and GitHub like a boss), but if you are getting stuck some common troubleshoots can be found here"
+  },
+  {
     "objectID": "series.html",
     "href": "series.html",
     "title": "Open and Reproducible Science Series",

@@ -150,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">May 3, 2023</p>
+        <p class="date-modified">June 1, 2023</p>
       </div>
     </div>
       
@@ -183,6 +183,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#for-mac-users-1" id="toc-for-mac-users-1" class="nav-link" data-scroll-target="#for-mac-users-1">For Mac Users</a></li>
   <li><a href="#for-windows-users-1" id="toc-for-windows-users-1" class="nav-link" data-scroll-target="#for-windows-users-1">For Windows Users</a></li>
   <li><a href="#make-a-github-profile" id="toc-make-a-github-profile" class="nav-link" data-scroll-target="#make-a-github-profile">Make a GitHub profile</a></li>
+  <li><a href="#configure-github-with-local-git-and-rstudio" id="toc-configure-github-with-local-git-and-rstudio" class="nav-link" data-scroll-target="#configure-github-with-local-git-and-rstudio">Configure GitHub with local git and RStudio</a></li>
   </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
   <ul class="collapse">
@@ -354,6 +355,16 @@ Learning objectives
 <section id="make-a-github-profile" class="level2">
 <h2 class="anchored" data-anchor-id="make-a-github-profile">Make a GitHub profile</h2>
 <p>Git is version control on your local machine, to share code with other you should create a GitHub (or GitLab) profile. Information on setting up a GitHub account can be found <a href="https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account">here</a>.</p>
+</section>
+<section id="configure-github-with-local-git-and-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="configure-github-with-local-git-and-rstudio">Configure GitHub with local git and RStudio</h2>
+<p>Now we have git, R, and RStudio installed, and an RStudio profile, we need to make sure they can all talk each other, and that you can communicate with your GitHub profile from your local machine. An extensive walkthrough is available <a href="https://happygitwithr.com/connect-intro.html">here</a>, but we will cover the main steps.</p>
+<p>First, we need to create an access token so that GitHub can securely link your local computer to GitHub. To do this go to https://github.com/settings/tokens and create an access token. For the scopes, I ticked most that I thought would be useful and understood, which were <strong>gist</strong>, <strong>repo</strong>, <strong>user</strong>, <strong>workflow</strong>. Make sure you name it something useful like “R:GitHubPAT” so that is makes sense if you ever need to make a new token.</p>
+<p>Once this code is created, save it to your clipboard or in a text editor while we are storing it in your RStudio. Once you close the webpage you will never see this token again, so make sure you make a note of it! Then going forwards, treat this access token as you would a password. For some of you that might mean using a password manager, and for some of you that might mean a book, your hand, or post it notes on your computer screen.</p>
+<p>We will use the R package <strong>gitcreds</strong> to associate your GitHub PAT with RStudio. First install <strong>gitcreds</strong> using <strong>install.packages(‘gitcreds’)</strong>. If you want a way to be able to install and load R packages from CRAN, GitHub, and Bioconductor in a simpler way without calls to both <strong>install.packages()</strong> and <strong>library()</strong>, then I recommend looking at <a href="https://github.com/DesiQuintans/librarian"><strong>librarian</strong></a>!</p>
+<p>Next run <strong>gitcreds::gitcreds_set()</strong> and follow the prompts. Specifically make sure you copy in your GitHub PAT!</p>
+<p><img src="gitcreds_set.png" class="img-fluid" style="width:60.0%" alt="gitcreds_set()"> Once you have set this, you can check it has stored properly using <strong>gitcreds::gitcreds::get()</strong>.</p>
+<p>This should mean you are ready to roll (i.e.&nbsp;Git and GitHub like a boss), but if you are getting stuck some common troubleshoots can be found <a href="https://happygitwithr.com/https-pat.html#pat-troubleshooting">here</a></p>
 </section>
 </section>
 <section id="summary" class="level1">
