@@ -19,5 +19,8 @@
   },
   "posts/install_rstudio_git/index.qmd": {
     "index.html": "cfe9763f"
+  },
+  "presentations/intro_to_github/intro_to_github.qmd": {
+    "intro_to_github.html": "ad81ffcd"
   }
 }
