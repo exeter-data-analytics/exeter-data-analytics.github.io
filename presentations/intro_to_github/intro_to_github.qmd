@@ -1,0 +1,463 @@
+---
+title: "Making reproducible projects"
+title-slide-attributes:
+  data-background-image: /presentations/intro_to_github/media/github_bg.png
+  data-background-size: cover
+author: Stephen Lang, Dan Padfield <br> & Matt Jones
+format: 
+  revealjs:
+    theme: [custom.scss]
+    logo: /presentations/intro_to_github/media/slide_logo.png
+    touch: true
+    controls: true
+    history: false #slide navigation not pushed to browser history
+auto-animate: true
+draft: true
+---
+
+## Workshop outline
+
+1)  Workshop aims (reproducibility tools)
+2)  Introduction to version control
+3)  Overview of git and GitHub
+4)  Using GitHub with R Studio
+5)  Integrating with R Studio Projects and `here`
+6)  Some use-cases from us
+7)  Practical (bring your problem code!)
+8)  Considerations of data sharing (w/ Matt Jones)
+
+## Three aims:
+
+::: {.fragment .fade-in-then-semi-out fragment-index="1"}
+
+![](/presentations/intro_to_github/media/github_logo.png){.absolute top="105" left="168" width="155"}
+![](/presentations/intro_to_github/media/git_logo.png){.absolute top="110" left="50" width="150"}
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index="2"}
+
+::: {style="font-size: 2.4em;" .absolute top="125" left="350"}
+\+
+:::
+
+![](/presentations/intro_to_github/media/rstudio.png){.absolute top="110" left="420" width="150"}
+
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index="3"}
+
+::: {style="font-size: 2.4em;" .absolute top="125" left="600"}
+\+
+:::
+
+::: {style="font-size: 2.3em;" .absolute top="125" left="670"}
+`{here}`
+:::
+
+:::
+
+ \
+ \
+ \
+ \
+
+::: {.fragment .fade-in-then-semi-out fragment-index="1" style="font-size: 1.1em;"}
+-   **Know** basics of using git/GitHub for version control
+:::
+::: {.fragment .fade-in-then-semi-out fragment-index="2" style="font-size: 1.1em;"}
+-   **Learn** how to create R Studio Projects
+:::
+::: {.fragment .fade-in-then-semi-out fragment-index="3" style="font-size: 1.1em;"}
+-   **Understand** how the `here` package works
+:::
+
+## Preparation
+
+:::{style="font-size: 1.2em; line-height: 3;" .absolute top="100" left="100" }
+Checked git is installed
+
+Signed up for a GitHub account
+
+Authenticated GitHub on your machine
+:::
+
+![](/presentations/intro_to_github/media/git_logo.png){.absolute top="95" left="2" height="62"} ![](/presentations/intro_to_github/media/github_logo.png){.absolute top="175" left="2" height="60"} ![](/presentations/intro_to_github/media/lock_logo.png){.absolute top="250" left="6" height="64"}
+
+::: {style="font-size: 1.2em;" .absolute bottom="150" left="0" }
+**Let us know if you are stuck on any of these**
+
+(Extra guidance is on the [Exeter data Analytics Hub](https://exeter-data-analytics.github.io/posts/install_rstudio_git/))
+
+:::
+
+##  {#slide5-id data-menu-title="Version control"}
+
+::: {.fragment .fade-out fragment-index="1"}
+![](/presentations/intro_to_github/media/github_logo.png){.absolute top="145" left="468" width="155"}
+![](/presentations/intro_to_github/media/git_logo.png){.absolute top="150" left="350" width="150"}
+:::
+
+::: {.fragment .fade-out fragment-index="1" style="font-size: 2em;" .absolute top="370" left="100"}
+**Why use version control?**
+:::
+
+::: {.fragment .fade-in-then-out fragment-index="1"}
+![](/presentations/intro_to_github/media/phd_comics.gif){.absolute top="-20" left="270" height="200%"}
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index="2"}
+### **Version control allows us to:** {style="font-size: 1.5em;"}
+
+-   Avoid confusing file names
+-   Keep track of changes made over time
+-   Tinker with code without worrying about breaking it
+-   Easily revert when code does break
+-   Integrate with other software for online back-ups
+:::
+
+::: {.fragment .fade-in fragment-index="3"}
+![](/presentations/intro_to_github/media/git_name.png){.absolute bottom="100" left="150" height="100"}![](/presentations/intro_to_github/media/github_name.png){.absolute bottom="100" left="500" height="100"}
+:::
+
+::: footer
+comic: Piled Higher and Deeper" by Jorge Cham (www.phdcomics.com)
+:::
+
+##  {#slide4-id data-menu-title="git vs. github"}
+
+::: columns
+::: {.column width="48%"}
+![](/presentations/intro_to_github/media/git_name.png){.absolute top="5" left="100" width="200"}
+
+ \
+ \
+
+::: {style="font-size:37px"}
+-   **Installed locally**
+-   Free version control system (often pre-installed)
+-   Manages the evolution of files in a sensible, highly structured way
+-   Structured around repositories (aka a **'repo'**) as units of organisation
+:::
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="48%"}
+![](/presentations/intro_to_github/media/github_name.png){.absolute top="0" left="630" width="350"}
+
+ \
+ \
+
+::: {style="font-size:37px"}
+-   **Cloud-based**
+-   Hosting service for git-based projects (others: BitBucket, GitLab)
+-   Similar to DropBox/Google Docs but better
+-   Allows others to see, synchronise with and contribute to your work
+:::
+:::
+:::
+
+## The git/GitHub workflow
+
+-   Specific flow of actions that are usually followed:
+
+::: r-stack
+::: {.fragment data-id="pull" fragment-index="1" style="background: #23C3CC; width: 200px; height: 70px; margin-left: 30px; padding: 0.01em; text-align: center; color: #FFFFFF"}
+Pull
+:::
+
+::: {.fragment fragment-index="1" style="margin-left: 340px; font-size: 0.8em;"}
+Pull everything from GitHub for the current repo \*
+:::
+
+:::
+
+::: r-stack
+::: {.fragment data-id="stage" fragment-index="2" style="background: #12C87B; width: 200px; height: 70px; margin-left: 80px; margin-top: 50px; padding: 0.01em; text-align: center; color: #FFFFFF;"}
+Stage
+:::
+
+::: {.fragment fragment-index="2" style="margin-left: 340px; margin-top: 50px; font-size: 0.8em"}
+Add modified files to the commit queue
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index="2"}
+![](/presentations/intro_to_github/media/down_arrow.png){.absolute top="246" left="160" height="45"}
+:::
+:::
+
+::: r-stack
+::: {.fragment data-id="commit" fragment-index="3" style="background: #12C87B; width: 200px; height: 70px; margin-left: 80px; margin-top: 50px; padding: 0.01em; text-align: center; color: #FFFFFF"}
+Commit
+:::
+
+::: {.fragment fragment-index="3" style="margin-left: 340px;margin-top: 50px; font-size: 0.8em"}
+Confirm your changes locally (with message)
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index="3\""}
+![](/presentations/intro_to_github/media/down_arrow.png){.absolute top="367" left="160" height="45"}
+:::
+:::
+
+::: r-stack
+::: {.fragment data-id="push" fragment-index="4" style="background: #12C87B; width: 200px; height: 70px; margin-left: 80px; margin-top: 50px; padding: 0.01em; text-align: center; color: #FFFFFF"}
+Push
+:::
+
+::: {.fragment fragment-index="4" style="margin-left: 340px;margin-top: 50px; font-size: 0.8em"}
+Push committed changes to GitHub
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index="4\""}
+![](/presentations/intro_to_github/media/down_arrow.png){.absolute top="487" left="160" height="45"}
+:::
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index="5\""}
+![](/presentations/intro_to_github/media/up_arrow.png){.absolute bottom="92" left="28" height="340"}
+:::
+
+::: footer
+\*Optional --- but good practice to do when starting for the day
+:::
+
+## Interacting with git/GitHub
+
+![](/presentations/intro_to_github/media/rstudio_logo.png){.absolute top="100" left="0" height="100"}
+
+::: {.fragment .semi-fade-out fragment-index="1"}
+![](/presentations/intro_to_github/media/github_desktop.png){.absolute top="100" left="320" height="105"} ![](/presentations/intro_to_github/media/gitkraken_desktop.png){.absolute top="100" left="670" height="105"}
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+![](/presentations/intro_to_github/media/github_rstudio.png){.absolute top="225" left="20" width="1200"}
+:::
+
+## The git/GitHub workflow (RStudio)
+
+-   Same flow:
+
+![](/presentations/intro_to_github/media/github_rstudio_tools.png){.absolute top="140" right="20" height="500"}
+
+::: r-stack
+::: {.fragment data-id="pull" fragment-index="1" style="background: #23C3CC; width: 200px; height: 70px; margin-left: 30px; margin-top: -12px; padding: 0.01em; text-align: center; color: #FFFFFF"}
+Pull
+:::
+
+::: {.fragment fragment-index="1" .fade-in-then-out}
+![](/presentations/intro_to_github/media/red_circle.png){.absolute top="223" right="315" height="50"}
+:::
+
+:::
+
+::: r-stack
+::: {.fragment data-id="stage" fragment-index="2" style="background: #12C87B; width: 200px; height: 70px; margin-left: 80px; margin-top: 50px; padding: 0.01em; text-align: center; color: #FFFFFF;"}
+Stage
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index="2"}
+![](/presentations/intro_to_github/media/down_arrow.png){.absolute top="246" left="160" height="45"}
+:::
+
+::: {.fragment fragment-index="2" .fade-in-then-out}
+![](/presentations/intro_to_github/media/red_circle.png){.absolute top="265" right="462" height="50"}
+:::
+
+:::
+
+::: r-stack
+::: {.fragment data-id="commit" fragment-index="3" style="background: #12C87B; width: 200px; height: 70px; margin-left: 80px; margin-top: 50px; padding: 0.01em; text-align: center; color: #FFFFFF"}
+Commit
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index="3"}
+![](/presentations/intro_to_github/media/down_arrow.png){.absolute top="367" left="160" height="45"}
+:::
+
+::: {.fragment fragment-index="3" .fade-in-then-out}
+![](/presentations/intro_to_github/media/red_circle.png){.absolute top="225" right="375" height="50"}
+:::
+
+:::
+
+::: r-stack
+::: {.fragment data-id="push" fragment-index="4" style="background: #12C87B; width: 200px; height: 70px; margin-left: 80px; margin-top: 50px; padding: 0.01em; text-align: center; color: #FFFFFF"}
+Push
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index="4"}
+![](/presentations/intro_to_github/media/down_arrow.png){.absolute top="487" left="160" height="45"}
+:::
+
+::: {.fragment fragment-index="4" .fade-in-then-out}
+![](/presentations/intro_to_github/media/red_circle.png){.absolute top="225" right="275" height="50"}
+:::
+
+:::
+
+::: {.fragment .fade-in-then-semi-out fragment-index="5"}
+![](/presentations/intro_to_github/media/up_arrow.png){.absolute bottom="92" left="28" height="340"}
+:::
+
+::: {.fragment fragment-index="5" .fade-in-then-out}
+![](/presentations/intro_to_github/media/red_circle.png){.absolute top="223" right="315" height="50"}
+:::
+
+##        .gitignore
+
+![](/presentations/intro_to_github/media/gitignore.png){.absolute top="-50" left="-40" width="150"}
+
+-   Text file that lists large/specific files you don't want to sync
+-   Exclude all files of one type with `*` wildcard (e.g., `*.png`)
+
+. . .
+
+-   Edit the .gitignore file ([left]{style="color: #C00000;"}) or select files to exclude ([right]{style="color: #C00000;"}) 
+
+![](/presentations/intro_to_github/media/gitignore_gui.png){.absolute bottom="100" left="20" width="1200"}
+
+##  {#slide11-id data-menu-title="R Studio projects"}
+
+![](/presentations/intro_to_github/media/rstudio.png){.absolute top="150" left="430" width="175"}
+
+::: {.absolute top="370" left="230" style="font-size: 2em;"}
+**R Studio Projects**
+:::
+
+##        Why R Studio Projects are great:
+
+![](/presentations/intro_to_github/media/rstudio.png){.absolute top="-25" left="-30" width="100"}
+
+-   Each Project file opens a new session and environment
+-   File paths start relative to the .Rproj file (much shorter)
+-   Improves code reproducibility --- even better if you use `here`
+
+. . .
+
+-   Self-contained project folder makes a perfect GitHub repo:
+
+![](/presentations/intro_to_github/media/project_repo.png){.absolute bottom="80" left="40" width="1000"}
+
+::: footer
+Guide to using R Studio projects can be found on the [Exeter Data Analytics intros page](https://exeter-data-analytics.github.io/posts/intro_to_projects/)
+:::
+
+##  {#sec-slide10id data-menu-title="the {here} package"}
+
+::: {.fragment .fade-out fragment-index="1".absolute top="280" left="380" style="font-size: 2em;"}
+**`{here}`**
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+![](/presentations/intro_to_github/media/here_package.png){.absolute top="-20" left="150" width="800"}
+:::
+
+::: footer
+Illustration by [Allison Horst](https://github.com/allisonhorst)
+:::
+
+## `{here}` makes filepaths that:
+
+-   Work magically on both macOS & Windows (`/` or `\`)
+-   Start at the root of the repository (using .Rproj file)
+
+. . .
+
+`here::here()` will show the root of your project directory:
+
+```{r}
+#| echo: true
+#install.packages("here")
+library(here)
+here()
+```
+
+. . .
+
+This path is included at the start of every filepath `here` creates
+
+:::footer
+Recommended reading: [Project-oriented workflows by Jenny Bryant](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/)
+:::
+
+## Using `here`:
+
+-   Filepaths are created in a similar way to `paste()`:
+-   We list quoted names of folders, comma separated
+
+. . .
+
+We can create a filepath to a folder within the repository:
+
+```{r}
+#| echo: true
+here("data","raw_data") #creating a filepath to a folder within the repository
+```
+
+. . .
+
+Or make the path into an object for use elsewhere:
+
+```{r}
+#| echo: true
+output_path <- here("output","figures")
+output_path
+```
+
+## Use case \#1 (Stephen)
+
+::: {.incremental}
+-   I usually start by making an empty repo on GitHub
+-   Clone the empty repo to my machine as an R Studio Project
+-   Create a few core folders (data, scripts, outputs)
+-   Add relevant files and commit-push everything
+-   Fire up a script and read in data with `here`
+-   ...spend the next three hours faffing with ggplot
+:::
+
+## Final thoughts on making code open:
+
+**How we use these tools can depend on what we're sharing:**
+
+-   Sharing code (`here`)
+-   Sharing projects (`here` and R Studio Projects)
+-   Sharing with updates (GitHub)
+-   Just for ourselves (any combination that we find useful)
+
+*Additional considerations for sharing data: (Matt)*
+
+## Practical
+
+-   Practical on getting it actually set up
+-   Open a new repo on your github account
+-   Link an existing repo
+-   Turns into a reproducible/collaborative coding session
+
+## Resources
+
+-   ExeDataHub: [Installing, R, RStudio, and Git](https://exeter-data-analytics.github.io/posts/install_rstudio_git/)
+-   ExeDataHub: [Managing research projects with R Studio](https://exeter-data-analytics.github.io/posts/intro_to_projects/)
+-   The exceptional [Happy Git and GitHub for the useR](https://happygitwithr.com/index.html) book
+-   Others?
+
+## Matt's slides here?
+
+## Acknowledgements
+
+Background images used courtesy of GitHub
+
+## Exeter Colours
+
+```{r}
+cols <- tidyr::tibble(
+  "name" = c("Exeter_Night_Green","Exeter_Dark_Green","Exeter_Bright_Green","Exeter_Deep_Green","Exeter_Highlight_Green"),
+  "hex" = c("#022020", "#003c3c", "#00c896","#007d69","#00dca5"))
+cols
+#Exeter_Night_Green #022020     
+#Exeter_Dark_Green: #003c3c   
+#Exeter_Bright_Green: #00c896 
+#Exeter_Deep_Green: #007d69 
+#Exeter_Highlight_Green: #00dca5 
+```
