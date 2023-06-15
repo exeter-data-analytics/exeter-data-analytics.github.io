@@ -2,30 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_projects/index.html</loc>
-    <lastmod>2023-06-07T14:58:02.338Z</lastmod>
+    <lastmod>2023-06-15T21:13:13.889Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_ggplot2/index.html</loc>
-    <lastmod>2023-06-07T14:58:04.434Z</lastmod>
+    <lastmod>2023-06-15T21:13:15.144Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_flextable/index.html</loc>
-    <lastmod>2023-06-07T14:58:05.944Z</lastmod>
+    <lastmod>2023-06-15T21:13:16.568Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/install_rstudio_git/index.html</loc>
-    <lastmod>2023-06-07T14:58:07.169Z</lastmod>
+    <lastmod>2023-06-15T21:13:17.543Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/series.html</loc>
-    <lastmod>2023-06-07T14:58:07.629Z</lastmod>
+    <lastmod>2023-06-15T21:13:17.840Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/index.html</loc>
-    <lastmod>2023-06-07T14:58:08.121Z</lastmod>
+    <lastmod>2023-06-15T21:13:18.158Z</lastmod>
+  </url>
+  <url>
+    <loc>https://exeter-data-analytics.github.io/presentations/intro_to_github/intro_to_github.html</loc>
+    <lastmod>2023-06-15T21:13:20.093Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts.html</loc>
-    <lastmod>2023-06-07T14:58:12.162Z</lastmod>
+    <lastmod>2023-06-15T21:13:20.444Z</lastmod>
+  </url>
+  <url>
+    <loc>https://exeter-data-analytics.github.io/presentations.html</loc>
+    <lastmod>2023-06-15T21:13:20.830Z</lastmod>
   </url>
 </urlset>

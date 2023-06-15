@@ -12,6 +12,8 @@ website:
         text: Home
       - href: series.qmd
         text: Series
+      - href: presentations.qmd
+        text: Presentations
       - href: posts.qmd
         text: Walkthroughs
       - icon: github

@@ -217,6 +217,153 @@
     "text": "Contact us\nIf you want to help contribute to this project or have any questions about any of our content, please do not hesitate to contact us."
   },
   {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#workshop-outline",
+    "href": "presentations/intro_to_github/intro_to_github.html#workshop-outline",
+    "title": "Making reproducible projects",
+    "section": "Workshop outline",
+    "text": "Workshop outline\n\nWorkshop aims (reproducibility tools)\nIntroduction to version control\nOverview of git and GitHub\nUsing GitHub with R Studio\nIntegrating with R Studio Projects and here\nSome use-cases from us\nPractical (bring your problem code!)\nConsiderations of data sharing (w/ Matt Jones)"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#three-aims",
+    "href": "presentations/intro_to_github/intro_to_github.html#three-aims",
+    "title": "Making reproducible projects",
+    "section": "Three aims:",
+    "text": "Three aims:\n\n \n\n\n\n+\n\n\n\n\n\n+\n\n\n{here}\n\n\n \n \n \n \n\n\n\nKnow basics of using git/GitHub for version control\n\n\n\n\nLearn how to create R Studio Projects\n\n\n\n\nUnderstand how the here package works"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#preparation",
+    "href": "presentations/intro_to_github/intro_to_github.html#preparation",
+    "title": "Making reproducible projects",
+    "section": "Preparation",
+    "text": "Preparation\n\nChecked git is installed\nSigned up for a GitHub account\nAuthenticated GitHub on your machine\n\n  \n\nLet us know if you are stuck on any of these\n(Extra guidance is on the Exeter data Analytics Hub)"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#slide5-id",
+    "href": "presentations/intro_to_github/intro_to_github.html#slide5-id",
+    "title": "Making reproducible projects",
+    "section": "",
+    "text": "Why use version control?\n\n\n\n\n\n\nVersion control allows us to:\n\nAvoid confusing file names\nKeep track of changes made over time\nTinker with code without worrying about breaking it\nEasily revert when code does break\nIntegrate with other software for online back-ups\n\n\n\n\n\n\ncomic: Piled Higher and Deeper” by Jorge Cham (www.phdcomics.com)"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#slide4-id",
+    "href": "presentations/intro_to_github/intro_to_github.html#slide4-id",
+    "title": "Making reproducible projects",
+    "section": "",
+    "text": "Installed locally\nFree version control system (often pre-installed)\nManages the evolution of files in a sensible, highly structured way\nStructured around repositories (aka a ‘repo’) as units of organisation\n\n\n\n\n\n\n \n \n\n\n\nCloud-based\nHosting service for git-based projects (others: BitBucket, GitLab)\nSimilar to DropBox/Google Docs but better\nAllows others to see, synchronise with and contribute to your work"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#the-gitgithub-workflow",
+    "href": "presentations/intro_to_github/intro_to_github.html#the-gitgithub-workflow",
+    "title": "Making reproducible projects",
+    "section": "The git/GitHub workflow",
+    "text": "The git/GitHub workflow\n\nSpecific flow of actions that are usually followed:\n\n\n\nPull\n\n\nPull everything from GitHub for the current repo *\n\n\n\n\nStage\n\n\nAdd modified files to the commit queue\n\n\n\n\n\n\n\nCommit\n\n\nConfirm your changes locally (with message)\n\n\n\n\n\n\n\nPush\n\n\nPush committed changes to GitHub\n\n\n\n\n\n\n\n\n\n*Optional — but good practice to do when starting for the day"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#interacting-with-gitgithub",
+    "href": "presentations/intro_to_github/intro_to_github.html#interacting-with-gitgithub",
+    "title": "Making reproducible projects",
+    "section": "Interacting with git/GitHub",
+    "text": "Interacting with git/GitHub"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#the-gitgithub-workflow-rstudio",
+    "href": "presentations/intro_to_github/intro_to_github.html#the-gitgithub-workflow-rstudio",
+    "title": "Making reproducible projects",
+    "section": "The git/GitHub workflow (RStudio)",
+    "text": "The git/GitHub workflow (RStudio)\n\nSame flow:\n\n\n\n\nPull\n\n\n\n\n\n\n\nStage\n\n\n\n\n\n\n\n\n\n\nCommit\n\n\n\n\n\n\n\n\n\n\nPush"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#gitignore",
+    "href": "presentations/intro_to_github/intro_to_github.html#gitignore",
+    "title": "Making reproducible projects",
+    "section": "       .gitignore",
+    "text": ".gitignore\n\n\nText file that lists large/specific files you don’t want to sync\nExclude all files of one type with * wildcard (e.g., *.png)\n\n\n\nEdit the .gitignore file (left) or select files to exclude (right)"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#slide11-id",
+    "href": "presentations/intro_to_github/intro_to_github.html#slide11-id",
+    "title": "Making reproducible projects",
+    "section": "",
+    "text": "R Studio Projects"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#why-r-studio-projects-are-great",
+    "href": "presentations/intro_to_github/intro_to_github.html#why-r-studio-projects-are-great",
+    "title": "Making reproducible projects",
+    "section": "       Why R Studio Projects are great:",
+    "text": "Why R Studio Projects are great:\n\n\nEach Project file opens a new session and environment\nFile paths start relative to the .Rproj file (much shorter)\nImproves code reproducibility — even better if you use here\n\n\n\nSelf-contained project folder makes a perfect GitHub repo:\n\n\n\nGuide to using R Studio projects can be found on the Exeter Data Analytics intros page"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#sec-slide10id",
+    "href": "presentations/intro_to_github/intro_to_github.html#sec-slide10id",
+    "title": "Making reproducible projects",
+    "section": "",
+    "text": "{here}\n\n\n\n\n\nIllustration by Allison Horst"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#here-makes-filepaths-that",
+    "href": "presentations/intro_to_github/intro_to_github.html#here-makes-filepaths-that",
+    "title": "Making reproducible projects",
+    "section": "{here} makes filepaths that:",
+    "text": "{here} makes filepaths that:\n\nWork magically on both macOS & Windows (/ or \\)\nStart at the root of the repository (using .Rproj file)\n\n\nhere::here() will show the root of your project directory:\n\n#install.packages(\"here\")\nlibrary(here)\nhere()\n\n[1] \"/Users/dp415/Desktop/exeter_open_reproducibility_website\"\n\n\n\n\nThis path is included at the start of every filepath here creates\n\nRecommended reading: Project-oriented workflows by Jenny Bryant"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#using-here",
+    "href": "presentations/intro_to_github/intro_to_github.html#using-here",
+    "title": "Making reproducible projects",
+    "section": "Using here:",
+    "text": "Using here:\n\nFilepaths are created in a similar way to paste():\nWe list quoted names of folders, comma separated\n\n\nWe can create a filepath to a folder within the repository:\n\nhere(\"data\",\"raw_data\") #creating a filepath to a folder within the repository\n\n[1] \"/Users/dp415/Desktop/exeter_open_reproducibility_website/data/raw_data\"\n\n\n\n\nOr make the path into an object for use elsewhere:\n\noutput_path <- here(\"output\",\"figures\")\noutput_path\n\n[1] \"/Users/dp415/Desktop/exeter_open_reproducibility_website/output/figures\""
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#use-case-1-stephen",
+    "href": "presentations/intro_to_github/intro_to_github.html#use-case-1-stephen",
+    "title": "Making reproducible projects",
+    "section": "Use case #1 (Stephen)",
+    "text": "Use case #1 (Stephen)\n\n\nI usually start by making an empty repo on GitHub\nClone the empty repo to my machine as an R Studio Project\nCreate a few core folders (data, scripts, outputs)\nAdd relevant files and commit-push everything\nFire up a script and read in data with here\n…spend the next three hours faffing with ggplot"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#final-thoughts-on-making-code-open",
+    "href": "presentations/intro_to_github/intro_to_github.html#final-thoughts-on-making-code-open",
+    "title": "Making reproducible projects",
+    "section": "Final thoughts on making code open:",
+    "text": "Final thoughts on making code open:\nHow we use these tools can depend on what we’re sharing:\n\nSharing code (here)\nSharing projects (here and R Studio Projects)\nSharing with updates (GitHub)\nJust for ourselves (any combination that we find useful)\n\nAdditional considerations for sharing data: (Matt)"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#practical",
+    "href": "presentations/intro_to_github/intro_to_github.html#practical",
+    "title": "Making reproducible projects",
+    "section": "Practical",
+    "text": "Practical\n\nPractical on getting it actually set up\nOpen a new repo on your github account\nLink an existing repo\nTurns into a reproducible/collaborative coding session"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#resources",
+    "href": "presentations/intro_to_github/intro_to_github.html#resources",
+    "title": "Making reproducible projects",
+    "section": "Resources",
+    "text": "Resources\n\nExeDataHub: Installing, R, RStudio, and Git\nExeDataHub: Managing research projects with R Studio\nThe exceptional Happy Git and GitHub for the useR book\nOthers?"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#matts-slides-here",
+    "href": "presentations/intro_to_github/intro_to_github.html#matts-slides-here",
+    "title": "Making reproducible projects",
+    "section": "Matt’s slides here?",
+    "text": "Matt’s slides here?"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#acknowledgements",
+    "href": "presentations/intro_to_github/intro_to_github.html#acknowledgements",
+    "title": "Making reproducible projects",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nBackground images used courtesy of GitHub"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#exeter-colours",
+    "href": "presentations/intro_to_github/intro_to_github.html#exeter-colours",
+    "title": "Making reproducible projects",
+    "section": "Exeter Colours",
+    "text": "Exeter Colours\n\n\n# A tibble: 5 × 2\n  name                   hex    \n  <chr>                  <chr>  \n1 Exeter_Night_Green     #022020\n2 Exeter_Dark_Green      #003c3c\n3 Exeter_Bright_Green    #00c896\n4 Exeter_Deep_Green      #007d69\n5 Exeter_Highlight_Green #00dca5"
+  },
+  {
     "objectID": "posts.html",
     "href": "posts.html",
     "title": "intRos: Walkthroughs",
@@ -229,5 +376,12 @@
     "title": "intRos: Walkthroughs",
     "section": "Get started",
     "text": "Get started\nAll of the available intRos can be found below. All of the reproducible quarto (.qmd) files can be found at the source GitHub repository for this website. You can navigate to each of the directories individually in the posts/ folder, or better still clone the repo using git clone and open the project in RStudio."
+  },
+  {
+    "objectID": "presentations.html",
+    "href": "presentations.html",
+    "title": "Presentations",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nMaking reproducible projects\n\n\n\n\n\n\n\n \n\n\n\n\nNo matching items"
   }
 ]

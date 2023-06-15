@@ -22,5 +22,11 @@
   },
   "presentations/intro_to_github/intro_to_github.qmd": {
     "intro_to_github.html": "ad81ffcd"
+  },
+  "presentations/intro_to_github/index.qmd": {
+    "index.html": "e6f27dc3"
+  },
+  "presentations.qmd": {
+    "presentations.html": "19e8ce22"
   }
 }
