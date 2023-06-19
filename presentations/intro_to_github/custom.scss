@@ -78,6 +78,7 @@ $presentation-title-slide-justify-content: left;
   //width: 150px!important;
   max-width: unset !important;
   max-height: unset !important;
+  z-index: 3; //this makes the logo render in front of slide content!
 }
 
 //customising bullets
@@ -107,3 +108,17 @@ list-style: none; /* Remove default bullets*/
 		visibility: inherit;
 	}
 }
+
+//customise appearance of videos
+.video-js .vjs-tech {
+top: -2px;
+left: -2px;
+right: -2px;
+bottom: -2px;
+}
+
+.video-js {
+    overflow: hidden;
+}
+
+.vjs-control-bar { display:none!important; }

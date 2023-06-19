@@ -11,6 +11,7 @@ format:
     touch: true
     controls: true
     history: false #slide navigation not pushed to browser history
+    auto-play-media: true
 auto-animate: true
 ---
 
@@ -23,30 +24,36 @@ auto-animate: true
 5)  Integrating with R Studio Projects and `here`
 6)  Some use-cases from us
 7)  Practical (bring your problem code!)
-8)  Considerations of data sharing (w/ Matt Jones)
+8)  Bonus session on data sharing! (w/ Matt Jones)
 
 ## Three aims:
 
 ::: {.fragment .fade-in-then-semi-out fragment-index="1"}
-![](/presentations/intro_to_github/media/github_logo.png){.absolute top="105" left="168" width="155"} ![](/presentations/intro_to_github/media/git_logo.png){.absolute top="110" left="50" width="150"}
+
+![](/presentations/intro_to_github/media/github_logo.png){.absolute top="105" left="168" width="155"}
+![](/presentations/intro_to_github/media/git_logo.png){.absolute top="110" left="50" width="150"}
 :::
 
 ::: {.fragment .fade-in-then-semi-out fragment-index="2"}
-::: {.absolute style="font-size: 2.4em;" top="125" left="350"}
+
+::: {style="font-size: 2.4em;" .absolute top="125" left="350"}
 \+
 :::
 
 ![](/presentations/intro_to_github/media/rstudio.png){.absolute top="110" left="420" width="150"}
+
 :::
 
 ::: {.fragment .fade-in-then-semi-out fragment-index="3"}
-::: {.absolute style="font-size: 2.4em;" top="125" left="600"}
+
+::: {style="font-size: 2.4em;" .absolute top="125" left="600"}
 \+
 :::
 
-::: {.absolute style="font-size: 2.3em;" top="125" left="670"}
+::: {style="font-size: 2.3em;" .absolute top="125" left="670"}
 `{here}`
 :::
+
 :::
 
  \
@@ -57,18 +64,16 @@ auto-animate: true
 ::: {.fragment .fade-in-then-semi-out fragment-index="1" style="font-size: 1.1em;"}
 -   **Know** basics of using git/GitHub for version control
 :::
-
 ::: {.fragment .fade-in-then-semi-out fragment-index="2" style="font-size: 1.1em;"}
 -   **Learn** how to create R Studio Projects
 :::
-
 ::: {.fragment .fade-in-then-semi-out fragment-index="3" style="font-size: 1.1em;"}
 -   **Understand** how the `here` package works
 :::
 
 ## Preparation
 
-::: {.absolute style="font-size: 1.2em; line-height: 3;" top="100" left="100"}
+:::{style="font-size: 1.2em; line-height: 3;" .absolute top="100" left="100" }
 Checked git is installed
 
 Signed up for a GitHub account
@@ -78,19 +83,21 @@ Authenticated GitHub on your machine
 
 ![](/presentations/intro_to_github/media/git_logo.png){.absolute top="95" left="2" height="62"} ![](/presentations/intro_to_github/media/github_logo.png){.absolute top="175" left="2" height="60"} ![](/presentations/intro_to_github/media/lock_logo.png){.absolute top="250" left="6" height="64"}
 
-::: {.absolute style="font-size: 1.2em;" bottom="150" left="0"}
+::: {style="font-size: 1.2em;" .absolute bottom="150" left="0" }
 **Let us know if you are stuck on any of these**
 
 (Extra guidance is on the [Exeter data Analytics Hub](https://exeter-data-analytics.github.io/posts/install_rstudio_git/))
+
 :::
 
 ##  {#slide5-id data-menu-title="Version control"}
 
 ::: {.fragment .fade-out fragment-index="1"}
-![](/presentations/intro_to_github/media/github_logo.png){.absolute top="145" left="468" width="155"} ![](/presentations/intro_to_github/media/git_logo.png){.absolute top="150" left="350" width="150"}
+![](/presentations/intro_to_github/media/github_logo.png){.absolute top="145" left="468" width="155"}
+![](/presentations/intro_to_github/media/git_logo.png){.absolute top="150" left="350" width="150"}
 :::
 
-::: {.fragment .fade-out .absolute fragment-index="1" style="font-size: 2em;" top="370" left="100"}
+::: {.fragment .fade-out fragment-index="1" style="font-size: 2em;" .absolute top="370" left="100"}
 **Why use version control?**
 :::
 
@@ -113,7 +120,7 @@ Authenticated GitHub on your machine
 :::
 
 ::: footer
-comic: Piled Higher and Deeper" by Jorge Cham (www.phdcomics.com)
+comic: "Piled Higher and Deeper" by Jorge Cham (www.phdcomics.com)
 :::
 
 ##  {#slide4-id data-menu-title="git vs. github"}
@@ -161,8 +168,9 @@ Pull
 :::
 
 ::: {.fragment fragment-index="1" style="margin-left: 340px; font-size: 0.8em;"}
-Pull everything from GitHub for the current repo \*
+**Download** everything from GitHub for the repo\*
 :::
+
 :::
 
 ::: r-stack
@@ -199,7 +207,7 @@ Push
 :::
 
 ::: {.fragment fragment-index="4" style="margin-left: 340px;margin-top: 50px; font-size: 0.8em"}
-Push committed changes to GitHub
+**Upload** committed changes to GitHub
 :::
 
 ::: {.fragment .fade-in-then-semi-out fragment-index="4\""}
@@ -238,9 +246,10 @@ Push committed changes to GitHub
 Pull
 :::
 
-::: {.fragment .fade-in-then-out fragment-index="1"}
+::: {.fragment fragment-index="1" .fade-in-then-out}
 ![](/presentations/intro_to_github/media/red_circle.png){.absolute top="223" right="315" height="50"}
 :::
+
 :::
 
 ::: r-stack
@@ -252,9 +261,10 @@ Stage
 ![](/presentations/intro_to_github/media/down_arrow.png){.absolute top="246" left="160" height="45"}
 :::
 
-::: {.fragment .fade-in-then-out fragment-index="2"}
+::: {.fragment fragment-index="2" .fade-in-then-out}
 ![](/presentations/intro_to_github/media/red_circle.png){.absolute top="265" right="462" height="50"}
 :::
+
 :::
 
 ::: r-stack
@@ -266,9 +276,10 @@ Commit
 ![](/presentations/intro_to_github/media/down_arrow.png){.absolute top="367" left="160" height="45"}
 :::
 
-::: {.fragment .fade-in-then-out fragment-index="3"}
+::: {.fragment fragment-index="3" .fade-in-then-out}
 ![](/presentations/intro_to_github/media/red_circle.png){.absolute top="225" right="375" height="50"}
 :::
+
 :::
 
 ::: r-stack
@@ -280,20 +291,21 @@ Push
 ![](/presentations/intro_to_github/media/down_arrow.png){.absolute top="487" left="160" height="45"}
 :::
 
-::: {.fragment .fade-in-then-out fragment-index="4"}
+::: {.fragment fragment-index="4" .fade-in-then-out}
 ![](/presentations/intro_to_github/media/red_circle.png){.absolute top="225" right="275" height="50"}
 :::
+
 :::
 
 ::: {.fragment .fade-in-then-semi-out fragment-index="5"}
 ![](/presentations/intro_to_github/media/up_arrow.png){.absolute bottom="92" left="28" height="340"}
 :::
 
-::: {.fragment .fade-in-then-out fragment-index="5"}
+::: {.fragment fragment-index="5" .fade-in-then-out}
 ![](/presentations/intro_to_github/media/red_circle.png){.absolute top="223" right="315" height="50"}
 :::
 
-##        .gitignore
+##        .gitignore {data-menu-title="gitignore"}
 
 ![](/presentations/intro_to_github/media/gitignore.png){.absolute top="-50" left="-40" width="150"}
 
@@ -302,7 +314,7 @@ Push
 
 . . .
 
--   Edit the .gitignore file ([left]{style="color: #C00000;"}) or select files to exclude ([right]{style="color: #C00000;"})
+-   Edit the .gitignore file ([left]{style="color: #C00000;"}) or select files to exclude ([right]{style="color: #C00000;"}) 
 
 ![](/presentations/intro_to_github/media/gitignore_gui.png){.absolute bottom="100" left="20" width="1200"}
 
@@ -314,7 +326,7 @@ Push
 **R Studio Projects**
 :::
 
-##        Why R Studio Projects are great:
+##        Why R Studio Projects are great: {data-menu-title="Why R Studio projects are great"}
 
 ![](/presentations/intro_to_github/media/rstudio.png){.absolute top="-25" left="-30" width="100"}
 
@@ -332,9 +344,21 @@ Push
 Guide to using R Studio projects can be found on the [Exeter Data Analytics intros page](https://exeter-data-analytics.github.io/posts/intro_to_projects/)
 :::
 
+## How to create an R Studio project {.absolute top="100" right="50" background-video="/presentations/intro_to_github/media/new_project.mp4" background-video-loop="true" background-size="contain"}
+
+::: footer
+In-depth guide to using R Studio projects can be found on the [Exeter Data Analytics intros page](https://exeter-data-analytics.github.io/posts/intro_to_projects/)
+:::
+
+## Create new project from GitHub repo {.absolute top="100" right="50" background-video="/presentations/intro_to_github/media/clone_repo.mp4" background-video-loop="true" background-size="contain"}
+
+::: footer
+Example cloned repo can be found here: [https://github.com/gkaramanis/aRtist](https://github.com/gkaramanis/aRtist)
+:::
+
 ##  {#sec-slide10id data-menu-title="the {here} package"}
 
-::: {.fragment .fade-out .absolute fragment-index="1" top="280" left="380" style="font-size: 2em;"}
+::: {.fragment .fade-out fragment-index="1".absolute top="280" left="380" style="font-size: 2em;"}
 **`{here}`**
 :::
 
@@ -366,7 +390,7 @@ here()
 
 This path is included at the start of every filepath `here` creates
 
-::: footer
+:::footer
 Recommended reading: [Project-oriented workflows by Jenny Bryant](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/)
 :::
 
@@ -375,53 +399,372 @@ Recommended reading: [Project-oriented workflows by Jenny Bryant](https://www.ti
 -   Filepaths are created in a similar way to `paste()`:
 -   We list quoted names of folders, comma separated
 
-. . .
+::: {.fragment fragment-index="1"}
 
-We can create a filepath to a folder within the repository:
+We can create a test filepath to a folder within the repository:
 
 ```{r}
 #| echo: true
 here("data","raw_data") #creating a filepath to a folder within the repository
 ```
 
-. . .
+:::
 
-Or make the path into an object for use elsewhere:
+::: {.fragment .fade-in-then-out fragment-index="2" .absolute top="450"}
+
+Create paths directly within a `file`/`filename` argument:
 
 ```{r}
 #| echo: true
-output_path <- here("output","figures")
-output_path
+#| eval: false
+read_csv(file = here("data","raw_data","data.csv"))
+ggsave(plot, filename = here("output","figures"))
 ```
 
-## Use case #1 (Stephen)
+:::
 
-::: incremental
+::: {.fragment .fade-in fragment-index="3" .absolute top="450"}
+
+Or turn long paths into an object for regular use:
+
+```{r}
+#| echo: true
+#| eval: true
+output_path <- here("output","movement","figures") ; output_path
+```
+
+```{r}
+#| echo: true
+#| eval: false
+ggsave(plot, filename = here(output_path,"plot1.png"))
+```
+:::
+
+## How I use GitHub:
+
+::: {.incremental}
 -   I usually start by making an empty repo on GitHub
 -   Clone the empty repo to my machine as an R Studio Project
 -   Create a few core folders (data, scripts, outputs)
 -   Add relevant files and commit-push everything
 -   Fire up a script and read in data with `here`
+-   Use `pacman::p_load` for loading packages
 -   ...spend the next three hours faffing with ggplot
 :::
 
-## Final thoughts on making code open:
+##  {#slide23-id data-menu-title="intermission" background-color="black"}
 
-**How we use these tools can depend on what we're sharing:**
+:::{style="font-size: 1.5em;" .absolute top="300" left="250"}
+-- Intermission --
+:::
 
--   Sharing code (`here`)
--   Sharing projects (`here` and R Studio Projects)
--   Sharing with updates (GitHub)
--   Just for ourselves (any combination that we find useful)
+##  {#slide24-id data-menu-title="Why you should share your data"}
 
-*Additional considerations for sharing data: (Matt)*
+::: {style="font-size: 1.5em;" .absolute top="0" left="0"}
+**Why you should share your data, <br> why you shouldn't share it via GitHub, <br> and where you should share it instead.**
+:::
 
-## Practical
+::: {style="font-size: 1.4em;" .absolute bottom="330" left="0"}
+Matt Lloyd Jones
+:::
 
--   Practical on getting it actually set up
--   Open a new repo on your github account
--   Link an existing repo
--   Turns into a reproducible/collaborative coding session
+::: {.column width="100%"}
+![](/presentations/intro_to_github/media/ukrn_logo10_2.jpg){.absolute bottom="50" left="" width="200"}
+:::
+
+::: {.column width="100%"}
+![](/presentations/intro_to_github/media/sadmona.png){.absolute bottom="0" right="50" width="500"}
+:::
+
+## Talk outline
+
+1)  Why you should share your data
+2)  Why you shouldn't share your data via GitHub
+3)  Where you should share your data instead
+
+\*Assuming you are permitted share your data
+
+## Talk outline
+
+1)  **Why you should share your data**
+2)  Why you shouldn't share your data via GitHub
+3)  Where you should share your data instead
+
+\*Assuming you are permitted share your data
+
+## You will soon have to share your data anyway.
+
+<br>
+
+::: {style="font-size:30px"} 
+- Concordat on Open Research Data <br> (signed by HEFCE, UKRI, Universities UK, <br> the Wellcome Trust and more)
+<!-- https://www.wlv.ac.uk/research/research-policies-procedures--guidelines/research-data-management/concordat-on-open-research-data/ -->
+- National Institutes of Health (NIH) has required <br> its fundees to eventually make their data <br> publicly available (as of January 2023)
+<!-- https://www.nature.com/articles/d41586-022-00402-1 -->
+- US Government moving towards a position <br> of making sharing data mandatory <br> where possible)
+:::
+
+::: {.column width="100%"}
+![](/presentations/intro_to_github/media/usgov_data.png){.absolute bottom="100" right="0" width="400"}
+:::
+
+
+
+## Like sharing code, sharing data improves the quality of your science.
+
+::: {style="font-size:30px"} 
+
+<br>
+
+In the process of making your data <br> publication-ready, you will also <br> find yourself:
+
+- Finding mistakes and correcting them
+- Making sure the data inputted and <br> outputted from your code is consistent
+- Improving its documentation <br> (for future re-use -  most likely by you!)
+
+:::
+
+::: {.column width="100%"}
+![](/presentations/intro_to_github/media/keyboard_clean.png){.absolute bottom="100" right="0" width="500"}
+:::
+
+## Your code won't work without your data.
+
+::: {.column width="100%"}
+![](/presentations/intro_to_github/media/datanotfound.png){.absolute bottom="250" right="25" width="1200"}
+:::
+
+# However, within reason, you shouldn't store research data in your GitHub repository. 
+
+## Talk outline
+
+1)  Why you should share your data
+2)  **Why you shouldn't share your data via GitHub**
+3)  Where you should share your data instead
+
+
+## You cannot assign a DOI to a GitHub repository.
+
+<br>
+
+- Like your publication, your data <br> should have a persistent identifier <br> like a Digital Object Identifier (DOI)
+- However, you can't DOI your <br> GitHub repo, or versions of it!
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/doi_logo.png){.absolute bottom="125" right="0" width="400"}
+:::
+
+
+## Memory limits
+
+::: {style="font-size:35px"} 
+
+- Size of repository as a whole <br> cannot exceed 100 GB <br> (+ warnings >75 GB and >5GB)
+- Size of an individual push <br> (which may contain multiple <br> files) cannot exceed 2 GB
+- Size of each file in it cannot <br> exceed 100 MB (+ warnings > 50GB)
+- In order to prevent negatively <br> impacting GitHub's infrastructure
+
+:::
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/goldfish.jpg){.absolute bottom="150" right="0" width="500"}
+:::
+
+<!-- https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github -->
+
+<!-- https://economictimes.indiatimes.com/defaultinterstitial.cms -->
+
+<!-- https://stackoverflow.com/questions/38768454/repository-size-limits-for-github-com -->
+
+## Inconveniences others
+
+<br>
+
+- Users who just want to play around <br> with your code are forced to download <br> all of your research data too <br> (potentially up to 100 GB!)
+- Smaller repositories are faster to clone <br> and easier to work with
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/atlas.jpg){.absolute bottom="50" right="0" width=""}
+:::
+
+<!-- https://pixabay.com/vectors/atlas-world-greek-mythology-titan-7337047/ -->
+
+## git is not set up for handling data
+
+<br>
+
+- git version control system is based <br> around code, not data.
+- git knows nothing about the structure of <br> common data formats we use <br> (e.g. the tabular structure of CSV files)
+- May result in merge conflicts <br> emerging where there are none
+
+<!-- https://paulfitz.github.io/2014/07/09/diff-merge-csv.html -->
+<!-- https://www.dolthub.com/blog/2022-04-27-data-version-control/ -->
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/hammering_a_screw.jpg){.absolute bottom="100" right="0" width=""}
+:::
+
+
+# GitHub is the record book of your science, not the vault in which that record book should be kept.
+
+
+## Talk outline
+
+1)  Why you should share your data
+2)  Why you shouldn't share your data via GitHub
+3)  **Where you should share your data instead**
+
+## Rawness of data
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/sauce_ingredients.jpg){.absolute bottom="220" left="0" width="350"}
+:::
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/sauce_pot.png){.absolute bottom="220" left="400" width="350"}
+:::
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/sauce_jar.png){.absolute bottom="150" right="0" width="340"}
+:::
+
+## Rawness of data
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/rawdata_statology.png){.absolute bottom="220" left="0" width="325"}
+:::
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/partlyprocesseddata_statology.png){.absolute bottom="246" left="350" width="325"}
+:::
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/processeddata_statology.png){.absolute bottom="220" right="0" width="340"}
+:::
+
+<!-- https://www.statology.org/raw-data/ -->
+
+
+## Things to consider when choosing somewhere to store your raw data
+
+<br>
+
+- Easy to download/upload <br> data from/to via code
+- Likely to stick around
+- DOI-able
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/atm.jpg){.absolute bottom="125" right="0" width=""}
+:::
+
+## Example: Open Science framework
+
+<br>
+
+- Easy to download/upload <br> via the `osfr` package
+- Here to stay for the open <br> science revolution
+- Allows you to assign DOIs <br> to projects and/or datasets
+
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/osf_black.png){.absolute bottom="400" right="150" width="340"}
+:::
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/osfr_hexlogo.png){.absolute bottom="100" right="50" width="250"}
+:::
+
+
+## Things to consider when choosing somewhere to store your processed data
+
+- Higher memory limits
+- Can store your final data in a <br> file structure (ideally alongside <br> the code that produced it)
+- DOI-able
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/elephant_white_background.png){.absolute bottom="110" right="50" width="400"}
+:::
+
+<!-- https://commons.wikimedia.org/wiki/File:Elephant_white_background.png -->
+
+## Example: Zenodo
+
+- 50GB file size limit
+- You can just zip up your local version <br> of your Github repository (with both <br> code and data) at the end of running <br> all your code/analysis, and upload it
+- Allows you to assign a DOI to the <br> repository as a whole, as well as <br> to different versions of that repository <br> as it evolves through time <br> (and peer review)
+<!-- - Becomes like a frozen archive of your repository throughout its evolution  -->
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/zenodo_logo.png){.absolute bottom="500" right="50" width="300"}
+:::
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/zenodo_doiversioning.jpeg){.absolute bottom="100" right="40" width="310"}
+:::
+
+
+## Zenodo example expanded
+
+::: {style="font-size:30px"} 
+
+**Would recommend NOT using the automated GitHub integration, because:**
+
+- This only allows you to archive your code (since you're not storing your data on GitHub anymore, right?) 
+- By zipping up and uploading the final, populated repository from your local machine, you can upload data and code together
+- Manual option allows you to reserve a DOI for use in submitted manuscripts (before making the dataset public)
+
+:::
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/github_zenodo_auto.png){.absolute bottom="50" left="300" width="400"}
+:::
+
+::: {.column width="50%"}
+![](/presentations/intro_to_github/media/cross.png){.absolute bottom="0" left="350" width="300"}
+:::
+
+
+## Storing data outside of GitHub, but in a repositories friendly to GitHub keeps everyone happy!
+
+
+
+::: {.column width="100%"}
+![](/presentations/intro_to_github/media/sadmona.png){.absolute bottom="58" left="5" width="400"}
+:::
+
+::: {.column width="100%"}
+
+![](/presentations/intro_to_github/media/arrow-icon-vector.jpg){.absolute bottom="150" left="425" width="200"}
+:::
+
+
+::: {.column width="100%"}
+![](/presentations/intro_to_github/media/happymona.png){.absolute bottom="50" left="650" width="350"}
+:::
+
+
+## Final considerations
+
+::: {.incremental style="font-size:30px"} 
+ - You can prevent data from being uploaded ('pushed') to your GitHub repository alongside changes to code by storing it in data folders (e.g. 'raw' and 'processed' folders) and including these in your .gitignore file
+ - Following this schema, raw data will be archived on both OSF and Zenodo - but duplication is good in terms of data preservation
+ - OSF and Zenodo are generic repositories, but sometimes a more structured, subject-specific repository is required (e.g. NCBI or ENA for sequence data)
+ - You should consider whether your institution/funder/etc require you to also upload and store the data elsewhere
+ - You should consider whether you are allowed to share all of the data and/or whether you need to anonymise it (particularly raw data)
+
+::: 
+
+## Practical time!
+
+**Spend the rest of the time either:**
+
+-   Creating a new empty GitHub repo from scratch (⭐️)
+-   Clone a repo from someone else (⭐️⭐️)
+-   Turn an existing project into a GitHub repo (⭐️⭐️⭐️)
+
+. . .
+
+**Then basically just a reproducible/collaborative coding session**
 
 ## Resources
 
@@ -430,22 +773,20 @@ output_path
 -   The exceptional [Happy Git and GitHub for the useR](https://happygitwithr.com/index.html) book
 -   Others?
 
-## Matt's slides here?
+## GitHub: if something goes wrong
+
+-   Dealing with push errors
+-   Errors usually have suggestions
+-   Good idea to understand version conflicts
+-   And what options are to deal with them
+-   How to implement these different options
 
 ## Acknowledgements
 
-Background images used courtesy of GitHub
+-   Background images used courtesy of GitHub
+-   PhD comics used with permission from Jorge Cham
+-   Illustrations courtesy of Allison Horst
 
-## Exeter Colours
+## Acknowledgements
 
-```{r}
-cols <- tidyr::tibble(
-  "name" = c("Exeter_Night_Green","Exeter_Dark_Green","Exeter_Bright_Green","Exeter_Deep_Green","Exeter_Highlight_Green"),
-  "hex" = c("#022020", "#003c3c", "#00c896","#007d69","#00dca5"))
-cols
-#Exeter_Night_Green #022020     
-#Exeter_Dark_Green: #003c3c   
-#Exeter_Bright_Green: #00c896 
-#Exeter_Deep_Green: #007d69 
-#Exeter_Highlight_Green: #00dca5 
-```
+MATT ADD HERE
