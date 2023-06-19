@@ -37,22 +37,20 @@ $presentation-title-slide-justify-content: left;
     top: 40px!important;
   }
 
-    &::after {
-      content: '';
-      display: block;
-      position: absolute!important;
-      bottom: 0;
-      left: 0;
-      background-image: url('slide_logo.png');
-      background-size: contain;
-      background-position: bottom left;
-      background-repeat: no-repeat;
-      width: 400px; /* Adjust the width as needed */
-      height: 400px; /* Adjust the height as needed */
-    }
+    //&::after {
+      //content: '';
+      //display: block;
+      //position: absolute!important;
+      //bottom: 0;
+      //left: 0;
+      //background-image: url('https://raw.githubusercontent.com/exeter-data-analytics/exeter-data-analytics.github.io/master/images/exeter_logo_light.png');
+      //background-size: contain;
+      //background-position: bottom left;
+      //background-repeat: no-repeat;
+      //width: 400px; /* Adjust the width as needed */
+      //height: 400px; /* Adjust the height as needed */
+    //}
   }
-
-
 
 // custom format for having pictures over bullets
 //.emoji-bullets {

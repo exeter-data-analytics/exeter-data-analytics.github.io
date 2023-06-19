@@ -319,14 +319,14 @@
     "href": "presentations/intro_to_github/intro_to_github.html#here-makes-filepaths-that",
     "title": "Making reproducible projects",
     "section": "{here} makes filepaths that:",
-    "text": "{here} makes filepaths that:\n\nWork magically on both macOS & Windows (/ or \\)\nStart at the root of the repository (using .Rproj file)\n\n\nhere::here() will show the root of your project directory:\n\n#install.packages(\"here\")\nlibrary(here)\nhere()\n\n[1] \"/Users/dp415/Desktop/exeter_open_reproducibility_website\"\n\n\n\n\nThis path is included at the start of every filepath here creates\n\nRecommended reading: Project-oriented workflows by Jenny Bryant"
+    "text": "{here} makes filepaths that:\n\nWork magically on both macOS & Windows (/ or \\)\nStart at the root of the repository (using .Rproj file)\n\n\nhere::here() will show the root of your project directory:\n\n#install.packages(\"here\")\nlibrary(here)\nhere()\n\n[1] \"/Users/sdjl201/Desktop/Exeter postdoc/GitHub repos/exeter-data-analytics.github.io\"\n\n\n\n\nThis path is included at the start of every filepath here creates\n\nRecommended reading: Project-oriented workflows by Jenny Bryant"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#using-here",
     "href": "presentations/intro_to_github/intro_to_github.html#using-here",
     "title": "Making reproducible projects",
     "section": "Using here:",
-    "text": "Using here:\n\nFilepaths are created in a similar way to paste():\nWe list quoted names of folders, comma separated\n\n\nWe can create a test filepath to a folder within the repository:\n\nhere(\"data\",\"raw_data\") #creating a filepath to a folder within the repository\n\n[1] \"/Users/dp415/Desktop/exeter_open_reproducibility_website/data/raw_data\"\n\n\n\n\nCreate paths directly within a file/filename argument:\n\nread_csv(file = here(\"data\",\"raw_data\",\"data.csv\"))\nggsave(plot, filename = here(\"output\",\"figures\"))\n\n\n\nOr turn long paths into an object for regular use:\n\noutput_path &lt;- here(\"output\",\"movement\",\"figures\") ; output_path\n\n[1] \"/Users/dp415/Desktop/exeter_open_reproducibility_website/output/movement/figures\"\n\n\n\nggsave(plot, filename = here(output_path,\"plot1.png\"))"
+    "text": "Using here:\n\nFilepaths are created in a similar way to paste():\nWe list quoted names of folders, comma separated\n\n\nWe can create a test filepath to a folder within the repository:\n\nhere(\"data\",\"raw_data\") #creating a filepath to a folder within the repository\n\n[1] \"/Users/sdjl201/Desktop/Exeter postdoc/GitHub repos/exeter-data-analytics.github.io/data/raw_data\"\n\n\n\n\nCreate paths directly within a file/filename argument:\n\nread_csv(file = here(\"data\",\"raw_data\",\"data.csv\"))\nggsave(plot, filename = here(\"output\",\"figures\"))\n\n\n\nOr turn long paths into an object for regular use:\n\noutput_path &lt;- here(\"output\",\"movement\",\"figures\") ; output_path\n\n[1] \"/Users/sdjl201/Desktop/Exeter postdoc/GitHub repos/exeter-data-analytics.github.io/output/movement/figures\"\n\n\n\nggsave(plot, filename = here(output_path,\"plot1.png\"))"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#how-i-use-github",

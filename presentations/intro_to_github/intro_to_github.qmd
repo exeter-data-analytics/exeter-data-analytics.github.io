@@ -13,6 +13,7 @@ format:
     history: false #slide navigation not pushed to browser history
     auto-play-media: true
 auto-animate: true
+image: /presentations/intro_to_github/media/intro_to_github_thumbnail.png
 ---
 
 ## Workshop outline
