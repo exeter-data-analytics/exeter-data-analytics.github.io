@@ -14,7 +14,7 @@ execute:
 
 # Outline
 
-R is one of the most popular programming language for statistical programming in ecology, evolution, and conservation. It is also the language taught in the University of Exeter's undergraduate and masters courses within the Centre for Ecology and Conservation. 
+R is one of the most popular programming language for statistical programming in ecology, evolution, and conservation. It is also the language taught in the University of Exeter's undergraduate and masters courses within the Centre for Ecology and Conservation.
 
 RStudio is probably the most popular IDE for people using R. An IDE is an integrated development environment, which allows users to combine multiple aspects of software development in one place to make it easier to use. For RStudio, that means you have different panes that contain the R Console, your script, a file explorer, a pane where plots appear, and much more.
 
@@ -24,7 +24,7 @@ This post gives some details on how to install R, RStudio, and git. This informa
 
 # Prerequisites
 
-- Be willing to endure some pain when installing things.
+-   Be willing to endure some pain when installing things.
 
 # Learning objectives
 
@@ -33,11 +33,10 @@ This post gives some details on how to install R, RStudio, and git. This informa
 
 **This introduction should allow you to:**
 
-- install R
-- install RStudio
-- manage your R, RStudio, and package installation
-- install git
-
+-   install R
+-   install RStudio
+-   manage your R, RStudio, and package installation
+-   install git
 :::
 
 # Installing R
@@ -46,37 +45,37 @@ R can be installed from the Comprehensive R Archive Network (CRAN) [here](https:
 
 ## For Mac Users
 
-Mac users should click the "Download R for macOS" link in the "Download and Install R" section. Click on the link for the latest version of R and click on the "Download R-[version].pkg" link to download the installer package. Open the downloaded file and follow the installation instructions. You can launch R by clicking the R icon on your Launchpad or in your Applications folder of your Finder, but we recommend using RStudio to code in R because it makes programming in R a much easier and more pleasant experience.
+Mac users should click the "Download R for macOS" link in the "Download and Install R" section. Click on the link for the latest version of R and click on the "Download R-\[version\].pkg" link to download the installer package. Open the downloaded file and follow the installation instructions. You can launch R by clicking the R icon on your Launchpad or in your Applications folder of your Finder, but we recommend using RStudio to code in R because it makes programming in R a much easier and more pleasant experience.
 
 ## For Windows Users
 
-Windows users should click the "Download R for Windows" link in the "Download and Install R" section. Click on the "base" directory and click on the link for the latest version of R. Then click on the "Download R[version] for Windows" link, open the downloaded file and follow the installation instructions. You can launch R by double-clicking the R icon on your Desktop or in your start menu, but we recommend using RStudio to code in R because it makes programming in R a much easier and more pleasant experience.
+Windows users should click the "Download R for Windows" link in the "Download and Install R" section. Click on the "base" directory and click on the link for the latest version of R. Then click on the "Download R\[version\] for Windows" link, open the downloaded file and follow the installation instructions. You can launch R by double-clicking the R icon on your Desktop or in your start menu, but we recommend using RStudio to code in R because it makes programming in R a much easier and more pleasant experience.
 
 # Installing RStudio
 
-RStudio can be installed for free from the Posit (the company that was formerly known called RStudio) website [here](https://posit.co/download/rstudio-desktop/). RStudio is available for Windows, MacOS, and Linux. Just click the “Download RStudio” button and follow the simple instructions. Once you’ve installed RStudio, you can open it like any other program on your computer. **Before you install RStudio, make sure you have installed R.**
+RStudio can be installed for free from the Posit (the company that was formerly known called RStudio) website [here](https://posit.co/download/rstudio-desktop/). RStudio is available for Windows, MacOS, and Linux. Just click the "Download RStudio" button and follow the simple instructions. Once you've installed RStudio, you can open it like any other program on your computer. **Before you install RStudio, make sure you have installed R.**
 
 ## Some general tips for Global Options of RStudio
 
-When setting up RStudio, there are a bunch of things you can change to configure your RStudio to how you like it. Some of these are likely personal, but we have some settings we like to use. These are settings you can change by clicking Tools -> Global Options.
+When setting up RStudio, there are a bunch of things you can change to configure your RStudio to how you like it. Some of these are likely personal, but we have some settings we like to use. These are settings you can change by clicking Tools -\> Global Options.
 
-1. Unclick "Restore .RData into workspace at startup". This means that each time you start a new RStudio instance, your environment starts clean and you can be confident that any results you have, or weird R behaviour, is not due to any previous code or session.
+1.  Unclick "Restore .RData into workspace at startup". This means that each time you start a new RStudio instance, your environment starts clean and you can be confident that any results you have, or weird R behaviour, is not due to any previous code or session.
 
-![Do not restore Rdata](restore_rdata.png){width=60%}
+![Do not restore Rdata](restore_rdata.png){width="60%"}
 
-2. Unclick "Restore most recently opened project at startup". This means that when you start a new RStudio, it will open an RStudio not associated with a project. This is more of a personal preference of mine as more often than not I have multiple RStudio instances open not associated with the same work, and I got tired of closing the project of new RStudio instances.
+2.  Unclick "Restore most recently opened project at startup". This means that when you start a new RStudio, it will open an RStudio not associated with a project. This is more of a personal preference of mine as more often than not I have multiple RStudio instances open not associated with the same work, and I got tired of closing the project of new RStudio instances.
 
-![Do not restore most recent project](restore_project.png){width=60%}
+![Do not restore most recent project](restore_project.png){width="60%"}
 
-3. In the "Code" tab, tick "Soft-wrap R source files". This means that instead of having long lines of code that go off of your source pane and require you to move from left-to-right to view them, the source pane instead "soft-wraps" them into a new line, while preserving the fact that they are, in fact, a single line of code.
+3.  In the "Code" tab, tick "Soft-wrap R source files". This means that instead of having long lines of code that go off of your source pane and require you to move from left-to-right to view them, the source pane instead "soft-wraps" them into a new line, while preserving the fact that they are, in fact, a single line of code.
 
-![Turn on Soft wrap](soft_wrap.png){width=60%}
+![Turn on Soft wrap](soft_wrap.png){width="60%"}
 
-4. In the "Code -> Display" tab, unclick "Show Margin" which will get rid of the annoying line that can be present in the Source pane sometimes.
+4.  In the "Code -\> Display" tab, unclick "Show Margin" which will get rid of the annoying line that can be present in the Source pane sometimes.
 
-![Turn off Show margin](show_margin.png){width=60%}
+![Turn off Show margin](show_margin.png){width="60%"}
 
-5. I leave the default colours on for RStudio, but you can change to black background (and loads of other alternatives) in the "Appearance" tab. 
+5.  I leave the default colours on for RStudio, but you can change to black background (and loads of other alternatives) in the "Appearance" tab.
 
 ## Managing where your R packages install
 
@@ -84,24 +83,23 @@ Over many years, I have helped a fair few people at the University try and work 
 
 Consequently, it might be good for you to choose a new location on your computer where your R packages will install. And if you cannot install R packages at the moment then we are here to help! You can learn how to do change the default location your R packages install into by watching [this video](https://rfortherestofus.com/2021/09/how-to-set-your-default-package-install-location-in-r/), but we will whizz through the process here too.
 
-1. Check where R is installing packages by typing **.libPaths()** into your R console.
+1.  Check where R is installing packages by typing **.libPaths()** into your R console.
 
-2. Create a new folder which you would like to install packages, somewhere where you **DEFINITELY** have read/write access (e.g. "~/Desktop/r_packages")
+2.  Create a new folder which you would like to install packages, somewhere where you **DEFINITELY** have read/write access (e.g. "\~/Desktop/r_packages")
 
-3. We can then change **.libPaths()** for this R session.
+3.  We can then change **.libPaths()** for this R session.
 
-![Change where you R packages install in an individual session](change_libpaths.png){width=60%}
+![Change where you R packages install in an individual session](change_libpaths.png){width="60%"}
 
-4. However, when we start a new R session, this change will be lost. To change it by default for R, we need to change our .Renviron file, which allows us to change variables that R looks for every time it starts. To easily manipulate this file, we will first install the R package **usethis** using **install.packages(usethis)**. It should install into the new directory you have just created, for me it installed into "~/Desktop/r_packages".
+4.  However, when we start a new R session, this change will be lost. To change it by default for R, we need to change our .Renviron file, which allows us to change variables that R looks for every time it starts. To easily manipulate this file, we will first install the R package **usethis** using **install.packages(usethis)**. It should install into the new directory you have just created, for me it installed into "\~/Desktop/r_packages".
 
-5. Run **usethis::edit_r_environ()** in your Console and it should open your .Renviron file in your source pane. From here, add **R_LIBS_USER="~/Desktop/r_packages"** to it (obviously change the folder name to the folder you have created), click Save, and close the file.
+5.  Run **usethis::edit_r_environ()** in your Console and it should open your .Renviron file in your source pane. From here, add **R_LIBS_USER="\~/Desktop/r_packages"** to it (obviously change the folder name to the folder you have created), click Save, and close the file.
 
-![Run usethis::edit_r_environ](edit_r_environ.png){width=60%}
+![Run usethis::edit_r_environ](edit_r_environ.png){width="60%"}
 
-6. Now when you start a new R instance, your chosen folder should be present when you run **.libPaths()** and you should not have problems installing R packages anymore!
+6.  Now when you start a new R instance, your chosen folder should be present when you run **.libPaths()** and you should not have problems installing R packages anymore!
 
-![.libPaths() changes by default](libpaths2.png){width=60%}
-
+![.libPaths() changes by default](libpaths2.png){width="60%"}
 
 # Installing git
 
@@ -109,15 +107,15 @@ To check if Git is installed on a Windows or Mac machine, follow these steps:
 
 For Windows:
 
-1. Open the Command Prompt by pressing the "Windows Key + R" and typing "cmd" in the "Run" dialog box, or open "Git Bash" (or use the Terminal tab of your RStudio).
-2. Type "git --version" and press Enter.
-3. If git is installed, the version number of git will be displayed in the Command Prompt.
+1.  Open the Command Prompt by pressing the "Windows Key + R" and typing "cmd" in the "Run" dialog box, or open "Git Bash" (or use the Terminal tab of your RStudio).
+2.  Type "git --version" and press Enter.
+3.  If git is installed, the version number of git will be displayed in the Command Prompt.
 
 For Mac:
 
-1. Open the Terminal application by finding it on your Launchpad or Applications folder in your Finder (or in the Terminal tab of your RStudio).
-2. Type "git --version" and press Enter.
-3. If git is installed, the version number of git will be displayed in the Terminal window.
+1.  Open the Terminal application by finding it on your Launchpad or Applications folder in your Finder (or in the Terminal tab of your RStudio).
+2.  Type "git --version" and press Enter.
+3.  If git is installed, the version number of git will be displayed in the Terminal window.
 
 Even if git is installed, it is probably a good idea to update to the latest version. git has very good backwards compatibility so it is very unlikely that updating will break anything.
 
@@ -145,14 +143,15 @@ We will use the R package **gitcreds** to associate your GitHub PAT with RStudio
 
 Next run **gitcreds::gitcreds_set()** and follow the prompts. Specifically make sure you copy in your GitHub PAT!
 
-![gitcreds_set()](gitcreds_set.png){width=60%}
-Once you have set this, you can check it has stored properly using **gitcreds::gitcreds::get()**. 
+![gitcreds_set()](gitcreds_set.png){width="60%"}
 
-This should mean you are ready to roll (i.e. Git and GitHub like a boss), but if you are getting stuck some common troubleshoots can be found [here](https://happygitwithr.com/https-pat.html#pat-troubleshooting)
+Once you have set this, you can check it has stored properly using **gitcreds::gitcreds_get()**.
 
-One thing you can check is that RStudo knows where your git executable is. In Tools -> GLobal Options, you can check where git is stored and being accessed from.
+This should mean you are ready to roll (i.e. Git and GitHub like a boss), but if you are getting stuck some common troubleshoots can be found [here](https://happygitwithr.com/https-pat.html#pat-troubleshooting).
 
-![Check where RStudio is looking for git](check_git_rstudio.png){width=60%}
+One thing you can check is that RStudo knows where your git executable is. In Tools -\> Global Options, you can check where git is stored and being accessed from.
+
+![Check where RStudio is looking for git](check_git_rstudio.png){width="60%"}
 
 # Summary
 
@@ -160,13 +159,13 @@ After this guide, you should have installed R, RStudio, and git on your machine,
 
 ### Additional Resources
 
-- This [online book](https://happygitwithr.com/) about using R and RStudio and git is incredible.
+-   This [online book](https://happygitwithr.com/) about using R and RStudio and git is incredible.
 
 ### Acknowledgements
 
-We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources. 
+We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.
 
-- We took inspiration from this [blog post](https://www.r-bloggers.com/2019/05/my-rstudio-configuration/) about someone's RStudio configuration.
-- We watched [this video](https://rfortherestofus.com/2021/09/how-to-set-your-default-package-install-location-in-r/) on how to change the location for installing R packages.
-- We enjoyed [this thread](https://community.rstudio.com/t/should-i-update-all-my-r-packages-frequently-yes-no-why/5856/6) on whether we should update our R packages regularly. In conclusion, yes probably.
-- Some of the content was created using ChatGPT.
+-   We took inspiration from this [blog post](https://www.r-bloggers.com/2019/05/my-rstudio-configuration/) about someone's RStudio configuration.
+-   We watched [this video](https://rfortherestofus.com/2021/09/how-to-set-your-default-package-install-location-in-r/) on how to change the location for installing R packages.
+-   We enjoyed [this thread](https://community.rstudio.com/t/should-i-update-all-my-r-packages-frequently-yes-no-why/5856/6) on whether we should update our R packages regularly. In conclusion, yes probably.
+-   Some of the content was created using ChatGPT.
