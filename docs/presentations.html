@@ -70,9 +70,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-subtitle',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-date','listing-title','listing-subtitle','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -190,6 +190,9 @@ ul.task-list li input[type="checkbox"] {
          <option value="listing-date-sort" data-direction="desc">
           Date - Newest
         </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
      </select>
   </div>
     <div class="input-group input-group-sm quarto-listing-filter">
@@ -198,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1687186897538" data-listing-reading-time-sort="12">
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1687209128886" data-listing-reading-time-sort="12">
 <div class="thumbnail">
 <p><a href="./presentations/intro_to_github/intro_to_github.html"> <img src="./presentations/intro_to_github/media/intro_to_github_thumbnail.png" class="thumbnail-image"> </a></p>
 </div>
@@ -208,12 +211,16 @@ ul.task-list li input[type="checkbox"] {
 Making reproducible projects
 </h3>
 <div class="listing-subtitle">
-
+An introduction to RStudio projects and version control using RStudio.
 </div>
 </a>
 </div>
 <div class="metadata">
-<a href="./presentations/intro_to_github/intro_to_github.html"> </a>
+<a href="./presentations/intro_to_github/intro_to_github.html">
+<div class="listing-author">
+Stephen Lang, Dan Padfield <br> &amp; Matt Jones
+</div>
+</a>
 </div>
 </div>
 </div>

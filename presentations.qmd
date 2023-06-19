@@ -5,7 +5,7 @@ listing:
   contents: presentations/*/*.qmd
   sort: "date desc"
   type: default
-  fields: [image, date, title, subtitle]  
+  fields: [image, date, title, subtitle, author]  
   categories: true
   sort-ui: true
   filter-ui: true

@@ -1,5 +1,6 @@
 ---
 title: "Making reproducible projects"
+subtitle: "An introduction to RStudio projects and version control using RStudio."
 title-slide-attributes:
   data-background-image: /presentations/intro_to_github/media/github_bg.png
   data-background-size: cover
