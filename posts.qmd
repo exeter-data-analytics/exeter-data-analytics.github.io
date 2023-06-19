@@ -10,6 +10,8 @@ listing:
   fields: [title, description, date, reading-time]
   date-format: "YYYY-MM-DD"
   page-size: 9
+  sort-ui: true
+  filter-ui: true
 ---
 
 ## What are intRos?
