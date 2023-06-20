@@ -222,7 +222,6 @@ Push
 
 ## Interacting with git/GitHub
 
-
 ![](/presentations/intro_to_github/media/RStudio-Logo-flat.svg){.absolute top="105" left="0" height="100"}
 
 ::: {.fragment .semi-fade-out fragment-index="1"}
@@ -449,8 +448,8 @@ ggsave(plot, filename = here(output_path,"plot1.png"))
 
 ##  {#slide24-id data-menu-title="Why you should share your data"}
 
-::: {.absolute style="font-size: 1.5em;" top="0" left="0"}
-**Why you should share your data,** <br> why you shouldn't share it via GitHub, <br> and where you should share it instead.
+::: {.absolute top="0" left="0" style="font-size: 1.4em;"}
+**Why you should share your data,** <br> **why you shouldn't share it via GitHub,** <br> **and where you should share it instead.**
 :::
 
 ::: {.absolute style="font-size: 1.4em;" bottom="330" left="0"}
@@ -727,12 +726,12 @@ In the process of making your data <br> publication-ready, you will also <br> fi
     **Repos you could clone:** [CoppeR](https://github.com/padpadpadpad/CoppeR), [aRtist](https://github.com/gkaramanis/aRtist)
 
 -   Creating a new empty GitHub repo from scratch (️⭐⭐️)
-    
+
     **Resources:** [happygitwithr - new GitHub project](https://happygitwithr.com/new-github-first.html)
-    
+
 -   Turn an existing project into a GitHub repo (⭐️⭐️⭐️)
-    
-    **Resources:** (happygitwithr — [GitHub first](https://happygitwithr.com/existing-github-first.html), [GitHub last](https://happygitwithr.com/existing-github-last.html))
+
+    **Resources:** (happygitwithr --- [GitHub first](https://happygitwithr.com/existing-github-first.html), [GitHub last](https://happygitwithr.com/existing-github-last.html))
 
 . . .
 
