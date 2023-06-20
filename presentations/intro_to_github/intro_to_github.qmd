@@ -103,7 +103,21 @@ Authenticated GitHub on your machine
 ![](/presentations/intro_to_github/media/phd_comics.gif){.absolute top="-20" left="270" height="200%"}
 :::
 
-::: {.fragment .fade-in-then-semi-out fragment-index="2"}
+::: footer
+comic: "Piled Higher and Deeper" by Jorge Cham (www.phdcomics.com)
+:::
+
+## {#slide6-id data-menu-title="What version control does"}
+
+![](/presentations/intro_to_github/media/version_control.png){fig-align="center"}
+
+:::footer
+This illustration is created by Scriberia with The Turing Way community. <br> Used under a CC-BY 4.0 licence. DOI: [10.5281/zenodo.3332807](https://doi.org/10.5281/zenodo.3332807)
+:::
+
+## {#slide7-id data-menu-title="Version control allows us to:"}
+
+::: {.fragment .semi-fade-out fragment-index="1"}
 ### **Version control allows us to:** {style="font-size: 1.5em;"}
 
 -   Avoid confusing file names
@@ -113,12 +127,8 @@ Authenticated GitHub on your machine
 -   Integrate with other software for online back-ups
 :::
 
-::: {.fragment .fade-in fragment-index="3"}
+::: {.fragment .fade-in fragment-index="1"}
 ![](/presentations/intro_to_github/media/git_name.png){.absolute bottom="100" left="150" height="100"}![](/presentations/intro_to_github/media/github_name.png){.absolute bottom="100" left="500" height="100"}
-:::
-
-::: footer
-comic: "Piled Higher and Deeper" by Jorge Cham (www.phdcomics.com)
 :::
 
 ##  {#slide4-id data-menu-title="git vs. github"}
