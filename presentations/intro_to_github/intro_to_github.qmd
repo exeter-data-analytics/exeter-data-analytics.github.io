@@ -549,6 +549,7 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 
 -   Like your publication, your data <br> should have a persistent identifier <br> like a Digital Object Identifier (DOI)
 -   However, you can't DOI your <br> GitHub repo, or versions of it!
+- For this reason, GitHub cannot be <br> considered a FAIR (Findable, Accessible, <br> Interoperable and Reusable) data repository
 
 ::: {.column width="50%"}
 ![](/presentations/intro_to_github/media/doi_logo.png){.absolute bottom="125" right="0" width="400"}
@@ -563,7 +564,7 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 ::: {style="font-size:35px"}
 -   Size of repository as a whole <br> cannot exceed 100 GB <br> (warnings \>75 GB and \>5GB)^1,2^
 -   Size of an individual push <br> (which may contain multiple <br> files) cannot exceed 2 GB^1,2^
--   Size of each file in it cannot <br> exceed 100 MB (warnings \> 50GB)^1^
+-   Size of each file in it cannot <br> exceed 100 MB (warnings \> 50MB)^1^
 -   In order to prevent negatively <br> impacting GitHub's infrastructure^1^
 :::
 
@@ -604,9 +605,9 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 
 <br>
 
--   git version control system is based <br> around code, not data.
--   git knows nothing about the structure of <br> common data formats we use <br> (e.g. the tabular structure of CSV files)
--   May result in merge conflicts <br> emerging where there are none
+-   git version control system is based <br> around code, not data^1^
+-   git knows nothing about the structure of <br> common data formats we use <br> (e.g. the tabular structure of CSV files)^2^
+-   May result in merge conflicts <br> emerging where there are none^2^
 
 <!-- https://paulfitz.github.io/2014/07/09/diff-merge-csv.html -->
 
@@ -617,16 +618,18 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 :::
 
 ::: footer
-[1. Merge conflicts with CSV files in git ](https://paulfitz.github.io/2014/07/09/diff-merge-csv.html)
 
-[2. "using Git for data is...like using a hammer to fasten a screw."](https://www.dolthub.com/blog/2022-04-27-data-version-control)
+[1. "using Git for data is...like using a hammer to fasten a screw."](https://www.dolthub.com/blog/2022-04-27-data-version-control)
 [Image source: Pixabay]
+
+[2. Merge conflicts with CSV files in git ](https://paulfitz.github.io/2014/07/09/diff-merge-csv.html)
+
 
 [Image: Masterfile 640-02951002](https://www.masterfile.com/image/en/640-02951002/hammer-hitting-a-screw)
 
 :::
 
-# GitHub is the record book of your science, not the vault in which that record book should be kept.
+# GitHub is like your lab book, not to the freezer in which all your samples are kept.
 
 ## Talk outline
 
@@ -742,9 +745,13 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 
 ## Example: Zenodo
 
+::: {style="font-size:30px"} 
 -   50GB file size limit^1^
 -   You can just zip up your local version <br> of your Github repository (with both <br> code and data) at the end of running <br> all your code/analysis, and upload it
--   Allows you to assign a DOI to the <br> repository as a whole, as well as <br> to different versions of that repository <br> as it evolves through time <br> (and peer review) <!-- - Becomes like a frozen archive of your repository throughout its evolution  -->
+-   Allows you to assign a DOI to the <br> repository as a whole, as well as <br> to different versions of that repository <br> as it evolves through time <br> (and peer review) 
+- Can also 'reserve' a DOI which is <br> really handy when writing a manuscript 
+<!-- - Becomes like a frozen archive of your repository throughout its evolution  -->
+:::
 
 ::: {.column width="50%"}
 ![](/presentations/intro_to_github/media/zenodo_logo.png){.absolute bottom="500" right="50" width="300"}
@@ -769,9 +776,10 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 ::: {style="font-size:30px"}
 **Would recommend NOT using the automated GitHub integration, because:**
 
+-   Manual option allows you to reserve a DOI for use in submitted manuscripts (before making the dataset public)
 -   This only allows you to archive your code (since you're not storing your data on GitHub anymore, right?)
 -   By zipping up and uploading the final, populated repository from your local machine, you can upload data and code together
--   Manual option allows you to reserve a DOI for use in submitted manuscripts (before making the dataset public)
+
 :::
 
 ::: {.column width="50%"}
@@ -809,11 +817,11 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 ## Final considerations
 
 ::: {.incremental style="font-size:30px"}
--   You can prevent data from being uploaded ('pushed') to your GitHub repository alongside changes to code by storing it in data folders (e.g. 'raw' and 'processed' folders) and including these in your .gitignore file
--   Following this schema, raw data will be archived on both OSF and Zenodo - but duplication is good in terms of data preservation
--   OSF and Zenodo are generic repositories, but sometimes a more structured, subject-specific repository is required (e.g. NCBI or ENA for sequence data)
--   You should consider whether your institution/funder/etc require you to also upload and store the data elsewhere
--   You should consider whether you are allowed to share all of the data and/or whether you need to anonymise it (particularly raw data)
+- Following this schema, raw data will be archived on both OSF and Zenodo - but duplication is good in terms of data preservation
+ - OSF and Zenodo are generic repositories, but sometimes a more structured, subject-specific repository is required (e.g. NCBI or ENA for sequence data)
+ - You should consider whether your institution/funder/etc require you to also upload and store the data elsewhere
+ - You should consider whether you are allowed to share all of the data and/or whether you need to anonymise it (particularly raw data)
+   - You can prevent data from being uploaded ('pushed') to your GitHub repository alongside changes to code by storing it in data folders (e.g. 'raw' and 'processed' folders) and including these in your .gitignore file
 :::
 
 ## Practical time!

@@ -396,14 +396,14 @@
     "href": "presentations/intro_to_github/intro_to_github.html#you-cannot-assign-a-doi-to-a-github-repository.",
     "title": "Making reproducible projects",
     "section": "You cannot assign a DOI to a GitHub repository.",
-    "text": "You cannot assign a DOI to a GitHub repository.\n\n\nLike your publication, your data  should have a persistent identifier  like a Digital Object Identifier (DOI)\nHowever, you can’t DOI your  GitHub repo, or versions of it!\n\n\n\n\n\nImage (DOI logo): Internatinal DOI Foundation via Wikimedia"
+    "text": "You cannot assign a DOI to a GitHub repository.\n\n\nLike your publication, your data  should have a persistent identifier  like a Digital Object Identifier (DOI)\nHowever, you can’t DOI your  GitHub repo, or versions of it!\nFor this reason, GitHub cannot be  considered a FAIR (Findable, Accessible,  Interoperable and Reusable) data repository\n\n\n\n\n\nImage (DOI logo): Internatinal DOI Foundation via Wikimedia"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#memory-limits",
     "href": "presentations/intro_to_github/intro_to_github.html#memory-limits",
     "title": "Making reproducible projects",
     "section": "Memory limits",
-    "text": "Memory limits\n\n\nSize of repository as a whole  cannot exceed 100 GB  (warnings &gt;75 GB and &gt;5GB)1,2\nSize of an individual push  (which may contain multiple  files) cannot exceed 2 GB1,2\nSize of each file in it cannot  exceed 100 MB (warnings &gt; 50GB)1\nIn order to prevent negatively  impacting GitHub’s infrastructure1\n\n\n\n\n\n\n\n\n\n1. Managing Large Files (GitHub)\n2. GitHub Repository Size limits discussion (Stack OverFlow)\nImage (Goldfish): The Economic Times"
+    "text": "Memory limits\n\n\nSize of repository as a whole  cannot exceed 100 GB  (warnings &gt;75 GB and &gt;5GB)1,2\nSize of an individual push  (which may contain multiple  files) cannot exceed 2 GB1,2\nSize of each file in it cannot  exceed 100 MB (warnings &gt; 50MB)1\nIn order to prevent negatively  impacting GitHub’s infrastructure1\n\n\n\n\n\n\n\n\n\n1. Managing Large Files (GitHub)\n2. GitHub Repository Size limits discussion (Stack OverFlow)\nImage (Goldfish): The Economic Times"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#inconveniences-others",
@@ -417,7 +417,7 @@
     "href": "presentations/intro_to_github/intro_to_github.html#git-is-not-set-up-for-handling-data",
     "title": "Making reproducible projects",
     "section": "git is not set up for handling data",
-    "text": "git is not set up for handling data\n\n\ngit version control system is based  around code, not data.\ngit knows nothing about the structure of  common data formats we use  (e.g. the tabular structure of CSV files)\nMay result in merge conflicts  emerging where there are none\n\n\n\n\n\n\n\n1. Merge conflicts with CSV files in git\n2. “using Git for data is…like using a hammer to fasten a screw.” [Image source: Pixabay]\nImage: Masterfile 640-02951002"
+    "text": "git is not set up for handling data\n\n\ngit version control system is based  around code, not data1\ngit knows nothing about the structure of  common data formats we use  (e.g. the tabular structure of CSV files)2\nMay result in merge conflicts  emerging where there are none2\n\n\n\n\n\n\n\n1. “using Git for data is…like using a hammer to fasten a screw.” [Image source: Pixabay]\n2. Merge conflicts with CSV files in git\nImage: Masterfile 640-02951002"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#talk-outline-3",
@@ -466,14 +466,14 @@
     "href": "presentations/intro_to_github/intro_to_github.html#example-zenodo",
     "title": "Making reproducible projects",
     "section": "Example: Zenodo",
-    "text": "Example: Zenodo\n\n50GB file size limit1\nYou can just zip up your local version  of your Github repository (with both  code and data) at the end of running  all your code/analysis, and upload it\nAllows you to assign a DOI to the  repository as a whole, as well as  to different versions of that repository  as it evolves through time  (and peer review) \n\n\n\n\n\n\n\n\n1. Zenodo FAQs\nImage (Zenodo logo): Zenodo\nImage (Zenodo versioning): GitHub"
+    "text": "Example: Zenodo\n\n\n50GB file size limit1\nYou can just zip up your local version  of your Github repository (with both  code and data) at the end of running  all your code/analysis, and upload it\nAllows you to assign a DOI to the  repository as a whole, as well as  to different versions of that repository  as it evolves through time  (and peer review)\nCan also ‘reserve’ a DOI which is  really handy when writing a manuscript \n\n\n\n\n\n\n\n\n\n1. Zenodo FAQs\nImage (Zenodo logo): Zenodo\nImage (Zenodo versioning): GitHub"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#zenodo-example-expanded",
     "href": "presentations/intro_to_github/intro_to_github.html#zenodo-example-expanded",
     "title": "Making reproducible projects",
     "section": "Zenodo example expanded",
-    "text": "Zenodo example expanded\n\nWould recommend NOT using the automated GitHub integration, because:\n\nThis only allows you to archive your code (since you’re not storing your data on GitHub anymore, right?)\nBy zipping up and uploading the final, populated repository from your local machine, you can upload data and code together\nManual option allows you to reserve a DOI for use in submitted manuscripts (before making the dataset public)\n\n\n\n\n\n\n\n\n\nImage: Code Refinery"
+    "text": "Zenodo example expanded\n\nWould recommend NOT using the automated GitHub integration, because:\n\nManual option allows you to reserve a DOI for use in submitted manuscripts (before making the dataset public)\nThis only allows you to archive your code (since you’re not storing your data on GitHub anymore, right?)\nBy zipping up and uploading the final, populated repository from your local machine, you can upload data and code together\n\n\n\n\n\n\n\n\n\nImage: Code Refinery"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#storing-data-outside-of-github-but-in-a-repositories-friendly-to-github-keeps-everyone-happy",
@@ -487,7 +487,7 @@
     "href": "presentations/intro_to_github/intro_to_github.html#final-considerations",
     "title": "Making reproducible projects",
     "section": "Final considerations",
-    "text": "Final considerations\n\n\nYou can prevent data from being uploaded (‘pushed’) to your GitHub repository alongside changes to code by storing it in data folders (e.g. ‘raw’ and ‘processed’ folders) and including these in your .gitignore file\nFollowing this schema, raw data will be archived on both OSF and Zenodo - but duplication is good in terms of data preservation\nOSF and Zenodo are generic repositories, but sometimes a more structured, subject-specific repository is required (e.g. NCBI or ENA for sequence data)\nYou should consider whether your institution/funder/etc require you to also upload and store the data elsewhere\nYou should consider whether you are allowed to share all of the data and/or whether you need to anonymise it (particularly raw data)"
+    "text": "Final considerations\n\n\nFollowing this schema, raw data will be archived on both OSF and Zenodo - but duplication is good in terms of data preservation\nOSF and Zenodo are generic repositories, but sometimes a more structured, subject-specific repository is required (e.g. NCBI or ENA for sequence data)\nYou should consider whether your institution/funder/etc require you to also upload and store the data elsewhere\nYou should consider whether you are allowed to share all of the data and/or whether you need to anonymise it (particularly raw data)\n\nYou can prevent data from being uploaded (‘pushed’) to your GitHub repository alongside changes to code by storing it in data folders (e.g. ‘raw’ and ‘processed’ folders) and including these in your .gitignore file"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#practical-time",
@@ -537,5 +537,12 @@
     "title": "Presentations",
     "section": "",
     "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nMaking reproducible projects\n\n\nAn introduction to version control with R Studio and GitHub\n\n\n\n\n\n\nStephen Lang, Dan Padfield  & Matt Jones\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#why-you-should-share-your-data-why-you-shouldnt-share-it-via-github-and-where-you-should-share-it-instead.",
+    "href": "presentations/intro_to_github/intro_to_github.html#why-you-should-share-your-data-why-you-shouldnt-share-it-via-github-and-where-you-should-share-it-instead.",
+    "title": "Making reproducible projects",
+    "section": "Why you should share your data,  why you shouldn’t share it via GitHub,  and where you should share it instead.",
+    "text": "Why you should share your data,  why you shouldn’t share it via GitHub,  and where you should share it instead."
   }
 ]

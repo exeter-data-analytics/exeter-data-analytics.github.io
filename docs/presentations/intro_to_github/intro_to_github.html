@@ -889,6 +889,7 @@ Stephen Lang, Dan Padfield <br> &amp; Matt Jones
 <ul>
 <li>Like your publication, your data <br> should have a persistent identifier <br> like a Digital Object Identifier (DOI)</li>
 <li>However, you can’t DOI your <br> GitHub repo, or versions of it!</li>
+<li>For this reason, GitHub cannot be <br> considered a FAIR (Findable, Accessible, <br> Interoperable and Reusable) data repository</li>
 </ul>
 <div class="column" style="width:50%;">
 <p><img data-src="../..\presentations/intro_to_github/media/doi_logo.png" class="absolute" style="bottom: 125px; right: 0px; width: 400px; "></p>
@@ -903,7 +904,7 @@ Stephen Lang, Dan Padfield <br> &amp; Matt Jones
 <ul>
 <li>Size of repository as a whole <br> cannot exceed 100 GB <br> (warnings &gt;75 GB and &gt;5GB)<sup>1,2</sup></li>
 <li>Size of an individual push <br> (which may contain multiple <br> files) cannot exceed 2 GB<sup>1,2</sup></li>
-<li>Size of each file in it cannot <br> exceed 100 MB (warnings &gt; 50GB)<sup>1</sup></li>
+<li>Size of each file in it cannot <br> exceed 100 MB (warnings &gt; 50MB)<sup>1</sup></li>
 <li>In order to prevent negatively <br> impacting GitHub’s infrastructure<sup>1</sup></li>
 </ul>
 </div>
@@ -937,9 +938,9 @@ Stephen Lang, Dan Padfield <br> &amp; Matt Jones
 <h2>git is not set up for handling data</h2>
 <p><br></p>
 <ul>
-<li>git version control system is based <br> around code, not data.</li>
-<li>git knows nothing about the structure of <br> common data formats we use <br> (e.g.&nbsp;the tabular structure of CSV files)</li>
-<li>May result in merge conflicts <br> emerging where there are none</li>
+<li>git version control system is based <br> around code, not data<sup>1</sup></li>
+<li>git knows nothing about the structure of <br> common data formats we use <br> (e.g.&nbsp;the tabular structure of CSV files)<sup>2</sup></li>
+<li>May result in merge conflicts <br> emerging where there are none<sup>2</sup></li>
 </ul>
 <!-- https://paulfitz.github.io/2014/07/09/diff-merge-csv.html -->
 <!-- https://www.dolthub.com/blog/2022-04-27-data-version-control/ -->
@@ -947,14 +948,14 @@ Stephen Lang, Dan Padfield <br> &amp; Matt Jones
 <p><img data-src="../..\presentations/intro_to_github/media/hammering_a_screw.jpg" class="absolute" style="bottom: 100px; right: 0px; width: ; "></p>
 </div>
 <div class="footer">
-<p><a href="https://paulfitz.github.io/2014/07/09/diff-merge-csv.html">1. Merge conflicts with CSV files in git</a></p>
-<p><a href="https://www.dolthub.com/blog/2022-04-27-data-version-control">2. “using Git for data is…like using a hammer to fasten a screw.”</a> [Image source: Pixabay]</p>
+<p><a href="https://www.dolthub.com/blog/2022-04-27-data-version-control">1. “using Git for data is…like using a hammer to fasten a screw.”</a> [Image source: Pixabay]</p>
+<p><a href="https://paulfitz.github.io/2014/07/09/diff-merge-csv.html">2. Merge conflicts with CSV files in git</a></p>
 <p><a href="https://www.masterfile.com/image/en/640-02951002/hammer-hitting-a-screw">Image: Masterfile 640-02951002</a></p>
 </div>
 </section></section>
 <section>
-<section id="github-is-the-record-book-of-your-science-not-the-vault-in-which-that-record-book-should-be-kept." class="title-slide slide level1 center">
-<h1>GitHub is the record book of your science, not the vault in which that record book should be kept.</h1>
+<section id="github-is-like-your-lab-book-not-to-the-freezer-in-which-all-your-samples-are-kept." class="title-slide slide level1 center">
+<h1>GitHub is like your lab book, not to the freezer in which all your samples are kept.</h1>
 
 </section>
 <section id="talk-outline-3" class="slide level2">
@@ -1048,11 +1049,14 @@ Stephen Lang, Dan Padfield <br> &amp; Matt Jones
 </section>
 <section id="example-zenodo" class="slide level2">
 <h2>Example: Zenodo</h2>
+<div style="font-size:30px">
 <ul>
 <li>50GB file size limit<sup>1</sup></li>
 <li>You can just zip up your local version <br> of your Github repository (with both <br> code and data) at the end of running <br> all your code/analysis, and upload it</li>
-<li>Allows you to assign a DOI to the <br> repository as a whole, as well as <br> to different versions of that repository <br> as it evolves through time <br> (and peer review) <!-- - Becomes like a frozen archive of your repository throughout its evolution  --></li>
+<li>Allows you to assign a DOI to the <br> repository as a whole, as well as <br> to different versions of that repository <br> as it evolves through time <br> (and peer review)</li>
+<li>Can also ‘reserve’ a DOI which is <br> really handy when writing a manuscript <!-- - Becomes like a frozen archive of your repository throughout its evolution  --></li>
 </ul>
+</div>
 <div class="column" style="width:50%;">
 <p><img data-src="../..\presentations/intro_to_github/media/zenodo_logo.png" class="absolute" style="bottom: 500px; right: 50px; width: 300px; "></p>
 </div>
@@ -1070,9 +1074,9 @@ Stephen Lang, Dan Padfield <br> &amp; Matt Jones
 <div style="font-size:30px">
 <p><strong>Would recommend NOT using the automated GitHub integration, because:</strong></p>
 <ul>
+<li>Manual option allows you to reserve a DOI for use in submitted manuscripts (before making the dataset public)</li>
 <li>This only allows you to archive your code (since you’re not storing your data on GitHub anymore, right?)</li>
 <li>By zipping up and uploading the final, populated repository from your local machine, you can upload data and code together</li>
-<li>Manual option allows you to reserve a DOI for use in submitted manuscripts (before making the dataset public)</li>
 </ul>
 </div>
 <div class="column" style="width:50%;">
@@ -1105,11 +1109,13 @@ Stephen Lang, Dan Padfield <br> &amp; Matt Jones
 <h2>Final considerations</h2>
 <div style="font-size:30px">
 <ul>
-<li class="fragment">You can prevent data from being uploaded (‘pushed’) to your GitHub repository alongside changes to code by storing it in data folders (e.g.&nbsp;‘raw’ and ‘processed’ folders) and including these in your .gitignore file</li>
 <li class="fragment">Following this schema, raw data will be archived on both OSF and Zenodo - but duplication is good in terms of data preservation</li>
 <li class="fragment">OSF and Zenodo are generic repositories, but sometimes a more structured, subject-specific repository is required (e.g.&nbsp;NCBI or ENA for sequence data)</li>
 <li class="fragment">You should consider whether your institution/funder/etc require you to also upload and store the data elsewhere</li>
-<li class="fragment">You should consider whether you are allowed to share all of the data and/or whether you need to anonymise it (particularly raw data)</li>
+<li class="fragment">You should consider whether you are allowed to share all of the data and/or whether you need to anonymise it (particularly raw data)
+<ul>
+<li class="fragment">You can prevent data from being uploaded (‘pushed’) to your GitHub repository alongside changes to code by storing it in data folders (e.g.&nbsp;‘raw’ and ‘processed’ folders) and including these in your .gitignore file</li>
+</ul></li>
 </ul>
 </div>
 </section>
