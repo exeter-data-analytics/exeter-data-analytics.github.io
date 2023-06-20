@@ -156,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">June 19, 2023</p>
+        <p class="date-modified">June 20, 2023</p>
       </div>
     </div>
       
@@ -209,7 +209,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>Outline</h1>
 <p>R is one of the most popular programming language for statistical programming in ecology, evolution, and conservation. It is also the language taught in the University of Exeter’s undergraduate and masters courses within the Centre for Ecology and Conservation.</p>
 <p>RStudio is probably the most popular IDE for people using R. An IDE is an integrated development environment, which allows users to combine multiple aspects of software development in one place to make it easier to use. For RStudio, that means you have different panes that contain the R Console, your script, a file explorer, a pane where plots appear, and much more.</p>
-<p>Git is a version control system that allows you to track versions of your files. It is popular when programming to be able to keep a history of all the changes you have made to your work, and be able to retrieve old instances of your work if you have made a mistake later down the line.</p>
+<p>Git is a version control system that allows you to track versions of your files. It is popular when programming to be able to keep a history of all the changes you have made to your work, and be able to retrieve old instances of your work if you have made a mistake later down the line. GitHub is an online hosting service that allows you to share your code and data for free, which is super important in science for being open and reproducible and transparent.</p>
 <p>This post gives some details on how to install R, RStudio, and git. This information is mainly aggregated from other sources (see acknowledgements below), but there is some specific advice for Windows users for University of Exeter staff and students.</p>
 </section>
 <section id="prerequisites" class="level1">
@@ -365,7 +365,8 @@ Learning objectives
 <section id="configure-github-with-local-git-and-rstudio" class="level2">
 <h2 class="anchored" data-anchor-id="configure-github-with-local-git-and-rstudio">Configure GitHub with local git and RStudio</h2>
 <p>Now we have git, R, and RStudio installed, and an RStudio profile, we need to make sure they can all talk each other, and that you can communicate with your GitHub profile from your local machine. An extensive walkthrough is available <a href="https://happygitwithr.com/connect-intro.html">here</a>, but we will cover the main steps.</p>
-<p>First, we need to create an access token so that GitHub can securely link your local computer to GitHub. To do this go to https://github.com/settings/tokens and create an access token. For the scopes, I ticked most that I thought would be useful and understood, which were <strong>gist</strong>, <strong>repo</strong>, <strong>user</strong>, <strong>workflow</strong>. Make sure you name it something useful like “R:GitHubPAT” so that is makes sense if you ever need to make a new token.</p>
+<p>First, we need to create an access token so that GitHub can securely link your local computer to GitHub. To do this go to <a href="https://github.com/settings/tokens">Settings -&gt; Developer Settings -&gt; Tokens</a> and create an access token.</p>
+<p>For the scopes, I ticked most that I thought would be useful and understood, which were <strong>gist</strong>, <strong>repo</strong>, <strong>user</strong>, <strong>workflow</strong>. Make sure you name it something useful like “R:GitHubPAT” so that is makes sense if you ever need to make a new token.</p>
 <p>Once this code is created, save it to your clipboard or in a text editor while we are storing it in your RStudio. Once you close the webpage you will never see this token again, so make sure you make a note of it! Then going forwards, treat this access token as you would a password. For some of you that might mean using a password manager, and for some of you that might mean a book, your hand, or post it notes on your computer screen.</p>
 <p>We will use the R package <strong>gitcreds</strong> to associate your GitHub PAT with RStudio. First install <strong>gitcreds</strong> using <strong>install.packages(‘gitcreds’)</strong>. If you want a way to be able to install and load R packages from CRAN, GitHub, and Bioconductor in a simpler way without calls to both <strong>install.packages()</strong> and <strong>library()</strong>, then I recommend looking at <a href="https://github.com/DesiQuintans/librarian"><strong>librarian</strong></a>!</p>
 <p>Next run <strong>gitcreds::gitcreds_set()</strong> and follow the prompts. Specifically make sure you copy in your GitHub PAT!</p>
@@ -377,7 +378,7 @@ Learning objectives
 </div>
 <p>Once you have set this, you can check it has stored properly using <strong>gitcreds::gitcreds_get()</strong>.</p>
 <p>This should mean you are ready to roll (i.e.&nbsp;Git and GitHub like a boss), but if you are getting stuck some common troubleshoots can be found <a href="https://happygitwithr.com/https-pat.html#pat-troubleshooting">here</a>.</p>
-<p>One thing you can check is that RStudo knows where your git executable is. In Tools -&gt; Global Options, you can check where git is stored and being accessed from.</p>
+<p>One thing you can check is that RStudio knows where your git executable is. In Tools -&gt; Global Options, you can check where git is stored and being accessed from.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="check_git_rstudio.png" class="img-fluid figure-img" style="width:60.0%"></p>
@@ -401,7 +402,7 @@ Learning objectives
 <ul>
 <li>We took inspiration from this <a href="https://www.r-bloggers.com/2019/05/my-rstudio-configuration/">blog post</a> about someone’s RStudio configuration.</li>
 <li>We watched <a href="https://rfortherestofus.com/2021/09/how-to-set-your-default-package-install-location-in-r/">this video</a> on how to change the location for installing R packages.</li>
-<li>We enjoyed <a href="https://community.rstudio.com/t/should-i-update-all-my-r-packages-frequently-yes-no-why/5856/6">this thread</a> on whether we should update our R packages regularly. In conclusion, yes probably.</li>
+<li>We enjoyed <a href="https://community.rstudio.com/t/should-i-update-all-my-r-packages-frequently-yes-no-why/5856/6">this thread</a> on whether we should update R and our R packages regularly. In conclusion, yes probably.</li>
 <li>Some of the content was created using ChatGPT.</li>
 </ul>
 
