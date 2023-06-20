@@ -350,7 +350,7 @@ Guide to using R Studio projects can be found on the [Exeter Data Analytics intr
 ## How to create an R Studio project {.absolute top="100" right="50" background-video="/presentations/intro_to_github/media/new_project.mp4" background-video-loop="true" background-size="contain"}
 
 ::: footer
-In-depth guide to using R Studio projects can be found on the [Exeter Data Analytics intros page](https://exeter-data-analytics.github.io/posts/intro_to_projects/)
+Guide to using R Studio projects can be found on the [Exeter Data Analytics intros page](https://exeter-data-analytics.github.io/posts/intro_to_projects/)
 :::
 
 ## Clone new project from GitHub repo {.absolute top="100" right="50" background-video="/presentations/intro_to_github/media/clone_repo.mp4" background-video-loop="true" background-size="contain"}
