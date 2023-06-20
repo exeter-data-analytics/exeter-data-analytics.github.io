@@ -221,7 +221,7 @@
     "href": "presentations/intro_to_github/intro_to_github.html#workshop-outline",
     "title": "Making reproducible projects",
     "section": "Workshop outline",
-    "text": "Workshop outline\n\nWorkshop aims (reproducibility tools)\nIntroduction to version control\nOverview of git and GitHub\nUsing GitHub with R Studio\nIntegrating with R Studio Projects and here\nSome use-cases from us\nPractical (bring your problem code!)\nBonus session on data sharing! (w/ Matt Jones)"
+    "text": "Workshop outline\n\nWorkshop aims (reproducibility tools)\nIntroduction to version control\nOverview of git and GitHub\nUsing GitHub with R Studio\nIntegrating with R Studio Projects and here\nSome use-cases from us\nBonus session on data sharing! (w/ Matt Jones)\nPractical (bring your problem code!)"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#three-aims",
@@ -301,11 +301,11 @@
     "text": "How to create an R Studio project\n\nIn-depth guide to using R Studio projects can be found on the Exeter Data Analytics intros page"
   },
   {
-    "objectID": "presentations/intro_to_github/intro_to_github.html#create-new-project-from-github-repo",
-    "href": "presentations/intro_to_github/intro_to_github.html#create-new-project-from-github-repo",
+    "objectID": "presentations/intro_to_github/intro_to_github.html#clone-new-project-from-github-repo",
+    "href": "presentations/intro_to_github/intro_to_github.html#clone-new-project-from-github-repo",
     "title": "Making reproducible projects",
-    "section": "Create new project from GitHub repo",
-    "text": "Create new project from GitHub repo\n\nExample cloned repo can be found here: https://github.com/gkaramanis/aRtist"
+    "section": "Clone new project from GitHub repo",
+    "text": "Clone new project from GitHub repo\n\nExample cloned repo can be found here: https://github.com/gkaramanis/aRtist"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#sec-slide10id",
@@ -319,14 +319,14 @@
     "href": "presentations/intro_to_github/intro_to_github.html#here-makes-filepaths-that",
     "title": "Making reproducible projects",
     "section": "{here} makes filepaths that:",
-    "text": "{here} makes filepaths that:\n\nWork magically on both macOS & Windows (/ or \\)\nStart at the root of the repository (using .Rproj file)\n\n\nhere::here() will show the root of your project directory:\n\n#install.packages(\"here\")\nlibrary(here)\nhere()\n\n[1] \"/Users/dp415/Desktop/exeter_open_reproducibility_website\"\n\n\n\n\nThis path is included at the start of every filepath here creates\n\nRecommended reading: Project-oriented workflows by Jenny Bryant"
+    "text": "{here} makes filepaths that:\n\nWork magically on both macOS & Windows (/ or \\)\nStart at the root of the repository (using .Rproj file)\n\n\nhere::here() will show the root of your project directory:\n\n#install.packages(\"here\")\nlibrary(here)\nhere()\n\n[1] \"/Users/sdjl201/Desktop/Exeter postdoc/GitHub repos/exeter-data-analytics.github.io\"\n\n\n\n\nThis path is included at the start of every filepath here creates\n\nRecommended reading: Project-oriented workflows by Jenny Bryant"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#using-here",
     "href": "presentations/intro_to_github/intro_to_github.html#using-here",
     "title": "Making reproducible projects",
     "section": "Using here:",
-    "text": "Using here:\n\nFilepaths are created in a similar way to paste():\nWe list quoted names of folders, comma separated\n\n\nWe can create a test filepath to a folder within the repository:\n\nhere(\"data\",\"raw_data\") #creating a filepath to a folder within the repository\n\n[1] \"/Users/dp415/Desktop/exeter_open_reproducibility_website/data/raw_data\"\n\n\n\n\nCreate paths directly within a file/filename argument:\n\nread_csv(file = here(\"data\",\"raw_data\",\"data.csv\"))\nggsave(plot, filename = here(\"output\",\"figures\"))\n\n\n\nOr turn long paths into an object for regular use:\n\noutput_path &lt;- here(\"output\",\"movement\",\"figures\") ; output_path\n\n[1] \"/Users/dp415/Desktop/exeter_open_reproducibility_website/output/movement/figures\"\n\n\n\nggsave(plot, filename = here(output_path,\"plot1.png\"))"
+    "text": "Using here:\n\nFilepaths are created in a similar way to paste():\nWe list quoted names of folders, comma separated\n\n\nWe can create a test filepath to a folder within the repository:\n\nhere(\"data\",\"raw_data\") #creating a filepath to a folder within the repository\n\n[1] \"/Users/sdjl201/Desktop/Exeter postdoc/GitHub repos/exeter-data-analytics.github.io/data/raw_data\"\n\n\n\n\nCreate paths directly within a file/filename argument:\n\nread_csv(file = here(\"data\",\"raw_data\",\"data.csv\"))\nggsave(plot, filename = here(\"output\",\"figures\"))\n\n\n\nOr turn long paths into an object for regular use:\n\noutput_path &lt;- here(\"output\",\"movement\",\"figures\") ; output_path\n\n[1] \"/Users/sdjl201/Desktop/Exeter postdoc/GitHub repos/exeter-data-analytics.github.io/output/movement/figures\"\n\n\n\nggsave(plot, filename = here(output_path,\"plot1.png\"))"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#how-i-use-github",
@@ -494,7 +494,7 @@
     "href": "presentations/intro_to_github/intro_to_github.html#practical-time",
     "title": "Making reproducible projects",
     "section": "Practical time!",
-    "text": "Practical time!\nSpend the rest of the time either:\n\nCreating a new empty GitHub repo from scratch (⭐️)\nClone a repo from someone else (⭐️⭐️)\nTurn an existing project into a GitHub repo (⭐️⭐️⭐️)\n\n\nThen basically just a reproducible/collaborative coding session"
+    "text": "Practical time!\nHow to spend the rest of the time:\n\nClone any GitHub repo (⭐️️)\nRepos you could clone: CoppeR, aRtist\nCreating a new empty GitHub repo from scratch (️⭐⭐️)\nResources: happygitwithr - new GitHub project\nTurn an existing project into a GitHub repo (⭐️⭐️⭐️)\nResources: (happygitwithr — GitHub first, GitHub last)\n\n\nFeel free to ask us about your pesky code problems!"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#resources",
@@ -504,25 +504,11 @@
     "text": "Resources\n\nExeDataHub: Installing, R, RStudio, and Git\nExeDataHub: Managing research projects with R Studio\nThe exceptional Happy Git and GitHub for the useR book\nOthers?"
   },
   {
-    "objectID": "presentations/intro_to_github/intro_to_github.html#github-if-something-goes-wrong",
-    "href": "presentations/intro_to_github/intro_to_github.html#github-if-something-goes-wrong",
-    "title": "Making reproducible projects",
-    "section": "GitHub: if something goes wrong",
-    "text": "GitHub: if something goes wrong\n\nDealing with push errors\nErrors usually have suggestions\nGood idea to understand version conflicts\nAnd what options are to deal with them\nHow to implement these different options"
-  },
-  {
     "objectID": "presentations/intro_to_github/intro_to_github.html#acknowledgements",
     "href": "presentations/intro_to_github/intro_to_github.html#acknowledgements",
     "title": "Making reproducible projects",
     "section": "Acknowledgements",
-    "text": "Acknowledgements\n\nBackground images used courtesy of GitHub\nPhD comics used with permission from Jorge Cham\nIllustrations courtesy of Allison Horst"
-  },
-  {
-    "objectID": "presentations/intro_to_github/intro_to_github.html#acknowledgements-1",
-    "href": "presentations/intro_to_github/intro_to_github.html#acknowledgements-1",
-    "title": "Making reproducible projects",
-    "section": "Acknowledgements",
-    "text": "Acknowledgements\nMATT ADD HERE"
+    "text": "Acknowledgements\n\nUKRN for some original funding\nVarious resources made by others"
   },
   {
     "objectID": "posts.html",
@@ -550,6 +536,6 @@
     "href": "presentations.html",
     "title": "Presentations",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nMaking reproducible projects\n\n\nAn introduction to RStudio projects and version control using RStudio.\n\n\n\n\n\n\nStephen Lang, Dan Padfield  & Matt Jones\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nMaking reproducible projects\n\n\nAn introduction to version control with R Studio and GitHub\n\n\n\n\n\n\nStephen Lang, Dan Padfield  & Matt Jones\n\n\n\n\n\n\nNo matching items"
   }
 ]

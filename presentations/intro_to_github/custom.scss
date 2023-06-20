@@ -79,22 +79,22 @@ $presentation-title-slide-justify-content: left;
   z-index: 3; //this makes the logo render in front of slide content!
 }
 
-//customising bullets
-.reveal .slide ul li{
-list-style: none; /* Remove default bullets*/
-}
-.reveal .slide ul li::before {
-  /* Redefine vour own */
-  content: "\25B6";
-  color: $body-color;
-  display: inline-block;
-  width: 1em;
-  margin-left: -1em;
-  font-size: 100%;
-}
-.reveal .panel-tabset ul li::before {
-  content: "";/* But hide them in tabsets */
-}
+//customising bullets (little arrows)
+//.reveal .slide ul li{
+//list-style: none; /* Remove default bullets*/
+//}
+//.reveal .slide ul li::before {
+//  /* Redefine vour own */
+//  content: "\25B6";
+//  color: $body-color;
+//  display: inline-block;
+//  width: 1em;
+//  margin-left: -1em;
+//  font-size: 100%;
+//}
+//.reveal .panel-tabset ul li::before {
+//  content: "";/* But hide them in tabsets */
+//}
 
 //customising strength of semi fade out
 .reveal .slides section .fragment.semi-fade-out {
