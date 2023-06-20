@@ -155,13 +155,13 @@ Learning objectives
 <p>For Windows:</p>
 <ol type="1">
 <li>Open the Command Prompt by pressing the “Windows Key + R” and typing “cmd” in the “Run” dialog box, or open “Git Bash” (or use the Terminal tab of your RStudio).</li>
-<li>Type “git –version” and press Enter.</li>
+<li>Type <code>git --version</code> and press Enter.</li>
 <li>If git is installed, the version number of git will be displayed in the Command Prompt.</li>
 </ol>
 <p>For Mac:</p>
 <ol type="1">
 <li>Open the Terminal application by finding it on your Launchpad or Applications folder in your Finder (or in the Terminal tab of your RStudio).</li>
-<li>Type “git –version” and press Enter.</li>
+<li>Type <code>git --version</code> and press Enter.</li>
 <li>If git is installed, the version number of git will be displayed in the Terminal window.</li>
 </ol>
 <p>Even if git is installed, it is probably a good idea to update to the latest version. git has very good backwards compatibility so it is very unlikely that updating will break anything.</p>

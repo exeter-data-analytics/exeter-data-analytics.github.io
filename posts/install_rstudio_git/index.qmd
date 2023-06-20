@@ -108,13 +108,13 @@ To check if Git is installed on a Windows or Mac machine, follow these steps:
 For Windows:
 
 1.  Open the Command Prompt by pressing the "Windows Key + R" and typing "cmd" in the "Run" dialog box, or open "Git Bash" (or use the Terminal tab of your RStudio).
-2.  Type "git --version" and press Enter.
+2.  Type `git --version` and press Enter.
 3.  If git is installed, the version number of git will be displayed in the Command Prompt.
 
 For Mac:
 
 1.  Open the Terminal application by finding it on your Launchpad or Applications folder in your Finder (or in the Terminal tab of your RStudio).
-2.  Type "git --version" and press Enter.
+2.  Type `git --version` and press Enter.
 3.  If git is installed, the version number of git will be displayed in the Terminal window.
 
 Even if git is installed, it is probably a good idea to update to the latest version. git has very good backwards compatibility so it is very unlikely that updating will break anything.
