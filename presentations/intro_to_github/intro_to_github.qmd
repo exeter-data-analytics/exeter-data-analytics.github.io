@@ -222,7 +222,6 @@ Push
 
 ## Interacting with git/GitHub
 
-
 ![](/presentations/intro_to_github/media/RStudio-Logo-flat.svg){.absolute top="105" left="0" height="100"}
 
 ::: {.fragment .semi-fade-out fragment-index="1"}
@@ -449,8 +448,8 @@ ggsave(plot, filename = here(output_path,"plot1.png"))
 
 ##  {#slide24-id data-menu-title="Why you should share your data"}
 
-::: {.absolute style="font-size: 1.5em;" top="0" left="0"}
-**Why you should share your data,** <br> why you shouldn't share it via GitHub, <br> and where you should share it instead.
+::: {.absolute top="0" left="0" style="font-size: 1.4em;"}
+**Why you should share your data,** <br> **why you shouldn't share it via GitHub,** <br> **and where you should share it instead.**
 :::
 
 ::: {.absolute style="font-size: 1.4em;" bottom="330" left="0"}
@@ -464,6 +463,13 @@ Matt Lloyd Jones
 ::: {.column width="100%"}
 ![](/presentations/intro_to_github/media/sadmona.png){.absolute bottom="0" right="50" width="500"}
 :::
+
+:::footer
+[Image (UK Reproducibility Network logo): UKRN via University of Portsmouth Twitter](https://www.port.ac.uk/research/research-culture/ukrn)
+
+[Image (Sad Mona): GitHub Twitter](https://twitter.com/github/status/1646510290924867584)
+:::
+
 
 ## Talk outline
 
@@ -486,13 +492,21 @@ Matt Lloyd Jones
 <br>
 
 ::: {style="font-size:30px"}
--   Concordat on Open Research Data <br> (signed by HEFCE, UKRI, Universities UK, <br> the Wellcome Trust and more) <!-- https://www.wlv.ac.uk/research/research-policies-procedures--guidelines/research-data-management/concordat-on-open-research-data/ -->
--   National Institutes of Health (NIH) has required <br> its fundees to eventually make their data <br> publicly available (as of January 2023) <!-- https://www.nature.com/articles/d41586-022-00402-1 -->
--   US Government moving towards a position <br> of making sharing data mandatory <br> where possible)
+-   Concordat on Open Research Data <br> (signed by HEFCE, UKRI, Universities UK, <br> the Wellcome Trust and more^1^.
+- National Institutes of Health (NIH) has required <br> its fundees to eventually make their data <br> publicly available (as of January 2023)^2^.
+-   US Government moving towards a position <br> of making sharing data mandatory <br> where possible)^3^.
 :::
 
 ::: {.column width="100%"}
 ![](/presentations/intro_to_github/media/usgov_data.png){.absolute bottom="100" right="0" width="400"}
+:::
+
+::: footer
+[1. Information of Concordat on Open research Data](https://www.wlv.ac.uk/research/research-policies-procedures--guidelines/research-data-management/concordat-on-open-research-data/)
+
+[2. Nature article on NIH data sharing mandate](https://www.nature.com/articles/d41586-022-00402-1)
+
+[3. White House's August 2022 announcement on Data Sharing ](https://www.whitehouse.gov/ostp/news-updates/2022/08/25/breakthroughs-for-alldelivering-equitable-access-to-americas-research/)
 :::
 
 ## Like sharing code, sharing data improves the quality of your science.
@@ -509,6 +523,10 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 
 ::: {.column width="100%"}
 ![](/presentations/intro_to_github/media/keyboard_clean.png){.absolute bottom="100" right="0" width="500"}
+:::
+
+::: footer
+[Image source: CMSWire ](https://www.cmswire.com/information-management/5-best-practices-for-ensuring-good-data-hygiene/)
 :::
 
 ## Your code won't work without your data.
@@ -531,18 +549,23 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 
 -   Like your publication, your data <br> should have a persistent identifier <br> like a Digital Object Identifier (DOI)
 -   However, you can't DOI your <br> GitHub repo, or versions of it!
+- For this reason, GitHub cannot be <br> considered a FAIR (Findable, Accessible, <br> Interoperable and Reusable) data repository
 
 ::: {.column width="50%"}
 ![](/presentations/intro_to_github/media/doi_logo.png){.absolute bottom="125" right="0" width="400"}
 :::
 
+::: footer
+[Image (DOI logo): Internatinal DOI Foundation via Wikimedia ](https://commons.wikimedia.org/wiki/File:DOI_logo.svg)
+:::
+
 ## Memory limits
 
 ::: {style="font-size:35px"}
--   Size of repository as a whole <br> cannot exceed 100 GB <br> (+ warnings \>75 GB and \>5GB)
--   Size of an individual push <br> (which may contain multiple <br> files) cannot exceed 2 GB
--   Size of each file in it cannot <br> exceed 100 MB (+ warnings \> 50GB)
--   In order to prevent negatively <br> impacting GitHub's infrastructure
+-   Size of repository as a whole <br> cannot exceed 100 GB <br> (warnings \>75 GB and \>5GB)^1,2^
+-   Size of an individual push <br> (which may contain multiple <br> files) cannot exceed 2 GB^1,2^
+-   Size of each file in it cannot <br> exceed 100 MB (warnings \> 50MB)^1^
+-   In order to prevent negatively <br> impacting GitHub's infrastructure^1^
 :::
 
 ::: {.column width="50%"}
@@ -555,6 +578,14 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 
 <!-- https://stackoverflow.com/questions/38768454/repository-size-limits-for-github-com -->
 
+::: footer
+[1. Managing Large Files (GitHub) ](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github)
+
+[2. GitHub Repository Size limits discussion (Stack OverFlow) ](https://stackoverflow.com/questions/38768454/repository-size-limits-for-github-com)
+
+[Image (Goldfish): The Economic Times ](https://economictimes.indiatimes.com/defaultinterstitial.cms)
+:::
+
 ## Inconveniences others
 
 <br>
@@ -566,15 +597,17 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 ![](/presentations/intro_to_github/media/atlas.jpg){.absolute bottom="50" right="0" width=""}
 :::
 
-<!-- https://pixabay.com/vectors/atlas-world-greek-mythology-titan-7337047/ -->
+::: footer
+[Image (Atlas): Gordon Johnson via Pixabay ](https://pixabay.com/vectors/atlas-world-greek-mythology-titan-7337047/)
+:::
 
 ## git is not set up for handling data
 
 <br>
 
--   git version control system is based <br> around code, not data.
--   git knows nothing about the structure of <br> common data formats we use <br> (e.g. the tabular structure of CSV files)
--   May result in merge conflicts <br> emerging where there are none
+-   git version control system is based <br> around code, not data^1^
+-   git knows nothing about the structure of <br> common data formats we use <br> (e.g. the tabular structure of CSV files)^2^
+-   May result in merge conflicts <br> emerging where there are none^2^
 
 <!-- https://paulfitz.github.io/2014/07/09/diff-merge-csv.html -->
 
@@ -584,7 +617,19 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 ![](/presentations/intro_to_github/media/hammering_a_screw.jpg){.absolute bottom="100" right="0" width=""}
 :::
 
-# GitHub is the record book of your science, not the vault in which that record book should be kept.
+::: footer
+
+[1. "using Git for data is...like using a hammer to fasten a screw."](https://www.dolthub.com/blog/2022-04-27-data-version-control)
+[Image source: Pixabay]
+
+[2. Merge conflicts with CSV files in git ](https://paulfitz.github.io/2014/07/09/diff-merge-csv.html)
+
+
+[Image: Masterfile 640-02951002](https://www.masterfile.com/image/en/640-02951002/hammer-hitting-a-screw)
+
+:::
+
+# GitHub is like your lab book, not to the freezer in which all your samples are kept.
 
 ## Talk outline
 
@@ -606,6 +651,14 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 ![](/presentations/intro_to_github/media/sauce_jar.png){.absolute bottom="150" right="0" width="340"}
 :::
 
+::: footer
+
+[Images 1 and 2: The Spruce Eats](https://www.masterfile.com/image/en/640-02951002/hammer-hitting-a-screw)
+
+[Image 3: Reno Gazette Journal](https://eu.rgj.com/story/life/food/2015/11/04/8-tricks-jazz-up-store-bought-pasta-sauce/75111308/)
+
+:::
+
 ## Rawness of data
 
 ::: {.column width="50%"}
@@ -620,7 +673,12 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 ![](/presentations/intro_to_github/media/processeddata_statology.png){.absolute bottom="220" right="0" width="340"}
 :::
 
-<!-- https://www.statology.org/raw-data/ -->
+
+::: footer
+
+[Statology: What Is considered raw data?](https://www.statology.org/raw-data/)
+
+:::
 
 ## Things to consider when choosing somewhere to store your raw data
 
@@ -631,14 +689,21 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 -   DOI-able
 
 ::: {.column width="50%"}
-![](/presentations/intro_to_github/media/atm.jpg){.absolute bottom="125" right="0" width=""}
+![](/presentations/intro_to_github/media/spice_rack.jpg){.absolute bottom="100" right="50" width="300"}
+:::
+
+
+::: footer
+
+[Image: Chickens In The Road](https://chickensintheroad.com/classic/cooking/fun-with-spice-jars/)
+
 :::
 
 ## Example: Open Science framework
 
 <br>
 
--   Easy to download/upload <br> via the `osfr` package
+-   Easy to download/upload <br> via the `osfr` package^1^
 -   Here to stay for the open <br> science revolution
 -   Allows you to assign DOIs <br> to projects and/or datasets
 
@@ -648,6 +713,16 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 
 ::: {.column width="50%"}
 ![](/presentations/intro_to_github/media/osfr_hexlogo.png){.absolute bottom="100" right="50" width="250"}
+:::
+
+::: footer
+
+[1. 'osfr' package on GitHub](https://github.com/ropensci/osfr)
+
+[Image: Open Science Framework via Data CC](https://www.datacc.org/en/warehouses/open-science-framework-osf/)
+
+[Image: osfr via ropensci](https://docs.ropensci.org/osfr/)
+
 :::
 
 ## Things to consider when choosing somewhere to store your processed data
@@ -660,13 +735,23 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 ![](/presentations/intro_to_github/media/elephant_white_background.png){.absolute bottom="110" right="50" width="400"}
 :::
 
+::: footer
+
+[Image: Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Elephant_white_background.png)
+
+:::
+
 <!-- https://commons.wikimedia.org/wiki/File:Elephant_white_background.png -->
 
 ## Example: Zenodo
 
--   50GB file size limit
+::: {style="font-size:30px"} 
+-   50GB file size limit^1^
 -   You can just zip up your local version <br> of your Github repository (with both <br> code and data) at the end of running <br> all your code/analysis, and upload it
--   Allows you to assign a DOI to the <br> repository as a whole, as well as <br> to different versions of that repository <br> as it evolves through time <br> (and peer review) <!-- - Becomes like a frozen archive of your repository throughout its evolution  -->
+-   Allows you to assign a DOI to the <br> repository as a whole, as well as <br> to different versions of that repository <br> as it evolves through time <br> (and peer review) 
+- Can also 'reserve' a DOI which is <br> really handy when writing a manuscript 
+<!-- - Becomes like a frozen archive of your repository throughout its evolution  -->
+:::
 
 ::: {.column width="50%"}
 ![](/presentations/intro_to_github/media/zenodo_logo.png){.absolute bottom="500" right="50" width="300"}
@@ -676,14 +761,25 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 ![](/presentations/intro_to_github/media/zenodo_doiversioning.jpeg){.absolute bottom="100" right="40" width="310"}
 :::
 
+::: footer
+
+[1. Zenodo FAQs](https://help.zenodo.org/)
+
+[Image (Zenodo logo): Zenodo](https://about.zenodo.org/)
+
+[Image (Zenodo versioning): GitHub](https://github.com/traitecoevo/austraits/issues/15)
+
+:::
+
 ## Zenodo example expanded
 
 ::: {style="font-size:30px"}
 **Would recommend NOT using the automated GitHub integration, because:**
 
+-   Manual option allows you to reserve a DOI for use in submitted manuscripts (before making the dataset public)
 -   This only allows you to archive your code (since you're not storing your data on GitHub anymore, right?)
 -   By zipping up and uploading the final, populated repository from your local machine, you can upload data and code together
--   Manual option allows you to reserve a DOI for use in submitted manuscripts (before making the dataset public)
+
 :::
 
 ::: {.column width="50%"}
@@ -692,6 +788,10 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 
 ::: {.column width="50%"}
 ![](/presentations/intro_to_github/media/cross.png){.absolute bottom="0" left="350" width="300"}
+:::
+
+::: footer
+[Image: Code Refinery](https://coderefinery.github.io/github-without-command-line/doi/)
 :::
 
 ## Storing data outside of GitHub, but in a repositories friendly to GitHub keeps everyone happy!
@@ -708,14 +808,20 @@ In the process of making your data <br> publication-ready, you will also <br> fi
 ![](/presentations/intro_to_github/media/happymona.png){.absolute bottom="50" left="650" width="350"}
 :::
 
+::: footer
+[Image (Sad Mona): GitHub Twitter](https://twitter.com/github/status/1646510290924867584)
+
+[Image (Happy Mona): GitHub Twitter](https://github.com/swak/community-starter-kit/issues/1)
+:::
+
 ## Final considerations
 
 ::: {.incremental style="font-size:30px"}
--   You can prevent data from being uploaded ('pushed') to your GitHub repository alongside changes to code by storing it in data folders (e.g. 'raw' and 'processed' folders) and including these in your .gitignore file
--   Following this schema, raw data will be archived on both OSF and Zenodo - but duplication is good in terms of data preservation
--   OSF and Zenodo are generic repositories, but sometimes a more structured, subject-specific repository is required (e.g. NCBI or ENA for sequence data)
--   You should consider whether your institution/funder/etc require you to also upload and store the data elsewhere
--   You should consider whether you are allowed to share all of the data and/or whether you need to anonymise it (particularly raw data)
+- Following this schema, raw data will be archived on both OSF and Zenodo - but duplication is good in terms of data preservation
+ - OSF and Zenodo are generic repositories, but sometimes a more structured, subject-specific repository is required (e.g. NCBI or ENA for sequence data)
+ - You should consider whether your institution/funder/etc require you to also upload and store the data elsewhere
+ - You should consider whether you are allowed to share all of the data and/or whether you need to anonymise it (particularly raw data)
+   - You can prevent data from being uploaded ('pushed') to your GitHub repository alongside changes to code by storing it in data folders (e.g. 'raw' and 'processed' folders) and including these in your .gitignore file
 :::
 
 ## Practical time!
@@ -727,12 +833,12 @@ In the process of making your data <br> publication-ready, you will also <br> fi
     **Repos you could clone:** [CoppeR](https://github.com/padpadpadpad/CoppeR), [aRtist](https://github.com/gkaramanis/aRtist)
 
 -   Creating a new empty GitHub repo from scratch (️⭐⭐️)
-    
+
     **Resources:** [happygitwithr - new GitHub project](https://happygitwithr.com/new-github-first.html)
-    
+
 -   Turn an existing project into a GitHub repo (⭐️⭐️⭐️)
-    
-    **Resources:** (happygitwithr — [GitHub first](https://happygitwithr.com/existing-github-first.html), [GitHub last](https://happygitwithr.com/existing-github-last.html))
+
+    **Resources:** (happygitwithr --- [GitHub first](https://happygitwithr.com/existing-github-first.html), [GitHub last](https://happygitwithr.com/existing-github-last.html))
 
 . . .
 

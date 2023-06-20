@@ -319,14 +319,14 @@
     "href": "presentations/intro_to_github/intro_to_github.html#here-makes-filepaths-that",
     "title": "Making reproducible projects",
     "section": "{here} makes filepaths that:",
-    "text": "{here} makes filepaths that:\n\nWork magically on both macOS & Windows (/ or \\)\nStart at the root of the repository (using .Rproj file)\n\n\nhere::here() will show the root of your project directory:\n\n#install.packages(\"here\")\nlibrary(here)\nhere()\n\n[1] \"/Users/sdjl201/Desktop/Exeter postdoc/GitHub repos/exeter-data-analytics.github.io\"\n\n\n\n\nThis path is included at the start of every filepath here creates\n\nRecommended reading: Project-oriented workflows by Jenny Bryant"
+    "text": "{here} makes filepaths that:\n\nWork magically on both macOS & Windows (/ or \\)\nStart at the root of the repository (using .Rproj file)\n\n\nhere::here() will show the root of your project directory:\n\n#install.packages(\"here\")\nlibrary(here)\nhere()\n\n[1] \"C:/Users/mlj206/Documents/Github/exeter-data-analytics.github.io\"\n\n\n\n\nThis path is included at the start of every filepath here creates\n\nRecommended reading: Project-oriented workflows by Jenny Bryant"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#using-here",
     "href": "presentations/intro_to_github/intro_to_github.html#using-here",
     "title": "Making reproducible projects",
     "section": "Using here:",
-    "text": "Using here:\n\nFilepaths are created in a similar way to paste():\nWe list quoted names of folders, comma separated\n\n\nWe can create a test filepath to a folder within the repository:\n\nhere(\"data\",\"raw_data\") #creating a filepath to a folder within the repository\n\n[1] \"/Users/sdjl201/Desktop/Exeter postdoc/GitHub repos/exeter-data-analytics.github.io/data/raw_data\"\n\n\n\n\nCreate paths directly within a file/filename argument:\n\nread_csv(file = here(\"data\",\"raw_data\",\"data.csv\"))\nggsave(plot, filename = here(\"output\",\"figures\"))\n\n\n\nOr turn long paths into an object for regular use:\n\noutput_path &lt;- here(\"output\",\"movement\",\"figures\") ; output_path\n\n[1] \"/Users/sdjl201/Desktop/Exeter postdoc/GitHub repos/exeter-data-analytics.github.io/output/movement/figures\"\n\n\n\nggsave(plot, filename = here(output_path,\"plot1.png\"))"
+    "text": "Using here:\n\nFilepaths are created in a similar way to paste():\nWe list quoted names of folders, comma separated\n\n\nWe can create a test filepath to a folder within the repository:\n\nhere(\"data\",\"raw_data\") #creating a filepath to a folder within the repository\n\n[1] \"C:/Users/mlj206/Documents/Github/exeter-data-analytics.github.io/data/raw_data\"\n\n\n\n\nCreate paths directly within a file/filename argument:\n\nread_csv(file = here(\"data\",\"raw_data\",\"data.csv\"))\nggsave(plot, filename = here(\"output\",\"figures\"))\n\n\n\nOr turn long paths into an object for regular use:\n\noutput_path &lt;- here(\"output\",\"movement\",\"figures\") ; output_path\n\n[1] \"C:/Users/mlj206/Documents/Github/exeter-data-analytics.github.io/output/movement/figures\"\n\n\n\nggsave(plot, filename = here(output_path,\"plot1.png\"))"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#how-i-use-github",
@@ -347,7 +347,7 @@
     "href": "presentations/intro_to_github/intro_to_github.html#slide24-id",
     "title": "Making reproducible projects",
     "section": "",
-    "text": "Why you should share your data,  why you shouldn’t share it via GitHub,  and where you should share it instead.\n\n\nMatt Lloyd Jones"
+    "text": "Why you should share your data,  why you shouldn’t share it via GitHub,  and where you should share it instead.\n\n\nMatt Lloyd Jones\n\n\n\n\n\n\n\n\nImage (UK Reproducibility Network logo): UKRN via University of Portsmouth Twitter\nImage (Sad Mona): GitHub Twitter"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#talk-outline",
@@ -368,14 +368,14 @@
     "href": "presentations/intro_to_github/intro_to_github.html#you-will-soon-have-to-share-your-data-anyway.",
     "title": "Making reproducible projects",
     "section": "You will soon have to share your data anyway.",
-    "text": "You will soon have to share your data anyway.\n\n\n\nConcordat on Open Research Data  (signed by HEFCE, UKRI, Universities UK,  the Wellcome Trust and more) \nNational Institutes of Health (NIH) has required  its fundees to eventually make their data  publicly available (as of January 2023) \nUS Government moving towards a position  of making sharing data mandatory  where possible)"
+    "text": "You will soon have to share your data anyway.\n\n\n\nConcordat on Open Research Data  (signed by HEFCE, UKRI, Universities UK,  the Wellcome Trust and more1.\nNational Institutes of Health (NIH) has required  its fundees to eventually make their data  publicly available (as of January 2023)2.\nUS Government moving towards a position  of making sharing data mandatory  where possible)3.\n\n\n\n\n\n\n1. Information of Concordat on Open research Data\n2. Nature article on NIH data sharing mandate\n3. White House’s August 2022 announcement on Data Sharing"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#like-sharing-code-sharing-data-improves-the-quality-of-your-science.",
     "href": "presentations/intro_to_github/intro_to_github.html#like-sharing-code-sharing-data-improves-the-quality-of-your-science.",
     "title": "Making reproducible projects",
     "section": "Like sharing code, sharing data improves the quality of your science.",
-    "text": "Like sharing code, sharing data improves the quality of your science.\n\n\nIn the process of making your data  publication-ready, you will also  find yourself:\n\nFinding mistakes and correcting them\nMaking sure the data inputted and  outputted from your code is consistent\nImproving its documentation  (for future re-use - most likely by you!)"
+    "text": "Like sharing code, sharing data improves the quality of your science.\n\n\nIn the process of making your data  publication-ready, you will also  find yourself:\n\nFinding mistakes and correcting them\nMaking sure the data inputted and  outputted from your code is consistent\nImproving its documentation  (for future re-use - most likely by you!)\n\n\n\n\n\n\nImage source: CMSWire"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#your-code-wont-work-without-your-data.",
@@ -396,28 +396,28 @@
     "href": "presentations/intro_to_github/intro_to_github.html#you-cannot-assign-a-doi-to-a-github-repository.",
     "title": "Making reproducible projects",
     "section": "You cannot assign a DOI to a GitHub repository.",
-    "text": "You cannot assign a DOI to a GitHub repository.\n\n\nLike your publication, your data  should have a persistent identifier  like a Digital Object Identifier (DOI)\nHowever, you can’t DOI your  GitHub repo, or versions of it!"
+    "text": "You cannot assign a DOI to a GitHub repository.\n\n\nLike your publication, your data  should have a persistent identifier  like a Digital Object Identifier (DOI)\nHowever, you can’t DOI your  GitHub repo, or versions of it!\nFor this reason, GitHub cannot be  considered a FAIR (Findable, Accessible,  Interoperable and Reusable) data repository\n\n\n\n\n\nImage (DOI logo): Internatinal DOI Foundation via Wikimedia"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#memory-limits",
     "href": "presentations/intro_to_github/intro_to_github.html#memory-limits",
     "title": "Making reproducible projects",
     "section": "Memory limits",
-    "text": "Memory limits\n\n\nSize of repository as a whole  cannot exceed 100 GB  (+ warnings &gt;75 GB and &gt;5GB)\nSize of an individual push  (which may contain multiple  files) cannot exceed 2 GB\nSize of each file in it cannot  exceed 100 MB (+ warnings &gt; 50GB)\nIn order to prevent negatively  impacting GitHub’s infrastructure"
+    "text": "Memory limits\n\n\nSize of repository as a whole  cannot exceed 100 GB  (warnings &gt;75 GB and &gt;5GB)1,2\nSize of an individual push  (which may contain multiple  files) cannot exceed 2 GB1,2\nSize of each file in it cannot  exceed 100 MB (warnings &gt; 50MB)1\nIn order to prevent negatively  impacting GitHub’s infrastructure1\n\n\n\n\n\n\n\n\n\n1. Managing Large Files (GitHub)\n2. GitHub Repository Size limits discussion (Stack OverFlow)\nImage (Goldfish): The Economic Times"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#inconveniences-others",
     "href": "presentations/intro_to_github/intro_to_github.html#inconveniences-others",
     "title": "Making reproducible projects",
     "section": "Inconveniences others",
-    "text": "Inconveniences others\n\n\nUsers who just want to play around  with your code are forced to download  all of your research data too  (potentially up to 100 GB!)\nSmaller repositories are faster to clone  and easier to work with"
+    "text": "Inconveniences others\n\n\nUsers who just want to play around  with your code are forced to download  all of your research data too  (potentially up to 100 GB!)\nSmaller repositories are faster to clone  and easier to work with\n\n\n\n\n\nImage (Atlas): Gordon Johnson via Pixabay"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#git-is-not-set-up-for-handling-data",
     "href": "presentations/intro_to_github/intro_to_github.html#git-is-not-set-up-for-handling-data",
     "title": "Making reproducible projects",
     "section": "git is not set up for handling data",
-    "text": "git is not set up for handling data\n\n\ngit version control system is based  around code, not data.\ngit knows nothing about the structure of  common data formats we use  (e.g. the tabular structure of CSV files)\nMay result in merge conflicts  emerging where there are none"
+    "text": "git is not set up for handling data\n\n\ngit version control system is based  around code, not data1\ngit knows nothing about the structure of  common data formats we use  (e.g. the tabular structure of CSV files)2\nMay result in merge conflicts  emerging where there are none2\n\n\n\n\n\n\n\n1. “using Git for data is…like using a hammer to fasten a screw.” [Image source: Pixabay]\n2. Merge conflicts with CSV files in git\nImage: Masterfile 640-02951002"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#talk-outline-3",
@@ -431,63 +431,63 @@
     "href": "presentations/intro_to_github/intro_to_github.html#rawness-of-data",
     "title": "Making reproducible projects",
     "section": "Rawness of data",
-    "text": "Rawness of data"
+    "text": "Rawness of data\n\n\n\n\n\n\n\n\n\n\nImages 1 and 2: The Spruce Eats\nImage 3: Reno Gazette Journal"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#rawness-of-data-1",
     "href": "presentations/intro_to_github/intro_to_github.html#rawness-of-data-1",
     "title": "Making reproducible projects",
     "section": "Rawness of data",
-    "text": "Rawness of data"
+    "text": "Rawness of data\n\n\n\n\n\n\n\n\n\n\nStatology: What Is considered raw data?"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#things-to-consider-when-choosing-somewhere-to-store-your-raw-data",
     "href": "presentations/intro_to_github/intro_to_github.html#things-to-consider-when-choosing-somewhere-to-store-your-raw-data",
     "title": "Making reproducible projects",
     "section": "Things to consider when choosing somewhere to store your raw data",
-    "text": "Things to consider when choosing somewhere to store your raw data\n\n\nEasy to download/upload  data from/to via code\nLikely to stick around\nDOI-able"
+    "text": "Things to consider when choosing somewhere to store your raw data\n\n\nEasy to download/upload  data from/to via code\nLikely to stick around\nDOI-able\n\n\n\n\n\nImage: Chickens In The Road"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#example-open-science-framework",
     "href": "presentations/intro_to_github/intro_to_github.html#example-open-science-framework",
     "title": "Making reproducible projects",
     "section": "Example: Open Science framework",
-    "text": "Example: Open Science framework\n\n\nEasy to download/upload  via the osfr package\nHere to stay for the open  science revolution\nAllows you to assign DOIs  to projects and/or datasets"
+    "text": "Example: Open Science framework\n\n\nEasy to download/upload  via the osfr package1\nHere to stay for the open  science revolution\nAllows you to assign DOIs  to projects and/or datasets\n\n\n\n\n\n\n\n\n1. ‘osfr’ package on GitHub\nImage: Open Science Framework via Data CC\nImage: osfr via ropensci"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#things-to-consider-when-choosing-somewhere-to-store-your-processed-data",
     "href": "presentations/intro_to_github/intro_to_github.html#things-to-consider-when-choosing-somewhere-to-store-your-processed-data",
     "title": "Making reproducible projects",
     "section": "Things to consider when choosing somewhere to store your processed data",
-    "text": "Things to consider when choosing somewhere to store your processed data\n\nHigher memory limits\nCan store your final data in a  file structure (ideally alongside  the code that produced it)\nDOI-able"
+    "text": "Things to consider when choosing somewhere to store your processed data\n\nHigher memory limits\nCan store your final data in a  file structure (ideally alongside  the code that produced it)\nDOI-able\n\n\n\n\n\nImage: Wikimedia Commons"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#example-zenodo",
     "href": "presentations/intro_to_github/intro_to_github.html#example-zenodo",
     "title": "Making reproducible projects",
     "section": "Example: Zenodo",
-    "text": "Example: Zenodo\n\n50GB file size limit\nYou can just zip up your local version  of your Github repository (with both  code and data) at the end of running  all your code/analysis, and upload it\nAllows you to assign a DOI to the  repository as a whole, as well as  to different versions of that repository  as it evolves through time  (and peer review)"
+    "text": "Example: Zenodo\n\n\n50GB file size limit1\nYou can just zip up your local version  of your Github repository (with both  code and data) at the end of running  all your code/analysis, and upload it\nAllows you to assign a DOI to the  repository as a whole, as well as  to different versions of that repository  as it evolves through time  (and peer review)\nCan also ‘reserve’ a DOI which is  really handy when writing a manuscript \n\n\n\n\n\n\n\n\n\n1. Zenodo FAQs\nImage (Zenodo logo): Zenodo\nImage (Zenodo versioning): GitHub"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#zenodo-example-expanded",
     "href": "presentations/intro_to_github/intro_to_github.html#zenodo-example-expanded",
     "title": "Making reproducible projects",
     "section": "Zenodo example expanded",
-    "text": "Zenodo example expanded\n\nWould recommend NOT using the automated GitHub integration, because:\n\nThis only allows you to archive your code (since you’re not storing your data on GitHub anymore, right?)\nBy zipping up and uploading the final, populated repository from your local machine, you can upload data and code together\nManual option allows you to reserve a DOI for use in submitted manuscripts (before making the dataset public)"
+    "text": "Zenodo example expanded\n\nWould recommend NOT using the automated GitHub integration, because:\n\nManual option allows you to reserve a DOI for use in submitted manuscripts (before making the dataset public)\nThis only allows you to archive your code (since you’re not storing your data on GitHub anymore, right?)\nBy zipping up and uploading the final, populated repository from your local machine, you can upload data and code together\n\n\n\n\n\n\n\n\n\nImage: Code Refinery"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#storing-data-outside-of-github-but-in-a-repositories-friendly-to-github-keeps-everyone-happy",
     "href": "presentations/intro_to_github/intro_to_github.html#storing-data-outside-of-github-but-in-a-repositories-friendly-to-github-keeps-everyone-happy",
     "title": "Making reproducible projects",
     "section": "Storing data outside of GitHub, but in a repositories friendly to GitHub keeps everyone happy!",
-    "text": "Storing data outside of GitHub, but in a repositories friendly to GitHub keeps everyone happy!"
+    "text": "Storing data outside of GitHub, but in a repositories friendly to GitHub keeps everyone happy!\n\n\n\n\n\n\n\n\n\n\nImage (Sad Mona): GitHub Twitter\nImage (Happy Mona): GitHub Twitter"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#final-considerations",
     "href": "presentations/intro_to_github/intro_to_github.html#final-considerations",
     "title": "Making reproducible projects",
     "section": "Final considerations",
-    "text": "Final considerations\n\n\nYou can prevent data from being uploaded (‘pushed’) to your GitHub repository alongside changes to code by storing it in data folders (e.g. ‘raw’ and ‘processed’ folders) and including these in your .gitignore file\nFollowing this schema, raw data will be archived on both OSF and Zenodo - but duplication is good in terms of data preservation\nOSF and Zenodo are generic repositories, but sometimes a more structured, subject-specific repository is required (e.g. NCBI or ENA for sequence data)\nYou should consider whether your institution/funder/etc require you to also upload and store the data elsewhere\nYou should consider whether you are allowed to share all of the data and/or whether you need to anonymise it (particularly raw data)"
+    "text": "Final considerations\n\n\nFollowing this schema, raw data will be archived on both OSF and Zenodo - but duplication is good in terms of data preservation\nOSF and Zenodo are generic repositories, but sometimes a more structured, subject-specific repository is required (e.g. NCBI or ENA for sequence data)\nYou should consider whether your institution/funder/etc require you to also upload and store the data elsewhere\nYou should consider whether you are allowed to share all of the data and/or whether you need to anonymise it (particularly raw data)\n\nYou can prevent data from being uploaded (‘pushed’) to your GitHub repository alongside changes to code by storing it in data folders (e.g. ‘raw’ and ‘processed’ folders) and including these in your .gitignore file"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#practical-time",
@@ -537,5 +537,12 @@
     "title": "Presentations",
     "section": "",
     "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nMaking reproducible projects\n\n\nAn introduction to version control with R Studio and GitHub\n\n\n\n\n\n\nStephen Lang, Dan Padfield  & Matt Jones\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html#why-you-should-share-your-data-why-you-shouldnt-share-it-via-github-and-where-you-should-share-it-instead.",
+    "href": "presentations/intro_to_github/intro_to_github.html#why-you-should-share-your-data-why-you-shouldnt-share-it-via-github-and-where-you-should-share-it-instead.",
+    "title": "Making reproducible projects",
+    "section": "Why you should share your data,  why you shouldn’t share it via GitHub,  and where you should share it instead.",
+    "text": "Why you should share your data,  why you shouldn’t share it via GitHub,  and where you should share it instead."
   }
 ]
