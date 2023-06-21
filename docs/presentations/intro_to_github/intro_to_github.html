@@ -389,7 +389,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-color="black" data-background-image="../../presentations/intro_to_github/media/github_bg.png" data-background-position="bottom right" data-background-size="cover" class="quarto-title-block center">
+<section id="title-slide" data-background-color="black" data-background-image="../../presentations/intro_to_github/media/github_bg.png" data-background-opacity="0.9" data-background-position="bottom right" data-background-size="cover" class="quarto-title-block center">
   <h1 class="title">Making reproducible projects</h1>
   <p class="subtitle">An introduction to version control with R Studio and GitHub</p>
 
@@ -603,6 +603,11 @@ Stephen Lang, Dan Padfield <br> &amp; Matt Jones
 <div class="fragment fade-in" data-fragment-index="1">
 <p><img data-src="../../presentations/intro_to_github/media/github_rstudio.png" class="absolute" style="top: 225px; left: 20px; width: 1200px; "></p>
 </div>
+<div class="fragment">
+<div class="footer">
+<p>The R Studio git pane will only appear when you activate a project in version control</p>
+</div>
+</div>
 </section>
 <section id="the-gitgithub-workflow-rstudio" class="slide level2">
 <h2>The git/GitHub workflow (RStudio)</h2>
@@ -697,16 +702,16 @@ Stephen Lang, Dan Padfield <br> &amp; Matt Jones
 </div>
 </div>
 </section>
-<section id="how-to-create-an-r-studio-project" class="slide level2 absolute" data-top="100" data-right="50" data-background-video="../../presentations/intro_to_github/media/new_project.mp4" data-background-video-loop="true" data-background-size="contain">
+<section id="how-to-create-an-r-studio-project" class="slide level2 absolute" data-top="100" data-right="50" data-background-video="../../presentations/intro_to_github/media/new_project.mp4" data-background-video-loop="true" data-background-size="contain" data-background-color="white">
 <h2>How to create an R Studio project</h2>
 <div class="footer">
 <p>Guide to using R Studio projects can be found on the <a href="https://exeter-data-analytics.github.io/posts/intro_to_projects/">Exeter Data Analytics intros page</a></p>
 </div>
 </section>
-<section id="clone-new-project-from-github-repo" class="slide level2 absolute" data-top="100" data-right="50" data-background-video="../../presentations/intro_to_github/media/clone_repo.mp4" data-background-video-loop="true" data-background-size="contain">
-<h2>Clone new project from GitHub repo</h2>
+<section id="create-project-by-cloning-a-github-repo" class="slide level2 absolute" data-top="100" data-right="50" style="font-size: 0.97em;" data-background-video="../../presentations/intro_to_github/media/clone_repo.mp4" data-background-video-loop="true" data-background-size="contain" data-background-color="white">
+<h2>Create project by cloning a GitHub repo</h2>
 <div class="footer">
-<p>Example cloned repo can be found here: <a href="https://github.com/gkaramanis/aRtist" class="uri">https://github.com/gkaramanis/aRtist</a></p>
+<p><strong>Note</strong>: You can edit/save files from a cloned repo, but won’t be able to push unless you are the repo owner or a collaborator (<a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository">details here</a>)</p>
 </div>
 </section>
 <section id="sec-slide10id" class="slide level2" data-menu-title="the {here} package">
@@ -734,7 +739,7 @@ Stephen Lang, Dan Padfield <br> &amp; Matt Jones
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(here)</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="fu">here</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "/Users/dp415/Desktop/exeter_open_reproducibility_website"</code></pre>
+<pre><code>[1] "/Users/sdjl201/Desktop/Exeter postdoc/GitHub repos/exeter-data-analytics.github.io"</code></pre>
 </div>
 </div>
 </div>
@@ -756,7 +761,7 @@ Stephen Lang, Dan Padfield <br> &amp; Matt Jones
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">here</span>(<span class="st">"data"</span>,<span class="st">"raw_data"</span>) <span class="co">#creating a filepath to a folder within the repository</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "/Users/dp415/Desktop/exeter_open_reproducibility_website/data/raw_data"</code></pre>
+<pre><code>[1] "/Users/sdjl201/Desktop/Exeter postdoc/GitHub repos/exeter-data-analytics.github.io/data/raw_data"</code></pre>
 </div>
 </div>
 </div>
@@ -772,7 +777,7 @@ Stephen Lang, Dan Padfield <br> &amp; Matt Jones
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>output_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">"output"</span>,<span class="st">"movement"</span>,<span class="st">"figures"</span>) ; output_path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "/Users/dp415/Desktop/exeter_open_reproducibility_website/output/movement/figures"</code></pre>
+<pre><code>[1] "/Users/sdjl201/Desktop/Exeter postdoc/GitHub repos/exeter-data-analytics.github.io/output/movement/figures"</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -800,7 +805,7 @@ Stephen Lang, Dan Padfield <br> &amp; Matt Jones
 <p>– Intermission –</p>
 </div>
 </section>
-<section id="slide24-id" class="slide level2" data-menu-title="Why you should share your data">
+<section id="slide24-id" class="slide level2" data-menu-title="Why you should share your data" data-background-color="white">
 <h2></h2>
 <div class="absolute" style="font-size: 1.4em;top: 0px; left: 0px; ">
 <p><strong>Why you should share your data,</strong> <br> <strong>why you shouldn’t share it via GitHub,</strong> <br> <strong>and where you should share it instead.</strong></p>
@@ -1217,7 +1222,7 @@ Stephen Lang, Dan Padfield <br> &amp; Matt Jones
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',

@@ -19,6 +19,7 @@ $presentation-title-slide-justify-content: left;
   text-align: left;
   top: 0;
   bottom: 0;
+  z-index: -1;
 
   .title {
     color: white;
@@ -36,20 +37,20 @@ $presentation-title-slide-justify-content: left;
     position: relative!important;
     top: 40px!important;
   }
-
-    //&::after {
-      //content: '';
-      //display: block;
-      //position: absolute!important;
-      //bottom: 0;
-      //left: 0;
-      //background-image: url('https://raw.githubusercontent.com/exeter-data-analytics/exeter-data-analytics.github.io/master/images/exeter_logo_light.png');
-      //background-size: contain;
-      //background-position: bottom left;
-      //background-repeat: no-repeat;
-      //width: 400px; /* Adjust the width as needed */
-      //height: 400px; /* Adjust the height as needed */
-    //}
+  
+  &::after {
+      content: '';
+      display: block;
+      position: absolute!important;
+      bottom: 0;
+      left: 0;
+      background-image: url('https://raw.githubusercontent.com/exeter-data-analytics/exeter-data-analytics.github.io/master/images/exeter_logo_dark.png');
+      background-size: contain;
+      background-position: bottom left;
+      background-repeat: no-repeat;
+      width: 400px; /* Adjust the width as needed */
+      height: 400px; /* Adjust the height as needed */
+    }
   }
 
 // custom format for having pictures over bullets
@@ -70,14 +71,20 @@ $presentation-title-slide-justify-content: left;
   text-align: left !important;
 }
 
+//remove slide numbers on title slide
+.reveal .slide-number > a[href*='title-slide'] {
+  display: none;
+}
+
 // customise size of exeter logo on every slide 
 .reveal .slide-logo {
   height: 9% !important;
   //width: 150px!important;
   max-width: unset !important;
   max-height: unset !important;
-  z-index: 3; //this makes the logo render in front of slide content!
+  z-index: 0 !important; //this makes the logo render in front of slide content
 }
+
 
 //customising bullets (little arrows)
 //.reveal .slide ul li{
@@ -120,3 +127,4 @@ bottom: -2px;
 }
 
 .vjs-control-bar { display:none!important; }
+

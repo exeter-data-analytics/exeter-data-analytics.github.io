@@ -6,13 +6,15 @@ title-slide-attributes:
   data-background-size: cover
   data-background-position: bottom right
   data-background-color: black
+  data-background-opacity: "0.9"
 author: Stephen Lang, Dan Padfield <br> & Matt Jones
 format: 
   revealjs:
-    theme: [custom.scss]
+    theme: custom.scss
     logo: /presentations/intro_to_github/media/slide_logo.png
     touch: true
     controls: true
+    slide-number: true
     history: false #slide navigation not pushed to browser history
     auto-play-media: true
 auto-animate: true
@@ -242,6 +244,12 @@ Push
 ![](/presentations/intro_to_github/media/github_rstudio.png){.absolute top="225" left="20" width="1200"}
 :::
 
+. . . 
+
+:::footer
+The R Studio git pane will only appear when you activate a project in version control
+:::
+
 ## The git/GitHub workflow (RStudio)
 
 -   Same flow:
@@ -347,16 +355,16 @@ Push
 Guide to using R Studio projects can be found on the [Exeter Data Analytics intros page](https://exeter-data-analytics.github.io/posts/intro_to_projects/)
 :::
 
-## How to create an R Studio project {.absolute top="100" right="50" background-video="/presentations/intro_to_github/media/new_project.mp4" background-video-loop="true" background-size="contain"}
+## How to create an R Studio project {.absolute top="100" right="50" background-video="/presentations/intro_to_github/media/new_project.mp4" background-video-loop="true" background-size="contain" background-color="white"}
 
 ::: footer
 Guide to using R Studio projects can be found on the [Exeter Data Analytics intros page](https://exeter-data-analytics.github.io/posts/intro_to_projects/)
 :::
 
-## Clone new project from GitHub repo {.absolute top="100" right="50" background-video="/presentations/intro_to_github/media/clone_repo.mp4" background-video-loop="true" background-size="contain"}
+## Create project by cloning a GitHub repo {.absolute top="100" right="50" style="font-size: 0.97em;" background-video="/presentations/intro_to_github/media/clone_repo.mp4" background-video-loop="true" background-size="contain" background-color="white"}
 
 ::: footer
-Example cloned repo can be found here: <https://github.com/gkaramanis/aRtist>
+**Note**: You can edit/save files from a cloned repo, but won't be able to push unless you are the repo owner or a collaborator ([details here](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository))
 :::
 
 ##  {#sec-slide10id data-menu-title="the {here} package"}
@@ -456,7 +464,7 @@ ggsave(plot, filename = here(output_path,"plot1.png"))
 -- Intermission --
 :::
 
-##  {#slide24-id data-menu-title="Why you should share your data"}
+##  {#slide24-id data-menu-title="Why you should share your data" background-color="white"}
 
 ::: {.absolute top="0" left="0" style="font-size: 1.4em;"}
 **Why you should share your data,** <br> **why you shouldn't share it via GitHub,** <br> **and where you should share it instead.**
