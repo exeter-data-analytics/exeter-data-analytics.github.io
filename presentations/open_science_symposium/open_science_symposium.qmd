@@ -17,46 +17,46 @@ auto-animate: true
 image: /presentations/open_science_symposium/media/slides/Slide1.png
 ---
 
-##  {#slide2-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/Slide2.png"}
+##  {#slide2-id data-menu-title="Event schedule" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/Slide2.png"}
 
-##  {#slide4-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/Slide4.png"}
+##  {#slide4-id data-menu-title="Perspectives and initiatives" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/Slide4.png"}
 
-##  {#slide5-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/Slide5.png"}
+##  {#slide5-id data-menu-title="What is reproducibility?" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/Slide5.png"}
 
-##  {#slide6-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/Slide6.png"}
+##  {#slide6-id data-menu-title="Background" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/Slide6.png"}
 
-##  {#slide7-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/Slide7.png"}
+##  {#slide7-id data-menu-title="Brian Wansink" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/Slide7.png"}
 
-##  {#slide8-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide8.png"}
+##  {#slide8-id data-menu-title="Brian Wansink: Original blog" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide8.png"}
 
-##  {#slide9-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide9.png"}
+##  {#slide9-id data-menu-title="Brian Wansink: Emails" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide9.png"}
 
-##  {#slide10-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide10.png"}
+##  {#slide10-id data-menu-title="Stapelgate" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide10.png"}
 
-##  {#slide11-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide11.png"}
+##  {#slide11-id data-menu-title="Precognition studies I" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide11.png"}
 
-##  {#slide12-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide12.png"}
+##  {#slide12-id data-menu-title="Precognition studies II" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide12.png"}
 
-##  {#slide13-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide13.png"}
+##  {#slide13-id data-menu-title="Mundane problems" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide13.png"}
 
-##  {#slide14-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide14.png"}
+##  {#slide14-id data-menu-title="Study retraction after posting open data" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide14.png"}
 
-##  {#slide15-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide15.png"}
+##  {#slide15-id data-menu-title="Reproducibility team" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide15.png"}
 
-##  {#slide16-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide16.png"}
+##  {#slide16-id data-menu-title="Coding for reproducible research" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide16.png"}
 
-##  {#slide17-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide17.png"}
+##  {#slide17-id data-menu-title="Summary of registrations" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide17.png"}
 
-##  {#slide18-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide18.png"}
+##  {#slide18-id data-menu-title="Summary of registrations" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide18.png"}
 
-##  {#slide19-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide19.png"}
+##  {#slide19-id data-menu-title="Current delivery model" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide19.png"}
 
-##  {#slide20-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide20.png"}
+##  {#slide20-id data-menu-title="Delivery 2023/24" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide20.png"}
 
-##  {#slide21-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide21.png"}
+##  {#slide21-id data-menu-title="Incentives" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide21.png"}
 
-##  {#slide22-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide22.png"}
+##  {#slide22-id data-menu-title="Reproducibility and AI/machine learning" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide22.png"}
 
-##  {#slide23-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide23.png"}
+##  {#slide23-id data-menu-title="Other things" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide23.png"}
 
-##  {#slide24-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide24.png"}
+##  {#slide24-id data-menu-title="Summary" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide24.png"}
