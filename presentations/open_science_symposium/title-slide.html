@@ -1,2 +1,7 @@
-<section id="$idprefix$title-slide"$for(title-slide-attributes/pairs)$ $it.key$="$it.value$"$endfor$>
+<section id="$idprefix$title-slide" $for(title-slide-attributes/pairs)$ $it.key$="$it.value$"$endfor$>
+  <style>
+    #$idprefix$title-slide::after {
+      content: none !important;
+    }
+  </style>
 </section>

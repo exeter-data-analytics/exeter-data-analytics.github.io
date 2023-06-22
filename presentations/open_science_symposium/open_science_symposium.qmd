@@ -10,7 +10,7 @@ format:
   revealjs:
     template-partials:
     - title-slide.html #using custom html file remove all text/images from title slide
-    theme: custom_pdf.scss
+    theme: custom.scss
     touch: true
     controls: true
     slide-number: true
