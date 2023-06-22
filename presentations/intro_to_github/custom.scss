@@ -37,6 +37,16 @@ $presentation-title-slide-justify-content: left;
     position: relative!important;
     top: 40px!important;
   }
+    .date {
+    color: "white";
+    font-size: 0.9em;
+    opacity: 0.5;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    position: absolute!important;
+    bottom: 120px!important;
+  }
   
   &::after {
       content: '';

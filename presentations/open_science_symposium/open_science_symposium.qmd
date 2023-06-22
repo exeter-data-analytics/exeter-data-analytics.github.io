@@ -2,12 +2,14 @@
 title: "Open and reproducible science symposium"
 subtitle: "with Mark Kelson and Erik Postma"
 author: ExDataHub, Mark Kelson & Erik Postma
+date: 03/28/2023
+date-format: Do MMMM YYYY
 title-slide-attributes:
   data-background-image: /presentations/open_science_symposium/media/slides/Slide1.png
 format: 
   revealjs:
     template-partials:
-    - title-slide.html
+    - title-slide.html #using custom html file remove all text/images from title slide
     touch: true
     controls: true
     slide-number: true
