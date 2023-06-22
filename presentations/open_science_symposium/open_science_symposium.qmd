@@ -10,10 +10,10 @@ format:
   revealjs:
     template-partials:
     - title-slide.html #using custom html file remove all text/images from title slide
+    theme: custom_pdf.scss
     touch: true
     controls: true
     slide-number: true
-    theme: custom.scss
     history: false #slide navigation not pushed to browser history
 auto-animate: true
 image: /presentations/open_science_symposium/media/slides/Slide1.png
