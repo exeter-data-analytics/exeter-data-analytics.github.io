@@ -30,8 +30,9 @@ Scheduled talks subject to change as the series evolves. Please check this websi
 
 |         Date | Speakers                                           | Topic                                            | Resources                                                                                                                                                                                                          |
 |----------------:|-----------------|:----------------|----------------------|
+| 28th March 2023 | [Mark Kelson](https://mathematics.exeter.ac.uk/staff/mjk223?sm=mjk223) | Reproducible and Open Science Symposium | [Slides](https://exeter-data-analytics.github.io/presentations/open_science_symposium/open_science_symposium.html) |
 | 9th May 2023 | [Mark Hanson](https://mahansonresearch.weebly.com) | The ghosts of journals past, present, and future | [Talk recording](https://universityofexeteruk-my.sharepoint.com/:v:/g/personal/a_trevail_exeter_ac_uk/EfDcipY15c9Lg-PSu-MjoXYBdepHh-DYAe-SmXYydCXW9Q?e=FthcAO) (accessible with University of Exeter account only) |
-| 20th June 2023 | ExDataHub | Making reproducible projects | [Talk recording](https://1drv.ms/v/s!Arocn6oNy_7VyS_1S_t-VjY-So3k) (open access) |
+| 20th June 2023 | ExDataHub | Making reproducible projects | [Slides](https://exeter-data-analytics.github.io/presentations/intro_to_github/intro_to_github.html) \| [Talk recording](https://1drv.ms/v/s!Arocn6oNy_7VyS_1S_t-VjY-So3k) (open access) |
 
 ### Get Involved
 

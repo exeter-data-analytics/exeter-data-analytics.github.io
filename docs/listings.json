@@ -11,7 +11,8 @@
   {
     "listing": "/presentations.html",
     "items": [
-      "/presentations/intro_to_github/intro_to_github.html"
+      "/presentations/intro_to_github/intro_to_github.html",
+      "/presentations/open_science_symposium/open_science_symposium.html"
     ]
   }
 ]

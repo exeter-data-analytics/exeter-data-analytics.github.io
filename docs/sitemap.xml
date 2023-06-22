@@ -2,38 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_projects/index.html</loc>
-    <lastmod>2023-06-21T14:35:52.929Z</lastmod>
+    <lastmod>2023-06-22T09:35:38.057Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_ggplot2/index.html</loc>
-    <lastmod>2023-06-21T14:35:54.565Z</lastmod>
+    <lastmod>2023-06-22T09:35:40.082Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_flextable/index.html</loc>
-    <lastmod>2023-06-21T14:35:55.886Z</lastmod>
+    <lastmod>2023-06-22T09:35:41.824Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/install_rstudio_git/index.html</loc>
-    <lastmod>2023-06-21T14:35:57.554Z</lastmod>
+    <lastmod>2023-06-22T09:35:43.434Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/series.html</loc>
-    <lastmod>2023-06-21T14:35:57.856Z</lastmod>
+    <lastmod>2023-06-22T09:35:43.936Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/index.html</loc>
-    <lastmod>2023-06-21T14:35:58.164Z</lastmod>
+    <lastmod>2023-06-22T09:35:44.422Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/presentations/intro_to_github/intro_to_github.html</loc>
-    <lastmod>2023-06-21T14:36:00.414Z</lastmod>
+    <lastmod>2023-06-22T09:35:48.726Z</lastmod>
+  </url>
+  <url>
+    <loc>https://exeter-data-analytics.github.io/presentations/open_science_symposium/open_science_symposium.html</loc>
+    <lastmod>2023-06-22T09:35:50.864Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts.html</loc>
-    <lastmod>2023-06-21T14:36:00.835Z</lastmod>
+    <lastmod>2023-06-22T09:35:51.537Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/presentations.html</loc>
-    <lastmod>2023-06-21T14:36:01.131Z</lastmod>
+    <lastmod>2023-06-22T09:35:52.066Z</lastmod>
   </url>
 </urlset>

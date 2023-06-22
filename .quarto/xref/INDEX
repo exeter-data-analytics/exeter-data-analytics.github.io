@@ -28,5 +28,8 @@
   },
   "presentations.qmd": {
     "presentations.html": "19e8ce22"
+  },
+  "presentations/open_science_symposium/open_science_symposium.qmd": {
+    "open_science_symposium.html": "c0d03b8d"
   }
 }

@@ -1,0 +1,62 @@
+---
+title: "Open and reproducible science symposium"
+subtitle: "with Mark Kelson and Erik Postma"
+author: ExDataHub, Mark Kelson & Erik Postma
+title-slide-attributes:
+  data-background-image: /presentations/open_science_symposium/media/slides/Slide1.png
+format: 
+  revealjs:
+    template-partials:
+    - title-slide.html
+    touch: true
+    controls: true
+    slide-number: true
+    theme: custom.scss
+    history: false #slide navigation not pushed to browser history
+auto-animate: true
+image: /presentations/open_science_symposium/media/slides/Slide1.png
+---
+
+##  {#slide2-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/Slide2.png"}
+
+##  {#slide4-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/Slide4.png"}
+
+##  {#slide5-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/Slide5.png"}
+
+##  {#slide6-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/Slide6.png"}
+
+##  {#slide7-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/Slide7.png"}
+
+##  {#slide8-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide8.png"}
+
+##  {#slide9-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide9.png"}
+
+##  {#slide10-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide10.png"}
+
+##  {#slide11-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide11.png"}
+
+##  {#slide12-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide12.png"}
+
+##  {#slide13-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide13.png"}
+
+##  {#slide14-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide14.png"}
+
+##  {#slide15-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide15.png"}
+
+##  {#slide16-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide16.png"}
+
+##  {#slide17-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide17.png"}
+
+##  {#slide18-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide18.png"}
+
+##  {#slide19-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide19.png"}
+
+##  {#slide20-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide20.png"}
+
+##  {#slide21-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide21.png"}
+
+##  {#slide22-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide22.png"}
+
+##  {#slide23-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide23.png"}
+
+##  {#slide24-id data-menu-title="title" background-position="center" background-size="contain" background-image="/presentations/open_science_symposium/media/slides/slide24.png"}
