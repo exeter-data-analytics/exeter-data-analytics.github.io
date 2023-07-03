@@ -26,17 +26,17 @@ Find brief introductions and walkthroughs on common research programming activit
 
 There are a bunch of excellent resources made by previous members of the University of Exeter. These were hosted on a previous version of this website.
 
-- [Introduction to R](https://exeter-data-analytics.github.io/IntroToR/) by TJ McKinley
-- [Advanced Visualisation and Data Wrangling in R](https://exeter-data-analytics.github.io/AdVis/) [[Data](https://exeter-data-analytics.github.io/AdVis/dataFiles.zip)] [[Slides](https://exeter-data-analytics.github.io/AdVis/slides.zip)] by TJ McKinley
-- [Open Science and Reproducible Research in R](https://exeter-data-analytics.github.io/reproducibleScience) by Diego Barneche
-- [R Scripting and R Markdown](https://exeter-data-analytics.github.io/LitProg) [[Data and scripts](https://exeter-data-analytics.github.io/LitProg/dataFiles.zip)] by TJ McKinley
-- [Statistical Modelling in R](https://exeter-data-analytics.github.io/StatModelling/) [[Data](https://exeter-data-analytics.github.io/StatModelling/dataFiles.zip)] [[Slides](https://exeter-data-analytics.github.io/StatModelling/slides.zip)] by JJ Valletta and TJ McKinley
-- [Machine Learning](https://exeter-data-analytics.github.io/MachineLearning) [[Data](https://exeter-data-analytics.github.io/MachineLearning/data.zip)] [[Slides](https://exeter-data-analytics.github.io/MachineLearning/slides.zip)][[Slides2019](https://exeter-data-analytics.github.io/MachineLearning/slides2019.zip)] by Chris Yeomans and Jiangjiao Xu
-- [Spatial Data Analysis](https://exeter-data-analytics.github.io/spatial_data_analysis) [[Data](https://exeter-data-analytics.github.io/spatial_data_analysis/data.zip)] [[Slides](https://exeter-data-analytics.github.io/spatial_data_analysis/slides.zip)] by D March, James Duffy & Chris Yeomans
-- [ImageJ GUI](https://exeter-data-analytics.github.io/imagej-gui)
-- [ImageJ Macros](https://exeter-data-analytics.github.io/imagej-macros)
-- [Introduction to Python](https://exeter-data-analytics.github.io/python-intro)
-- [Python for Data Analysis](https://exeter-data-analytics.github.io/python-data)
+-   [Introduction to R](https://exeter-data-analytics.github.io/IntroToR/) by TJ McKinley
+-   [Advanced Visualisation and Data Wrangling in R](https://exeter-data-analytics.github.io/AdVis/) \[[Data](https://exeter-data-analytics.github.io/AdVis/dataFiles.zip)\] \[[Slides](https://exeter-data-analytics.github.io/AdVis/slides.zip)\] by TJ McKinley
+-   [Open Science and Reproducible Research in R](https://exeter-data-analytics.github.io/reproducibleScience) by Diego Barneche
+-   [R Scripting and R Markdown](https://exeter-data-analytics.github.io/LitProg) \[[Data and scripts](https://exeter-data-analytics.github.io/LitProg/dataFiles.zip)\] by TJ McKinley
+-   [Statistical Modelling in R](https://exeter-data-analytics.github.io/StatModelling/) \[[Data](https://exeter-data-analytics.github.io/StatModelling/dataFiles.zip)\] \[[Slides](https://exeter-data-analytics.github.io/StatModelling/slides.zip)\] by JJ Valletta and TJ McKinley
+-   [Machine Learning](https://exeter-data-analytics.github.io/MachineLearning) \[[Data](https://exeter-data-analytics.github.io/MachineLearning/data.zip)\] \[[Slides](https://exeter-data-analytics.github.io/MachineLearning/slides.zip)\]\[[Slides2019](https://exeter-data-analytics.github.io/MachineLearning/slides2019.zip)\] by Chris Yeomans and Jiangjiao Xu
+-   [Spatial Data Analysis](https://exeter-data-analytics.github.io/spatial_data_analysis) \[[Data](https://exeter-data-analytics.github.io/spatial_data_analysis/data.zip)\] \[[Slides](https://exeter-data-analytics.github.io/spatial_data_analysis/slides.zip)\] by D March, James Duffy & Chris Yeomans
+-   [ImageJ GUI](https://exeter-data-analytics.github.io/imagej-gui)
+-   [ImageJ Macros](https://exeter-data-analytics.github.io/imagej-macros)
+-   [Introduction to Python](https://exeter-data-analytics.github.io/python-intro)
+-   [Python for Data Analysis](https://exeter-data-analytics.github.io/python-data)
 
 ## Contact us
 
