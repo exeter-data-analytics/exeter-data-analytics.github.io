@@ -172,7 +172,7 @@
     "href": "series.html",
     "title": "Open and Reproducible Science Series",
     "section": "",
-    "text": "We are excited to host a new monthly series of workshops and talks to promote Open and Reproducible Science at the University of Exeter Penryn campus.\nThis series will include invited speakers from both within and outside the department, covering the life-cycle of a research project including Pre-registration, Project management, Reproducibility, ChatGPT (and AI in general), and more.\n\nSchedule\nWhere: Exeter University Penryn campus\nWhen: Tuesdays from 3:00-5:00pm, once a month\nFeed me?: yes, there will be tea, coffee, and snacks\n\n\n\n\n\n\n\n\nDate\nLocation\nTopic\n\n\n\n\n11th July\nExchange Red\nAn introduction to open science and preregistration\n\n\n1st August\nExchange Red\nLet’s build R-Shiny web apps. For science!\n\n\n5th September\nExchange Red\nReproducible outputs: publication ready figures & tables\n\n\n3rd October\nESI Trevithick\nCoding with AI: using ChatGPT and co-pilot\n\n\n7th November\nTBC\nCloud computing at Exeter\n\n\n5th December\nTBC\nTBC\n\n\n\nScheduled talks subject to change as the series evolves. Please check this website and look out for calendar invites for confirmed bookings and locations.\n\n\nPrevious workshops\n\n\n\nDate\nSpeakers\nTopic\nResources\n\n\n\n\n28th March 2023\nMark Kelson & Erik Postma\nReproducible and Open Science Symposium\nSlides | Talk recording: part1, part2\n\n\n9th May 2023\nMark Hanson\nThe ghosts of journals past, present, and future\nTalk recording (accessible with University of Exeter account only)\n\n\n20th June 2023\nExDataHub\nMaking reproducible projects\nSlides | Talk recording (open access) | intRo to RStudio Projects & git tools\n\n\n\n\n\nGet Involved\nWe welcome all levels of involvement in the series. If you would like to contribute a talk, workshop, or conversation topic on any subject linked to open and reproducible science, please get in touch with us by email or come and speak to us at an event.\nContact: exedatahub@exeter.ac.uk"
+    "text": "We are excited to host a new monthly series of workshops and talks to promote Open and Reproducible Science at the University of Exeter Penryn campus.\nThis series will include invited speakers from both within and outside the department, covering the life-cycle of a research project including Pre-registration, Project management, Reproducibility, ChatGPT (and AI in general), and more.\n\nSchedule\nWhere: Exeter University Penryn campus\nWhen: Tuesdays from 3:00-5:00pm, once a month\nFeed me?: yes, there will be tea, coffee, and snacks\n\n\n\n\n\n\n\n\nDate\nLocation\nTopic\n\n\n\n\n5th September\nExchange Red\nReproducible outputs: publication ready figures & tables\n\n\n3rd October\nESI Trevithick\nCoding with AI: using ChatGPT and co-pilot\n\n\n7th November\nTBC\nScientific publishing\n\n\n5th December\nTBC\nCollaborative coding session\n\n\n16th January\nTBC\nCloud computing at Exeter\n\n\n\nScheduled talks subject to change as the series evolves. Please check this website and look out for calendar invites for confirmed bookings and locations.\n\n\nPrevious workshops\n\n\n\nDate\nSpeakers\nTopic\nResources\n\n\n\n\n28th March 2023\nMark Kelson & Erik Postma\nReproducible and Open Science Symposium\nSlides | Talk recording: part1, part2\n\n\n9th May 2023\nMark Hanson\nThe ghosts of journals past, present, and future\nTalk recording (accessible with University of Exeter account only)\n\n\n20th June 2023\nExDataHub\nMaking reproducible projects\nSlides | Talk recording (open access) | intRo to RStudio Projects & git tools\n\n\n11th July\nLotty Brand & Matt Jones\nAn introduction to open science and preregistration\n\n\n\n1st August\nDan Sankey\nLet’s build R-Shiny web apps. For science!\n\n\n\n\n\n\nGet Involved\nWe welcome all levels of involvement in the series. If you would like to contribute a talk, workshop, or conversation topic on any subject linked to open and reproducible science, please get in touch with us by email or come and speak to us at an event.\nContact: exedatahub@exeter.ac.uk"
   },
   {
     "objectID": "index.html",
@@ -220,8 +220,8 @@
     "objectID": "presentations/intro_to_github/intro_to_github.html#workshop-outline",
     "href": "presentations/intro_to_github/intro_to_github.html#workshop-outline",
     "title": "Making reproducible projects",
-    "section": "Workshop outline",
-    "text": "Workshop outline\n\nWorkshop aims (reproducibility tools)\nIntroduction to version control\nOverview of git and GitHub\nUsing GitHub with R Studio\nIntegrating with R Studio Projects and here\nSome use-cases from us\nBonus session on data sharing! (w/ Matt Jones)\nPractical (bring your problem code!)"
+    "section": "",
+    "text": "Workshop aims (reproducibility tools)\nIntroduction to version control\nOverview of git and GitHub\nUsing GitHub with R Studio\nIntegrating with R Studio Projects and here\nSome use-cases from us\nBonus session on data sharing! (w/ Matt Jones)\nPractical (bring your problem code!)"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#three-aims",
@@ -277,7 +277,7 @@
     "href": "presentations/intro_to_github/intro_to_github.html#interacting-with-gitgithub",
     "title": "Making reproducible projects",
     "section": "Interacting with git/GitHub",
-    "text": "Interacting with git/GitHub\n\n\n \n\n\n\n\n\n\nThe R Studio git pane will only appear when you activate a project in version control"
+    "text": "Interacting with git/GitHub\n\n\n \n\n\n\n\n. . .\n\nThe R Studio git pane will only appear when you activate a project in version control"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#the-gitgithub-workflow-rstudio",
@@ -291,7 +291,7 @@
     "href": "presentations/intro_to_github/intro_to_github.html#gitignore",
     "title": "Making reproducible projects",
     "section": "       .gitignore",
-    "text": ".gitignore\n\n\nText file that lists large/specific files you don’t want to sync\nExclude all files of one type with * wildcard (e.g., *.png)\n\n\n\nEdit the .gitignore file (left) or select files to exclude (right)"
+    "text": ".gitignore\n\n\nText file that lists large/specific files you don’t want to sync\nExclude all files of one type with * wildcard (e.g., *.png)\n\n. . .\n\nEdit the .gitignore file (left) or select files to exclude (right)"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#slide11-id",
@@ -305,7 +305,7 @@
     "href": "presentations/intro_to_github/intro_to_github.html#why-r-studio-projects-are-great",
     "title": "Making reproducible projects",
     "section": "       Why R Studio Projects are great:",
-    "text": "Why R Studio Projects are great:\n\n\nEach Project file opens a new session and environment\nFile paths start relative to the .Rproj file (much shorter)\nImproves code reproducibility — even better if you use here\n\n\n\nSelf-contained project folder makes a perfect GitHub repo:\n\n\n\nGuide to using R Studio projects can be found on the Exeter Data Analytics intros page"
+    "text": "Why R Studio Projects are great:\n\n\nEach Project file opens a new session and environment\nFile paths start relative to the .Rproj file (much shorter)\nImproves code reproducibility — even better if you use here\n\n. . .\n\nSelf-contained project folder makes a perfect GitHub repo:\n\n\n\nGuide to using R Studio projects can be found on the Exeter Data Analytics intros page"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#how-to-create-an-r-studio-project",
@@ -333,14 +333,14 @@
     "href": "presentations/intro_to_github/intro_to_github.html#here-makes-filepaths-that",
     "title": "Making reproducible projects",
     "section": "{here} makes filepaths that:",
-    "text": "{here} makes filepaths that:\n\nWork magically on both macOS & Windows (/ or \\)\nStart at the root of the repository (using .Rproj file)\n\n\nhere::here() will show the root of your project directory:\n\n#install.packages(\"here\")\nlibrary(here)\nhere()\n\n[1] \"/Users/sdjl201/Desktop/Exeter postdoc/GitHub repos/exeter-data-analytics.github.io\"\n\n\n\n\nThis path is included at the start of every filepath here creates\n\nRecommended reading: Project-oriented workflows by Jenny Bryant"
+    "text": "{here} makes filepaths that:\n\nWork magically on both macOS & Windows (/ or \\)\nStart at the root of the repository (using .Rproj file)\n\n. . .\nhere::here() will show the root of your project directory:\n\n#install.packages(\"here\")\nlibrary(here)\n\nhere() starts at /Users/at687/Library/CloudStorage/OneDrive-UniversityofExeter/Exeter Data Analytics/exeter-data-analytics.github.io\n\nhere()\n\n[1] \"/Users/at687/Library/CloudStorage/OneDrive-UniversityofExeter/Exeter Data Analytics/exeter-data-analytics.github.io\"\n\n\n. . .\nThis path is included at the start of every filepath here creates\n\nRecommended reading: Project-oriented workflows by Jenny Bryant"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#using-here",
     "href": "presentations/intro_to_github/intro_to_github.html#using-here",
     "title": "Making reproducible projects",
     "section": "Using here:",
-    "text": "Using here:\n\nFilepaths are created in a similar way to paste():\nWe list quoted names of folders, comma separated\n\n\nWe can create a test filepath to a folder within the repository:\n\nhere(\"data\",\"raw_data\") #creating a filepath to a folder within the repository\n\n[1] \"/Users/sdjl201/Desktop/Exeter postdoc/GitHub repos/exeter-data-analytics.github.io/data/raw_data\"\n\n\n\n\nCreate paths directly within a file/filename argument:\n\nread_csv(file = here(\"data\",\"raw_data\",\"data.csv\"))\nggsave(plot, filename = here(\"output\",\"figures\"))\n\n\n\nOr turn long paths into an object for regular use:\n\noutput_path &lt;- here(\"output\",\"movement\",\"figures\") ; output_path\n\n[1] \"/Users/sdjl201/Desktop/Exeter postdoc/GitHub repos/exeter-data-analytics.github.io/output/movement/figures\"\n\n\n\nggsave(plot, filename = here(output_path,\"plot1.png\"))"
+    "text": "Using here:\n\nFilepaths are created in a similar way to paste():\nWe list quoted names of folders, comma separated\n\n\nWe can create a test filepath to a folder within the repository:\n\nhere(\"data\",\"raw_data\") #creating a filepath to a folder within the repository\n\n[1] \"/Users/at687/Library/CloudStorage/OneDrive-UniversityofExeter/Exeter Data Analytics/exeter-data-analytics.github.io/data/raw_data\"\n\n\n\n\nCreate paths directly within a file/filename argument:\n\nread_csv(file = here(\"data\",\"raw_data\",\"data.csv\"))\nggsave(plot, filename = here(\"output\",\"figures\"))\n\n\n\nOr turn long paths into an object for regular use:\n\noutput_path &lt;- here(\"output\",\"movement\",\"figures\") ; output_path\n\n[1] \"/Users/at687/Library/CloudStorage/OneDrive-UniversityofExeter/Exeter Data Analytics/exeter-data-analytics.github.io/output/movement/figures\"\n\n\n\nggsave(plot, filename = here(output_path,\"plot1.png\"))"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#how-i-use-github",
@@ -508,7 +508,7 @@
     "href": "presentations/intro_to_github/intro_to_github.html#practical-time",
     "title": "Making reproducible projects",
     "section": "Practical time!",
-    "text": "Practical time!\nHow to spend the rest of the time:\n\nClone any GitHub repo (⭐️️)\nRepos you could clone: CoppeR, aRtist\nCreating a new empty GitHub repo from scratch (️⭐⭐️)\nResources: happygitwithr - new GitHub project\nTurn an existing project into a GitHub repo (⭐️⭐️⭐️)\nResources: (happygitwithr — GitHub first, GitHub last)\n\n\nFeel free to ask us about your pesky code problems!"
+    "text": "Practical time!\nHow to spend the rest of the time:\n\nClone any GitHub repo (⭐️️)\nRepos you could clone: CoppeR, aRtist\nCreating a new empty GitHub repo from scratch (️⭐⭐️)\nResources: happygitwithr - new GitHub project\nTurn an existing project into a GitHub repo (⭐️⭐️⭐️)\nResources: (happygitwithr — GitHub first, GitHub last)\n\n. . .\nFeel free to ask us about your pesky code problems!"
   },
   {
     "objectID": "presentations/intro_to_github/intro_to_github.html#resources",
@@ -551,5 +551,12 @@
     "title": "Presentations",
     "section": "",
     "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nMaking reproducible projects\n\n\nAn introduction to version control with R Studio and GitHub\n\n\n\n\n\n\nJun 20, 2023\n\n\nStephen Lang, Dan Padfield  & Matt Jones\n\n\n\n\n\n\n  \n\n\n\n\nOpen and reproducible science symposium\n\n\nwith Mark Kelson and Erik Postma\n\n\n\n\n\n\nMar 28, 2023\n\n\nExDataHub, Mark Kelson & Erik Postma\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "presentations/intro_to_github/intro_to_github.html",
+    "href": "presentations/intro_to_github/intro_to_github.html",
+    "title": "Making reproducible projects",
+    "section": "",
+    "text": "Workshop aims (reproducibility tools)\nIntroduction to version control\nOverview of git and GitHub\nUsing GitHub with R Studio\nIntegrating with R Studio Projects and here\nSome use-cases from us\nBonus session on data sharing! (w/ Matt Jones)\nPractical (bring your problem code!)"
   }
 ]
