@@ -16,17 +16,17 @@ execute:
 
 As scientists we make A LOT of tables, be it of summary statistics, model parameter values, contrast tables, or anything else. It used to be common practice to copy these individually into Excel or Word and then create a table to insert into your work, but this is prone to errors. No one is perfect after all.
 
-This problem has now been solved by a bunch of different packages that allow for tables to be created in R and exported to a variety of formats. This means that fewer mistakes are made, that tables can easily be remade if the data or stats change, and that the process of making your tables is completely reproducible. The R package we will introduce to do this today is **flextable**, but there are other options available we won't cover here such as [**gt**](https://gt.rstudio.com/articles/intro-creating-gt-tables.html) and [**huxtable**](https://hughjonesd.github.io/huxtable/huxtable.html). I love **flextable** because it seems infinitely customisable and produces tables that are formatted beautifully to go into research articles. 
+This problem has now been solved by a bunch of different packages that allow for tables to be created in R and exported to a variety of formats. This means that fewer mistakes are made, that tables can easily be remade if the data or stats change, and that the process of making your tables is completely reproducible. The R package we will introduce to do this today is **flextable**, but there are other options available we won't cover here such as [**gt**](https://gt.rstudio.com/articles/intro-creating-gt-tables.html) and [**huxtable**](https://hughjonesd.github.io/huxtable/huxtable.html). I love **flextable** because it seems infinitely customisable and produces tables that are formatted beautifully to go into research articles.
 
-**flextable** provides an easy and flexible way to create tables for reporting and presentations. It allows for customization of the table appearance, including cell borders, font styles, background color, and more. The package also supports different formats such as HTML, Microsoft Word, and PowerPoint. It is well suited for creating reports and presentations with a high level of formatting, while still being simple and straightforward to use. Additionally, **flextable** has a number of features that make it particularly useful for data visualisation, including the ability to merge cells, add custom functions for data formatting, and control the appearance of the table based on data values (i.e. making p values that are <0.05 **bold**).
+**flextable** provides an easy and flexible way to create tables for reporting and presentations. It allows for customization of the table appearance, including cell borders, font styles, background color, and more. The package also supports different formats such as HTML, Microsoft Word, and PowerPoint. It is well suited for creating reports and presentations with a high level of formatting, while still being simple and straightforward to use. Additionally, **flextable** has a number of features that make it particularly useful for data visualisation, including the ability to merge cells, add custom functions for data formatting, and control the appearance of the table based on data values (i.e. making p values that are \<0.05 **bold**).
 
 *Note: There are likely to be more elegant ways to do some of the code we present here. If you know of a simpler/easier way then we would love for you to help contribute to this project.*
 
 # Prerequisites
 
-- Have R installed
-- Be using R for your research (or for funsies)
-- Hopefully have a table you want to make in R
+-   Have R installed
+-   Be using R for your research (or for funsies)
+-   Hopefully have a table you want to make in R
 
 # Learning objectives
 
@@ -35,11 +35,10 @@ This problem has now been solved by a bunch of different packages that allow for
 
 **This introduction should allow you to:**
 
-- make publication-ready tables in **flextable**
-- format tables in **flextable**
-- export tables created in **flextable**
-- know where to learn more about **flextable**
-
+-   make publication-ready tables in **flextable**
+-   format tables in **flextable**
+-   export tables created in **flextable**
+-   know where to learn more about **flextable**
 :::
 
 # Using flextable
@@ -60,15 +59,16 @@ d <- penguins
 # have a look at the data
 glimpse(d)
 ```
+
 This dataset contain data for 344 penguins, consisting of three species of penguins, collected from 3 islands in the Palmer Archipelago, Antarctica.
 
 ## Make table of summary stats
 
-It is common to make tables summarising aspects of any given dataset. We will do that here with **flextable**. Lets say we want to know the averages and standard deviations of body mass, bill length and bill depth of the different penguins species split by sex. 
+It is common to make tables summarising aspects of any given dataset. We will do that here with **flextable**. Lets say we want to know the averages and standard deviations of body mass, bill length and bill depth of the different penguins species split by sex.
 
 We can easily do this using **group_by()** and **summarise()** in **dplyr**. More information on these functions can be found in our tidyverse intRo.
 
-Also because I dislike the behavious of factors in R sometimes, we will first convert all columns that are factors into characters.
+Also because I dislike the behaviour of factors in R sometimes, we will first convert all columns that are factors into characters.
 
 ```{r summarise_data}
 # convert all columns that are factors into characters
@@ -110,14 +110,14 @@ This already looks pretty good. But we can now add layers of formatting onto thi
 
 For this table, we will do a few different things:
 
-- rename the column names
-- merge the species column vertically to only have one instance of species
-- round the numbers to 2 decimal places
-- change the font and font size
-- play around with the column names to create a tiered column name for each trait (bill length, bill depth, body mass)
-- add in some horizontal lines to split species apart
+-   rename the column names
+-   merge the species column vertically to only have one instance of species
+-   round the numbers to 2 decimal places
+-   change the font and font size
+-   play around with the column names to create a tiered column name for each trait (bill length, bill depth, body mass)
+-   add in some horizontal lines to split species apart
 
-We can do this by adding new layers using the **%>%**. Many of the functions involve you specifying what `part` you want the change to apply to ('all', 'body', or 'header'). Specific rows can be specified using the `i` argument, and columns using `j`.
+We can do this by adding new layers using the **%\>%**. Many of the functions involve you specifying what `part` you want the change to apply to ('all', 'body', or 'header'). Specific rows can be specified using the `i` argument, and columns using `j`.
 
 To add a new header row, we need to create a new object which contains the text we want to add.
 
@@ -172,7 +172,7 @@ save_as_image(table1, 'where/to/save/table1.png', webshot = 'webshot2')
 save_as_docx(table1, 'where/to/save/table1.docx', align = 'center')
 
 # save for powerpoint
-save_as_pptx(table1, path = 'where/to/save/table1.docx')
+save_as_pptx(table1, path = 'where/to/save/table1.ppt')
 
 ```
 
@@ -195,6 +195,7 @@ d_params <- emmeans(mod1, ~species)
 d_params
 
 ```
+
 We can now turn this into a nice table using similar methods to those we used above.
 
 ```{r}
@@ -239,7 +240,8 @@ contrasts <- emmeans(mod1, pairwise ~ species)
 contrasts$contrasts
 
 ```
-We can easily turn this into a publication-ready table using **flextable()**. As the p values are so low, we will conver them to being <0.0001 where appropriate, and convert that column to a character. This gives us more control over how **flextable** prints the output.
+
+We can easily turn this into a publication-ready table using **flextable()**. As the p values are so low, we will conver them to being \<0.0001 where appropriate, and convert that column to a character. This gives us more control over how **flextable** prints the output.
 
 This is appropriate here but might not be the best way in other cases.
 
@@ -264,7 +266,6 @@ contrasts$contrasts %>%
   autofit() # fix any random size issues
 ```
 
-
 # Summary
 
 We have shown how to produce a range of publication-ready tables using **flextable** for summarising data, presenting model parameters, and contrast tables. Importantly all of these processes are reproducible and limit the chances of us making errors in our workflow.
@@ -273,13 +274,13 @@ All of the code here can be used to create your own tables. Have fun!
 
 ### Additional Resources
 
-- **flextable** [GitHub repository](https://github.com/davidgohel/flextable/)
-- **flextable** [website](https://davidgohel.github.io/flextable/index.html)
-- **flextable** [manual/book](https://ardata-fr.github.io/flextable-book/)
+-   **flextable** [GitHub repository](https://github.com/davidgohel/flextable/)
+-   **flextable** [website](https://davidgohel.github.io/flextable/index.html)
+-   **flextable** [manual/book](https://ardata-fr.github.io/flextable-book/)
 
 ### Acknowledgements
 
 We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.
 
-- Most of the inspiration for this was taken from David Gohel's great work in developing **flextable**
-- Tips for creating the post, website, and format for the walkthroughs were taken from Stephanie Hicks' Course [website](https://www.stephaniehicks.com/jhustatcomputing2022/) and [source code](https://github.com/stephaniehicks/jhustatcomputing2022).
+-   Most of the inspiration for this was taken from David Gohel's great work in developing **flextable**
+-   Tips for creating the post, website, and format for the walkthroughs were taken from Stephanie Hicks' Course [website](https://www.stephaniehicks.com/jhustatcomputing2022/) and [source code](https://github.com/stephaniehicks/jhustatcomputing2022).
