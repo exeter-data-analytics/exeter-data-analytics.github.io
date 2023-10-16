@@ -11,6 +11,7 @@
   {
     "listing": "/presentations.html",
     "items": [
+      "/presentations/ggplot2_flextable/ggplot2_flextable.html",
       "/presentations/intro_to_github/intro_to_github.html",
       "/presentations/open_science_symposium/open_science_symposium.html"
     ]

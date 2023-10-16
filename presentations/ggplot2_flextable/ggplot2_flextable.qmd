@@ -1,0 +1,13 @@
+---
+title: "Reproducible publication-ready plots and tables with ggplot2 and flextable"
+author: Daniel Padfield
+date: 10/12/2023
+date-format: Do MMMM YYYY
+image: /presentations/ggplot2_flextable/media/Slide1.png
+---
+
+This presentation was recorded. A recording can be found [here](https://universityofexeteruk-my.sharepoint.com/:v:/g/personal/d_padfield_exeter_ac_uk/EambcAD70vRIli-YxTql64oBwq2V5_nQqwvpj6R_Wj9Y5w?e=GhKF1B&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZyIsInJlZmVycmFsQXBwUGxhdGZvcm0iOiJXZWIiLCJyZWZlcnJhbE1vZGUiOiJ2aWV3In19) for students and staff at the University of Exeter. 
+
+Slides can be found [here](/presentations/ggplot2_flextable/2023_ggplot2_flextable.pdf).
+
+![](/presentations/ggplot2_flextable/media/Slide1.png){fig-align="center"}
