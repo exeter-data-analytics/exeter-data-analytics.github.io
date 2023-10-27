@@ -16,11 +16,9 @@ This series will include invited speakers from both within and outside the depar
 
 **Feed me?**: yes, there will be tea, coffee, and snacks
 
-|         Date | Location | Topic                        |
-|-------------:|:--------:|:-----------------------------|
-| 7th November |   TBC    | Scientific publishing        |
-| 5th December |   TBC    | Collaborative coding session |
-| 16th January |   TBC    | Cloud computing at Exeter    |
+|          Date |         Location         | Topic                    |
+|--------------:|:------------------------:|:-------------------------|
+| 21st November | Exchange Lecture Theatre | Tidyverse data wrangling |
 
 Scheduled talks subject to change as the series evolves. Please check this website and look out for calendar invites for confirmed bookings and locations.
 
