@@ -34,5 +34,8 @@
   },
   "presentations/ggplot2_flextable/ggplot2_flextable.qmd": {
     "ggplot2_flextable.html": "90d2963b"
+  },
+  "posts/intro_to_tidy_data_manipulation/index.qmd": {
+    "index.html": "d07190c1"
   }
 }

@@ -1,0 +1,369 @@
+---
+title: "intRos: Tidy data manipulation"
+author: 
+  - name: Alice Trevail
+    affiliation: University of Exeter
+description: "Tidy and transfrom your data using reproducible code in R"
+date: "20/11/2023"
+date-modified: last-modified
+categories: [tidyverse, R]
+execute:
+  message: false
+  warning: false
+---
+
+# Outline
+
+The way we collect or download data can often be different to how we analyse them. For example, have you ever needed to work on a subset of your data, add new columns, or calculate summary values? There are good reasons to do this kind of data manipulation in a reproducible way: it's less prone to errors, saves us time when repeating the process, and helps us to share our code with confidence. In this walkthrough, we'll share some of our favourite tools for reproducible data manipulation in R and the tidyverse.
+
+# Prerequisites
+
+-   Have R installed
+-   Be using R for your research
+
+# Learning objectives
+
+::: callout-note
+# Learning objectives
+
+**This introduction should allow you to:**
+
+-   Change the structure of your data using reproducible code
+-   Know where to learn more about tidyverse data manipulation
+:::
+
+# Tidy data manipulation
+
+### Why manipulate data in R?
+
+-   Reproducible
+
+-   Easy to update and re-use with new data
+
+-   Less prone to human error
+
+-   Can be quick, easy, and fun...
+
+Here's an example of how we can use the tidyverse packages (& janitor) to tidy, transform, and visualise the [palmer penguins data](https://allisonhorst.github.io/palmerpenguins/articles/intro.html):
+
+##### Penguin morphometrics
+
+```{r}
+#| message: false
+#| code-fold: true
+#| fig-cap: "Sexual dimporphism in Palmer penguins"
+
+# load the tidyverse, and other useful packages
+pacman::p_load(flextable, palmerpenguins, 
+               janitor, magrittr, tidyverse) 
+
+vars_measurements <- c("culmen_length_mm", "culmen_depth_mm", "flipper_length_mm", "body_mass_g")
+
+# use pipe operative from magrittr
+penguins_example <- penguins_raw %>%
+  # column names to snake_case using janitor package
+  janitor::clean_names() %>% 
+  # rename columns using dplyr
+  rename(carbon = delta_13_c_o_oo,
+         nitrogen = delta_15_n_o_oo) %>%
+  # add new columns using dplyr
+  mutate(
+    # extract year using lubridate
+    year = lubridate::year(date_egg), 
+    # change case in sex column using stringr
+    sex = str_to_lower(sex), 
+    # take first element of species column string using stringr and purrr
+    species = str_split_i(species, pattern = " ", i = 1)) %>% 
+  # remove nas in sex column using dplyr
+  filter(!is.na(sex))
+
+# plot data using ggplot
+ggplot(penguins_example, aes(x = flipper_length_mm, y = body_mass_g, 
+                             # reorder sex using forcats
+                             col = fct_reorder2(sex, flipper_length_mm, body_mass_g))) +
+  facet_grid(cols = vars(species), scales = "free")+
+  geom_point()+
+  geom_smooth(method = lm)+
+  scale_colour_viridis_d(option = "magma", begin = 0.7, end = 0.3, name = "Sex")+
+  theme_minimal()+
+  theme(panel.border = element_rect(fill = NA))
+
+```
+
+##### Penguin isotope signatures
+
+```{r}
+#| warning: false
+#| code-fold: true
+#| fig-cap: "Isotope signatures among Palmer penguins"
+
+penguins_summary_isotopes <- penguins_example %>% 
+  # change data format to long using tidyr
+  pivot_longer(cols = carbon:nitrogen, names_to = "isotope", values_to = "value") %>%
+  # group data using dplyr
+  group_by(species, isotope) %>% 
+  # summarise data for each group using dplyr
+  summarize(mean = mean(value, na.rm = T),
+            sd =  sd(value, na.rm = T)) %>%
+  # change data format to wide using tidyr
+  pivot_wider(id_cols = species, names_from = isotope, values_from=c(mean, sd))
+
+ggplot(penguins_example, aes(x = carbon, y = nitrogen, col = species)) +
+  geom_point(alpha = 0.6)+
+  geom_errorbar(data = penguins_summary_isotopes, 
+                aes(x = mean_carbon, 
+                    ymax = mean_nitrogen+sd_nitrogen, ymin = mean_nitrogen-sd_nitrogen, col = species),
+                inherit.aes = F, width = 0.1)+
+  geom_errorbar(data = penguins_summary_isotopes, 
+                aes(y = mean_nitrogen, 
+                    xmax = mean_carbon+sd_carbon, xmin = mean_carbon-sd_carbon, col = species), 
+                inherit.aes = F, width = 0.1)+
+  scale_colour_viridis_d(option = "mako", begin = 0.75, end = 0.1, name = "Species")+
+  theme_minimal()+
+  theme(panel.border = element_rect(fill = NA))
+
+```
+
+### Some useful functions
+
+Here, we'll dig into the functions used in the above example to see how we processed the data:
+
+#### janitor::clean_names()
+
+Let's remind ourselves of the original data:
+
+```{r}
+
+glimpse(penguins_raw)
+
+```
+
+And now tidy up our column names into snake_case. (This isn't part of the tidyverse, but it is too useful not to mention)
+
+```{r}
+
+penguins_example <- penguins_raw %>%
+  janitor::clean_names() 
+
+glimpse(penguins_example)
+```
+
+#### dplyr::rename()
+
+To rename a column
+
+```{r}
+
+penguins_example %<>%
+  dplyr::rename(carbon = delta_13_c_o_oo,
+         nitrogen = delta_15_n_o_oo) 
+
+glimpse(penguins_example)
+```
+
+#### dplyr::mutate()
+
+To add a column
+
+```{r}
+
+penguins_example %<>%
+  mutate(year = 2007)
+
+glimpse(penguins_example)
+```
+
+#### dplyr::mutate()
+
+To add a column
+
+```{r}
+
+penguins_example %<>%
+  mutate(year = "unknown")
+
+glimpse(penguins_example)
+```
+
+#### lubridate::year()
+
+Lubridate is great for working with dates and times. Here, we want to extract year from a column of date
+
+```{r}
+penguins_example %<>%
+  mutate(year = lubridate::year(date_egg))
+
+glimpse(penguins_example)
+```
+
+#### stringr::str_to_lower()
+
+Change the contents of a column to lower case
+
+```{r}
+penguins_example %<>%
+  mutate(sex = str_to_lower(sex))
+
+glimpse(penguins_example)
+```
+
+#### dplyr::select()
+
+Keep certain columns
+
+```{r}
+penguins_tiny <- penguins_example %>%
+  select(individual_id, sex, body_mass_g)
+
+glimpse(penguins_tiny)
+```
+
+Remove certain columns
+
+```{r}
+penguins_tiny2 <- penguins_example %>%
+  select(!c(study_name, sample_number, region, comments))
+
+glimpse(penguins_tiny2)
+
+```
+
+#### dplyr::filter()
+
+Filter the rows of a dataframe by different criteria
+
+```{r}
+#| echo = FALSE
+knitr::kable(head(penguins_tiny, n = 10))
+```
+
+```{r}
+penguins_tiny %<>%
+  filter(!is.na(sex))
+```
+
+```{r}
+#| echo = FALSE
+knitr::kable(head(penguins_tiny, n = 7))
+```
+
+#### tidyr::pivot_longer()
+
+Transform data from wide to long (each observation in a single row)
+
+```{r}
+#| echo = FALSE
+penguins_example <- penguins_raw %>%
+  # column names to snake_case using janitor package
+  janitor::clean_names() %>% 
+  # rename columns using dplyr
+  rename(carbon = delta_13_c_o_oo,
+         nitrogen = delta_15_n_o_oo) %>%
+  # add new columns using dplyr
+  mutate(
+    # extract year using lubridate
+    year = lubridate::year(date_egg), 
+    # change case in sex column using stringr
+    sex = str_to_lower(sex), 
+    # take first element of species column string using stringr and purrr
+    species = str_split(species, pattern = " ") %>% map(.,1) %>% unlist()) %>% 
+  # remove nas in sex column using dplyr
+  filter(!is.na(sex))
+```
+
+```{r}
+penguins_isotopes_tiny <- penguins_example %>% 
+  select(species, individual_id, carbon, nitrogen)
+
+```
+
+```{r}
+#| echo = FALSE
+penguins_isotopes_tiny %<>%
+  filter(!is.na(carbon), !is.na(nitrogen)) %>%
+  group_by(species) %>%
+  slice_head(n = 2) %>%
+  ungroup()
+
+knitr::kable(penguins_isotopes_tiny)
+```
+
+```{r}
+penguins_isotopes_tiny %<>% 
+  pivot_longer(cols = carbon:nitrogen, 
+               names_to = "isotope", 
+               values_to = "value") 
+
+```
+
+#### dplyr::group_by() & dplyr::summarise()
+
+Group by organises the data into groups, based on column values. This is useful for performing functions on each group, or summarising the data to calculate summary statistics
+
+```{r}
+#| echo = FALSE
+knitr::kable(penguins_isotopes_tiny)
+```
+
+```{r}
+#| message: false
+penguins_isotopes_tiny %<>%
+  group_by(species, isotope) %>% 
+  summarize(mean = mean(value),
+            sd =  sd(value)) 
+
+```
+
+```{r}
+#| echo = FALSE
+knitr::kable(penguins_isotopes_tiny)
+```
+
+#### tidyr::pivot_wider()
+
+Transform data from long to wide (observations across multiple columns)
+
+```{r}
+#| message: false
+penguins_isotopes_tiny %<>%
+  pivot_wider(id_cols = species, 
+              names_from = isotope, 
+              values_from=c(mean, sd)) 
+
+```
+
+```{r}
+#| echo = FALSE
+knitr::kable(penguins_isotopes_tiny)
+```
+
+#### dplyr joins
+
+There are lots of different ways to join multiple dataframes, using shared columns (e.g., an ID column). Here's an example using left_join(), which keeps all values in the left hand dataframe - in this case penguins_example.
+
+```{r}
+penguins_example %<>%
+  left_join(penguins_summary_isotopes,
+            by = join_by(species))
+
+glimpse(penguins_example)
+```
+
+
+# Summary
+
+We have shown a range of functions in R for changing the structure of your data. Hopefully, this has given an insight of how powerful the tidyverse is for efficient data manipulation. Importantly all of these processes are reproducible and limit the chances of us making errors in our workflow.
+
+If we've missed a function that you find useful, we'd love to hear what it is. Leave us a comment below!
+
+
+### Additional Resources
+
+-   Each tidyverse package has great documentation and useful cheatsheets, available via [the tidyverse website](https://www.tidyverse.org/)
+-   The book [R for Data Science](https://r4ds.hadley.nz/), which is available online for free, explains how to get your data into R, get it into the most useful structure, transform and visualize it.
+-   For helpful visualisations of how tidyverse functions transform data structures, check out [Garrick Aden-Buie's tidyexplain](https://www.garrickadenbuie.com/project/tidyexplain/)
+-   Liza Wood, now part of the Exeter Data Analytics Hub, has a great tutorial on the tidyverse [on her website](https://liza-wood.github.io/tidyverse_intro/index.html)
+
+### Acknowledgements
+
+We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.

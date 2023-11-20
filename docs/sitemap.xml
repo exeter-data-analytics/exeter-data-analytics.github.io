@@ -38,10 +38,14 @@
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts.html</loc>
-    <lastmod>2023-10-27T13:36:52.016Z</lastmod>
+    <lastmod>2023-11-20T10:11:24.049Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/presentations.html</loc>
     <lastmod>2023-10-27T13:36:52.356Z</lastmod>
+  </url>
+  <url>
+    <loc>https://exeter-data-analytics.github.io/posts/intro_to_tidy_data_manipulation/index.html</loc>
+    <lastmod>2023-11-20T10:11:25.908Z</lastmod>
   </url>
 </urlset>

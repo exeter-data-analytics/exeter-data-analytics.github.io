@@ -10,7 +10,1339 @@
 <atom:link href="https://exeter-data-analytics.github.io/posts.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Thu, 20 Apr 2023 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 10 Aug 2024 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>intRos: Tidy data manipulation</title>
+  <dc:creator>Alice Trevail</dc:creator>
+  <link>https://exeter-data-analytics.github.io/posts/intro_to_tidy_data_manipulation/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="outline" class="level1">
+<h1>Outline</h1>
+<p>The way we collect or download data can often be different to how we analyse them. For example, have you ever needed to work on a subset of your data, add new columns, or calculate summary values? There are good reasons to do this kind of data manipulation in a reproducible way: it’s less prone to errors, saves us time when repeating the process, and helps us to share our code with confidence. In this walkthrough, we’ll share some of our favourite tools for reproducible data manipulation in R and the tidyverse.</p>
+</section>
+<section id="prerequisites" class="level1">
+<h1>Prerequisites</h1>
+<ul>
+<li>Have R installed</li>
+<li>Be using R for your research</li>
+</ul>
+</section>
+<section id="learning-objectives" class="level1">
+<h1>Learning objectives</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>This introduction should allow you to:</strong></p>
+<ul>
+<li>Change the structure of your data using reproducible code</li>
+<li>Know where to learn more about tidyverse data manipulation</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="tidy-data-manipulation" class="level1">
+<h1>Tidy data manipulation</h1>
+<section id="why-manipulate-data-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="why-manipulate-data-in-r">Why manipulate data in R?</h3>
+<ul>
+<li><p>Reproducible</p></li>
+<li><p>Easy to update and re-use with new data</p></li>
+<li><p>Less prone to human error</p></li>
+<li><p>Can be quick, easy, and fun…</p></li>
+</ul>
+<p>Here’s an example of how we can use the tidyverse packages (&amp; janitor) to tidy, transform, and visualise the <a href="https://allisonhorst.github.io/palmerpenguins/articles/intro.html">palmer penguins data</a>:</p>
+<section id="penguin-morphometrics" class="level5">
+<h5 class="anchored" data-anchor-id="penguin-morphometrics">Penguin morphometrics</h5>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># load the tidyverse, and other useful packages</span></span>
+<span id="cb1-2">pacman<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">p_load</span>(flextable, palmerpenguins, </span>
+<span id="cb1-3">               janitor, magrittr, tidyverse) </span>
+<span id="cb1-4"></span>
+<span id="cb1-5">vars_measurements <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"culmen_length_mm"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"culmen_depth_mm"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"flipper_length_mm"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"body_mass_g"</span>)</span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># use pipe operative from magrittr</span></span>
+<span id="cb1-8">penguins_example <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> penguins_raw <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb1-9">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># column names to snake_case using janitor package</span></span>
+<span id="cb1-10">  janitor<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">clean_names</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb1-11">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># rename columns using dplyr</span></span>
+<span id="cb1-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rename</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">carbon =</span> delta_13_c_o_oo,</span>
+<span id="cb1-13">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nitrogen =</span> delta_15_n_o_oo) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb1-14">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># add new columns using dplyr</span></span>
+<span id="cb1-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb1-16">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># extract year using lubridate</span></span>
+<span id="cb1-17">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">year =</span> lubridate<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">year</span>(date_egg), </span>
+<span id="cb1-18">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># change case in sex column using stringr</span></span>
+<span id="cb1-19">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sex =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_to_lower</span>(sex), </span>
+<span id="cb1-20">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># take first element of species column string using stringr and purrr</span></span>
+<span id="cb1-21">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">species =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_split_i</span>(species, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pattern =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" "</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">i =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb1-22">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># remove nas in sex column using dplyr</span></span>
+<span id="cb1-23">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.na</span>(sex))</span>
+<span id="cb1-24"></span>
+<span id="cb1-25"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># plot data using ggplot</span></span>
+<span id="cb1-26"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(penguins_example, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> flipper_length_mm, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> body_mass_g, </span>
+<span id="cb1-27">                             <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># reorder sex using forcats</span></span>
+<span id="cb1-28">                             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fct_reorder2</span>(sex, flipper_length_mm, body_mass_g))) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-29">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_grid</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cols =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">vars</span>(species), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scales =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"free"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-30">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-31">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_smooth</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> lm)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-32">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_colour_viridis_d</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">option =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"magma"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">begin =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">end =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Sex"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-33">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-34">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">panel.border =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_rect</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>))</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_tidy_data_manipulation/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Sexual dimporphism in Palmer penguins</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="penguin-isotope-signatures" class="level5">
+<h5 class="anchored" data-anchor-id="penguin-isotope-signatures">Penguin isotope signatures</h5>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">penguins_summary_isotopes <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> penguins_example <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb2-2">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># change data format to long using tidyr</span></span>
+<span id="cb2-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_longer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cols =</span> carbon<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>nitrogen, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"isotope"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"value"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb2-4">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># group data using dplyr</span></span>
+<span id="cb2-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(species, isotope) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb2-6">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># summarise data for each group using dplyr</span></span>
+<span id="cb2-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarize</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mean =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(value, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> T),</span>
+<span id="cb2-8">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sd =</span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sd</span>(value, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> T)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb2-9">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># change data format to wide using tidyr</span></span>
+<span id="cb2-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_wider</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id_cols =</span> species, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_from =</span> isotope, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_from=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(mean, sd))</span>
+<span id="cb2-11"></span>
+<span id="cb2-12"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(penguins_example, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> carbon, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> nitrogen, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> species)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.6</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_errorbar</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> penguins_summary_isotopes, </span>
+<span id="cb2-15">                <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> mean_carbon, </span>
+<span id="cb2-16">                    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymax =</span> mean_nitrogen<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>sd_nitrogen, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymin =</span> mean_nitrogen<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>sd_nitrogen, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> species),</span>
+<span id="cb2-17">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">inherit.aes =</span> F, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-18">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_errorbar</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> penguins_summary_isotopes, </span>
+<span id="cb2-19">                <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> mean_nitrogen, </span>
+<span id="cb2-20">                    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmax =</span> mean_carbon<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>sd_carbon, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmin =</span> mean_carbon<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>sd_carbon, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> species), </span>
+<span id="cb2-21">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">inherit.aes =</span> F, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-22">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_colour_viridis_d</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">option =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mako"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">begin =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.75</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">end =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Species"</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-23">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-24">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">panel.border =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_rect</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>))</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_tidy_data_manipulation/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Isotope signatures among Palmer penguins</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="some-useful-functions" class="level3">
+<h3 class="anchored" data-anchor-id="some-useful-functions">Some useful functions</h3>
+<p>Here, we’ll dig into the functions used in the above example to see how we processed the data:</p>
+<section id="janitorclean_names" class="level4">
+<h4 class="anchored" data-anchor-id="janitorclean_names">janitor::clean_names()</h4>
+<p>Let’s remind ourselves of the original data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(penguins_raw)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 344
+Columns: 17
+$ studyName             &lt;chr&gt; "PAL0708", "PAL0708", "PAL0708", "PAL0708", "PAL…
+$ `Sample Number`       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 1…
+$ Species               &lt;chr&gt; "Adelie Penguin (Pygoscelis adeliae)", "Adelie P…
+$ Region                &lt;chr&gt; "Anvers", "Anvers", "Anvers", "Anvers", "Anvers"…
+$ Island                &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "Torgerse…
+$ Stage                 &lt;chr&gt; "Adult, 1 Egg Stage", "Adult, 1 Egg Stage", "Adu…
+$ `Individual ID`       &lt;chr&gt; "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", "N3A2", …
+$ `Clutch Completion`   &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "No", …
+$ `Date Egg`            &lt;date&gt; 2007-11-11, 2007-11-11, 2007-11-16, 2007-11-16,…
+$ `Culmen Length (mm)`  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34…
+$ `Culmen Depth (mm)`   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18…
+$ `Flipper Length (mm)` &lt;dbl&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190,…
+$ `Body Mass (g)`       &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 34…
+$ Sex                   &lt;chr&gt; "MALE", "FEMALE", "FEMALE", NA, "FEMALE", "MALE"…
+$ `Delta 15 N (o/oo)`   &lt;dbl&gt; NA, 8.94956, 8.36821, NA, 8.76651, 8.66496, 9.18…
+$ `Delta 13 C (o/oo)`   &lt;dbl&gt; NA, -24.69454, -25.33302, NA, -25.32426, -25.298…
+$ Comments              &lt;chr&gt; "Not enough blood for isotopes.", NA, NA, "Adult…</code></pre>
+</div>
+</div>
+<p>And now tidy up our column names into snake_case. (This isn’t part of the tidyverse, but it is too useful not to mention)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">penguins_example <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> penguins_raw <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-2">  janitor<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">clean_names</span>() </span>
+<span id="cb5-3"></span>
+<span id="cb5-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(penguins_example)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 344
+Columns: 17
+$ study_name        &lt;chr&gt; "PAL0708", "PAL0708", "PAL0708", "PAL0708", "PAL0708…
+$ sample_number     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1…
+$ species           &lt;chr&gt; "Adelie Penguin (Pygoscelis adeliae)", "Adelie Pengu…
+$ region            &lt;chr&gt; "Anvers", "Anvers", "Anvers", "Anvers", "Anvers", "A…
+$ island            &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "Torgersen", …
+$ stage             &lt;chr&gt; "Adult, 1 Egg Stage", "Adult, 1 Egg Stage", "Adult, …
+$ individual_id     &lt;chr&gt; "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", "N3A2", "N4A…
+$ clutch_completion &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "No", "No"…
+$ date_egg          &lt;date&gt; 2007-11-11, 2007-11-11, 2007-11-16, 2007-11-16, 200…
+$ culmen_length_mm  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
+$ culmen_depth_mm   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
+$ flipper_length_mm &lt;dbl&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
+$ body_mass_g       &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
+$ sex               &lt;chr&gt; "MALE", "FEMALE", "FEMALE", NA, "FEMALE", "MALE", "F…
+$ delta_15_n_o_oo   &lt;dbl&gt; NA, 8.94956, 8.36821, NA, 8.76651, 8.66496, 9.18718,…
+$ delta_13_c_o_oo   &lt;dbl&gt; NA, -24.69454, -25.33302, NA, -25.32426, -25.29805, …
+$ comments          &lt;chr&gt; "Not enough blood for isotopes.", NA, NA, "Adult not…</code></pre>
+</div>
+</div>
+</section>
+<section id="dplyrrename" class="level4">
+<h4 class="anchored" data-anchor-id="dplyrrename">dplyr::rename()</h4>
+<p>To rename a column</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">penguins_example <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&lt;&gt;%</span></span>
+<span id="cb7-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rename</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">carbon =</span> delta_13_c_o_oo,</span>
+<span id="cb7-3">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nitrogen =</span> delta_15_n_o_oo) </span>
+<span id="cb7-4"></span>
+<span id="cb7-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(penguins_example)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 344
+Columns: 17
+$ study_name        &lt;chr&gt; "PAL0708", "PAL0708", "PAL0708", "PAL0708", "PAL0708…
+$ sample_number     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1…
+$ species           &lt;chr&gt; "Adelie Penguin (Pygoscelis adeliae)", "Adelie Pengu…
+$ region            &lt;chr&gt; "Anvers", "Anvers", "Anvers", "Anvers", "Anvers", "A…
+$ island            &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "Torgersen", …
+$ stage             &lt;chr&gt; "Adult, 1 Egg Stage", "Adult, 1 Egg Stage", "Adult, …
+$ individual_id     &lt;chr&gt; "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", "N3A2", "N4A…
+$ clutch_completion &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "No", "No"…
+$ date_egg          &lt;date&gt; 2007-11-11, 2007-11-11, 2007-11-16, 2007-11-16, 200…
+$ culmen_length_mm  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
+$ culmen_depth_mm   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
+$ flipper_length_mm &lt;dbl&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
+$ body_mass_g       &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
+$ sex               &lt;chr&gt; "MALE", "FEMALE", "FEMALE", NA, "FEMALE", "MALE", "F…
+$ nitrogen          &lt;dbl&gt; NA, 8.94956, 8.36821, NA, 8.76651, 8.66496, 9.18718,…
+$ carbon            &lt;dbl&gt; NA, -24.69454, -25.33302, NA, -25.32426, -25.29805, …
+$ comments          &lt;chr&gt; "Not enough blood for isotopes.", NA, NA, "Adult not…</code></pre>
+</div>
+</div>
+</section>
+<section id="dplyrmutate" class="level4">
+<h4 class="anchored" data-anchor-id="dplyrmutate">dplyr::mutate()</h4>
+<p>To add a column</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">penguins_example <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&lt;&gt;%</span></span>
+<span id="cb9-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">year =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2007</span>)</span>
+<span id="cb9-3"></span>
+<span id="cb9-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(penguins_example)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 344
+Columns: 18
+$ study_name        &lt;chr&gt; "PAL0708", "PAL0708", "PAL0708", "PAL0708", "PAL0708…
+$ sample_number     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1…
+$ species           &lt;chr&gt; "Adelie Penguin (Pygoscelis adeliae)", "Adelie Pengu…
+$ region            &lt;chr&gt; "Anvers", "Anvers", "Anvers", "Anvers", "Anvers", "A…
+$ island            &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "Torgersen", …
+$ stage             &lt;chr&gt; "Adult, 1 Egg Stage", "Adult, 1 Egg Stage", "Adult, …
+$ individual_id     &lt;chr&gt; "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", "N3A2", "N4A…
+$ clutch_completion &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "No", "No"…
+$ date_egg          &lt;date&gt; 2007-11-11, 2007-11-11, 2007-11-16, 2007-11-16, 200…
+$ culmen_length_mm  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
+$ culmen_depth_mm   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
+$ flipper_length_mm &lt;dbl&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
+$ body_mass_g       &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
+$ sex               &lt;chr&gt; "MALE", "FEMALE", "FEMALE", NA, "FEMALE", "MALE", "F…
+$ nitrogen          &lt;dbl&gt; NA, 8.94956, 8.36821, NA, 8.76651, 8.66496, 9.18718,…
+$ carbon            &lt;dbl&gt; NA, -24.69454, -25.33302, NA, -25.32426, -25.29805, …
+$ comments          &lt;chr&gt; "Not enough blood for isotopes.", NA, NA, "Adult not…
+$ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
+</div>
+</div>
+</section>
+<section id="dplyrmutate-1" class="level4">
+<h4 class="anchored" data-anchor-id="dplyrmutate-1">dplyr::mutate()</h4>
+<p>To add a column</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">penguins_example <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&lt;&gt;%</span></span>
+<span id="cb11-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">year =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"unknown"</span>)</span>
+<span id="cb11-3"></span>
+<span id="cb11-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(penguins_example)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 344
+Columns: 18
+$ study_name        &lt;chr&gt; "PAL0708", "PAL0708", "PAL0708", "PAL0708", "PAL0708…
+$ sample_number     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1…
+$ species           &lt;chr&gt; "Adelie Penguin (Pygoscelis adeliae)", "Adelie Pengu…
+$ region            &lt;chr&gt; "Anvers", "Anvers", "Anvers", "Anvers", "Anvers", "A…
+$ island            &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "Torgersen", …
+$ stage             &lt;chr&gt; "Adult, 1 Egg Stage", "Adult, 1 Egg Stage", "Adult, …
+$ individual_id     &lt;chr&gt; "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", "N3A2", "N4A…
+$ clutch_completion &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "No", "No"…
+$ date_egg          &lt;date&gt; 2007-11-11, 2007-11-11, 2007-11-16, 2007-11-16, 200…
+$ culmen_length_mm  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
+$ culmen_depth_mm   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
+$ flipper_length_mm &lt;dbl&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
+$ body_mass_g       &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
+$ sex               &lt;chr&gt; "MALE", "FEMALE", "FEMALE", NA, "FEMALE", "MALE", "F…
+$ nitrogen          &lt;dbl&gt; NA, 8.94956, 8.36821, NA, 8.76651, 8.66496, 9.18718,…
+$ carbon            &lt;dbl&gt; NA, -24.69454, -25.33302, NA, -25.32426, -25.29805, …
+$ comments          &lt;chr&gt; "Not enough blood for isotopes.", NA, NA, "Adult not…
+$ year              &lt;chr&gt; "unknown", "unknown", "unknown", "unknown", "unknown…</code></pre>
+</div>
+</div>
+</section>
+<section id="lubridateyear" class="level4">
+<h4 class="anchored" data-anchor-id="lubridateyear">lubridate::year()</h4>
+<p>Lubridate is great for working with dates and times. Here, we want to extract year from a column of date</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">penguins_example <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&lt;&gt;%</span></span>
+<span id="cb13-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">year =</span> lubridate<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">year</span>(date_egg))</span>
+<span id="cb13-3"></span>
+<span id="cb13-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(penguins_example)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 344
+Columns: 18
+$ study_name        &lt;chr&gt; "PAL0708", "PAL0708", "PAL0708", "PAL0708", "PAL0708…
+$ sample_number     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1…
+$ species           &lt;chr&gt; "Adelie Penguin (Pygoscelis adeliae)", "Adelie Pengu…
+$ region            &lt;chr&gt; "Anvers", "Anvers", "Anvers", "Anvers", "Anvers", "A…
+$ island            &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "Torgersen", …
+$ stage             &lt;chr&gt; "Adult, 1 Egg Stage", "Adult, 1 Egg Stage", "Adult, …
+$ individual_id     &lt;chr&gt; "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", "N3A2", "N4A…
+$ clutch_completion &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "No", "No"…
+$ date_egg          &lt;date&gt; 2007-11-11, 2007-11-11, 2007-11-16, 2007-11-16, 200…
+$ culmen_length_mm  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
+$ culmen_depth_mm   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
+$ flipper_length_mm &lt;dbl&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
+$ body_mass_g       &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
+$ sex               &lt;chr&gt; "MALE", "FEMALE", "FEMALE", NA, "FEMALE", "MALE", "F…
+$ nitrogen          &lt;dbl&gt; NA, 8.94956, 8.36821, NA, 8.76651, 8.66496, 9.18718,…
+$ carbon            &lt;dbl&gt; NA, -24.69454, -25.33302, NA, -25.32426, -25.29805, …
+$ comments          &lt;chr&gt; "Not enough blood for isotopes.", NA, NA, "Adult not…
+$ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
+</div>
+</div>
+</section>
+<section id="stringrstr_to_lower" class="level4">
+<h4 class="anchored" data-anchor-id="stringrstr_to_lower">stringr::str_to_lower()</h4>
+<p>Change the contents of a column to lower case</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">penguins_example <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&lt;&gt;%</span></span>
+<span id="cb15-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sex =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_to_lower</span>(sex))</span>
+<span id="cb15-3"></span>
+<span id="cb15-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(penguins_example)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 344
+Columns: 18
+$ study_name        &lt;chr&gt; "PAL0708", "PAL0708", "PAL0708", "PAL0708", "PAL0708…
+$ sample_number     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1…
+$ species           &lt;chr&gt; "Adelie Penguin (Pygoscelis adeliae)", "Adelie Pengu…
+$ region            &lt;chr&gt; "Anvers", "Anvers", "Anvers", "Anvers", "Anvers", "A…
+$ island            &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "Torgersen", …
+$ stage             &lt;chr&gt; "Adult, 1 Egg Stage", "Adult, 1 Egg Stage", "Adult, …
+$ individual_id     &lt;chr&gt; "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", "N3A2", "N4A…
+$ clutch_completion &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "No", "No"…
+$ date_egg          &lt;date&gt; 2007-11-11, 2007-11-11, 2007-11-16, 2007-11-16, 200…
+$ culmen_length_mm  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
+$ culmen_depth_mm   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
+$ flipper_length_mm &lt;dbl&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
+$ body_mass_g       &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
+$ sex               &lt;chr&gt; "male", "female", "female", NA, "female", "male", "f…
+$ nitrogen          &lt;dbl&gt; NA, 8.94956, 8.36821, NA, 8.76651, 8.66496, 9.18718,…
+$ carbon            &lt;dbl&gt; NA, -24.69454, -25.33302, NA, -25.32426, -25.29805, …
+$ comments          &lt;chr&gt; "Not enough blood for isotopes.", NA, NA, "Adult not…
+$ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
+</div>
+</div>
+</section>
+<section id="dplyrselect" class="level4">
+<h4 class="anchored" data-anchor-id="dplyrselect">dplyr::select()</h4>
+<p>Keep certain columns</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">penguins_tiny <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> penguins_example <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb17-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(individual_id, sex, body_mass_g)</span>
+<span id="cb17-3"></span>
+<span id="cb17-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(penguins_tiny)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 344
+Columns: 3
+$ individual_id &lt;chr&gt; "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", "N3A2", "N4A1", …
+$ sex           &lt;chr&gt; "male", "female", "female", NA, "female", "male", "femal…
+$ body_mass_g   &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, 4250…</code></pre>
+</div>
+</div>
+<p>Remove certain columns</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">penguins_tiny2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> penguins_example <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb19-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(study_name, sample_number, region, comments))</span>
+<span id="cb19-3"></span>
+<span id="cb19-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(penguins_tiny2)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 344
+Columns: 14
+$ species           &lt;chr&gt; "Adelie Penguin (Pygoscelis adeliae)", "Adelie Pengu…
+$ island            &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "Torgersen", …
+$ stage             &lt;chr&gt; "Adult, 1 Egg Stage", "Adult, 1 Egg Stage", "Adult, …
+$ individual_id     &lt;chr&gt; "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", "N3A2", "N4A…
+$ clutch_completion &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "No", "No"…
+$ date_egg          &lt;date&gt; 2007-11-11, 2007-11-11, 2007-11-16, 2007-11-16, 200…
+$ culmen_length_mm  &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
+$ culmen_depth_mm   &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
+$ flipper_length_mm &lt;dbl&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
+$ body_mass_g       &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
+$ sex               &lt;chr&gt; "male", "female", "female", NA, "female", "male", "f…
+$ nitrogen          &lt;dbl&gt; NA, 8.94956, 8.36821, NA, 8.76651, 8.66496, 9.18718,…
+$ carbon            &lt;dbl&gt; NA, -24.69454, -25.33302, NA, -25.32426, -25.29805, …
+$ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
+</div>
+</div>
+</section>
+<section id="dplyrfilter" class="level4">
+<h4 class="anchored" data-anchor-id="dplyrfilter">dplyr::filter()</h4>
+<p>Filter the rows of a dataframe by different criteria</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">individual_id</th>
+<th style="text-align: left;">sex</th>
+<th style="text-align: right;">body_mass_g</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">N1A1</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">3750</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">N1A2</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">3800</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">N2A1</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">3250</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">N2A2</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">N3A1</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">3450</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">N3A2</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">3650</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">N4A1</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">3625</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">N4A2</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">4675</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">N5A1</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">3475</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">N5A2</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">4250</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">penguins_tiny <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&lt;&gt;%</span></span>
+<span id="cb21-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.na</span>(sex))</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">individual_id</th>
+<th style="text-align: left;">sex</th>
+<th style="text-align: right;">body_mass_g</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">N1A1</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">3750</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">N1A2</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">3800</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">N2A1</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">3250</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">N3A1</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">3450</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">N3A2</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">3650</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">N4A1</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">3625</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">N4A2</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">4675</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="tidyrpivot_longer" class="level4">
+<h4 class="anchored" data-anchor-id="tidyrpivot_longer">tidyr::pivot_longer()</h4>
+<p>Transform data from wide to long (each observation in a single row)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">penguins_isotopes_tiny <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> penguins_example <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb22-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(species, individual_id, carbon, nitrogen)</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">species</th>
+<th style="text-align: left;">individual_id</th>
+<th style="text-align: right;">carbon</th>
+<th style="text-align: right;">nitrogen</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">N1A2</td>
+<td style="text-align: right;">-24.69454</td>
+<td style="text-align: right;">8.94956</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">N2A1</td>
+<td style="text-align: right;">-25.33302</td>
+<td style="text-align: right;">8.36821</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">N61A1</td>
+<td style="text-align: right;">-24.30229</td>
+<td style="text-align: right;">9.03935</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">N61A2</td>
+<td style="text-align: right;">-24.23592</td>
+<td style="text-align: right;">8.92069</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">N31A1</td>
+<td style="text-align: right;">-25.51390</td>
+<td style="text-align: right;">7.99300</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">N31A2</td>
+<td style="text-align: right;">-25.39369</td>
+<td style="text-align: right;">8.14756</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">penguins_isotopes_tiny <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&lt;&gt;%</span> </span>
+<span id="cb23-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_longer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cols =</span> carbon<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>nitrogen, </span>
+<span id="cb23-3">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"isotope"</span>, </span>
+<span id="cb23-4">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"value"</span>) </span></code></pre></div>
+</div>
+</section>
+<section id="dplyrgroup_by-dplyrsummarise" class="level4">
+<h4 class="anchored" data-anchor-id="dplyrgroup_by-dplyrsummarise">dplyr::group_by() &amp; dplyr::summarise()</h4>
+<p>Group by organises the data into groups, based on column values. This is useful for performing functions on each group, or summarising the data to calculate summary statistics</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">species</th>
+<th style="text-align: left;">individual_id</th>
+<th style="text-align: left;">isotope</th>
+<th style="text-align: right;">value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">N1A2</td>
+<td style="text-align: left;">carbon</td>
+<td style="text-align: right;">-24.69454</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">N1A2</td>
+<td style="text-align: left;">nitrogen</td>
+<td style="text-align: right;">8.94956</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">N2A1</td>
+<td style="text-align: left;">carbon</td>
+<td style="text-align: right;">-25.33302</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">N2A1</td>
+<td style="text-align: left;">nitrogen</td>
+<td style="text-align: right;">8.36821</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">N61A1</td>
+<td style="text-align: left;">carbon</td>
+<td style="text-align: right;">-24.30229</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">N61A1</td>
+<td style="text-align: left;">nitrogen</td>
+<td style="text-align: right;">9.03935</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">N61A2</td>
+<td style="text-align: left;">carbon</td>
+<td style="text-align: right;">-24.23592</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">N61A2</td>
+<td style="text-align: left;">nitrogen</td>
+<td style="text-align: right;">8.92069</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">N31A1</td>
+<td style="text-align: left;">carbon</td>
+<td style="text-align: right;">-25.51390</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">N31A1</td>
+<td style="text-align: left;">nitrogen</td>
+<td style="text-align: right;">7.99300</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">N31A2</td>
+<td style="text-align: left;">carbon</td>
+<td style="text-align: right;">-25.39369</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">N31A2</td>
+<td style="text-align: left;">nitrogen</td>
+<td style="text-align: right;">8.14756</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1">penguins_isotopes_tiny <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&lt;&gt;%</span></span>
+<span id="cb24-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(species, isotope) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb24-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarize</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mean =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(value),</span>
+<span id="cb24-4">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sd =</span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sd</span>(value)) </span></code></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">species</th>
+<th style="text-align: left;">isotope</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">carbon</td>
+<td style="text-align: right;">-25.013780</td>
+<td style="text-align: right;">0.4514735</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: left;">nitrogen</td>
+<td style="text-align: right;">8.658885</td>
+<td style="text-align: right;">0.4110765</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">carbon</td>
+<td style="text-align: right;">-24.269105</td>
+<td style="text-align: right;">0.0469307</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: left;">nitrogen</td>
+<td style="text-align: right;">8.980020</td>
+<td style="text-align: right;">0.0839053</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">carbon</td>
+<td style="text-align: right;">-25.453795</td>
+<td style="text-align: right;">0.0850013</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: left;">nitrogen</td>
+<td style="text-align: right;">8.070280</td>
+<td style="text-align: right;">0.1092904</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="tidyrpivot_wider" class="level4">
+<h4 class="anchored" data-anchor-id="tidyrpivot_wider">tidyr::pivot_wider()</h4>
+<p>Transform data from long to wide (observations across multiple columns)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1">penguins_isotopes_tiny <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&lt;&gt;%</span></span>
+<span id="cb25-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_wider</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id_cols =</span> species, </span>
+<span id="cb25-3">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_from =</span> isotope, </span>
+<span id="cb25-4">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_from=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(mean, sd)) </span></code></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">species</th>
+<th style="text-align: right;">mean_carbon</th>
+<th style="text-align: right;">mean_nitrogen</th>
+<th style="text-align: right;">sd_carbon</th>
+<th style="text-align: right;">sd_nitrogen</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Adelie</td>
+<td style="text-align: right;">-25.01378</td>
+<td style="text-align: right;">8.658885</td>
+<td style="text-align: right;">0.4514735</td>
+<td style="text-align: right;">0.4110765</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chinstrap</td>
+<td style="text-align: right;">-24.26910</td>
+<td style="text-align: right;">8.980020</td>
+<td style="text-align: right;">0.0469307</td>
+<td style="text-align: right;">0.0839053</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gentoo</td>
+<td style="text-align: right;">-25.45379</td>
+<td style="text-align: right;">8.070280</td>
+<td style="text-align: right;">0.0850013</td>
+<td style="text-align: right;">0.1092904</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="dplyr-joins" class="level4">
+<h4 class="anchored" data-anchor-id="dplyr-joins">dplyr joins</h4>
+<p>There are lots of different ways to join multiple dataframes, using shared columns (e.g., an ID column). Here’s an example using left_join(), which keeps all values in the left hand dataframe - in this case penguins_example.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1">penguins_example <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&lt;&gt;%</span></span>
+<span id="cb26-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">left_join</span>(penguins_summary_isotopes,</span>
+<span id="cb26-3">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">join_by</span>(species))</span>
+<span id="cb26-4"></span>
+<span id="cb26-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(penguins_example)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 333
+Columns: 22
+$ study_name        &lt;chr&gt; "PAL0708", "PAL0708", "PAL0708", "PAL0708", "PAL0708…
+$ sample_number     &lt;dbl&gt; 1, 2, 3, 5, 6, 7, 8, 13, 14, 15, 16, 17, 18, 19, 20,…
+$ species           &lt;chr&gt; "Adelie", "Adelie", "Adelie", "Adelie", "Adelie", "A…
+$ region            &lt;chr&gt; "Anvers", "Anvers", "Anvers", "Anvers", "Anvers", "A…
+$ island            &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "Torgersen", …
+$ stage             &lt;chr&gt; "Adult, 1 Egg Stage", "Adult, 1 Egg Stage", "Adult, …
+$ individual_id     &lt;chr&gt; "N1A1", "N1A2", "N2A1", "N3A1", "N3A2", "N4A1", "N4A…
+$ clutch_completion &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "No", "No", "Yes"…
+$ date_egg          &lt;date&gt; 2007-11-11, 2007-11-11, 2007-11-16, 2007-11-16, 200…
+$ culmen_length_mm  &lt;dbl&gt; 39.1, 39.5, 40.3, 36.7, 39.3, 38.9, 39.2, 41.1, 38.6…
+$ culmen_depth_mm   &lt;dbl&gt; 18.7, 17.4, 18.0, 19.3, 20.6, 17.8, 19.6, 17.6, 21.2…
+$ flipper_length_mm &lt;dbl&gt; 181, 186, 195, 193, 190, 181, 195, 182, 191, 198, 18…
+$ body_mass_g       &lt;dbl&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3200, 3800…
+$ sex               &lt;chr&gt; "male", "female", "female", "female", "male", "femal…
+$ nitrogen          &lt;dbl&gt; NA, 8.94956, 8.36821, 8.76651, 8.66496, 9.18718, 9.4…
+$ carbon            &lt;dbl&gt; NA, -24.69454, -25.33302, -25.32426, -25.29805, -25.…
+$ comments          &lt;chr&gt; "Not enough blood for isotopes.", NA, NA, NA, NA, "N…
+$ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…
+$ mean_carbon       &lt;dbl&gt; -25.81356, -25.81356, -25.81356, -25.81356, -25.8135…
+$ mean_nitrogen     &lt;dbl&gt; 8.859398, 8.859398, 8.859398, 8.859398, 8.859398, 8.…
+$ sd_carbon         &lt;dbl&gt; 0.5871106, 0.5871106, 0.5871106, 0.5871106, 0.587110…
+$ sd_nitrogen       &lt;dbl&gt; 0.4282233, 0.4282233, 0.4282233, 0.4282233, 0.428223…</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="summary" class="level1">
+<h1>Summary</h1>
+<p>We have shown a range of functions in R for changing the structure of your data. Hopefully, this has given an insight of how powerful the tidyverse is for efficient data manipulation. Importantly all of these processes are reproducible and limit the chances of us making errors in our workflow.</p>
+<p>If we’ve missed a function that you find useful, we’d love to hear what it is. Leave us a comment below!</p>
+<section id="additional-resources" class="level3">
+<h3 class="anchored" data-anchor-id="additional-resources">Additional Resources</h3>
+<ul>
+<li>Each tidyverse package has great documentation and useful cheatsheets, available via <a href="https://www.tidyverse.org/">the tidyverse website</a></li>
+<li>The book <a href="https://r4ds.hadley.nz/">R for Data Science</a>, which is available online for free, explains how to get your data into R, get it into the most useful structure, transform and visualize it.</li>
+<li>For helpful visualisations of how tidyverse functions transform data structures, check out <a href="https://www.garrickadenbuie.com/project/tidyexplain/">Garrick Aden-Buie’s tidyexplain</a></li>
+<li>Liza Wood, now part of the Exeter Data Analytics Hub, has a great tutorial on the tidyverse <a href="https://liza-wood.github.io/tidyverse_intro/index.html">on her website</a></li>
+</ul>
+</section>
+<section id="acknowledgements" class="level3">
+<h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
+<p>We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>tidyverse</category>
+  <category>R</category>
+  <guid>https://exeter-data-analytics.github.io/posts/intro_to_tidy_data_manipulation/index.html</guid>
+  <pubDate>Sat, 10 Aug 2024 23:00:00 GMT</pubDate>
+</item>
 <item>
   <title>intRos: Installing, R, RStudio, and Git</title>
   <dc:creator>Daniel Padfield</dc:creator>
