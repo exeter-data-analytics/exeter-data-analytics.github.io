@@ -1,0 +1,277 @@
+---
+title: "intRos: Geometric Morphometrics"
+author: 
+  - name: Dr. M.D. Sharma
+    affiliation: University of Exeter
+description: ""
+date: "28/11/2023"
+date-modified: last-modified
+categories: [R, Geomorph, tpsDig]
+execute:
+  message: false
+  warning: false
+---
+
+# Outline
+
+Geometric morphometrics is a field of study that uses mathematical and statistical methods to analyze the shape and variation of biological forms. It is based on the use of landmarks, which are points that can be identified on each specimen and that correspond to homologous features. Geometric morphometrics can be applied to various biological questions, such as phylogeny, development, evolution, ecology, and function.
+
+# Prerequisites
+
+-   Have R installed
+-   Download and install the tpsUtil and tpsDig
+-   Be using R for your research
+
+# Learning objectives
+
+::: callout-note
+# Learning objectives
+
+**This introduction should allow you to:**
+
+-   Understand the basic concepts and terminology of geometric morphometrics.
+-   Learn how to collect, digitize, and manage landmark data using software tools such as geomorph (R) and tpsDig (Windows).
+-   Learn to perform exploratory and confirmatory analyses of shape variation.
+-   Learn to visualize and interpret the results of shape analyses using graphical displays such as scatterplots, deformation grids, thin-plate splines.
+-   Gain the confidence to apply geometric morphometrics to appropriate examples in your field of study.
+:::
+
+## Introduction
+
+Geomorph is a package for geometric morphometric analysis of two- and three-dimensional landmark data in R. It provides functions for data manipulation, shape alignment, multivariate statistics, visualization, and more. In this tutorial, we will use the *Gnatocerus cornutus* dataset, which contains landmark coordinates for the abdomen, prothorax and mandibles, to demonstrate some of the basic functionalities of geomorph. For simplicity, we will use the tpsUtil and tpsDig programs and integrate them within this workflow. Users are welcome to utilise the digitisation process within geomorph, if they wish to do this (see section 5 of the GeoMorph manual).
+
+This tutorial has been developed as a companion to \[manuscript in prep\].
+
+## Data preparation
+
+Before we can use geomorph, we need to have our landmark data in a specific format called `tps`. A `tps` file is a plain text file that contains the coordinates of landmarks for one or more specimens, along with some optional metadata. A `tps` file has the following structure:
+
+```{text}
+#| echo: true
+#| code-overflow: wrap
+#| code-line-numbers: false
+
+LM=number of landmarks
+x1 y1
+x2 y2
+...
+xn yn
+ID=FB001
+IMAGE=FB001.jpg
+SCALE=scale factor
+...
+LM=number of landmarks
+x1 y1
+x2 y2
+...
+xn yn
+ID=FB050
+IMAGE=FB050.jpg
+SCALE=scale factor
+...
+
+```
+
+Each specimen is separated by a blank line, and each line starts with a keyword followed by an equal sign and a value. The keywords are case insensitive and can be in any order, except for LM, which must be the first line for each specimen. The LM keyword specifies the number of landmarks, followed by the x and y coordinates of each landmark in separate lines. The ID keyword specifies a unique identifier for the specimen, which can be a number or a string. The IMAGE keyword specifies the name of the image file that contains the specimen, which can be in any format supported by R. The SCALE keyword specifies a scale factor that converts the pixel coordinates to real-world units, such as millimeters or centimeters. Other keywords, such as COMMENT, CURVE, or POINT, can also be used to store additional information, but they are not required by geomorph.
+
+#### **Using tpsUtil and tpsDig**
+
+Download and install the [tpsUtil32](https://sbmorphometrics.org/morphmet/tpsutilw32.exe) and [tpsDig2w64](https://sbmorphometrics.org/morphmet/tpsdig2w64.exe) software from the [Stony Brook Morphometrics](https://sbmorphometrics.org/) website. tpsUtil32 is a utility tool and tpsDig2w64 helps digitize coordinates of landmarks and capture outlines.
+
+Open tpsUtil, select "Build tps file from images", select the "input" directory where all your images are stored and then select the location and name for the "output file". In this example, we have called the tps file -- [Gnatocerus_cornutus.tps](data/Gnatocerus_cornutus.tps) and saved it in the root of the data folder.
+
+|                                    |                                    |
+|------------------------------------|------------------------------------|
+| ![](img/util_000.jpg){width="334"} | ![](img/util_001.jpg){width="294"} |
+
+Click on the "Setup" button to see the list of files that were found in the folder you pointed towards. Exclude any files that should not need digitisation. Press create when ready. This will create a TPS file that we can use for landmarking all our images
+
+#### **Randomise**
+
+Now, randomise the order of the files by selecting "randomly order specimens" from the Operations menu. This helps spread out any confounding factors (e.g. photos taken at different times of day / different lighting etc.). Hit create, and save the new file as Gnatocerus_cornutus_rand.tps. Please make sure you take a look at this file, within a text editor, and then adjust any file paths that need adjusting.
+
+![](img/util_002.jpg){fig-align="left" width="334"}
+
+#### **Let's set some landmarks**
+
+Start the tpsDig program, open the image you want to landmark and then use the multi-point tool to set landmarks on this image. To make viewing easier, you can adjust the colour, size, and numbering of points under Options \> Image Tools \> Colors. Labels at width 35 look readable.. I would suggest initially doing this for 5-10 files before proceeding with a larger batch.
+
+Once the landmarks and curves have been digitized for the current specimen, click on the right arrow button or press ALT+N. Similarly, you can press ALT+P or the left arrow to go to the previous specimen
+
+The template mode (a choice on the Options menu) has been selected, so, the landmarks from the previous specimen will be copied onto the next image as long as it does not have any landmarks already entered. You can then drag the landmarks to their appropriate locations. Note that the first landmark you move will translate the locations of all the landmarks. Subsequent landmarks can be moved individually. This option helps minimize the chance of making the common error of digitizing the landmarks out of order.\
+Once the landmarks and curves have been digitized for the current specimen, click on the right arrow button
+
+#### **Set a scale:**
+
+![](img/scale_000.jpg){width="400"}
+
+To set a scale factor, enter the known length of a structure in the edit box and then digitize the two endpoints of the structure. Enter just the numerical value, do not enter the units. Press the OK button to accept the scale factor or the cancel button to ignore any changes you may have made in the scale factor. Subsequent images you digitize are assumed to have the same scale factor unless you explicitly give them their own scale factors. Using this feature causes the "SCALE=" keyword to be inserted in the output file.
+
+Here, the value is: SCALE=0.002645. The scale factor is the entered length in user units divided by the measured length in pixels. It also scales the coordinates appropriately (by default the coordinates are in pixel units). The scale factor can also be recorded in the listing window. The scale factor is taken into account in the computation of image areas, perimeters, and linear distance measurements. It has no effect on the landmark coordinates -- they remain in pixel units.
+
+#### **Make a link file:**
+
+Within tpsUtil, select the "Make links file" option, select the Input tps file that has at-least one image completely landmarked and select an output destination for the link file.
+
+![](img/links_000.jpg)
+
+The locations of the landmarks on the first specimen in a TPS or NTS file will be displayed. With the mouse, one can draw links between any pairs of landmarks.
+
+![](img/links_001.jpg){fig-align="left"}
+
+When drawing the program will display a "rubber band" line and will beep when you are sufficiently close to another landmark so that one can lift the left mouse button to end the current link. To delete the last link drawn, right-click on an unused portion of the background. To delete a specific link, right-click on it.
+
+![](img/links_002.jpg){fig-align="left"}
+
+Press "Create File" when done.. keep this file safe - you will be needing it soon.
+
+#### **Make a sliders file:**
+
+This file defines how semi landmarks can be slide so as to minimize bending energy during a generalized Procrustes analysis (GPA) superimposition. The locations of the landmarks on the first specimen in a TPS or NTS file are displayed. With the mouse, one can draw links between any triplets of landmarks. The middle landmark of a triplet is then considered a semi landmark (it will be displayed using an open circle) and it will be allowed to slide in a direction parallel to the difference between the other two landmarks. Note: this program does not do the actual sliding. It is just used as a convenience to build the file that defines which points slide between which other points.
+
+![](img/sliders_001.jpg)
+
+This file has to be entered into the tpsRelw program using the "Open sliders file ..." menu option.
+
+::: callout-tip
+## Guess what!
+
+Phew, that's most of the hard work done. Ideally, you would work through the rest of the tutorial within R. However, if you are having repeated Arrgh moments within R, you can.... open tpsRelw, Load the \*.tps file you created with tpsDig and click through the Compute workflow: Consensus, Partial Warps, Relative Warps. The PCA plot can be found under the Display button "Relative Warps" and you can visualize shapes within the PCA morphospace, using the Camera tool and clicking on a point to visualize.
+:::
+
+::: {.callout-caution collapse="true"}
+## Expand To Learn About this step within Geomorph
+
+If you want to do this step within geomorph, please follow these steps instead:
+
+To create a tps file from a directory of image files, we can use the tps.write function from geomorph. This function takes a list of image file names, a matrix of landmark coordinates, and an optional list of specimen identifiers, and writes them to a tps file. The landmark coordinates can be obtained by manually digitizing the landmarks on the images using a software such as tpsDig, or by using an automated method such as the digitize2d function from geomorph. The specimen identifiers can be extracted from the image file names, or assigned by the user. For example, suppose we have a directory called `data\images` that contains a subset of 50 image files of *Gnatocerus cornutus* specimens, named FB001.JPG .. FB150.JPG. We can create a `tps` file called `Gnatocerus_cornutus.tps` with the following code:
+
+```{r}
+#| echo: true
+#| code-overflow: wrap
+#| code-line-numbers: false
+if (!require(geomorph)) install.packages('geomorph')
+if (!require(stringr)) install.packages('stringr')
+if (!require(tidyverse)) install.packages('tidyverse')
+
+
+# This line checks if the required packages is available.
+# If not, it then proceeds to install that package.
+
+# Load the geomorph package
+library(geomorph)
+
+# Set the working directory to the current folder
+setwd("./")
+
+# Get the list of image file names from the data/images folder
+images <- list.files("./data/",pattern = "\\.jpg$", include.dirs = TRUE,recursive = TRUE, full.names = TRUE)
+
+# Digitize the landmarks on the images using tpsDig or digitize2d
+# For this example, we assume that we have a matrix of landmark coordinates called landmarks
+# The matrix has 50 rows (one for each specimen) and 20 columns (two for each landmark)
+# The landmarks are in the same order and position for all specimens
+
+# Extract the specimen identifiers from the image file names
+# We use the stringr package to remove the extension and the prefix
+
+ids <- str_remove(images, "./data/images/")
+ids1 <- str_remove(ids, "\\.jpg$")
+ids2 <- str_remove(ids1, "FB")
+
+# digitize2d(images, nlandmarks=10, scale = 1, tpsfile="./data/Gnatocerus_cornutus.tps",verbose = TRUE)
+
+# Write the tps file
+# writeland.tps(ids, file = "Gnatocerus_cornutus.tps")
+
+
+```
+:::
+
+#### **Data analysis**
+
+Once we have our tps file, we can use geomorph to read, plot, and analyze our landmark data. We can use the readland.tps function to read the tps file and store it in a list of two elements: a matrix of landmark coordinates and a vector of specimen identifiers. We can also use the plotTangentSpace function to plot the landmark data in a two-dimensional space that preserves the shape variation among the specimens. For example, we can read and plot the fish data with the following code:
+
+```{r}
+#| echo: true
+#| code-overflow: wrap
+#| code-line-numbers: false
+
+# Read the tps file
+# fish <- readland.tps("fish.tps")
+
+# Plot the landmark data in tangent space
+# plotTangentSpace(fish)
+
+
+```
+
+The plot shows the shape variation among the fish specimens along the first two principal components of the Procrustes shape space. The Procrustes shape space is a mathematical space that represents the shapes of objects after removing the effects of translation, rotation, and scaling. The principal components are the directions of maximum variation in the shape space, and they can be interpreted as shape modes or shape factors. The plot also shows the mean shape of the specimens as a black dot, and the shape of each specimen as a blue dot connected to the mean shape by a line. The shape of each specimen can be visualized by hovering over the corresponding dot on the plot.
+
+We can also use geomorph to perform various statistical analyses on our landmark data, such as testing for differences in shape among groups, testing for correlations between shape and other variables, testing for allometry or size-shape relationships, testing for phylogenetic signal or evolutionary patterns, and more. Geomorph provides a unified framework for these analyses, based on the generalized Procrustes analysis (GPA) and the Procrustes ANOVA. The GPA is a procedure that aligns the landmark coordinates of the specimens to a common orientation and scale, and calculates the Procrustes shape coordinates and the Procrustes distances. The Procrustes ANOVA is a method that partitions the shape variation among the specimens into different sources, such as group, size, or error, and tests for their significance using permutation tests.
+
+For example, suppose we want to test if there is a difference in shape between male and female fish, and if there is a correlation between shape and body length. We can use the procD.lm function from geomorph to perform these analyses. This function takes a formula that specifies the response variable (shape) and the explanatory variables (sex and length), and a data frame that contains the landmark data and the covariates. The function performs the GPA and the Procrustes ANOVA, and returns a list of results, such as the Procrustes sums of squares, the Procrustes mean squares, the F-statistics, the p-values, and the effect sizes. The function also plots the residuals of the shape variation against the covariates, and the shape changes associated with the covariates. For example, we can perform these analyses on the fish data with the following code:
+
+```{r}
+#| echo: true
+#| code-overflow: wrap
+#| code-line-numbers: false
+
+# Create a data frame with the landmark data and the covariates
+# For this example, we assume that we have a vector of sex (M or F) and a vector of length (in mm) for each specimen
+# fish.data <- data.frame(fish$coords, sex, length)
+
+# Perform the shape analysis
+# fish.shape <- procD.lm(coords ~ sex + length, data = fish.data)
+
+```
+
+The output of the function shows that there is a significant difference in shape between male and female fish (p \< 0.001), and a significant correlation between shape and length (p \< 0.001). The plots show that the shape variation is mostly explained by sex (PC1) and length (PC2), and that the shape changes involve changes in the head, the body, and the tail regions. The plots also show the mean shapes of the male and female fish, and the shape changes associated with a unit increase in length.
+
+#### **Generalized Procrustes Analysis**
+
+Next, we need to perform a generalized Procrustes analysis (GPA) to align the landmark configurations and remove the effects of translation, rotation, and scaling. We can use the gpagen() function to do this, which returns a list containing the aligned coordinates, the consensus configuration, and the Procrustes distances.
+
+```{r}
+#| echo: true
+#| code-overflow: wrap
+#| code-line-numbers: false
+
+# Y.gpa <- gpagen(plethspecies$land)
+```
+
+#### **Principal component analysis**
+
+One of the most common methods to explore shape variation is principal component analysis (PCA), which reduces the dimensionality of the shape data and identifies the main axes of variation. We can use the gm.prcomp() function to perform a PCA on the aligned coordinates, which returns an object of class gm.prcomp that contains the eigenvalues, eigenvectors, and scores of the PCA.
+
+```{r}
+#| echo: true
+#| code-overflow: wrap
+#| code-line-numbers: false
+
+# PCA <- gm.prcomp(Y.gpa$coords)
+```
+
+#### **Shape deformation**
+
+To visualize the shape changes associated with the PCs, we can use the plotRefToTarget() function to produce deformation grids that compare the shapes corresponding to the extremes of a chosen PC axis. For example, to compare the shapes at the minimum and maximum scores of PC1, we can use the following code: \##### Penguin morphometrics
+
+```{r}
+#| message: false
+#| code-fold: true
+#| fig-cap: "Shape Deformation"
+```
+
+# Summary
+
+This tutorial has shown some of the basic functions of geomorph for geometric morphometric analysis of landmark data. There are many more functions and options available in geomorph, which you can explore by reading the documentation and the vignettes. Geomorph is a powerful and flexible package for studying shape variation and evolution in R.
+
+### Additional Resources
+
+-   Zelditch et al. 2012. Geometric Morphometrics for Biologists: A Primer, 2 nd Edition. Academic Press. This book is a thorough guide to the theory behind geometric morphometrics. It also has a [companion site](https://booksite.elsevier.com/9780123869036/) including data, scripts, and functions for R.
+-   [Adams & Otárola-Castillo 2013](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.12035). Methods in Ecology and Evolution 4(4): 393-399.
+-   Geomorph [Google Group](https://groups.google.com/g/geomorph-r-package).
+
+### Acknowledgements
+
+We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.

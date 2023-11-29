@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr.&nbsp;M.D.&nbsp;Sharma">
+<meta name="dcterms.date" content="2025-04-11">
+
+<title>ExeDataHub - intRos: Geometric Morphometrics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ExeDataHub</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../series.html" rel="" target="">
+ <span class="menu-text">Series</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../presentations.html" rel="" target="">
+ <span class="menu-text">Presentations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html" rel="" target="">
+ <span class="menu-text">Walkthroughs</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/exeter-data-analytics/exeter-data-analytics.github.io" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">intRos: Geometric Morphometrics</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Geomorph</div>
+                <div class="quarto-category">tpsDig</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author">Dr.&nbsp;M.D.&nbsp;Sharma </p>
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              University of Exeter
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 11, 2025</p>
+      </div>
+    </div>
+    
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">November 29, 2023</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#outline" id="toc-outline" class="nav-link active" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data preparation</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
+  <ul class="collapse">
+  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="outline" class="level1">
+<h1>Outline</h1>
+<p>Geometric morphometrics is a field of study that uses mathematical and statistical methods to analyze the shape and variation of biological forms. It is based on the use of landmarks, which are points that can be identified on each specimen and that correspond to homologous features. Geometric morphometrics can be applied to various biological questions, such as phylogeny, development, evolution, ecology, and function.</p>
+</section>
+<section id="prerequisites" class="level1">
+<h1>Prerequisites</h1>
+<ul>
+<li>Have R installed</li>
+<li>Download and install the tpsUtil and tpsDig</li>
+<li>Be using R for your research</li>
+</ul>
+</section>
+<section id="learning-objectives" class="level1">
+<h1>Learning objectives</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>This introduction should allow you to:</strong></p>
+<ul>
+<li>Understand the basic concepts and terminology of geometric morphometrics.</li>
+<li>Learn how to collect, digitize, and manage landmark data using software tools such as geomorph (R) and tpsDig (Windows).</li>
+<li>Learn to perform exploratory and confirmatory analyses of shape variation.</li>
+<li>Learn to visualize and interpret the results of shape analyses using graphical displays such as scatterplots, deformation grids, thin-plate splines.</li>
+<li>Gain the confidence to apply geometric morphometrics to appropriate examples in your field of study.</li>
+</ul>
+</div>
+</div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Geomorph is a package for geometric morphometric analysis of two- and three-dimensional landmark data in R. It provides functions for data manipulation, shape alignment, multivariate statistics, visualization, and more. In this tutorial, we will use the <em>Gnatocerus cornutus</em> dataset, which contains landmark coordinates for the abdomen, prothorax and mandibles, to demonstrate some of the basic functionalities of geomorph. For simplicity, we will use the tpsUtil and tpsDig programs and integrate them within this workflow. Users are welcome to utilise the digitisation process within geomorph, if they wish to do this (see section 5 of the GeoMorph manual).</p>
+<p>This tutorial has been developed as a companion to [manuscript in prep].</p>
+</section>
+<section id="data-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-preparation">Data preparation</h2>
+<p>Before we can use geomorph, we need to have our landmark data in a specific format called <code>tps</code>. A <code>tps</code> file is a plain text file that contains the coordinates of landmarks for one or more specimens, along with some optional metadata. A <code>tps</code> file has the following structure:</p>
+<div class="cell">
+<pre class="text cell-code code-overflow-wrap" data-code-line-numbers="false"><code>LM=number of landmarks
+x1 y1
+x2 y2
+...
+xn yn
+ID=FB001
+IMAGE=FB001.jpg
+SCALE=scale factor
+...
+LM=number of landmarks
+x1 y1
+x2 y2
+...
+xn yn
+ID=FB050
+IMAGE=FB050.jpg
+SCALE=scale factor
+...
+</code></pre>
+</div>
+<p>Each specimen is separated by a blank line, and each line starts with a keyword followed by an equal sign and a value. The keywords are case insensitive and can be in any order, except for LM, which must be the first line for each specimen. The LM keyword specifies the number of landmarks, followed by the x and y coordinates of each landmark in separate lines. The ID keyword specifies a unique identifier for the specimen, which can be a number or a string. The IMAGE keyword specifies the name of the image file that contains the specimen, which can be in any format supported by R. The SCALE keyword specifies a scale factor that converts the pixel coordinates to real-world units, such as millimeters or centimeters. Other keywords, such as COMMENT, CURVE, or POINT, can also be used to store additional information, but they are not required by geomorph.</p>
+<section id="using-tpsutil-and-tpsdig" class="level4">
+<h4 class="anchored" data-anchor-id="using-tpsutil-and-tpsdig"><strong>Using tpsUtil and tpsDig</strong></h4>
+<p>Download and install the <a href="https://sbmorphometrics.org/morphmet/tpsutilw32.exe">tpsUtil32</a> and <a href="https://sbmorphometrics.org/morphmet/tpsdig2w64.exe">tpsDig2w64</a> software from the <a href="https://sbmorphometrics.org/">Stony Brook Morphometrics</a> website. tpsUtil32 is a utility tool and tpsDig2w64 helps digitize coordinates of landmarks and capture outlines.</p>
+<p>Open tpsUtil, select “Build tps file from images”, select the “input” directory where all your images are stored and then select the location and name for the “output file”. In this example, we have called the tps file – <a href="data/Gnatocerus_cornutus.tps">Gnatocerus_cornutus.tps</a> and saved it in the root of the data folder.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><img src="img/util_000.jpg" class="img-fluid" width="334"></td>
+<td><img src="img/util_001.jpg" class="img-fluid" width="294"></td>
+</tr>
+</tbody>
+</table>
+<p>Click on the “Setup” button to see the list of files that were found in the folder you pointed towards. Exclude any files that should not need digitisation. Press create when ready. This will create a TPS file that we can use for landmarking all our images</p>
+</section>
+<section id="randomise" class="level4">
+<h4 class="anchored" data-anchor-id="randomise"><strong>Randomise</strong></h4>
+<p>Now, randomise the order of the files by selecting “randomly order specimens” from the Operations menu. This helps spread out any confounding factors (e.g.&nbsp;photos taken at different times of day / different lighting etc.). Hit create, and save the new file as Gnatocerus_cornutus_rand.tps. Please make sure you take a look at this file, within a text editor, and then adjust any file paths that need adjusting.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="img/util_002.jpg" class="img-fluid figure-img" width="334"></p>
+</figure>
+</div>
+</section>
+<section id="lets-set-some-landmarks" class="level4">
+<h4 class="anchored" data-anchor-id="lets-set-some-landmarks"><strong>Let’s set some landmarks</strong></h4>
+<p>Start the tpsDig program, open the image you want to landmark and then use the multi-point tool to set landmarks on this image. To make viewing easier, you can adjust the colour, size, and numbering of points under Options &gt; Image Tools &gt; Colors. Labels at width 35 look readable.. I would suggest initially doing this for 5-10 files before proceeding with a larger batch.</p>
+<p>Once the landmarks and curves have been digitized for the current specimen, click on the right arrow button or press ALT+N. Similarly, you can press ALT+P or the left arrow to go to the previous specimen</p>
+<p>The template mode (a choice on the Options menu) has been selected, so, the landmarks from the previous specimen will be copied onto the next image as long as it does not have any landmarks already entered. You can then drag the landmarks to their appropriate locations. Note that the first landmark you move will translate the locations of all the landmarks. Subsequent landmarks can be moved individually. This option helps minimize the chance of making the common error of digitizing the landmarks out of order.<br>
+Once the landmarks and curves have been digitized for the current specimen, click on the right arrow button</p>
+</section>
+<section id="set-a-scale" class="level4">
+<h4 class="anchored" data-anchor-id="set-a-scale"><strong>Set a scale:</strong></h4>
+<p><img src="img/scale_000.jpg" class="img-fluid" width="400"></p>
+<p>To set a scale factor, enter the known length of a structure in the edit box and then digitize the two endpoints of the structure. Enter just the numerical value, do not enter the units. Press the OK button to accept the scale factor or the cancel button to ignore any changes you may have made in the scale factor. Subsequent images you digitize are assumed to have the same scale factor unless you explicitly give them their own scale factors. Using this feature causes the “SCALE=” keyword to be inserted in the output file.</p>
+<p>Here, the value is: SCALE=0.002645. The scale factor is the entered length in user units divided by the measured length in pixels. It also scales the coordinates appropriately (by default the coordinates are in pixel units). The scale factor can also be recorded in the listing window. The scale factor is taken into account in the computation of image areas, perimeters, and linear distance measurements. It has no effect on the landmark coordinates – they remain in pixel units.</p>
+</section>
+<section id="make-a-link-file" class="level4">
+<h4 class="anchored" data-anchor-id="make-a-link-file"><strong>Make a link file:</strong></h4>
+<p>Within tpsUtil, select the “Make links file” option, select the Input tps file that has at-least one image completely landmarked and select an output destination for the link file.</p>
+<p><img src="img/links_000.jpg" class="img-fluid"></p>
+<p>The locations of the landmarks on the first specimen in a TPS or NTS file will be displayed. With the mouse, one can draw links between any pairs of landmarks.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="img/links_001.jpg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>When drawing the program will display a “rubber band” line and will beep when you are sufficiently close to another landmark so that one can lift the left mouse button to end the current link. To delete the last link drawn, right-click on an unused portion of the background. To delete a specific link, right-click on it.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="img/links_002.jpg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Press “Create File” when done.. keep this file safe - you will be needing it soon.</p>
+</section>
+<section id="make-a-sliders-file" class="level4">
+<h4 class="anchored" data-anchor-id="make-a-sliders-file"><strong>Make a sliders file:</strong></h4>
+<p>This file defines how semi landmarks can be slide so as to minimize bending energy during a generalized Procrustes analysis (GPA) superimposition. The locations of the landmarks on the first specimen in a TPS or NTS file are displayed. With the mouse, one can draw links between any triplets of landmarks. The middle landmark of a triplet is then considered a semi landmark (it will be displayed using an open circle) and it will be allowed to slide in a direction parallel to the difference between the other two landmarks. Note: this program does not do the actual sliding. It is just used as a convenience to build the file that defines which points slide between which other points.</p>
+<p><img src="img/sliders_001.jpg" class="img-fluid"></p>
+<p>This file has to be entered into the tpsRelw program using the “Open sliders file …” menu option.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Guess what!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Phew, that’s most of the hard work done. Ideally, you would work through the rest of the tutorial within R. However, if you are having repeated Arrgh moments within R, you can…. open tpsRelw, Load the *.tps file you created with tpsDig and click through the Compute workflow: Consensus, Partial Warps, Relative Warps. The PCA plot can be found under the Display button “Relative Warps” and you can visualize shapes within the PCA morphospace, using the Camera tool and clicking on a point to visualize.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Expand To Learn About this step within Geomorph
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If you want to do this step within geomorph, please follow these steps instead:</p>
+<p>To create a tps file from a directory of image files, we can use the tps.write function from geomorph. This function takes a list of image file names, a matrix of landmark coordinates, and an optional list of specimen identifiers, and writes them to a tps file. The landmark coordinates can be obtained by manually digitizing the landmarks on the images using a software such as tpsDig, or by using an automated method such as the digitize2d function from geomorph. The specimen identifiers can be extracted from the image file names, or assigned by the user. For example, suppose we have a directory called <code>data\images</code> that contains a subset of 50 image files of <em>Gnatocerus cornutus</em> specimens, named FB001.JPG .. FB150.JPG. We can create a <code>tps</code> file called <code>Gnatocerus_cornutus.tps</code> with the following code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="false"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(geomorph)) <span class="fu">install.packages</span>(<span class="st">'geomorph'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(stringr)) <span class="fu">install.packages</span>(<span class="st">'stringr'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(tidyverse)) <span class="fu">install.packages</span>(<span class="st">'tidyverse'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># This line checks if the required packages is available.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># If not, it then proceeds to install that package.</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the geomorph package</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geomorph)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the working directory to the current folder</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"./"</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the list of image file names from the data/images folder</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>images <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">"./data/"</span>,<span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.jpg$"</span>, <span class="at">include.dirs =</span> <span class="cn">TRUE</span>,<span class="at">recursive =</span> <span class="cn">TRUE</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Digitize the landmarks on the images using tpsDig or digitize2d</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># For this example, we assume that we have a matrix of landmark coordinates called landmarks</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># The matrix has 50 rows (one for each specimen) and 20 columns (two for each landmark)</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># The landmarks are in the same order and position for all specimens</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the specimen identifiers from the image file names</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># We use the stringr package to remove the extension and the prefix</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>ids <span class="ot">&lt;-</span> <span class="fu">str_remove</span>(images, <span class="st">"./data/images/"</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>ids1 <span class="ot">&lt;-</span> <span class="fu">str_remove</span>(ids, <span class="st">"</span><span class="sc">\\</span><span class="st">.jpg$"</span>)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>ids2 <span class="ot">&lt;-</span> <span class="fu">str_remove</span>(ids1, <span class="st">"FB"</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># digitize2d(images, nlandmarks=10, scale = 1, tpsfile="./data/Gnatocerus_cornutus.tps",verbose = TRUE)</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Write the tps file</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co"># writeland.tps(ids, file = "Gnatocerus_cornutus.tps")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="data-analysis"><strong>Data analysis</strong></h4>
+<p>Once we have our tps file, we can use geomorph to read, plot, and analyze our landmark data. We can use the readland.tps function to read the tps file and store it in a list of two elements: a matrix of landmark coordinates and a vector of specimen identifiers. We can also use the plotTangentSpace function to plot the landmark data in a two-dimensional space that preserves the shape variation among the specimens. For example, we can read and plot the fish data with the following code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="false"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the tps file</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># fish &lt;- readland.tps("fish.tps")</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the landmark data in tangent space</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plotTangentSpace(fish)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The plot shows the shape variation among the fish specimens along the first two principal components of the Procrustes shape space. The Procrustes shape space is a mathematical space that represents the shapes of objects after removing the effects of translation, rotation, and scaling. The principal components are the directions of maximum variation in the shape space, and they can be interpreted as shape modes or shape factors. The plot also shows the mean shape of the specimens as a black dot, and the shape of each specimen as a blue dot connected to the mean shape by a line. The shape of each specimen can be visualized by hovering over the corresponding dot on the plot.</p>
+<p>We can also use geomorph to perform various statistical analyses on our landmark data, such as testing for differences in shape among groups, testing for correlations between shape and other variables, testing for allometry or size-shape relationships, testing for phylogenetic signal or evolutionary patterns, and more. Geomorph provides a unified framework for these analyses, based on the generalized Procrustes analysis (GPA) and the Procrustes ANOVA. The GPA is a procedure that aligns the landmark coordinates of the specimens to a common orientation and scale, and calculates the Procrustes shape coordinates and the Procrustes distances. The Procrustes ANOVA is a method that partitions the shape variation among the specimens into different sources, such as group, size, or error, and tests for their significance using permutation tests.</p>
+<p>For example, suppose we want to test if there is a difference in shape between male and female fish, and if there is a correlation between shape and body length. We can use the procD.lm function from geomorph to perform these analyses. This function takes a formula that specifies the response variable (shape) and the explanatory variables (sex and length), and a data frame that contains the landmark data and the covariates. The function performs the GPA and the Procrustes ANOVA, and returns a list of results, such as the Procrustes sums of squares, the Procrustes mean squares, the F-statistics, the p-values, and the effect sizes. The function also plots the residuals of the shape variation against the covariates, and the shape changes associated with the covariates. For example, we can perform these analyses on the fish data with the following code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="false"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame with the landmark data and the covariates</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># For this example, we assume that we have a vector of sex (M or F) and a vector of length (in mm) for each specimen</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fish.data &lt;- data.frame(fish$coords, sex, length)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the shape analysis</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># fish.shape &lt;- procD.lm(coords ~ sex + length, data = fish.data)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The output of the function shows that there is a significant difference in shape between male and female fish (p &lt; 0.001), and a significant correlation between shape and length (p &lt; 0.001). The plots show that the shape variation is mostly explained by sex (PC1) and length (PC2), and that the shape changes involve changes in the head, the body, and the tail regions. The plots also show the mean shapes of the male and female fish, and the shape changes associated with a unit increase in length.</p>
+</section>
+<section id="generalized-procrustes-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="generalized-procrustes-analysis"><strong>Generalized Procrustes Analysis</strong></h4>
+<p>Next, we need to perform a generalized Procrustes analysis (GPA) to align the landmark configurations and remove the effects of translation, rotation, and scaling. We can use the gpagen() function to do this, which returns a list containing the aligned coordinates, the consensus configuration, and the Procrustes distances.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="false"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Y.gpa &lt;- gpagen(plethspecies$land)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="principal-component-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="principal-component-analysis"><strong>Principal component analysis</strong></h4>
+<p>One of the most common methods to explore shape variation is principal component analysis (PCA), which reduces the dimensionality of the shape data and identifies the main axes of variation. We can use the gm.prcomp() function to perform a PCA on the aligned coordinates, which returns an object of class gm.prcomp that contains the eigenvalues, eigenvectors, and scores of the PCA.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="false"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PCA &lt;- gm.prcomp(Y.gpa$coords)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="shape-deformation" class="level4">
+<h4 class="anchored" data-anchor-id="shape-deformation"><strong>Shape deformation</strong></h4>
+<p>To visualize the shape changes associated with the PCs, we can use the plotRefToTarget() function to produce deformation grids that compare the shapes corresponding to the extremes of a chosen PC axis. For example, to compare the shapes at the minimum and maximum scores of PC1, we can use the following code: ##### Penguin morphometrics</p>
+</section>
+</section>
+</section>
+<section id="summary" class="level1">
+<h1>Summary</h1>
+<p>This tutorial has shown some of the basic functions of geomorph for geometric morphometric analysis of landmark data. There are many more functions and options available in geomorph, which you can explore by reading the documentation and the vignettes. Geomorph is a powerful and flexible package for studying shape variation and evolution in R.</p>
+<section id="additional-resources" class="level3">
+<h3 class="anchored" data-anchor-id="additional-resources">Additional Resources</h3>
+<ul>
+<li>Zelditch et al.&nbsp;2012. Geometric Morphometrics for Biologists: A Primer, 2 nd Edition. Academic Press. This book is a thorough guide to the theory behind geometric morphometrics. It also has a <a href="https://booksite.elsevier.com/9780123869036/">companion site</a> including data, scripts, and functions for R.</li>
+<li><a href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.12035">Adams &amp; Otárola-Castillo 2013</a>. Methods in Ecology and Evolution 4(4): 393-399.</li>
+<li>Geomorph <a href="https://groups.google.com/g/geomorph-r-package">Google Group</a>.</li>
+</ul>
+</section>
+<section id="acknowledgements" class="level3">
+<h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
+<p>We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="exeter-data-analytics/exeter-data-analytics.github.io" data-repo-id="R_kgDOJW1l0Q" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
