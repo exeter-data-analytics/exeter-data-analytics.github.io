@@ -1,20 +1,21 @@
 [
   {
-    "listing": "/posts.html",
-    "items": [
-      "/posts/intro_to_tidy_data_manipulation/index.html",
-      "/posts/install_rstudio_git/index.html",
-      "/posts/intro_to_ggplot2/index.html",
-      "/posts/intro_to_flextable/index.html",
-      "/posts/intro_to_projects/index.html"
-    ]
-  },
-  {
     "listing": "/presentations.html",
     "items": [
       "/presentations/ggplot2_flextable/ggplot2_flextable.html",
       "/presentations/intro_to_github/intro_to_github.html",
       "/presentations/open_science_symposium/open_science_symposium.html"
+    ]
+  },
+  {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/intro_to_geometric_morphometrics/index.html",
+      "/posts/intro_to_tidy_data_manipulation/index.html",
+      "/posts/install_rstudio_git/index.html",
+      "/posts/intro_to_ggplot2/index.html",
+      "/posts/intro_to_flextable/index.html",
+      "/posts/intro_to_projects/index.html"
     ]
   }
 ]
