@@ -4,7 +4,7 @@ author:
   - name: Alice Trevail
     affiliation: University of Exeter
 description: "Tidy and transfrom your data using reproducible code in R"
-date: "20/11/2023"
+date: "11/20/2023"
 date-modified: last-modified
 categories: [tidyverse, R]
 execute:
@@ -349,13 +349,11 @@ penguins_example %<>%
 glimpse(penguins_example)
 ```
 
-
 # Summary
 
 We have shown a range of functions in R for changing the structure of your data. Hopefully, this has given an insight of how powerful the tidyverse is for efficient data manipulation. Importantly all of these processes are reproducible and limit the chances of us making errors in our workflow.
 
 If we've missed a function that you find useful, we'd love to hear what it is. Leave us a comment below!
-
 
 ### Additional Resources
 
