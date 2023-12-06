@@ -4,7 +4,7 @@ author:
   - name: Daniel Padfield
     affiliation: University of Exeter
 description: "Make reproducible tables of summary stats and contrasts tables with flextable in R"
-date: "02/14/2023"
+date: "2023-02-14"
 date-modified: last-modified
 categories: [flextable, R]
 execute:

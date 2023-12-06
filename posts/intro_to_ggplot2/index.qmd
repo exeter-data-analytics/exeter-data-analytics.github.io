@@ -4,7 +4,7 @@ author:
   - name: Daniel Padfield
     affiliation: University of Exeter
 description: "Make publication ready plots in R using ggplot2 and learn some new tips and tricks"
-date: "02/24/2023"
+date: "2023-02-24"
 date-modified: last-modified
 categories: [R, ggplot2, tidyverse]
 execute:
@@ -285,7 +285,7 @@ p1 +
 
 ### Control legend shapes and override legend appearance
 
-Sometimes you colour text, lines, points with the same colours. When you do this, each of the legends for them get displayed in the legend overlaid with each other. To show this we will create a line plot of the relationship between 
+Sometimes you colour text, lines, points with the same colours. When you do this, each of the legends for them get displayed in the legend overlaid with each other. To show this we will create a line plot of the relationship between
 
 ```{r plot_legend}
 #| fig-height: 5
@@ -335,6 +335,7 @@ ggplot(d, aes(body_mass_g, bill_length_mm, col = species)) +
   theme_bw() +
   guides(colour = guide_legend(override.aes = list(size = 20)))
 ```
+
 Ok that last size is a bit much. But you get the idea and now have the tools to manually edit your legend.
 
 ## Awesome ggplot2 extensions

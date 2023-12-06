@@ -4,7 +4,7 @@ author:
   - name:
     affiliation: University of Exeter
 description: ""
-date: "MM/DD/YYYY"
+date: "yyyy-MM-dd"
 date-modified: last-modified
 categories: [add here]
 execute:
@@ -39,4 +39,3 @@ This is where we discuss the need and rationale for this walkthrough.
 We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.
 
 -   Add here.
-

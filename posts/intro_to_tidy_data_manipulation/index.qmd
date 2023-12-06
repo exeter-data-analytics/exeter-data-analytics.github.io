@@ -4,7 +4,7 @@ author:
   - name: Alice Trevail
     affiliation: University of Exeter
 description: "Tidy and transfrom your data using reproducible code in R"
-date: "11/20/2023"
+date: "2023-11-20"
 date-modified: last-modified
 categories: [tidyverse, R]
 execute:

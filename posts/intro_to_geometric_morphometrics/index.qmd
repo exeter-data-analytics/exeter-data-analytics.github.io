@@ -4,7 +4,7 @@ author:
   - name: Dr. M.D. Sharma
     affiliation: University of Exeter
 description: ""
-date: "28/11/2023"
+date: "2023-11-28"
 date-modified: last-modified
 categories: [R, Geomorph, tpsDig]
 execute:

@@ -4,7 +4,7 @@ author:
   - name: Daniel Padfield
     affiliation: University of Exeter
 description: "A primer on how to install R, RStudio, and Git."
-date: "04/21/2023"
+date: "2023-04-21"
 date-modified: last-modified
 categories: [R, RStudio, git]
 execute:
