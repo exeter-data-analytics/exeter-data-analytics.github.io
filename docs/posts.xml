@@ -14,14 +14,15 @@
 <item>
   <title>intRos: Geometric Morphometrics</title>
   <dc:creator>Dr. M.D. Sharma</dc:creator>
+  <dc:creator>Hironori Shinohara</dc:creator>
   <link>https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/index.html</link>
   <description><![CDATA[ 
 
 
 
 
-<section id="outline" class="level1">
-<h1>Outline</h1>
+<section id="outline-this-tutorial-is-a-work-in-progress" class="level1">
+<h1>Outline (This tutorial is a work in progress)</h1>
 <p>Geometric morphometrics is a field of study that uses mathematical and statistical methods to analyze the shape and variation of biological forms. It is based on the use of landmarks, which are points that can be identified on each specimen and that correspond to homologous features. Geometric morphometrics can be applied to various biological questions, such as phylogeny, development, evolution, ecology, and function.</p>
 </section>
 <section id="prerequisites" class="level1">
@@ -56,7 +57,7 @@ Learning objectives
 </div>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Geomorph is a package for geometric morphometric analysis of two- and three-dimensional landmark data in R. It provides functions for data manipulation, shape alignment, multivariate statistics, visualization, and more. In this tutorial, we will use the <em>Gnatocerus cornutus</em> dataset, which contains landmark coordinates for the abdomen, prothorax and mandibles, to demonstrate some of the basic functionalities of geomorph. For simplicity, we will use the tpsUtil and tpsDig programs and integrate them within this workflow. Users are welcome to utilise the digitisation process within geomorph, if they wish to do this (see section 5 of the GeoMorph manual).</p>
+<p>Geomorph is a package for geometric morphometric analysis of two- and three-dimensional landmark data in R. It provides functions for data manipulation, shape alignment, multivariate statistics, visualization, and more. In this tutorial, we will use the <em>Tribolium castaneum</em> dataset, which contains landmark coordinates for the abdomen and pronotum, to demonstrate some of the basic functionalities of geomorph. For simplicity, we will use the tpsUtil and tpsDig programs and integrate them within this workflow. Users are welcome to utilise the digitisation process within geomorph, if they wish to do this (see section 5 of the GeoMorph manual).</p>
 <p>This tutorial has been developed as a companion to [manuscript in prep].</p>
 </section>
 <section id="data-preparation" class="level2">
@@ -87,7 +88,7 @@ SCALE=scale factor
 <section id="using-tpsutil-and-tpsdig" class="level4">
 <h4 class="anchored" data-anchor-id="using-tpsutil-and-tpsdig"><strong>Using tpsUtil and tpsDig</strong></h4>
 <p>Download and install the <a href="https://sbmorphometrics.org/morphmet/tpsutilw32.exe">tpsUtil32</a> and <a href="https://sbmorphometrics.org/morphmet/tpsdig2w64.exe">tpsDig2w64</a> software from the <a href="https://sbmorphometrics.org/">Stony Brook Morphometrics</a> website. tpsUtil32 is a utility tool and tpsDig2w64 helps digitize coordinates of landmarks and capture outlines.</p>
-<p>Open tpsUtil, select “Build tps file from images”, select the “input” directory where all your images are stored and then select the location and name for the “output file”. In this example, we have called the tps file – <a href="data/Gnatocerus_cornutus.tps">Gnatocerus_cornutus.tps</a> and saved it in the root of the data folder.</p>
+<p>Open tpsUtil, select “Build tps file from images”, select the “input” directory where all your images are stored and then select the location and name for the “output file”. In this example, we have called the tps file – <a href="./data/full_body/Tribolium_castaneum.tps"><em>Tribolium_castaneum.</em>tps</a> and saved it in the root of the data folder.</p>
 <table class="table">
 <colgroup>
 <col style="width: 50%">
@@ -95,8 +96,8 @@ SCALE=scale factor
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/util_000.jpg" class="img-fluid" width="334"></td>
-<td><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/util_001.jpg" class="img-fluid" width="294"></td>
+<td><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/util_000.jpg" class="img-fluid" alt="Build tps file from images"></td>
+<td><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/util_001.jpg" class="img-fluid" alt="Build tps file"></td>
 </tr>
 </tbody>
 </table>
@@ -104,7 +105,7 @@ SCALE=scale factor
 </section>
 <section id="randomise" class="level4">
 <h4 class="anchored" data-anchor-id="randomise"><strong>Randomise</strong></h4>
-<p>Now, randomise the order of the files by selecting “randomly order specimens” from the Operations menu. This helps spread out any confounding factors (e.g.&nbsp;photos taken at different times of day / different lighting etc.). Hit create, and save the new file as Gnatocerus_cornutus_rand.tps. Please make sure you take a look at this file, within a text editor, and then adjust any file paths that need adjusting.</p>
+<p>Now, randomise the order of the files by selecting “randomly order specimens” from the Operations menu. This helps spread out any confounding factors (e.g.&nbsp;photos taken at different times of day / different lighting etc.). Hit create, and save the new file as <a href="./data/full_body/Tribolium_castaneum_randomised.tps"><em>Tribolium_castaneum</em>_randomised.tps</a>. Please make sure you take a look at this file, within a text editor, and then adjust any file paths that need adjusting.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
 <p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/util_002.jpg" class="img-fluid figure-img" width="334"></p>
@@ -114,37 +115,49 @@ SCALE=scale factor
 <section id="lets-set-some-landmarks" class="level4">
 <h4 class="anchored" data-anchor-id="lets-set-some-landmarks"><strong>Let’s set some landmarks</strong></h4>
 <p>Start the tpsDig program, open the image you want to landmark and then use the multi-point tool to set landmarks on this image. To make viewing easier, you can adjust the colour, size, and numbering of points under Options &gt; Image Tools &gt; Colors. Labels at width 35 look readable.. I would suggest initially doing this for 5-10 files before proceeding with a larger batch.</p>
-<p>Once the landmarks and curves have been digitized for the current specimen, click on the right arrow button or press ALT+N. Similarly, you can press ALT+P or the left arrow to go to the previous specimen</p>
-<p>The template mode (a choice on the Options menu) has been selected, so, the landmarks from the previous specimen will be copied onto the next image as long as it does not have any landmarks already entered. You can then drag the landmarks to their appropriate locations. Note that the first landmark you move will translate the locations of all the landmarks. Subsequent landmarks can be moved individually. This option helps minimize the chance of making the common error of digitizing the landmarks out of order.<br>
-Once the landmarks and curves have been digitized for the current specimen, click on the right arrow button</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/land_000.jpg" class="img-fluid" style="width:100.0%" alt="landmark pronotum">Once the landmarks and curves have been digitized for the current specimen, click on the right arrow button or press ALT+N. Similarly, you can press ALT+P or the left arrow to go to the previous specimen</p>
+<p>The template mode (a choice on the Options menu) has been selected, so, the landmarks from the previous specimen will be copied onto the next image as long as it does not have any landmarks already entered. You can then drag the landmarks to their appropriate locations. Note that the first landmark you move will translate the locations of all the landmarks. Subsequent landmarks can be moved individually. This option helps minimize the chance of making the common error of digitizing the landmarks out of order.</p>
+<p>When you are done landmarking, save the file with a unique name. Our landmarked example is available as <a href="./data/full_body/Tc_rand_pronutum.TPS">Tc_rand_pronutum.tps</a></p>
 </section>
 <section id="set-a-scale" class="level4">
 <h4 class="anchored" data-anchor-id="set-a-scale"><strong>Set a scale:</strong></h4>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/scale_000.jpg" class="img-fluid" width="400"></p>
-<p>To set a scale factor, enter the known length of a structure in the edit box and then digitize the two endpoints of the structure. Enter just the numerical value, do not enter the units. Press the OK button to accept the scale factor or the cancel button to ignore any changes you may have made in the scale factor. Subsequent images you digitize are assumed to have the same scale factor unless you explicitly give them their own scale factors. Using this feature causes the “SCALE=” keyword to be inserted in the output file.</p>
-<p>Here, the value is: SCALE=0.002645. The scale factor is the entered length in user units divided by the measured length in pixels. It also scales the coordinates appropriately (by default the coordinates are in pixel units). The scale factor can also be recorded in the listing window. The scale factor is taken into account in the computation of image areas, perimeters, and linear distance measurements. It has no effect on the landmark coordinates – they remain in pixel units.</p>
+<p>Open the scale image within tpsDig, and zoom-in to a size that seems easy to work with. Click on the image tools icon and go to the Measure tab. To set a scale factor, enter the known length of a structure in the edit box and then digitize the two endpoints of the scale. Enter just the numerical value, do not enter the units. Press the OK button to accept the scale factor or the cancel button to ignore any changes you may have made in the scale factor. Make a note of this scale factor as we will be including it in all the .tps files that use this particular calibration image.</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/scale_000.jpg" class="img-fluid" width="571"></td>
+<td><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/scale_002.jpg" class="img-fluid"></td>
+</tr>
+<tr class="even">
+<td><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/scale_001.jpg" class="img-fluid" width="571"></td>
+<td><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/scale_003.jpg" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
+<p>If your digital scale was included in the images you captured (e.g.&nbsp;an eyepice graticle or equivalent), then you can do the above “set scale” activity within your main .tps digitisation as well. In this case, all subsequent images you digitize will be assumed to have the same scale factor unless you explicitly give them their own scale factors. Using this feature causes the “SCALE=” keyword to be inserted in the output file.</p>
+<p>Here, the value is: SCALE=0.002137. The scale factor is the entered length in user units divided by the measured length in pixels. It also scales the coordinates appropriately (by default the coordinates are in pixel units). The scale factor can also be recorded in the listing window. The scale factor is taken into account in the computation of image areas, perimeters, and linear distance measurements. It has no effect on the landmark coordinates – they remain in pixel units.</p>
 </section>
 <section id="make-a-link-file" class="level4">
 <h4 class="anchored" data-anchor-id="make-a-link-file"><strong>Make a link file:</strong></h4>
 <p>Within tpsUtil, select the “Make links file” option, select the Input tps file that has at-least one image completely landmarked and select an output destination for the link file.</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/links_000.jpg" class="img-fluid"></p>
 <p>The locations of the landmarks on the first specimen in a TPS or NTS file will be displayed. With the mouse, one can draw links between any pairs of landmarks.</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/links_001.jpg" class="img-fluid figure-img"></p>
-</figure>
-</div>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/links_000.jpg" class="img-fluid"></td>
+<td><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/links_001.jpg" class="img-fluid"></td>
+</tr>
+</tbody>
+</table>
 <p>When drawing the program will display a “rubber band” line and will beep when you are sufficiently close to another landmark so that one can lift the left mouse button to end the current link. To delete the last link drawn, right-click on an unused portion of the background. To delete a specific link, right-click on it.</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/links_002.jpg" class="img-fluid figure-img"></p>
-</figure>
-</div>
-<p>Press “Create File” when done.. keep this file safe - you will be needing it soon.</p>
+<p>Press "Create File" when done.. keep this file safe - you will be needing it soon. In this example, the link file is called <a href="./data/full_body/pronotum.nts">pronotum.nts</a>.</p>
 </section>
 <section id="make-a-sliders-file" class="level4">
 <h4 class="anchored" data-anchor-id="make-a-sliders-file"><strong>Make a sliders file:</strong></h4>
 <p>This file defines how semi landmarks can be slide so as to minimize bending energy during a generalized Procrustes analysis (GPA) superimposition. The locations of the landmarks on the first specimen in a TPS or NTS file are displayed. With the mouse, one can draw links between any triplets of landmarks. The middle landmark of a triplet is then considered a semi landmark (it will be displayed using an open circle) and it will be allowed to slide in a direction parallel to the difference between the other two landmarks. Note: this program does not do the actual sliding. It is just used as a convenience to build the file that defines which points slide between which other points.</p>
+<p>This image illustrates the sliders used for the pronotum (two fixed landmarks).</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/sliders_000.jpg" class="img-fluid" width="300"></p>
+<p>This image illustrates sliders used for the abdomen and pronotum in another beetle species (note the 4 fixed landmarks for the pronotum and the 7 fixed landmarks for the abdomen). Have a look at our sliders file here: <a href="./data/full_body/pronotum_sliders.nts">pronotum_sliders.nts</a>.</p>
 <p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/sliders_001.jpg" class="img-fluid"></p>
 <p>This file has to be entered into the tpsRelw program using the “Open sliders file …” menu option.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -222,7 +235,9 @@ background-color: null;
 font-style: inherit;"># Load the geomorph package</span></span>
 <span id="cb2-10"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(geomorph)</span>
+font-style: inherit;">library</span>(geomorph, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quietly=</span>T)</span>
 <span id="cb2-11"></span>
 <span id="cb2-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -290,7 +305,7 @@ font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">str_remove</span>(images, <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"./data/images/"</span>)</span>
+font-style: inherit;">"./data/full_body/"</span>)</span>
 <span id="cb2-27">ids1 <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
@@ -308,18 +323,39 @@ font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">str_remove</span>(ids1, <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"FB"</span>)</span>
-<span id="cb2-29"></span>
-<span id="cb2-30"><span class="co" style="color: #5E5E5E;
+font-style: inherit;">"PAM"</span>)</span>
+<span id="cb2-29">ids3 <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;"># digitize2d(images, nlandmarks=10, scale = 1, tpsfile="./data/Gnatocerus_cornutus.tps",verbose = TRUE)</span></span>
-<span id="cb2-31"></span>
-<span id="cb2-32"><span class="co" style="color: #5E5E5E;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"># Write the tps file</span></span>
+font-style: inherit;">str_remove</span>(ids2, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"PAF"</span>)</span>
+<span id="cb2-30">ids3 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_remove</span>(ids3, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"MAM"</span>)</span>
+<span id="cb2-31">ids4 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_remove</span>(ids3, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"MAF"</span>)</span>
+<span id="cb2-32"></span>
 <span id="cb2-33"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># writeland.tps(ids, file = "Gnatocerus_cornutus.tps")</span></span></code></pre></div>
+font-style: inherit;"># digitize2d(images, nlandmarks=10, scale = 1, tpsfile="./data/Tribolium_castaneum.tps",verbose = TRUE)</span></span>
+<span id="cb2-34"></span>
+<span id="cb2-35"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Write the tps file</span></span>
+<span id="cb2-36"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># writeland.tps(ids, file = "Tribolium_castaneum.tps")</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -327,50 +363,112 @@ font-style: inherit;"># writeland.tps(ids, file = "Gnatocerus_cornutus.tps")</sp
 </section>
 <section id="data-analysis" class="level4">
 <h4 class="anchored" data-anchor-id="data-analysis"><strong>Data analysis</strong></h4>
-<p>Once we have our tps file, we can use geomorph to read, plot, and analyze our landmark data. We can use the readland.tps function to read the tps file and store it in a list of two elements: a matrix of landmark coordinates and a vector of specimen identifiers. We can also use the plotTangentSpace function to plot the landmark data in a two-dimensional space that preserves the shape variation among the specimens. For example, we can read and plot the fish data with the following code:</p>
+<p>Once we have our tps file, we can use geomorph to read, plot, and analyze our landmark data. We can use the readland.tps function to read the tps file and store it in a list of two elements: a matrix of landmark coordinates and a vector of specimen identifiers. We can also use the plotTangentSpace function to plot the landmark data in a two-dimensional space that preserves the shape variation among the specimens. For example, we can read and plot the beetles data with the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="false" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="false" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
-font-style: inherit;"># Read the tps file</span></span>
-<span id="cb3-2"><span class="co" style="color: #5E5E5E;
+font-style: inherit;">if</span> (<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># fish &lt;- readland.tps("fish.tps")</span></span>
-<span id="cb3-3"></span>
-<span id="cb3-4"><span class="co" style="color: #5E5E5E;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">require</span>(geomorph)) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install.packages</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'geomorph'</span>)</span>
+<span id="cb3-2"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">require</span>(stringr)) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install.packages</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'stringr'</span>)</span>
+<span id="cb3-3"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">require</span>(tidyverse)) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install.packages</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'tidyverse'</span>)</span>
+<span id="cb3-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(geomorph, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quietly=</span>T)</span>
+<span id="cb3-5"></span>
+<span id="cb3-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Read the landmarks in</span></span>
+<span id="cb3-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># specID - a character specifying whether to extract the specimen ID names from the ID or IMAGE lines</span></span>
+<span id="cb3-8"></span>
+<span id="cb3-9">tribolium <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">readland.tps</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"data/full_body/Tc_rand_pronutum.tps"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">specID=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ID"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+No curves detected; all points appear to be fixed landmarks.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="false" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># tribolium &lt;- readland.tps("data/full_body/pronotum_slider.nts", readcurves = TRUE)</span></span>
+<span id="cb5-2"></span>
+<span id="cb5-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># The readcurves argument is set to TRUE because we have semilandmarks in our example</span></span>
+<span id="cb5-4"></span>
+<span id="cb5-5"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Plot the landmark data in tangent space</span></span>
-<span id="cb3-5"><span class="co" style="color: #5E5E5E;
+<span id="cb5-6"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># plotTangentSpace(fish)</span></span></code></pre></div>
+font-style: inherit;"># plot(tribolium)</span></span></code></pre></div>
 </div>
-<p>The plot shows the shape variation among the fish specimens along the first two principal components of the Procrustes shape space. The Procrustes shape space is a mathematical space that represents the shapes of objects after removing the effects of translation, rotation, and scaling. The principal components are the directions of maximum variation in the shape space, and they can be interpreted as shape modes or shape factors. The plot also shows the mean shape of the specimens as a black dot, and the shape of each specimen as a blue dot connected to the mean shape by a line. The shape of each specimen can be visualized by hovering over the corresponding dot on the plot.</p>
+<p>The plot shows the shape variation among the beetles specimens along the first two principal components of the Procrustes shape space. The Procrustes shape space is a mathematical space that represents the shapes of objects after removing the effects of translation, rotation, and scaling. The principal components are the directions of maximum variation in the shape space, and they can be interpreted as shape modes or shape factors. The plot also shows the mean shape of the specimens as a black dot, and the shape of each specimen as a blue dot connected to the mean shape by a line. The shape of each specimen can be visualized by hovering over the corresponding dot on the plot.</p>
 <p>We can also use geomorph to perform various statistical analyses on our landmark data, such as testing for differences in shape among groups, testing for correlations between shape and other variables, testing for allometry or size-shape relationships, testing for phylogenetic signal or evolutionary patterns, and more. Geomorph provides a unified framework for these analyses, based on the generalized Procrustes analysis (GPA) and the Procrustes ANOVA. The GPA is a procedure that aligns the landmark coordinates of the specimens to a common orientation and scale, and calculates the Procrustes shape coordinates and the Procrustes distances. The Procrustes ANOVA is a method that partitions the shape variation among the specimens into different sources, such as group, size, or error, and tests for their significance using permutation tests.</p>
-<p>For example, suppose we want to test if there is a difference in shape between male and female fish, and if there is a correlation between shape and body length. We can use the procD.lm function from geomorph to perform these analyses. This function takes a formula that specifies the response variable (shape) and the explanatory variables (sex and length), and a data frame that contains the landmark data and the covariates. The function performs the GPA and the Procrustes ANOVA, and returns a list of results, such as the Procrustes sums of squares, the Procrustes mean squares, the F-statistics, the p-values, and the effect sizes. The function also plots the residuals of the shape variation against the covariates, and the shape changes associated with the covariates. For example, we can perform these analyses on the fish data with the following code:</p>
+<p>For example, suppose we want to test if there is a difference in shape between male and female beetles, and if there is a correlation between shape and body length. We can use the procD.lm function from geomorph to perform these analyses. This function takes a formula that specifies the response variable (shape) and the explanatory variables (sex and length), and a data frame that contains the landmark data and the covariates. The function performs the GPA and the Procrustes ANOVA, and returns a list of results, such as the Procrustes sums of squares, the Procrustes mean squares, the F-statistics, the p-values, and the effect sizes. The function also plots the residuals of the shape variation against the covariates, and the shape changes associated with the covariates. For example, we can perform these analyses on the beetles data with the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="false" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="false" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Create a data frame with the landmark data and the covariates</span></span>
-<span id="cb4-2"><span class="co" style="color: #5E5E5E;
+<span id="cb6-2"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># For this example, we assume that we have a vector of sex (M or F) and a vector of length (in mm) for each specimen</span></span>
-<span id="cb4-3"><span class="co" style="color: #5E5E5E;
+<span id="cb6-3"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># fish.data &lt;- data.frame(fish$coords, sex, length)</span></span>
-<span id="cb4-4"></span>
-<span id="cb4-5"><span class="co" style="color: #5E5E5E;
+font-style: inherit;"># beetles.data &lt;- data.frame(beetles$coords, sex, length)</span></span>
+<span id="cb6-4"></span>
+<span id="cb6-5"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Perform the shape analysis</span></span>
-<span id="cb4-6"><span class="co" style="color: #5E5E5E;
+<span id="cb6-6"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># fish.shape &lt;- procD.lm(coords ~ sex + length, data = fish.data)</span></span></code></pre></div>
+font-style: inherit;"># beetles.shape &lt;- procD.lm(coords ~ sex + length, data = beetles.data)</span></span></code></pre></div>
 </div>
-<p>The output of the function shows that there is a significant difference in shape between male and female fish (p &lt; 0.001), and a significant correlation between shape and length (p &lt; 0.001). The plots show that the shape variation is mostly explained by sex (PC1) and length (PC2), and that the shape changes involve changes in the head, the body, and the tail regions. The plots also show the mean shapes of the male and female fish, and the shape changes associated with a unit increase in length.</p>
+<p>The output of the function shows that there is a significant difference in shape between male and female beetles (p &lt; 0.001), and a significant correlation between shape and length (p &lt; 0.001). The plots show that the shape variation is mostly explained by sex (PC1) and length (PC2), and that the shape changes involve changes in the head, the body, and the tail regions. The plots also show the mean shapes of the male and female beetles, and the shape changes associated with a unit increase in length.</p>
 </section>
 <section id="generalized-procrustes-analysis" class="level4">
 <h4 class="anchored" data-anchor-id="generalized-procrustes-analysis"><strong>Generalized Procrustes Analysis</strong></h4>
 <p>Next, we need to perform a generalized Procrustes analysis (GPA) to align the landmark configurations and remove the effects of translation, rotation, and scaling. We can use the gpagen() function to do this, which returns a list containing the aligned coordinates, the consensus configuration, and the Procrustes distances.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="false" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="false" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Y.gpa &lt;- gpagen(plethspecies$land)</span></span></code></pre></div>
 </div>
@@ -379,14 +477,14 @@ font-style: inherit;"># Y.gpa &lt;- gpagen(plethspecies$land)</span></span></cod
 <h4 class="anchored" data-anchor-id="principal-component-analysis"><strong>Principal component analysis</strong></h4>
 <p>One of the most common methods to explore shape variation is principal component analysis (PCA), which reduces the dimensionality of the shape data and identifies the main axes of variation. We can use the gm.prcomp() function to perform a PCA on the aligned coordinates, which returns an object of class gm.prcomp that contains the eigenvalues, eigenvectors, and scores of the PCA.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="false" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="false" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># PCA &lt;- gm.prcomp(Y.gpa$coords)</span></span></code></pre></div>
 </div>
 </section>
 <section id="shape-deformation" class="level4">
 <h4 class="anchored" data-anchor-id="shape-deformation"><strong>Shape deformation</strong></h4>
-<p>To visualize the shape changes associated with the PCs, we can use the plotRefToTarget() function to produce deformation grids that compare the shapes corresponding to the extremes of a chosen PC axis. For example, to compare the shapes at the minimum and maximum scores of PC1, we can use the following code: ##### Penguin morphometrics</p>
+<p>To visualize the shape changes associated with the PCs, we can use the plotRefToTarget() function to produce deformation grids that compare the shapes corresponding to the extremes of a chosen PC axis. For example, to compare the shapes at the minimum and maximum scores of PC1, we can use the following code:</p>
 </section>
 </section>
 </section>
