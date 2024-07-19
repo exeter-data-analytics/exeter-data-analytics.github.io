@@ -1,0 +1,43 @@
+---
+title: "Integrating GitHub Copilot with RStudio and VScode"
+author: 
+  - name:
+    affiliation: University of Exeter
+description: ""
+date: "2024-07-19"
+date-modified: last-modified
+categories: [add here]
+execute:
+  message: false
+  warning: false
+draft: true
+---
+
+# Outline
+
+GitHub Copilot is a useful way to integrate LLM's into our coding process. These should be used with some care, so see our 'Using GitHub Copilot and other LLM's in our Coding workflows' for more information.
+
+This walkthrough will provide the necessary steps to add Copilot to RStudio and VScode/Positron.
+
+# Prerequisites
+
+To get this set up properly you will need to first
+
+1.  Sign up for a GitHub account (ideally using your university account)
+2.  With your new GitHub account, [submit an application for free GitHub Education benefits](https://education.github.com/discount_requests/application)
+3.  Once your application is approved, head to [https://copilot.github.com](https://copilot.github.com/?WT.mc_id=academic-88217-leestott) and click the start free trial button
+4.  You're now ready to set up GitHub copilot on RStudio/VScode!
+
+# Copilot for RStudio 
+
+# Copilot for VScode 
+
+# Summary
+
+### Additional Resources
+
+### Acknowledgements
+
+We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.
+
+-   Add here.
