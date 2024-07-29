@@ -1,12 +1,12 @@
 ---
 title: "Integrating GitHub Copilot with RStudio and VScode"
 author: 
-  - name:
+  - name: Stephen Lang & Dan Padfield
     affiliation: University of Exeter
 description: ""
 date: "2024-07-19"
 date-modified: last-modified
-categories: [add here]
+categories: Coding, RStudio, R, VScode, GitHub
 execute:
   message: false
   warning: false
@@ -15,29 +15,53 @@ draft: true
 
 # Outline
 
-GitHub Copilot is a useful way to integrate LLM's into our coding process. These should be used with some care, so see our 'Using GitHub Copilot and other LLM's in our Coding workflows' for more information.
+GitHub Copilot is a useful way to integrate LLM's into our coding process. These tools should be used with some care, so see our 'Using GitHub Copilot and other LLM's in our Coding workflows' presentation for more information and guidance.
 
 This walkthrough will provide the necessary steps to add Copilot to RStudio and VScode/Positron.
 
 # Prerequisites
 
-To get this set up properly you will need to first
+To access Copilot for free, you will need to request GitHub education benefits using the following steps:
 
 1.  Sign up for a GitHub account (ideally using your university account)
-2.  With your new GitHub account, [submit an application for free GitHub Education benefits](https://education.github.com/discount_requests/application)
+2.  From your new GitHub account, [apply for free GitHub Education benefits](https://education.github.com/discount_requests/application) (i.e., upload photo of your Unicard)
 3.  Once your application is approved, head to [https://copilot.github.com](https://copilot.github.com/?WT.mc_id=academic-88217-leestott) and click the start free trial button
-4.  You're now ready to set up GitHub copilot on RStudio/VScode!
+4.  You're now ready to set up GitHub copilot!
 
-# Copilot for RStudio 
+# Setting up Copilot in RStudio
 
-# Copilot for VScode 
+1.  To set up the GitHub Copilot for RStudio, we navigate to `Tools` \> `Global Options` \> `Copilot` (see image below)
+2.  From the Copilot tab, check the `Enable Copilot` box and hit `Apply`
+3.  You should then see a `You are not currently signed in` message below the checkbox. Click the `Sign in` button.
+4.  Copy the 8-digit code, click the link, select `Continue` and paste the code
+5.  Copilot should show as activated (if not click the `Activate` button in Copilot options)
+6.  Copilot will now provide suggestions for code as you type (you can see status in bottom right of the code window)
 
-# Summary
+![](rstudio_options.png){.lightbox}
+
+# Setting up Copilot for Visual Studio Code
+
+1.  On VS Code we just have to install the [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
+2.  Once installed, we open the Copilot extension and use it to sign into our GitHub account
+3.  Copilot will now give you suggestions as you type, and you can also use the additional `Copilot chat` feature (messages icon on left of window) to open a dialogue
+
+![](vscode_copilot.png){.lightbox}
+
+# General Copilot usage and pointers
+
+Now we have Copilot ready to provide suggestions for our code in our chosen software!
+
+-   To approve Copilot suggestions that appear, press `Tab`
+-   To give Copilot guidance on code suggestions, provide `#code comments` that describe steps required
+-   Make sure to check both the generated code itself and sense-check outputs to ensure that it is doing what is expected
+-   The Copilot chat extension (installed automatically alongside Copilot) can be used for a broader range of tasks -- [see examples here](https://docs.github.com/en/copilot/using-github-copilot/example-use-cases/example-prompts-for-copilot-chat?tool=vscode)
 
 ### Additional Resources
+
+-   [Responsible use of GitHub Copilot Chat in your IDE](https://docs.github.com/en/copilot/responsible-use-of-github-copilot-features/responsible-use-of-github-copilot-chat-in-your-ide)
 
 ### Acknowledgements
 
 We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.
 
--   Add here.
+-   [GitHub Copilot documentation](https://docs.github.com/en/copilot)
