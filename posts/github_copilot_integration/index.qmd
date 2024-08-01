@@ -25,8 +25,10 @@ To access Copilot for free, you will need to request GitHub education benefits u
 
 1.  Sign up for a GitHub account (ideally using your university account)
 2.  From your new GitHub account, [apply for free GitHub Education benefits](https://education.github.com/discount_requests/application) (i.e., upload photo of your Unicard)
-3.  Once your application is approved, head to [https://copilot.github.com](https://copilot.github.com/?WT.mc_id=academic-88217-leestott) and click the start free trial button
-4.  You're now ready to set up GitHub copilot!
+3.  Once GitHub Education email to say your application is approved, head to [https://github.com/settings/copilot](https://github.com/settings/copilot) and click the `Start free trial` button
+4.  The next screen will have a green button to `Get access to GitHub Copilot`
+5.  Finally, you just have to check policies ([for additional details see here](https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-copilot-policies-as-an-individual-subscriber#enabling-or-disabling-suggestions-matching-public-code)) and click `Save and complete setup`
+5.  You're now ready to set up GitHub copilot!
 
 # Setting up Copilot in RStudio
 
