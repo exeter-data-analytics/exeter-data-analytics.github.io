@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Daniel Padfield">
+<meta name="author" content="Stephen Lang &amp; Dan Padfield">
+<meta name="dcterms.date" content="2024-07-19">
 
-<title>ExeDataHub - Reproducible publication-ready plots and tables with ggplot2 and flextable</title>
+<title>ExeDataHub - Integrating GitHub Copilot with RStudio and VScode</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,53 +112,139 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Integrating GitHub Copilot with RStudio and VScode</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Coding, RStudio, R, VScode, GitHub</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author">Stephen Lang &amp; Dan Padfield </p>
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              University of Exeter
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 19, 2024</p>
+      </div>
+    </div>
+    
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">November 27, 2024</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#outline" id="toc-outline" class="nav-link active" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#setting-up-copilot-in-rstudio" id="toc-setting-up-copilot-in-rstudio" class="nav-link" data-scroll-target="#setting-up-copilot-in-rstudio">Setting up Copilot in RStudio</a></li>
+  <li><a href="#setting-up-copilot-for-visual-studio-code" id="toc-setting-up-copilot-for-visual-studio-code" class="nav-link" data-scroll-target="#setting-up-copilot-for-visual-studio-code">Setting up Copilot for Visual Studio Code</a></li>
+  <li><a href="#general-copilot-usage-and-pointers" id="toc-general-copilot-usage-and-pointers" class="nav-link" data-scroll-target="#general-copilot-usage-and-pointers">General Copilot usage and pointers</a>
+  <ul class="collapse">
+  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Reproducible publication-ready plots and tables with ggplot2 and flextable</h1>
-</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Daniel Padfield </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">12th October 2023</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
+<section id="outline" class="level1">
+<h1>Outline</h1>
+<p>GitHub Copilot is a useful way to integrate LLM’s into our coding process. These tools should be used with some care, so see our ‘Using GitHub Copilot and other LLM’s in our Coding workflows’ presentation for more information and guidance.</p>
+<p>This walkthrough will provide the necessary steps to add Copilot to RStudio and VScode/Positron.</p>
+</section>
+<section id="prerequisites" class="level1">
+<h1>Prerequisites</h1>
+<p>To access Copilot for free, you will need to request GitHub education benefits using the following steps:</p>
+<ol type="1">
+<li>Sign up for a GitHub account (ideally using your university account)</li>
+<li>From your new GitHub account, <a href="https://education.github.com/discount_requests/application">apply for free GitHub Education benefits</a> (i.e., upload photo of your Unicard)</li>
+<li>Once GitHub Education email to say your application is approved, head to <a href="https://github.com/settings/copilot">https://github.com/settings/copilot</a> and click the <code>Start free trial</code> button</li>
+<li>The next screen will have a green button to <code>Get access to GitHub Copilot</code></li>
+<li>Finally, you just have to check policies (<a href="https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-copilot-policies-as-an-individual-subscriber#enabling-or-disabling-suggestions-matching-public-code">for additional details see here</a>) and click <code>Save and complete setup</code></li>
+<li>You’re now ready to set up GitHub copilot!</li>
+</ol>
+</section>
+<section id="setting-up-copilot-in-rstudio" class="level1">
+<h1>Setting up Copilot in RStudio</h1>
+<ol type="1">
+<li>To set up the GitHub Copilot for RStudio, we navigate to <code>Tools</code> &gt; <code>Global Options</code> &gt; <code>Copilot</code> (see image below)</li>
+<li>From the Copilot tab, check the <code>Enable Copilot</code> box and hit <code>Apply</code></li>
+<li>You should then see a <code>You are not currently signed in</code> message below the checkbox. Click the <code>Sign in</code> button.</li>
+<li>Copy the 8-digit code, click the link, select <code>Continue</code> and paste the code</li>
+<li>Copilot should show as activated (if not click the <code>Activate</code> button in Copilot options)</li>
+<li>Copilot will now provide suggestions for code as you type (you can see status in bottom right of the code window)</li>
+</ol>
+<p><img src="rstudio_options.png" class="lightbox img-fluid"></p>
+</section>
+<section id="setting-up-copilot-for-visual-studio-code" class="level1">
+<h1>Setting up Copilot for Visual Studio Code</h1>
+<ol type="1">
+<li>On VS Code we just have to install the <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot">GitHub Copilot extension</a></li>
+<li>Once installed, we open the Copilot extension and use it to sign into our GitHub account</li>
+<li>Copilot will now give you suggestions as you type, and you can also use the additional <code>Copilot chat</code> feature (messages icon on left of window) to open a dialogue</li>
+</ol>
+<p><img src="vscode_copilot.png" class="lightbox img-fluid"></p>
+</section>
+<section id="general-copilot-usage-and-pointers" class="level1">
+<h1>General Copilot usage and pointers</h1>
+<p>Now we have Copilot ready to provide suggestions for our code in our chosen software!</p>
+<ul>
+<li>To approve Copilot suggestions that appear, press <code>Tab</code></li>
+<li>To give Copilot guidance on code suggestions, provide <code>#code comments</code> that describe steps required</li>
+<li>Make sure to check both the generated code itself and sense-check outputs to ensure that it is doing what is expected</li>
+<li>The Copilot chat extension (installed automatically alongside Copilot) can be used for a broader range of tasks – <a href="https://docs.github.com/en/copilot/using-github-copilot/example-use-cases/example-prompts-for-copilot-chat?tool=vscode">see examples here</a></li>
+</ul>
+<section id="additional-resources" class="level3">
+<h3 class="anchored" data-anchor-id="additional-resources">Additional Resources</h3>
+<ul>
+<li><a href="https://docs.github.com/en/copilot/responsible-use-of-github-copilot-features/responsible-use-of-github-copilot-chat-in-your-ide">Responsible use of GitHub Copilot Chat in your IDE</a></li>
+</ul>
+</section>
+<section id="acknowledgements" class="level3">
+<h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
+<p>We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.</p>
+<ul>
+<li><a href="https://docs.github.com/en/copilot">GitHub Copilot documentation</a></li>
+</ul>
 
-</header>
 
-<p>This presentation was recorded. A recording can be found <a href="https://universityofexeteruk-my.sharepoint.com/:v:/g/personal/d_padfield_exeter_ac_uk/EambcAD70vRIli-YxTql64oBwq2V5_nQqwvpj6R_Wj9Y5w?e=GhKF1B&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZyIsInJlZmVycmFsQXBwUGxhdGZvcm0iOiJXZWIiLCJyZWZlcnJhbE1vZGUiOiJ2aWV3In19">here</a> for students and staff at the University of Exeter.</p>
-<p>Slides can be found <a href="../../presentations/ggplot2_flextable/2023_ggplot2_flextable.pdf">here</a>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../presentations/ggplot2_flextable/media/Slide1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-
-
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

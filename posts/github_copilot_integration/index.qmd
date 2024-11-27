@@ -10,7 +10,6 @@ categories: Coding, RStudio, R, VScode, GitHub
 execute:
   message: false
   warning: false
-draft: true
 ---
 
 # Outline
