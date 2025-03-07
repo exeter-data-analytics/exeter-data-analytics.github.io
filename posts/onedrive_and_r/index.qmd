@@ -1,0 +1,44 @@
+---
+title: "Download files from OneDrive using R and Microsoft365R"
+author: 
+  - name: Daniel Padfield
+    affiliation: University of Exeter
+  - name: Stephen Lang
+    affiliation: University of Exeter
+description: "Link your OneDrive to R to allow you to download files to any computer, even remote servers."
+date: "2025-03-07"
+date-modified: last-modified
+categories: [OneDrive] [R] [Microsoft365R]
+execute:
+  message: false
+  warning: false
+draft: true
+---
+
+# Outline
+
+This is where we discuss the need and rationale for this walkthrough.
+
+# Prerequisites
+
+# Learning objectives
+
+::: callout-note
+# Learning objectives
+
+**This introduction should allow you to:**
+
+-   Add here.
+:::
+
+# Add lecture here
+
+# Summary
+
+### Additional Resources
+
+### Acknowledgements
+
+We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.
+
+-   Add here.

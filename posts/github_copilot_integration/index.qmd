@@ -3,7 +3,7 @@ title: "Integrating GitHub Copilot with RStudio and VScode"
 author: 
   - name: Stephen Lang & Dan Padfield
     affiliation: University of Exeter
-description: ""
+description: "Sign up to GitHub Copilot for code autocompletion in RStudio and VSCode"
 date: "2024-07-19"
 date-modified: last-modified
 categories: Coding, RStudio, R, VScode, GitHub
