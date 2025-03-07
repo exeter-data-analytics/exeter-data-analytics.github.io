@@ -9,32 +9,35 @@
 <link>https://exeter-data-analytics.github.io/posts.html</link>
 <atom:link href="https://exeter-data-analytics.github.io/posts.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.3.450</generator>
+<generator>quarto-1.5.57</generator>
 <lastBuildDate>Thu, 18 Jul 2024 23:00:00 GMT</lastBuildDate>
 <item>
   <title>Integrating GitHub Copilot with RStudio and VScode</title>
   <dc:creator>Stephen Lang &amp; Dan Padfield</dc:creator>
-  <link>https://exeter-data-analytics.github.io/posts/github_copilot_integration/index.html</link>
+  <link>https://exeter-data-analytics.github.io/posts/github_copilot_integration/</link>
   <description><![CDATA[ 
+
 
 
 
 
 <section id="outline" class="level1">
 <h1>Outline</h1>
-<p>GitHub Copilot is a useful way to integrate LLM’s into our coding process. These tools should be used with some care, so see our ‘Using GitHub Copilot and other LLM’s in our Coding workflows’ presentation for more information and guidance.</p>
-<p>This walkthrough will provide the necessary steps to add Copilot to RStudio and VScode/Positron.</p>
+<p><a href="https://docs.github.com/en/copilot">GitHub Copilot</a> an AI coding assistant that can be ran directly within your coding environment (e.g.&nbsp;RStudio or VSCode). These tools should be used with care, and you still need to understand what the code does as you are ultimately responsible for your code and its output.</p>
+<p>This walkthrough will provide the necessary steps to add Copilot to RStudio and VSCode.</p>
 </section>
 <section id="prerequisites" class="level1">
 <h1>Prerequisites</h1>
-<p>To access Copilot for free, you will need to request GitHub education benefits using the following steps:</p>
+<p>There are two ways of getting GitHub Copilot for free. The first is to use <a href="https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/about-github-copilot-free">GitHub Copilot Free</a> which gives you 2000 autocompletions a month.</p>
+<p>However, the method we recommend is to get <a href="https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-your-github-copilot-pro-subscription/getting-free-access-to-copilot-pro-as-a-student-teacher-or-maintainer">GitHub Copilot Pro free</a> as a student or teacher. This method will also allow you to use GitHub Copilot on the RStudio servers. This susbscription gives you unlimited access to GitHub Copilot while you are a student or researcher at the University.</p>
+<p>To do this, you will need to request GitHub Education benefits using the following steps:</p>
 <ol type="1">
 <li>Sign up for a GitHub account (ideally using your university account)</li>
 <li>From your new GitHub account, <a href="https://education.github.com/discount_requests/application">apply for free GitHub Education benefits</a> (i.e., upload photo of your Unicard)</li>
-<li>Once GitHub Education email to say your application is approved, head to <a href="https://github.com/settings/copilot">https://github.com/settings/copilot</a> and click the <code>Start free trial</code> button</li>
+<li>Once GitHub Education email to say your application is approved, head to <a href="https://github.com/settings/copilot" class="uri">https://github.com/settings/copilot</a> and click the <code>Start free trial</code> button</li>
 <li>The next screen will have a green button to <code>Get access to GitHub Copilot</code></li>
 <li>Finally, you just have to check policies (<a href="https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-copilot-policies-as-an-individual-subscriber#enabling-or-disabling-suggestions-matching-public-code">for additional details see here</a>) and click <code>Save and complete setup</code></li>
-<li>You’re now ready to set up GitHub copilot!</li>
+<li>You’re now ready to set up GitHub Copilot!</li>
 </ol>
 </section>
 <section id="setting-up-copilot-in-rstudio" class="level1">
@@ -47,16 +50,16 @@
 <li>Copilot should show as activated (if not click the <code>Activate</code> button in Copilot options)</li>
 <li>Copilot will now provide suggestions for code as you type (you can see status in bottom right of the code window)</li>
 </ol>
-<p><img src="https://exeter-data-analytics.github.io/posts/github_copilot_integration/rstudio_options.png" class="lightbox img-fluid"></p>
+<p><a href="rstudio_options.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://exeter-data-analytics.github.io/posts/github_copilot_integration/rstudio_options.png" class="img-fluid"></a></p>
 </section>
 <section id="setting-up-copilot-for-visual-studio-code" class="level1">
 <h1>Setting up Copilot for Visual Studio Code</h1>
 <ol type="1">
-<li>On VS Code we just have to install the <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot">GitHub Copilot extension</a></li>
+<li>On VSCode we just have to install the <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot">GitHub Copilot extension</a></li>
 <li>Once installed, we open the Copilot extension and use it to sign into our GitHub account</li>
 <li>Copilot will now give you suggestions as you type, and you can also use the additional <code>Copilot chat</code> feature (messages icon on left of window) to open a dialogue</li>
 </ol>
-<p><img src="https://exeter-data-analytics.github.io/posts/github_copilot_integration/vscode_copilot.png" class="lightbox img-fluid"></p>
+<p><a href="vscode_copilot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://exeter-data-analytics.github.io/posts/github_copilot_integration/vscode_copilot.png" class="img-fluid"></a></p>
 </section>
 <section id="general-copilot-usage-and-pointers" class="level1">
 <h1>General Copilot usage and pointers</h1>
@@ -66,7 +69,9 @@
 <li>To give Copilot guidance on code suggestions, provide <code>#code comments</code> that describe steps required</li>
 <li>Make sure to check both the generated code itself and sense-check outputs to ensure that it is doing what is expected</li>
 <li>The Copilot chat extension (installed automatically alongside Copilot) can be used for a broader range of tasks – <a href="https://docs.github.com/en/copilot/using-github-copilot/example-use-cases/example-prompts-for-copilot-chat?tool=vscode">see examples here</a></li>
+<li>If you also use the <code>Tab</code> autocompletion capability of RStudio or VSCode to navigate files or autocomplete functions, sometimes Copilot’s suggestion comes up and <code>Tab</code> approves Copilot rather than the autocompletion. To stop this, you can play around with the <code>Show code suggestions after keyboard idle (ms)</code> in the Settings.</li>
 </ul>
+<p><a href="rstudio_options2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://exeter-data-analytics.github.io/posts/github_copilot_integration/rstudio_options2.png" class="img-fluid"></a></p>
 <section id="additional-resources" class="level3">
 <h3 class="anchored" data-anchor-id="additional-resources">Additional Resources</h3>
 <ul>
@@ -86,15 +91,16 @@
 
  ]]></description>
   <category>Coding, RStudio, R, VScode, GitHub</category>
-  <guid>https://exeter-data-analytics.github.io/posts/github_copilot_integration/index.html</guid>
+  <guid>https://exeter-data-analytics.github.io/posts/github_copilot_integration/</guid>
   <pubDate>Thu, 18 Jul 2024 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>intRos: Geometric Morphometrics</title>
   <dc:creator>Dr. M.D. Sharma</dc:creator>
   <dc:creator>Hironori Shinohara</dc:creator>
-  <link>https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/index.html</link>
+  <link>https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -142,7 +148,7 @@ Learning objectives
 <h2 class="anchored" data-anchor-id="data-preparation">Data preparation</h2>
 <p>Before we can use geomorph, we need to have our landmark data in a specific format called <code>tps</code>. A <code>tps</code> file is a plain text file that contains the coordinates of landmarks for one or more specimens, along with some optional metadata. A <code>tps</code> file has the following structure:</p>
 <div class="cell">
-<pre class="text cell-code code-overflow-wrap" data-code-line-numbers="false"><code>LM=number of landmarks
+<pre class="text cell-code code-overflow-wrap"><code>LM=number of landmarks
 x1 y1
 x2 y2
 ...
@@ -167,7 +173,7 @@ SCALE=scale factor
 <h4 class="anchored" data-anchor-id="using-tpsutil-and-tpsdig"><strong>Using tpsUtil and tpsDig</strong></h4>
 <p>Download and install the <a href="https://sbmorphometrics.org/morphmet/tpsutilw32.exe">tpsUtil32</a> and <a href="https://sbmorphometrics.org/morphmet/tpsdig2w64.exe">tpsDig2w64</a> software from the <a href="https://sbmorphometrics.org/">Stony Brook Morphometrics</a> website. tpsUtil32 is a utility tool and tpsDig2w64 helps digitize coordinates of landmarks and capture outlines.</p>
 <p>Open tpsUtil, select “Build tps file from images”, select the “input” directory where all your images are stored and then select the location and name for the “output file”. In this example, we have called the tps file – <a href="./data/full_body/Tribolium_castaneum.tps"><em>Tribolium_castaneum.</em>tps</a> and saved it in the root of the data folder.</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -186,7 +192,7 @@ SCALE=scale factor
 <p>Now, randomise the order of the files by selecting “randomly order specimens” from the Operations menu. This helps spread out any confounding factors (e.g.&nbsp;photos taken at different times of day / different lighting etc.). Hit create, and save the new file as <a href="./data/full_body/Tribolium_castaneum_randomised.tps"><em>Tribolium_castaneum</em>_randomised.tps</a>. Please make sure you take a look at this file, within a text editor, and then adjust any file paths that need adjusting.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/util_002.jpg" class="img-fluid figure-img" width="334"></p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/util_002.jpg" class="img-fluid quarto-figure quarto-figure-left figure-img" width="334"></p>
 </figure>
 </div>
 </section>
@@ -200,7 +206,7 @@ SCALE=scale factor
 <section id="set-a-scale" class="level4">
 <h4 class="anchored" data-anchor-id="set-a-scale"><strong>Set a scale:</strong></h4>
 <p>Open the scale image within tpsDig, and zoom-in to a size that seems easy to work with. Click on the image tools icon and go to the Measure tab. To set a scale factor, enter the known length of a structure in the edit box and then digitize the two endpoints of the scale. Enter just the numerical value, do not enter the units. Press the OK button to accept the scale factor or the cancel button to ignore any changes you may have made in the scale factor. Make a note of this scale factor as we will be including it in all the .tps files that use this particular calibration image.</p>
-<table class="table">
+<table class="caption-top table">
 <tbody>
 <tr class="odd">
 <td><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/scale_000.jpg" class="img-fluid" width="571"></td>
@@ -219,7 +225,7 @@ SCALE=scale factor
 <h4 class="anchored" data-anchor-id="make-a-link-file"><strong>Make a link file:</strong></h4>
 <p>Within tpsUtil, select the “Make links file” option, select the Input tps file that has at-least one image completely landmarked and select an output destination for the link file.</p>
 <p>The locations of the landmarks on the first specimen in a TPS or NTS file will be displayed. With the mouse, one can draw links between any pairs of landmarks.</p>
-<table class="table">
+<table class="caption-top table">
 <tbody>
 <tr class="odd">
 <td><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/links_000.jpg" class="img-fluid"></td>
@@ -266,8 +272,9 @@ Expand To Learn About this step within Geomorph
 <p>If you want to do this step within geomorph, please follow these steps instead:</p>
 <p>To create a tps file from a directory of image files, we can use the tps.write function from geomorph. This function takes a list of image file names, a matrix of landmark coordinates, and an optional list of specimen identifiers, and writes them to a tps file. The landmark coordinates can be obtained by manually digitizing the landmarks on the images using a software such as tpsDig, or by using an automated method such as the digitize2d function from geomorph. The specimen identifiers can be extracted from the image file names, or assigned by the user. For example, suppose we have a directory called <code>data\images</code> that contains a subset of 50 image files of <em>Gnatocerus cornutus</em> specimens, named FB001.JPG .. FB150.JPG. We can create a <code>tps</code> file called <code>Gnatocerus_cornutus.tps</code> with the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="false" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="cf" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> (<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
@@ -279,6 +286,7 @@ background-color: null;
 font-style: inherit;">'geomorph'</span>)</span>
 <span id="cb2-2"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> (<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
@@ -290,6 +298,7 @@ background-color: null;
 font-style: inherit;">'stringr'</span>)</span>
 <span id="cb2-3"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> (<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
@@ -443,8 +452,9 @@ font-style: inherit;"># writeland.tps(ids, file = "Tribolium_castaneum.tps")</sp
 <h4 class="anchored" data-anchor-id="data-analysis"><strong>Data analysis</strong></h4>
 <p>Once we have our tps file, we can use geomorph to read, plot, and analyze our landmark data. We can use the readland.tps function to read the tps file and store it in a list of two elements: a matrix of landmark coordinates and a vector of specimen identifiers. We can also use the plotTangentSpace function to plot the landmark data in a two-dimensional space that preserves the shape variation among the specimens. For example, we can read and plot the beetles data with the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="false" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="cf" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> (<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
@@ -456,6 +466,7 @@ background-color: null;
 font-style: inherit;">'geomorph'</span>)</span>
 <span id="cb3-2"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> (<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
@@ -467,6 +478,7 @@ background-color: null;
 font-style: inherit;">'stringr'</span>)</span>
 <span id="cb3-3"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> (<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
@@ -504,7 +516,7 @@ font-style: inherit;">"ID"</span>)</span></code></pre></div>
 <pre><code>
 No curves detected; all points appear to be fixed landmarks.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="false" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># tribolium &lt;- readland.tps("data/full_body/pronotum_slider.nts", readcurves = TRUE)</span></span>
 <span id="cb5-2"></span>
@@ -523,7 +535,7 @@ font-style: inherit;"># plot(tribolium)</span></span></code></pre></div>
 <p>We can also use geomorph to perform various statistical analyses on our landmark data, such as testing for differences in shape among groups, testing for correlations between shape and other variables, testing for allometry or size-shape relationships, testing for phylogenetic signal or evolutionary patterns, and more. Geomorph provides a unified framework for these analyses, based on the generalized Procrustes analysis (GPA) and the Procrustes ANOVA. The GPA is a procedure that aligns the landmark coordinates of the specimens to a common orientation and scale, and calculates the Procrustes shape coordinates and the Procrustes distances. The Procrustes ANOVA is a method that partitions the shape variation among the specimens into different sources, such as group, size, or error, and tests for their significance using permutation tests.</p>
 <p>For example, suppose we want to test if there is a difference in shape between male and female beetles, and if there is a correlation between shape and body length. We can use the procD.lm function from geomorph to perform these analyses. This function takes a formula that specifies the response variable (shape) and the explanatory variables (sex and length), and a data frame that contains the landmark data and the covariates. The function performs the GPA and the Procrustes ANOVA, and returns a list of results, such as the Procrustes sums of squares, the Procrustes mean squares, the F-statistics, the p-values, and the effect sizes. The function also plots the residuals of the shape variation against the covariates, and the shape changes associated with the covariates. For example, we can perform these analyses on the beetles data with the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="false" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Create a data frame with the landmark data and the covariates</span></span>
 <span id="cb6-2"><span class="co" style="color: #5E5E5E;
@@ -546,7 +558,7 @@ font-style: inherit;"># beetles.shape &lt;- procD.lm(coords ~ sex + length, data
 <h4 class="anchored" data-anchor-id="generalized-procrustes-analysis"><strong>Generalized Procrustes Analysis</strong></h4>
 <p>Next, we need to perform a generalized Procrustes analysis (GPA) to align the landmark configurations and remove the effects of translation, rotation, and scaling. We can use the gpagen() function to do this, which returns a list containing the aligned coordinates, the consensus configuration, and the Procrustes distances.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="false" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Y.gpa &lt;- gpagen(plethspecies$land)</span></span></code></pre></div>
 </div>
@@ -555,7 +567,7 @@ font-style: inherit;"># Y.gpa &lt;- gpagen(plethspecies$land)</span></span></cod
 <h4 class="anchored" data-anchor-id="principal-component-analysis"><strong>Principal component analysis</strong></h4>
 <p>One of the most common methods to explore shape variation is principal component analysis (PCA), which reduces the dimensionality of the shape data and identifies the main axes of variation. We can use the gm.prcomp() function to perform a PCA on the aligned coordinates, which returns an object of class gm.prcomp that contains the eigenvalues, eigenvectors, and scores of the PCA.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="false" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># PCA &lt;- gm.prcomp(Y.gpa$coords)</span></span></code></pre></div>
 </div>
@@ -589,13 +601,13 @@ font-style: inherit;"># PCA &lt;- gm.prcomp(Y.gpa$coords)</span></span></code></
   <category>R</category>
   <category>Geomorph</category>
   <category>tpsDig</category>
-  <guid>https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/index.html</guid>
+  <guid>https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/</guid>
   <pubDate>Tue, 28 Nov 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>intRos: Tidy data manipulation</title>
   <dc:creator>Alice Trevail</dc:creator>
-  <link>https://exeter-data-analytics.github.io/posts/intro_to_tidy_data_manipulation/index.html</link>
+  <link>https://exeter-data-analytics.github.io/posts/intro_to_tidy_data_manipulation/</link>
   <description><![CDATA[ 
 
 
@@ -1921,13 +1933,13 @@ $ sd_nitrogen       &lt;dbl&gt; 0.4282233, 0.4282233, 0.4282233, 0.4282233, 0.42
  ]]></description>
   <category>tidyverse</category>
   <category>R</category>
-  <guid>https://exeter-data-analytics.github.io/posts/intro_to_tidy_data_manipulation/index.html</guid>
+  <guid>https://exeter-data-analytics.github.io/posts/intro_to_tidy_data_manipulation/</guid>
   <pubDate>Mon, 20 Nov 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>intRos: Installing, R, RStudio, and Git</title>
   <dc:creator>Daniel Padfield</dc:creator>
-  <link>https://exeter-data-analytics.github.io/posts/install_rstudio_git/index.html</link>
+  <link>https://exeter-data-analytics.github.io/posts/install_rstudio_git/</link>
   <description><![CDATA[ 
 
 
@@ -2142,13 +2154,13 @@ Learning objectives
   <category>R</category>
   <category>RStudio</category>
   <category>git</category>
-  <guid>https://exeter-data-analytics.github.io/posts/install_rstudio_git/index.html</guid>
+  <guid>https://exeter-data-analytics.github.io/posts/install_rstudio_git/</guid>
   <pubDate>Thu, 20 Apr 2023 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>intRos: Publication ready plots using ggplot2</title>
   <dc:creator>Daniel Padfield</dc:creator>
-  <link>https://exeter-data-analytics.github.io/posts/intro_to_ggplot2/index.html</link>
+  <link>https://exeter-data-analytics.github.io/posts/intro_to_ggplot2/</link>
   <description><![CDATA[ 
 
 
@@ -2364,6 +2376,7 @@ font-style: inherit;">0.4</span>, </span>
 background-color: null;
 font-style: inherit;">fun.data =</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(x){<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">return</span>(<span class="fu" style="color: #4758AB;
@@ -2522,6 +2535,7 @@ font-style: inherit;"># define function for pts</span></span>
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(x){</span>
 <span id="cb6-3">    <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2726,6 +2740,7 @@ font-style: inherit;">0.4</span>, </span>
 background-color: null;
 font-style: inherit;">fun.data =</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(x){<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">return</span>(<span class="fu" style="color: #4758AB;
@@ -2986,6 +3001,7 @@ font-style: inherit;"># create function to add letter to facet labels</span></sp
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span> (string){</span>
 <span id="cb8-11">    len <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -3064,6 +3080,7 @@ font-style: inherit;">0.4</span>, </span>
 background-color: null;
 font-style: inherit;">fun.data =</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(x){<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">return</span>(<span class="fu" style="color: #4758AB;
@@ -3493,13 +3510,13 @@ font-style: inherit;">20</span>)))</span></code></pre></div>
   <category>R</category>
   <category>ggplot2</category>
   <category>tidyverse</category>
-  <guid>https://exeter-data-analytics.github.io/posts/intro_to_ggplot2/index.html</guid>
+  <guid>https://exeter-data-analytics.github.io/posts/intro_to_ggplot2/</guid>
   <pubDate>Fri, 24 Feb 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>intRos: Reproducible tables with flextable</title>
   <dc:creator>Daniel Padfield</dc:creator>
-  <link>https://exeter-data-analytics.github.io/posts/intro_to_flextable/index.html</link>
+  <link>https://exeter-data-analytics.github.io/posts/intro_to_flextable/</link>
   <description><![CDATA[ 
 
 
@@ -4629,13 +4646,13 @@ font-style: inherit;"># fix any random size issues</span></span></code></pre></d
  ]]></description>
   <category>flextable</category>
   <category>R</category>
-  <guid>https://exeter-data-analytics.github.io/posts/intro_to_flextable/index.html</guid>
+  <guid>https://exeter-data-analytics.github.io/posts/intro_to_flextable/</guid>
   <pubDate>Tue, 14 Feb 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>intRos: Managing research projects with R Studio</title>
   <dc:creator>Stephen Lang</dc:creator>
-  <link>https://exeter-data-analytics.github.io/posts/intro_to_projects/index.html</link>
+  <link>https://exeter-data-analytics.github.io/posts/intro_to_projects/</link>
   <description><![CDATA[ 
 
 
@@ -4822,7 +4839,7 @@ font-style: inherit;">#build this same filepath in read_csv</span></span></code>
   <category>RStudio projects</category>
   <category>tidyverse</category>
   <category>here</category>
-  <guid>https://exeter-data-analytics.github.io/posts/intro_to_projects/index.html</guid>
+  <guid>https://exeter-data-analytics.github.io/posts/intro_to_projects/</guid>
   <pubDate>Tue, 03 Jan 2023 00:00:00 GMT</pubDate>
 </item>
 </channel>
