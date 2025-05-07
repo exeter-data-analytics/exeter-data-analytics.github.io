@@ -1,0 +1,412 @@
+tpsRelw (C) 2021, F. James Rohlf
+Program version: 1.75, Date/time: 12/01/2024 14:20:36
+--------------------------------------------------------------------------
+
+Data file: C:\Users\manmo\OneDrive - University of Exeter\Documents\GitHub\exeter-data-analytics.github.io\posts\intro_to_geometric_morphometrics\data\full_body\EntireBody_randomised_Abdomen.TPS
+There are 40 specimens
+ 
+
+Links read from file: C:\Users\manmo\OneDrive - University of Exeter\Documents\GitHub\exeter-data-analytics.github.io\posts\intro_to_geometric_morphometrics\data\abdomen\Abdomen_randomised_links.NTS
+  23 links read
+
+Sliding semilandmarks definitions read from file: C:\Users\manmo\OneDrive - University of Exeter\Documents\GitHub\exeter-data-analytics.github.io\posts\intro_to_geometric_morphometrics\data\abdomen\Abdomen_randomised_sliders.NTS
+  14 semilandmarks defined
+
+..... Compute consensus .....
+Scale: Alignment scaling method = unit centroid size
+Projection: Alignment projection method = orthogonal
+Reference will not be aligned to its PCA axes.
+
+.....GPA iterations .....
+ iter     change
+    1 0.00198919
+    2 0.00000000
+ 
+Consensus configuration:
+ 
+
+  1   -0.19543    0.00930
+  2   -0.11328    0.00725
+  3    0.30759   -0.01468
+  4    0.28451   -0.06700
+  5    0.23626   -0.10067
+  6    0.17179   -0.11932
+  7    0.09026   -0.12788
+  8   -0.01309   -0.12774
+  9   -0.12610   -0.12201
+ 10   -0.22243   -0.10805
+ 11   -0.22900   -0.07495
+ 12   -0.22031   -0.01311
+ 13   -0.21805    0.03288
+ 14   -0.22164    0.08845
+ 15   -0.21205    0.12529
+ 16   -0.10877    0.12944
+ 17    0.00539    0.12639
+ 18    0.09566    0.11972
+ 19    0.17055    0.10556
+ 20    0.23515    0.08376
+ 21    0.28299    0.04736
+
+GPA iterations with sliding:
+ iter          Sum d²      Change  Bending energy      Change
+    1      0.01555998                  0.61966189
+    2      0.01555998  0.00000000      0.61966189  0.00000000
+    3      0.01555998  0.00000000      0.61966189  0.00000000
+    4      0.01555998  0.00000000      0.61966189  0.00000000
+ 
+Consensus configuration after sliding:
+ 
+
+  1   -0.195430    0.009300
+  2   -0.113280    0.007253
+  3    0.307586   -0.014676
+  4    0.284513   -0.066998
+  5    0.236260   -0.100666
+  6    0.171791   -0.119321
+  7    0.090258   -0.127883
+  8   -0.013090   -0.127737
+  9   -0.126104   -0.122005
+ 10   -0.222427   -0.108050
+ 11   -0.229005   -0.074955
+ 12   -0.220308   -0.013107
+ 13   -0.218051    0.032877
+ 14   -0.221635    0.088445
+ 15   -0.212050    0.125292
+ 16   -0.108774    0.129440
+ 17    0.005392    0.126386
+ 18    0.095659    0.119720
+ 19    0.170551    0.105562
+ 20    0.235148    0.083763
+ 21    0.282995    0.047360
+
+
+Variances at each landmark for aligned specimens:
+    i         S²x         S²y          S²
+    1  0.00001117  0.00001019  0.00002136
+    2  0.00001526  0.00001535  0.00003061
+    3  0.00001096  0.00000228  0.00001324
+    4  0.00000709  0.00000416  0.00001124
+    5  0.00000441  0.00000466  0.00000907
+    6  0.00000393  0.00000687  0.00001081
+    7  0.00000776  0.00001102  0.00001877
+    8  0.00001258  0.00000745  0.00002003
+    9  0.00000611  0.00001139  0.00001750
+   10  0.00000725  0.00001504  0.00002229
+   11  0.00001124  0.00001033  0.00002157
+   12  0.00000788  0.00002297  0.00003085
+   13  0.00000623  0.00003022  0.00003645
+   14  0.00000881  0.00001067  0.00001948
+   15  0.00000773  0.00001528  0.00002301
+   16  0.00000965  0.00001142  0.00002108
+   17  0.00001546  0.00000753  0.00002299
+   18  0.00001051  0.00000804  0.00001855
+   19  0.00000626  0.00000487  0.00001114
+   20  0.00000571  0.00000288  0.00000859
+   21  0.00000668  0.00000347  0.00001014
+
+Warning: do not interpret the above values too literally.
+The amount of variation "at" each landmark dependes strongly
+on the alignment to the mean shape and that depends on the
+choice of samples used.
+
+..... Computing partial warps .....
+ 
+Eigenvalues for each principal warp:
+  i       Lambda
+  1  4.3393E+002
+  2  4.1274E+002
+  3  2.6652E+002
+  4  2.5262E+002
+  5  2.0465E+002
+  6  1.5590E+002
+  7  1.4020E+002
+  8  1.0585E+002
+  9  7.7464E+001
+ 10  6.3052E+001
+ 11  6.1065E+001
+ 12  3.5190E+001
+ 13  3.1918E+001
+ 14  1.6912E+001
+ 15  1.2636E+001
+ 16  1.2027E+001
+ 17  3.7063E+000
+ 18  2.6640E+000
+
+
+Uniform component estimated by sweeping the partial warps
+from the projections of the aligned coordinates into the
+tangent space and then using SVD to extract the non-singular
+dimensions.
+ 
+
+..... Computing relative warps .....
+Relative contribution of each landmark (from R''t matrix):
+(see Rohlf (1993) paper on relative warps)
+  LM#       SS
+    1  0.14751
+    2  0.00931
+    3  0.03285
+    4  0.04246
+    5  0.03551
+    6  0.02009
+    7  0.00911
+    8  0.00488
+    9  0.00573
+   10  0.05665
+   11  0.11384
+   12  0.12017
+   13  0.14471
+   14  0.10570
+   15  0.04044
+   16  0.00520
+   17  0.00630
+   18  0.01278
+   19  0.02206
+   20  0.03246
+   21  0.03224
+
+Singular values and percent explained for relative warps:
+No.         SV        %    Cum %
+   1    0.06409    26.41%    26.41% 
+   2    0.05590    20.09%    46.50% 
+   3    0.05074    16.56%    63.06% 
+   4    0.04311    11.95%    75.01% 
+   5    0.03464     7.71%    82.72% 
+   6    0.02479     3.95%    86.67% 
+   7    0.02159     3.00%    89.67% 
+   8    0.01921     2.37%    92.04% 
+   9    0.01576     1.60%    93.64% 
+  10    0.01439     1.33%    94.97% 
+  11    0.01352     1.17%    96.14% 
+  12    0.01277     1.05%    97.19% 
+  13    0.01187     0.91%    98.10% 
+  14    0.00834     0.45%    98.54% 
+  15    0.00735     0.35%    98.89% 
+  16    0.00644     0.27%    99.16% 
+  17    0.00607     0.24%    99.39% 
+  18    0.00504     0.16%    99.56% 
+  19    0.00439     0.12%    99.68% 
+  20    0.00387     0.10%    99.78% 
+  21    0.00340     0.07%    99.85% 
+  22    0.00310     0.06%    99.91% 
+  23    0.00261     0.04%    99.96% 
+  24    0.00214     0.03%    99.99% 
+  25    0.00129     0.01%   100.00% 
+  26    0.00037     0.00%   100.00% 
+  27    0.00027     0.00%   100.00% 
+  28    0.00024     0.00%   100.00% 
+  29    0.00023     0.00%   100.00% 
+  30    0.00019     0.00%   100.00% 
+  31    0.00013     0.00%   100.00% 
+  32    0.00010     0.00%   100.00% 
+  33    0.00010     0.00%   100.00% 
+  34    0.00009     0.00%   100.00% 
+  35    0.00005     0.00%   100.00% 
+  36    0.00003     0.00%   100.00% 
+  37    0.00002     0.00%   100.00% 
+  38    0.00001     0.00%   100.00% 
+
+Data file: C:\Users\manmo\OneDrive - University of Exeter\Documents\GitHub\exeter-data-analytics.github.io\posts\intro_to_geometric_morphometrics\data\abdomen\abdomen_randomised.TPS
+There are 40 specimens
+ 
+
+Links read from file: C:\Users\manmo\OneDrive - University of Exeter\Documents\GitHub\exeter-data-analytics.github.io\posts\intro_to_geometric_morphometrics\data\abdomen\Abdomen_randomised_links.NTS
+  23 links read
+
+Sliding semilandmarks definitions read from file: C:\Users\manmo\OneDrive - University of Exeter\Documents\GitHub\exeter-data-analytics.github.io\posts\intro_to_geometric_morphometrics\data\abdomen\Abdomen_randomised_sliders.NTS
+  14 semilandmarks defined
+
+..... Compute consensus .....
+Scale: Alignment scaling method = unit centroid size
+Projection: Alignment projection method = orthogonal
+Reference will not be aligned to its PCA axes.
+
+.....GPA iterations .....
+ iter     change
+    1 0.00298683
+    2 0.00000000
+ 
+Consensus configuration:
+ 
+
+  1   -0.18973    0.00241
+  2   -0.10904    0.00230
+  3    0.31758   -0.00541
+  4    0.29277   -0.06114
+  5    0.24213   -0.09638
+  6    0.17414   -0.11700
+  7    0.08785   -0.12759
+  8   -0.01250   -0.12933
+  9   -0.12071   -0.12678
+ 10   -0.21419   -0.11589
+ 11   -0.22136   -0.07951
+ 12   -0.21492   -0.02410
+ 13   -0.21437    0.02967
+ 14   -0.21894    0.08217
+ 15   -0.21125    0.11888
+ 16   -0.12069    0.12713
+ 17   -0.01985    0.12786
+ 18    0.07424    0.12564
+ 19    0.15771    0.11544
+ 20    0.23179    0.09496
+ 21    0.28932    0.05668
+
+GPA iterations with sliding:
+ iter          Sum d²      Change  Bending energy      Change
+    1      0.02122385                  1.07102087
+    2      0.02122385  0.00000000      1.07102087  0.00000000
+    3      0.02122385  0.00000000      1.07102087  0.00000000
+    4      0.02122385  0.00000000      1.07102087  0.00000000
+ 
+Consensus configuration after sliding:
+ 
+
+  1   -0.189730    0.002412
+  2   -0.109043    0.002299
+  3    0.317584   -0.005412
+  4    0.292774   -0.061136
+  5    0.242127   -0.096384
+  6    0.174143   -0.116995
+  7    0.087852   -0.127587
+  8   -0.012495   -0.129326
+  9   -0.120711   -0.126783
+ 10   -0.214191   -0.115888
+ 11   -0.221360   -0.079514
+ 12   -0.214917   -0.024104
+ 13   -0.214371    0.029666
+ 14   -0.218939    0.082169
+ 15   -0.211248    0.118875
+ 16   -0.120686    0.127126
+ 17   -0.019847    0.127864
+ 18    0.074243    0.125642
+ 19    0.157707    0.115439
+ 20    0.231794    0.094956
+ 21    0.289317    0.056680
+
+
+Variances at each landmark for aligned specimens:
+    i         S²x         S²y          S²
+    1  0.00001105  0.00001636  0.00002741
+    2  0.00001110  0.00002388  0.00003498
+    3  0.00000667  0.00000181  0.00000849
+    4  0.00000629  0.00000330  0.00000959
+    5  0.00000448  0.00000748  0.00001197
+    6  0.00000393  0.00001061  0.00001454
+    7  0.00000780  0.00001149  0.00001929
+    8  0.00001206  0.00001245  0.00002451
+    9  0.00000632  0.00001563  0.00002195
+   10  0.00000515  0.00002044  0.00002559
+   11  0.00001221  0.00002167  0.00003388
+   12  0.00000742  0.00005917  0.00006660
+   13  0.00000616  0.00007432  0.00008048
+   14  0.00001045  0.00003059  0.00004104
+   15  0.00000795  0.00001235  0.00002030
+   16  0.00000401  0.00001271  0.00001673
+   17  0.00001090  0.00000880  0.00001970
+   18  0.00001289  0.00000707  0.00001996
+   19  0.00001123  0.00000808  0.00001930
+   20  0.00000921  0.00000668  0.00001589
+   21  0.00000732  0.00000428  0.00001160
+
+Warning: do not interpret the above values too literally.
+The amount of variation "at" each landmark dependes strongly
+on the alignment to the mean shape and that depends on the
+choice of samples used.
+
+..... Computing partial warps .....
+ 
+Eigenvalues for each principal warp:
+  i       Lambda
+  1  4.2175E+002
+  2  4.0177E+002
+  3  2.4270E+002
+  4  2.3432E+002
+  5  1.7105E+002
+  6  1.4062E+002
+  7  1.2476E+002
+  8  9.8910E+001
+  9  7.8960E+001
+ 10  6.2851E+001
+ 11  6.1834E+001
+ 12  3.4738E+001
+ 13  3.1630E+001
+ 14  1.6654E+001
+ 15  1.2408E+001
+ 16  1.1867E+001
+ 17  3.6868E+000
+ 18  2.6083E+000
+
+
+Uniform component estimated by sweeping the partial warps
+from the projections of the aligned coordinates into the
+tangent space and then using SVD to extract the non-singular
+dimensions.
+ 
+
+..... Computing relative warps .....
+Relative contribution of each landmark (from R''t matrix):
+(see Rohlf (1993) paper on relative warps)
+  LM#       SS
+    1  0.14010
+    2  0.01002
+    3  0.02889
+    4  0.03774
+    5  0.03223
+    6  0.01809
+    7  0.00930
+    8  0.00613
+    9  0.00690
+   10  0.05079
+   11  0.12198
+   12  0.12771
+   13  0.13701
+   14  0.13137
+   15  0.05122
+   16  0.00821
+   17  0.00790
+   18  0.01087
+   19  0.01595
+   20  0.02226
+   21  0.02531
+
+Singular values and percent explained for relative warps:
+No.         SV        %    Cum %
+   1    0.08235    31.97%    31.97% 
+   2    0.07219    24.57%    56.54% 
+   3    0.05531    14.42%    70.97% 
+   4    0.04637    10.14%    81.10% 
+   5    0.03208     4.85%    85.96% 
+   6    0.02672     3.37%    89.32% 
+   7    0.02417     2.75%    92.08% 
+   8    0.02246     2.38%    94.46% 
+   9    0.01669     1.31%    95.77% 
+  10    0.01580     1.18%    96.95% 
+  11    0.01210     0.69%    97.64% 
+  12    0.01076     0.55%    98.18% 
+  13    0.00892     0.38%    98.56% 
+  14    0.00844     0.34%    98.89% 
+  15    0.00722     0.25%    99.14% 
+  16    0.00685     0.22%    99.36% 
+  17    0.00566     0.15%    99.51% 
+  18    0.00525     0.13%    99.64% 
+  19    0.00437     0.09%    99.73% 
+  20    0.00407     0.08%    99.81% 
+  21    0.00363     0.06%    99.87% 
+  22    0.00347     0.06%    99.93% 
+  23    0.00284     0.04%    99.97% 
+  24    0.00233     0.03%    99.99% 
+  25    0.00096     0.00%   100.00% 
+  26    0.00045     0.00%   100.00% 
+  27    0.00040     0.00%   100.00% 
+  28    0.00029     0.00%   100.00% 
+  29    0.00025     0.00%   100.00% 
+  30    0.00023     0.00%   100.00% 
+  31    0.00015     0.00%   100.00% 
+  32    0.00014     0.00%   100.00% 
+  33    0.00013     0.00%   100.00% 
+  34    0.00008     0.00%   100.00% 
+  35    0.00006     0.00%   100.00% 
+  36    0.00004     0.00%   100.00% 
+  37    0.00003     0.00%   100.00% 
+  38    0.00002     0.00%   100.00% 
+

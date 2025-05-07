@@ -5,8 +5,10 @@ author:
     affiliation: University of Exeter
   - name: Hironori Shinohara
     affiliation: University of Exeter
+  - name: Dr. R. Vasudeva
+    affiliation: University of Exeter
 description: ""
-date: "2023-11-28"
+date: "2025-04-30"
 date-modified: last-modified
 date-format: "YYYY-MM-DD"
 categories: [R, Geomorph, tpsDig]
@@ -41,7 +43,7 @@ Geometric morphometrics is a field of study that uses mathematical and statistic
 
 ## Introduction
 
-Geomorph is a package for geometric morphometric analysis of two- and three-dimensional landmark data in R. It provides functions for data manipulation, shape alignment, multivariate statistics, visualization, and more. In this tutorial, we will use the *Tribolium castaneum* dataset, which contains landmark coordinates for the abdomen and pronotum, to demonstrate some of the basic functionalities of geomorph. For simplicity, we will use the tpsUtil and tpsDig programs and integrate them within this workflow. Users are welcome to utilise the digitisation process within geomorph, if they wish to do this (see section 5 of the GeoMorph manual).
+Geomorph is a package for geometric morphometric analysis of two- and three-dimensional landmark data in R. It provides functions for data manipulation, shape alignment, multivariate statistics, visualization, and more. In this tutorial, we will use the *Tribolium castaneum* dataset, which contains landmark coordinates for elytra and pronotum, to demonstrate some of the basic functionalities of geomorph. For simplicity, we will use the tpsUtil and tpsDig programs and integrate them within this workflow. Users are welcome to utilise the digitisation process within geomorph, if they wish to do this (see section 5 of the GeoMorph manual).
 
 This tutorial has been developed as a companion to \[manuscript in prep\].
 
@@ -83,7 +85,7 @@ Download and install the [tpsUtil32](https://sbmorphometrics.org/morphmet/tpsuti
 
 Open tpsUtil, select "Build tps file from images", select the "input" directory where all your images are stored and then select the location and name for the "output file". In this example, we have called the tps file -- [*Tribolium_castaneum.*tps](./data/full_body/Tribolium_castaneum.tps) and saved it in the root of the data folder.
 
-|                                                 |                                     |
+|  |  |
 |------------------------------------|------------------------------------|
 | ![Build tps file from images](img/util_000.jpg) | ![Build tps file](img/util_001.jpg) |
 
@@ -91,23 +93,23 @@ Click on the "Setup" button to see the list of files that were found in the fold
 
 #### **Randomise**
 
-Now, randomise the order of the files by selecting "randomly order specimens" from the Operations menu. This helps spread out any confounding factors (e.g. photos taken at different times of day / different lighting etc.). Hit create, and save the new file as [*Tribolium_castaneum*\_randomised.tps](./data/full_body/Tribolium_castaneum_randomised.tps). Please make sure you take a look at this file, within a text editor, and then adjust any file paths that need adjusting.
+Now, using tpsUtil, randomise the order of the files by selecting "randomly order specimens" from the Operations menu. This helps spread out any confounding factors (e.g. photos taken at different times of day / different lighting etc.). In this example, the [*Tribolium_castaneum.*tps](./data/full_body/Tribolium_castaneum.tps) file you created in the earlier step is used as the input. Load that file, hit create, and save the new file as [*Tribolium_castaneum*\_randomised.tps](./data/full_body/Tribolium_castaneum_randomised.tps). Please make sure you take a look at this file, within a text editor, and then adjust any file paths that need adjusting.
 
 ![](img/util_002.jpg){fig-align="left" width="334"}
 
 #### **Let's set some landmarks**
 
-Start the tpsDig program, open the image you want to landmark and then use the multi-point tool to set landmarks on this image. To make viewing easier, you can adjust the colour, size, and numbering of points under Options \> Image Tools \> Colors. Labels at width 35 look readable.. I would suggest initially doing this for 5-10 files before proceeding with a larger batch.
+Start the tpsDig program, open the image you want to landmark and then use the multi-point tool to set landmarks on this image. To make viewing easier, you can adjust the colour, size, and numbering of points under Options \> Image Tools \> Colors. Labels at width 35 look readable to me. However, you may find a completely different setting, more useful for your set-up (e.g. due to display screen size, resolution etc.). I would suggest initially doing this for 5-10 files and finding a setting that you are comfortable with, before proceeding with a larger batch.
 
 ![landmark pronotum](img/land_000.jpg){width="100%"}Once the landmarks and curves have been digitized for the current specimen, click on the right arrow button or press ALT+N. Similarly, you can press ALT+P or the left arrow to go to the previous specimen
 
-The template mode (a choice on the Options menu) has been selected, so, the landmarks from the previous specimen will be copied onto the next image as long as it does not have any landmarks already entered. You can then drag the landmarks to their appropriate locations. Note that the first landmark you move will translate the locations of all the landmarks. Subsequent landmarks can be moved individually. This option helps minimize the chance of making the common error of digitizing the landmarks out of order.
+The *template* mode (a choice on the Options menu) has been selected, so, the landmarks from the previous specimen will be copied onto the next image as long as it does not have any landmarks already entered. You can then drag the landmarks to their appropriate locations. *Note that the first landmark you move will translate the locations of all the landmarks. This does not necessarily need to be landmark number one, basically whichever you click on first and drag, decides the shifts associated with the other landmarks.* Subsequent landmarks can be moved individually. This option helps minimize the chance of making the common error of digitizing the landmarks out of order.
 
 When you are done landmarking, save the file with a unique name. Our landmarked example is available as [Tc_rand_pronutum.tps](./data/full_body/Tc_rand_pronutum.TPS)
 
 #### **Set a scale:**
 
-Open the scale image within tpsDig, and zoom-in to a size that seems easy to work with. Click on the image tools icon and go to the Measure tab. To set a scale factor, enter the known length of a structure in the edit box and then digitize the two endpoints of the scale. Enter just the numerical value, do not enter the units. Press the OK button to accept the scale factor or the cancel button to ignore any changes you may have made in the scale factor. Make a note of this scale factor as we will be including it in all the .tps files that use this particular calibration image.
+Open the scale image within tpsDig, and zoom-in to a size that seems easy to work with. Click on the image tools icon and go to the Measure tab. To set a scale factor, enter the known length of a structure in the edit box and then digitize the two endpoints of the scale. Enter just the numerical value, do not enter the units. Press the OK button to accept the scale factor or the cancel button to ignore any changes you may have made in the scale factor. *Make a note of this scale factor as we will be including it in all the .tps files that use this particular calibration image.*
 
 |                                     |                        |
 |-------------------------------------|------------------------|
@@ -130,7 +132,7 @@ The locations of the landmarks on the first specimen in a TPS or NTS file will b
 
 When drawing the program will display a "rubber band" line and will beep when you are sufficiently close to another landmark so that one can lift the left mouse button to end the current link. To delete the last link drawn, right-click on an unused portion of the background. To delete a specific link, right-click on it.
 
-Press \"Create File\" when done.. keep this file safe - you will be needing it soon. In this example, the link file is called [pronotum.nts](./data/full_body/pronotum.nts).
+Press "Create File" when done.. keep this file safe - you will be needing it soon. In this example, the link file is called [pronotum.nts](./data/full_body/pronotum.nts).
 
 #### **Make a sliders file:**
 
@@ -140,7 +142,7 @@ This image illustrates the sliders used for the pronotum (two fixed landmarks).
 
 ![](img/sliders_000.jpg){width="300"}
 
-This image illustrates sliders used for the abdomen and pronotum in another beetle species (note the 4 fixed landmarks for the pronotum and the 7 fixed landmarks for the abdomen). Have a look at our sliders file here: [pronotum_sliders.nts](./data/full_body/pronotum_sliders.nts).
+This image illustrates sliders used for the elytra and pronotum in another beetle species (note the 4 fixed landmarks for the pronotum and the 7 fixed landmarks for the elytra). Have a look at our sliders file here: [pronotum_sliders.nts](./data/full_body/pronotum_sliders.nts).
 
 ![](img/sliders_001.jpg)
 
