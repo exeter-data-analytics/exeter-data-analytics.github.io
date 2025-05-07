@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://exeter-data-analytics.github.io/presentations.html</loc>
-    <lastmod>2023-12-06T11:08:54.868Z</lastmod>
+    <lastmod>2024-11-27T14:56:22.339Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/presentations/open_science_symposium/open_science_symposium.html</loc>
@@ -14,31 +14,31 @@
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/series.html</loc>
-    <lastmod>2023-12-06T11:08:49.827Z</lastmod>
+    <lastmod>2024-11-27T14:56:19.739Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_tidy_data_manipulation/index.html</loc>
-    <lastmod>2023-12-06T11:08:48.361Z</lastmod>
+    <lastmod>2024-11-27T14:56:17.495Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_flextable/index.html</loc>
-    <lastmod>2023-12-06T11:08:45.336Z</lastmod>
+    <lastmod>2024-11-27T14:56:12.915Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_projects/index.html</loc>
-    <lastmod>2023-12-06T11:08:42.509Z</lastmod>
+    <lastmod>2024-11-27T14:56:07.973Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_ggplot2/index.html</loc>
-    <lastmod>2023-12-06T11:08:44.014Z</lastmod>
+    <lastmod>2024-11-27T14:56:10.927Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/index.html</loc>
-    <lastmod>2023-12-08T18:29:20.012Z</lastmod>
+    <lastmod>2025-03-07T10:45:18.801Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/install_rstudio_git/index.html</loc>
-    <lastmod>2023-12-06T11:08:49.507Z</lastmod>
+    <lastmod>2024-11-27T14:56:19.209Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/index.html</loc>
@@ -46,10 +46,14 @@
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/presentations/ggplot2_flextable/ggplot2_flextable.html</loc>
-    <lastmod>2023-12-06T11:08:53.313Z</lastmod>
+    <lastmod>2024-11-27T14:56:20.990Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts.html</loc>
-    <lastmod>2023-12-08T18:29:20.576Z</lastmod>
+    <lastmod>2023-06-19T21:15:29.407Z</lastmod>
+  </url>
+  <url>
+    <loc>https://exeter-data-analytics.github.io/posts/github_copilot_integration/index.html</loc>
+    <lastmod>2025-03-07T11:05:31.613Z</lastmod>
   </url>
 </urlset>

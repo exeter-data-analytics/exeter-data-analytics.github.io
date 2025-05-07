@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Stephen Lang &amp; Dan Padfield">
+<meta name="dcterms.date" content="2024-07-19">
 
-<title>intRos: Walkthroughs – ExeDataHub</title>
+<title>Integrating GitHub Copilot with RStudio and VScode – ExeDataHub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,77 +71,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-description','listing-date','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="ExeDataHub" href="posts.xml" data-external="1"></head>
+<link rel="stylesheet" href="../../styles.css">
+</head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ExeDataHub</span>
     </a>
   </div>
@@ -149,19 +94,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./series.html"> 
+    <a class="nav-link" href="../../series.html"> 
 <span class="menu-text">Series</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./presentations.html"> 
+    <a class="nav-link" href="../../presentations.html"> 
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" aria-current="page"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Walkthroughs</span></a>
   </li>  
   <li class="nav-item compact">
@@ -177,7 +122,51 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Integrating GitHub Copilot with RStudio and VScode</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Coding, RStudio, R, VScode, GitHub</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author">Stephen Lang &amp; Dan Padfield </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              University of Exeter
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 19, 2024</p>
+      </div>
+    </div>
+    
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">March 7, 2025</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -185,237 +174,94 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-are-intros" id="toc-what-are-intros" class="nav-link active" data-scroll-target="#what-are-intros">What are intRos?</a></li>
-  <li><a href="#get-started" id="toc-get-started" class="nav-link" data-scroll-target="#get-started">Get started</a></li>
+  <li><a href="#outline" id="toc-outline" class="nav-link active" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#setting-up-copilot-in-rstudio" id="toc-setting-up-copilot-in-rstudio" class="nav-link" data-scroll-target="#setting-up-copilot-in-rstudio">Setting up Copilot in RStudio</a></li>
+  <li><a href="#setting-up-copilot-for-visual-studio-code" id="toc-setting-up-copilot-for-visual-studio-code" class="nav-link" data-scroll-target="#setting-up-copilot-for-visual-studio-code">Setting up Copilot for Visual Studio Code</a></li>
+  <li><a href="#general-copilot-usage-and-pointers" id="toc-general-copilot-usage-and-pointers" class="nav-link" data-scroll-target="#general-copilot-usage-and-pointers">General Copilot usage and pointers</a>
+  <ul class="collapse">
+  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  </ul></li>
   </ul>
 </nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="Coding, RStudio, R, VScode, GitHub">Coding, RStudio, R, VScode, GitHub <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Geomorph">Geomorph <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(6)</span></div><div class="category" data-category="RStudio">RStudio <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RStudio projects">RStudio projects <span class="quarto-category-count">(1)</span></div><div class="category" data-category="flextable">flextable <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="git">git <span class="quarto-category-count">(1)</span></div><div class="category" data-category="here">here <span class="quarto-category-count">(1)</span></div><div class="category" data-category="tidyverse">tidyverse <span class="quarto-category-count">(3)</span></div><div class="category" data-category="tpsDig">tpsDig <span class="quarto-category-count">(1)</span></div></div></div>
-<!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">intRos: Walkthroughs</h1>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="what-are-intros" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-intros">What are intRos?</h2>
-<p>The intRos walkthroughs are designed to be a place to provide brief introductions and walkthroughs for activities that are common when programming for research purposes. For example, using <strong>ggplot2</strong> and making publication-ready plots. Or making reproducible tables in R using <strong>flextable</strong>. These intRos are aimed to be brief and designed to get you started using these tools. Throughout we highlight where we find information and our favourite resources for when we get stuck!</p>
-<p>We hope that intRos will be added to through time by other members of the University. If you would like to contribute, please get in touch.</p>
-</section>
-<section id="get-started" class="level2">
-<h2 class="anchored" data-anchor-id="get-started">Get started</h2>
-<p>All of the available intRos can be found below. All of the reproducible quarto (.qmd) files can be found at the source <a href="https://github.com/exeter-data-analytics/exeter-data-analytics.github.io">GitHub</a> repository for this website. You can navigate to each of the directories individually in the <code>posts/</code> folder, or better still clone the repo using <code>git clone</code> and open the project in RStudio.</p>
-<hr>
-
-
-
-</section>
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title" data-direction="asc">
-          Title
-        </option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
     </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Coding, RStudio, R, VScode, GitHub" data-listing-date-sort="1721343600000" data-listing-file-modified-sort="1741345531613" data-listing-date-modified-sort="1741345531000" data-listing-reading-time-sort="3" data-listing-word-count-sort="597">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/github_copilot_integration/index.html" class="no-external">Integrating GitHub Copilot with RStudio and VScode</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/github_copilot_integration/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/github_copilot_integration/index.html" class="no-external">GitHub Copilot an AI coding assistant that can be ran directly within your coding environment (e.g.&nbsp;RStudio or VSCode). These tools should be used with care, and you still…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/github_copilot_integration/index.html" class="no-external">
-<div class="listing-date">
-2024-07-19
-</div>
-<div class="listing-reading-time">
-3 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="R,Geomorph,tpsDig" data-listing-date-sort="1701129600000" data-listing-file-modified-sort="1741344318801" data-listing-date-modified-sort="1741344318000" data-listing-reading-time-sort="16" data-listing-word-count-sort="3141">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_geometric_morphometrics/index.html" class="no-external">intRos: Geometric Morphometrics</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/intro_to_geometric_morphometrics/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/intro_to_geometric_morphometrics/index.html" class="no-external">Geometric morphometrics is a field of study that uses mathematical and statistical methods to analyze the shape and variation of biological forms. It is based on the use of…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/intro_to_geometric_morphometrics/index.html" class="no-external">
-<div class="listing-date">
-2023-11-28
-</div>
-<div class="listing-reading-time">
-16 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="tidyverse,R" data-listing-date-sort="1700438400000" data-listing-file-modified-sort="1701860814267" data-listing-date-modified-sort="1701860814000" data-listing-reading-time-sort="8" data-listing-word-count-sort="1493">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_tidy_data_manipulation/index.html" class="no-external">intRos: Tidy data manipulation</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/intro_to_tidy_data_manipulation/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/intro_to_tidy_data_manipulation/index.html" class="no-external">Tidy and transfrom your data using reproducible code in R</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/intro_to_tidy_data_manipulation/index.html" class="no-external">
-<div class="listing-date">
-2023-11-20
-</div>
-<div class="listing-reading-time">
-8 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="R,RStudio,git" data-listing-date-sort="1682031600000" data-listing-file-modified-sort="1701860850764" data-listing-date-modified-sort="1701860850000" data-listing-reading-time-sort="10" data-listing-word-count-sort="1910">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/install_rstudio_git/index.html" class="no-external">intRos: Installing, R, RStudio, and Git</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/install_rstudio_git/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/install_rstudio_git/index.html" class="no-external">A primer on how to install R, RStudio, and Git.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/install_rstudio_git/index.html" class="no-external">
-<div class="listing-date">
-2023-04-21
-</div>
-<div class="listing-reading-time">
-10 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="R,ggplot2,tidyverse" data-listing-date-sort="1677196800000" data-listing-file-modified-sort="1701860890897" data-listing-date-modified-sort="1701860890000" data-listing-reading-time-sort="17" data-listing-word-count-sort="3287">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_ggplot2/index.html" class="no-external">intRos: Publication ready plots using ggplot2</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/intro_to_ggplot2/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/intro_to_ggplot2/index.html" class="no-external">Make publication ready plots in R using ggplot2 and learn some new tips and tricks</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/intro_to_ggplot2/index.html" class="no-external">
-<div class="listing-date">
-2023-02-24
-</div>
-<div class="listing-reading-time">
-17 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="flextable,R" data-listing-date-sort="1676332800000" data-listing-file-modified-sort="1701860828358" data-listing-date-modified-sort="1701860828000" data-listing-reading-time-sort="12" data-listing-word-count-sort="2310">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_flextable/index.html" class="no-external">intRos: Reproducible tables with flextable</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/intro_to_flextable/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/intro_to_flextable/index.html" class="no-external">Make reproducible tables of summary stats and contrasts tables with flextable in R</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/intro_to_flextable/index.html" class="no-external">
-<div class="listing-date">
-2023-02-14
-</div>
-<div class="listing-reading-time">
-12 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="R,RStudio projects,tidyverse,here" data-listing-date-sort="1672704000000" data-listing-file-modified-sort="1701860907614" data-listing-date-modified-sort="1701860907000" data-listing-reading-time-sort="10" data-listing-word-count-sort="1869">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_projects/index.html" class="no-external">intRos: Managing research projects with R Studio</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/intro_to_projects/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/intro_to_projects/index.html" class="no-external">Manage your different research projects with R Studio and the {here} package</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/intro_to_projects/index.html" class="no-external">
-<div class="listing-date">
-2023-01-03
-</div>
-<div class="listing-reading-time">
-10 min
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="outline" class="level1">
+<h1>Outline</h1>
+<p><a href="https://docs.github.com/en/copilot">GitHub Copilot</a> an AI coding assistant that can be ran directly within your coding environment (e.g.&nbsp;RStudio or VSCode). These tools should be used with care, and you still need to understand what the code does as you are ultimately responsible for your code and its output.</p>
+<p>This walkthrough will provide the necessary steps to add Copilot to RStudio and VSCode.</p>
+</section>
+<section id="prerequisites" class="level1">
+<h1>Prerequisites</h1>
+<p>There are two ways of getting GitHub Copilot for free. The first is to use <a href="https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/about-github-copilot-free">GitHub Copilot Free</a> which gives you 2000 autocompletions a month.</p>
+<p>However, the method we recommend is to get <a href="https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-your-github-copilot-pro-subscription/getting-free-access-to-copilot-pro-as-a-student-teacher-or-maintainer">GitHub Copilot Pro free</a> as a student or teacher. This method will also allow you to use GitHub Copilot on the RStudio servers. This susbscription gives you unlimited access to GitHub Copilot while you are a student or researcher at the University.</p>
+<p>To do this, you will need to request GitHub Education benefits using the following steps:</p>
+<ol type="1">
+<li>Sign up for a GitHub account (ideally using your university account)</li>
+<li>From your new GitHub account, <a href="https://education.github.com/discount_requests/application">apply for free GitHub Education benefits</a> (i.e., upload photo of your Unicard)</li>
+<li>Once GitHub Education email to say your application is approved, head to <a href="https://github.com/settings/copilot" class="uri">https://github.com/settings/copilot</a> and click the <code>Start free trial</code> button</li>
+<li>The next screen will have a green button to <code>Get access to GitHub Copilot</code></li>
+<li>Finally, you just have to check policies (<a href="https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-copilot-policies-as-an-individual-subscriber#enabling-or-disabling-suggestions-matching-public-code">for additional details see here</a>) and click <code>Save and complete setup</code></li>
+<li>You’re now ready to set up GitHub Copilot!</li>
+</ol>
+</section>
+<section id="setting-up-copilot-in-rstudio" class="level1">
+<h1>Setting up Copilot in RStudio</h1>
+<ol type="1">
+<li>To set up the GitHub Copilot for RStudio, we navigate to <code>Tools</code> &gt; <code>Global Options</code> &gt; <code>Copilot</code> (see image below)</li>
+<li>From the Copilot tab, check the <code>Enable Copilot</code> box and hit <code>Apply</code></li>
+<li>You should then see a <code>You are not currently signed in</code> message below the checkbox. Click the <code>Sign in</code> button.</li>
+<li>Copy the 8-digit code, click the link, select <code>Continue</code> and paste the code</li>
+<li>Copilot should show as activated (if not click the <code>Activate</code> button in Copilot options)</li>
+<li>Copilot will now provide suggestions for code as you type (you can see status in bottom right of the code window)</li>
+</ol>
+<p><a href="rstudio_options.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="rstudio_options.png" class="img-fluid"></a></p>
+</section>
+<section id="setting-up-copilot-for-visual-studio-code" class="level1">
+<h1>Setting up Copilot for Visual Studio Code</h1>
+<ol type="1">
+<li>On VSCode we just have to install the <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot">GitHub Copilot extension</a></li>
+<li>Once installed, we open the Copilot extension and use it to sign into our GitHub account</li>
+<li>Copilot will now give you suggestions as you type, and you can also use the additional <code>Copilot chat</code> feature (messages icon on left of window) to open a dialogue</li>
+</ol>
+<p><a href="vscode_copilot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="vscode_copilot.png" class="img-fluid"></a></p>
+</section>
+<section id="general-copilot-usage-and-pointers" class="level1">
+<h1>General Copilot usage and pointers</h1>
+<p>Now we have Copilot ready to provide suggestions for our code in our chosen software!</p>
+<ul>
+<li>To approve Copilot suggestions that appear, press <code>Tab</code></li>
+<li>To give Copilot guidance on code suggestions, provide <code>#code comments</code> that describe steps required</li>
+<li>Make sure to check both the generated code itself and sense-check outputs to ensure that it is doing what is expected</li>
+<li>The Copilot chat extension (installed automatically alongside Copilot) can be used for a broader range of tasks – <a href="https://docs.github.com/en/copilot/using-github-copilot/example-use-cases/example-prompts-for-copilot-chat?tool=vscode">see examples here</a></li>
+<li>If you also use the <code>Tab</code> autocompletion capability of RStudio or VSCode to navigate files or autocomplete functions, sometimes Copilot’s suggestion comes up and <code>Tab</code> approves Copilot rather than the autocompletion. To stop this, you can play around with the <code>Show code suggestions after keyboard idle (ms)</code> in the Settings.</li>
+</ul>
+<p><a href="rstudio_options2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="rstudio_options2.png" class="img-fluid"></a></p>
+<section id="additional-resources" class="level3">
+<h3 class="anchored" data-anchor-id="additional-resources">Additional Resources</h3>
+<ul>
+<li><a href="https://docs.github.com/en/copilot/responsible-use-of-github-copilot-features/responsible-use-of-github-copilot-chat-in-your-ide">Responsible use of GitHub Copilot Chat in your IDE</a></li>
+</ul>
+</section>
+<section id="acknowledgements" class="level3">
+<h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
+<p>We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.</p>
+<ul>
+<li><a href="https://docs.github.com/en/copilot">GitHub Copilot documentation</a></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -836,7 +682,43 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://giscus.app/client.js" data-repo="exeter-data-analytics/exeter-data-analytics.github.io" data-repo-id="R_kgDOJW1l0Q" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","loop":false,"descPosition":"bottom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

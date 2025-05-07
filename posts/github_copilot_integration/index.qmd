@@ -1,0 +1,75 @@
+---
+title: "Integrating GitHub Copilot with RStudio and VScode"
+author: 
+  - name: Stephen Lang & Dan Padfield
+    affiliation: University of Exeter
+description: "Sign up to GitHub Copilot for code autocompletion in RStudio and VSCode"
+date: "2024-07-19"
+date-modified: last-modified
+categories: Coding, RStudio, R, VScode, GitHub
+execute:
+  message: false
+  warning: false
+---
+
+# Outline
+
+[GitHub Copilot](https://docs.github.com/en/copilot) an AI coding assistant that can be ran directly within your coding environment (e.g. RStudio or VSCode). These tools should be used with care, and you still need to understand what the code does as you are ultimately responsible for your code and its output.
+
+This walkthrough will provide the necessary steps to add Copilot to RStudio and VSCode.
+
+# Prerequisites
+
+There are two ways of getting GitHub Copilot for free. The first is to use [GitHub Copilot Free](https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/about-github-copilot-free) which gives you 2000 autocompletions a month.
+
+However, the method we recommend is to get [GitHub Copilot Pro free](https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-your-github-copilot-pro-subscription/getting-free-access-to-copilot-pro-as-a-student-teacher-or-maintainer) as a student or teacher. This method will also allow you to use GitHub Copilot on the RStudio servers. This susbscription gives you unlimited access to GitHub Copilot while you are a student or researcher at the University.
+
+To do this, you will need to request GitHub Education benefits using the following steps:
+
+1.  Sign up for a GitHub account (ideally using your university account)
+2.  From your new GitHub account, [apply for free GitHub Education benefits](https://education.github.com/discount_requests/application) (i.e., upload photo of your Unicard)
+3.  Once GitHub Education email to say your application is approved, head to <https://github.com/settings/copilot> and click the `Start free trial` button
+4.  The next screen will have a green button to `Get access to GitHub Copilot`
+5.  Finally, you just have to check policies ([for additional details see here](https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-copilot-policies-as-an-individual-subscriber#enabling-or-disabling-suggestions-matching-public-code)) and click `Save and complete setup`
+6.  You're now ready to set up GitHub Copilot!
+
+# Setting up Copilot in RStudio
+
+1.  To set up the GitHub Copilot for RStudio, we navigate to `Tools` \> `Global Options` \> `Copilot` (see image below)
+2.  From the Copilot tab, check the `Enable Copilot` box and hit `Apply`
+3.  You should then see a `You are not currently signed in` message below the checkbox. Click the `Sign in` button.
+4.  Copy the 8-digit code, click the link, select `Continue` and paste the code
+5.  Copilot should show as activated (if not click the `Activate` button in Copilot options)
+6.  Copilot will now provide suggestions for code as you type (you can see status in bottom right of the code window)
+
+![](rstudio_options.png){.lightbox}
+
+# Setting up Copilot for Visual Studio Code
+
+1.  On VSCode we just have to install the [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
+2.  Once installed, we open the Copilot extension and use it to sign into our GitHub account
+3.  Copilot will now give you suggestions as you type, and you can also use the additional `Copilot chat` feature (messages icon on left of window) to open a dialogue
+
+![](vscode_copilot.png){.lightbox}
+
+# General Copilot usage and pointers
+
+Now we have Copilot ready to provide suggestions for our code in our chosen software!
+
+-   To approve Copilot suggestions that appear, press `Tab`
+-   To give Copilot guidance on code suggestions, provide `#code comments` that describe steps required
+-   Make sure to check both the generated code itself and sense-check outputs to ensure that it is doing what is expected
+-   The Copilot chat extension (installed automatically alongside Copilot) can be used for a broader range of tasks -- [see examples here](https://docs.github.com/en/copilot/using-github-copilot/example-use-cases/example-prompts-for-copilot-chat?tool=vscode)
+-   If you also use the `Tab` autocompletion capability of RStudio or VSCode to navigate files or autocomplete functions, sometimes Copilot's suggestion comes up and `Tab` approves Copilot rather than the autocompletion. To stop this, you can play around with the `Show code suggestions after keyboard idle (ms)` in the Settings.
+
+![](rstudio_options2.png){.lightbox}
+
+### Additional Resources
+
+-   [Responsible use of GitHub Copilot Chat in your IDE](https://docs.github.com/en/copilot/responsible-use-of-github-copilot-features/responsible-use-of-github-copilot-chat-in-your-ide)
+
+### Acknowledgements
+
+We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.
+
+-   [GitHub Copilot documentation](https://docs.github.com/en/copilot)
