@@ -370,7 +370,18 @@ SCALE=scale factor
 </section>
 <section id="delete-extra-landmarks" class="level4">
 <h4 class="anchored" data-anchor-id="delete-extra-landmarks"><strong>Delete extra landmarks:</strong></h4>
-<p>05_Tribolium_castaneum_overlapping_lm_removed.TPS</p>
+<p>Now, load the <a href="./data/full_body/04_Tribolium_castaneum_curves_removed.TPS">04_Tribolium_castaneum_curves_removed.TPS</a> file within the tpsUtil program and use the option to <em>Delete/reorder landmarks</em>. In this case, landmarks <strong>1</strong>,18; <strong>2,</strong>29,30; <strong>3</strong>,41; <strong>12</strong>,42; and <strong>13</strong>,53 are overlapping with each other so we will delete the higher order landmarks in each of those sets.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="img/land_010.jpg" class="img-fluid quarto-figure quarto-figure-left figure-img" width="240"></p>
+</figure>
+</div>
+<p>This window lists the identification numbers of the landmarks in the input file. You can highlight one or more landmarks (holding down the shift or control keys while clicking with the mouse) and then using the buttons at the right to move the selected landmarks up or down in the list. Landmarks can also be excluded from the output file by unchecking them or by highlighting them with the mouse and then clicking on the “Exclude” button. You can include a landmark again by clicking on its checkbox or by selecting it and then clicking on the “Include” button. Click on the “Create” button to actually create the output file and then save the file as <a href="./data/full_body/05_Tribolium_castaneum_overlapping_lm_removed.TPS">05_Tribolium_castaneum_overlapping_lm_removed.TPS</a>. Now, the TPS file is nearly ready to be analysed.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/land_011.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 </section>
 <section id="set-a-scale" class="level4">
 <h4 class="anchored" data-anchor-id="set-a-scale"><strong>Set a scale:</strong></h4>
@@ -390,20 +401,17 @@ SCALE=scale factor
 <p>If your digital scale was included in the images you captured (e.g.&nbsp;an eyepice graticle or equivalent), then you can do the above “set scale” activity within your main .tps digitisation as well. In this case, all subsequent images you digitize will be assumed to have the same scale factor unless you explicitly give them their own scale factors. Using this feature causes the “SCALE=” keyword to be inserted in the output file.</p>
 <p>Here, the value is: SCALE=0.002137. The scale factor is the entered length in user units divided by the measured length in pixels. It also scales the coordinates appropriately (by default the coordinates are in pixel units). The scale factor can also be recorded in the listing window. The scale factor is taken into account in the computation of image areas, perimeters, and linear distance measurements. It has no effect on the landmark coordinates – they remain in pixel units.</p>
 </section>
+<section id="split-pronotum-elytra-landmarks" class="level4">
+<h4 class="anchored" data-anchor-id="split-pronotum-elytra-landmarks"><strong>Split Pronotum &amp; Elytra landmarks:</strong></h4>
+<p>Now, load the <a href="./data/full_body/05_Tribolium_castaneum_overlapping_lm_removed.TPS">05_Tribolium_castaneum_overlapping_lm_removed.TPS</a> file within the tpsUtil program and use the option to <em>Delete/reorder landmarks</em>. In this case, once we will delete all the elytra landmarks and save the output as <a href="#0">06_Tribolium_castaneum_pronotum.TPS</a> and then repeat this process to delete the pronotum landmarks and save the output as <a href="#0">07_Tribolium_castaneum_elytra.TPS</a></p>
+</section>
 <section id="make-a-link-file" class="level4">
 <h4 class="anchored" data-anchor-id="make-a-link-file"><strong>Make a link file:</strong></h4>
-<p>Within tpsUtil, select the “Make links file” option, select the Input tps file that has at-least one image completely landmarked and select an output destination for the link file.</p>
+<p>Within tpsUtil, select the “Make links file” option, select the <a href="#0">06_Tribolium_castaneum_pronotum.TPS</a> file as an input (if trying this with a different file, note that at-least one image should be completely landmarked) and select an output destination for the link file as <a href="#0">06_Tribolium_castaneum_pronotum_links.TPS</a>.</p>
 <p>The locations of the landmarks on the first specimen in a TPS or NTS file will be displayed. With the mouse, one can draw links between any pairs of landmarks.</p>
-<table class="caption-top table">
-<tbody>
-<tr class="odd">
-<td><img src="img/links_000.jpg" class="img-fluid"></td>
-<td><img src="img/links_001.jpg" class="img-fluid"></td>
-</tr>
-</tbody>
-</table>
+<p><img src="img/links_000.jpg" class="img-fluid"></p>
 <p>When drawing the program will display a “rubber band” line and will beep when you are sufficiently close to another landmark so that one can lift the left mouse button to end the current link. To delete the last link drawn, right-click on an unused portion of the background. To delete a specific link, right-click on it.</p>
-<p>Press “Create File” when done.. keep this file safe - you will be needing it soon. In this example, the link file is called <a href="./data/full_body/pronotum.nts">pronotum.nts</a>.</p>
+<p>Press “Create File” when done.. keep this file safe - you will be needing it soon. Repeat this step for <a href="#0">07_Tribolium_castaneum_elytra.TPS</a> to create <a href="#0">07_Tribolium_castaneum_elytra_links.TPS</a>.</p>
 </section>
 <section id="make-a-sliders-file" class="level4">
 <h4 class="anchored" data-anchor-id="make-a-sliders-file"><strong>Make a sliders file:</strong></h4>

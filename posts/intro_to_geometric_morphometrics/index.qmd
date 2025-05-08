@@ -86,7 +86,7 @@ Download and install the [tpsUtil32](https://sbmorphometrics.org/morphmet/tpsuti
 [Download this zip file](./img/T_castaneum_images.zip), and unzip it into a folder on your computer. Remember the name and location of this folder as you will need it in the next few steps. Open tpsUtil, select "Build tps file from images", select the "input" directory where all your images are stored and then select the location and name for the "output file". In this example, we have called the tps file -- [01\_*Tribolium_castaneum*.tps](./data/full_body/01_Tribolium_castaneum.tps) and saved it in the root of our data folder.
 
 |  |  |
-|----|----|
+|------------------------------------|------------------------------------|
 | ![Build tps file from images](img/util_000.jpg) | ![Build tps file](img/util_001.jpg) |
 
 Click on the "Setup" button to see the list of files that were found in the folder you pointed towards. Exclude any files that should not need digitisation. Press create when ready. This will create a TPS file that we can use for landmarking all our images.
@@ -147,7 +147,7 @@ Now, load the [04_Tribolium_castaneum_curves_removed.TPS](./data/full_body/04_Tr
 
 ![](img/land_010.jpg){fig-align="left" width="240"}
 
-This window lists the identification numbers of the landmarks in the input file. You can highlight one or more landmarks (holding down the shift or control keys while clicking with the mouse) and then using the buttons at the right to move the selected landmarks up or down in the list. Landmarks can also be excluded from the output file by unchecking them or by highlighting them with the mouse and then clicking on the “Exclude” button. You can include a landmark again by clicking on its checkbox or by selecting it and then clicking on the “Include” button. Click on the “Create” button to actually create the output file and then save the file as [05_Tribolium_castaneum_overlapping_lm_removed.TPS](#0). Now, the TPS file is nearly ready to be analysed.
+This window lists the identification numbers of the landmarks in the input file. You can highlight one or more landmarks (holding down the shift or control keys while clicking with the mouse) and then using the buttons at the right to move the selected landmarks up or down in the list. Landmarks can also be excluded from the output file by unchecking them or by highlighting them with the mouse and then clicking on the “Exclude” button. You can include a landmark again by clicking on its checkbox or by selecting it and then clicking on the “Include” button. Click on the “Create” button to actually create the output file and then save the file as [05_Tribolium_castaneum_overlapping_lm_removed.TPS](./data/full_body/05_Tribolium_castaneum_overlapping_lm_removed.TPS). Now, the TPS file is nearly ready to be analysed.
 
 ![](img/land_011.jpg){fig-align="center"}
 
@@ -164,9 +164,13 @@ If your digital scale was included in the images you captured (e.g. an eyepice g
 
 Here, the value is: SCALE=0.002137. The scale factor is the entered length in user units divided by the measured length in pixels. It also scales the coordinates appropriately (by default the coordinates are in pixel units). The scale factor can also be recorded in the listing window. The scale factor is taken into account in the computation of image areas, perimeters, and linear distance measurements. It has no effect on the landmark coordinates -- they remain in pixel units.
 
+#### **Split Pronotum & Elytra landmarks:**
+
+Now, load the [05_Tribolium_castaneum_overlapping_lm_removed.TPS](./data/full_body/05_Tribolium_castaneum_overlapping_lm_removed.TPS) file within the tpsUtil program and use the option to *Delete/reorder landmarks*. In this case, once we will delete all the elytra landmarks and save the output as [06_Tribolium_castaneum_pronotum.TPS](#0) and then repeat this process to delete the pronotum landmarks and save the output as [07_Tribolium_castaneum_elytra.TPS](#0)
+
 #### **Make a link file:**
 
-Within tpsUtil, select the "Make links file" option, select the Input tps file that has at-least one image completely landmarked and select an output destination for the link file.
+Within tpsUtil, select the "Make links file" option, select the [06_Tribolium_castaneum_pronotum.TPS](#0) file as an input (if trying this with a different file, note that at-least one image should be completely landmarked) and select an output destination for the link file as [06_Tribolium_castaneum_pronotum_links.TPS](#0).
 
 The locations of the landmarks on the first specimen in a TPS or NTS file will be displayed. With the mouse, one can draw links between any pairs of landmarks.
 
@@ -174,7 +178,7 @@ The locations of the landmarks on the first specimen in a TPS or NTS file will b
 
 When drawing the program will display a "rubber band" line and will beep when you are sufficiently close to another landmark so that one can lift the left mouse button to end the current link. To delete the last link drawn, right-click on an unused portion of the background. To delete a specific link, right-click on it.
 
-Press "Create File" when done.. keep this file safe - you will be needing it soon. In this example, the link file is called [pronotum.nts](./data/full_body/pronotum.nts).
+Press "Create File" when done.. keep this file safe - you will be needing it soon. Repeat this step for [07_Tribolium_castaneum_elytra.TPS](#0) to create [07_Tribolium_castaneum_elytra_links.TPS](#0).
 
 #### **Make a sliders file:**
 
