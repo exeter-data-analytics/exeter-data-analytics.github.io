@@ -8,7 +8,7 @@ author:
 description: "Link your OneDrive to R to allow you to download files to any computer, even remote servers."
 date: "2025-03-07"
 date-modified: last-modified
-categories: [OneDrive] [R] [Microsoft365R]
+categories: [OneDrive, R, Microsoft365R]
 execute:
   message: false
   warning: false

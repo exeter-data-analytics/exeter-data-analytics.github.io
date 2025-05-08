@@ -10,8 +10,8 @@
   {
     "listing": "/posts.html",
     "items": [
-      "/posts/github_copilot_integration/index.html",
       "/posts/intro_to_geometric_morphometrics/index.html",
+      "/posts/github_copilot_integration/index.html",
       "/posts/intro_to_tidy_data_manipulation/index.html",
       "/posts/install_rstudio_git/index.html",
       "/posts/intro_to_ggplot2/index.html",

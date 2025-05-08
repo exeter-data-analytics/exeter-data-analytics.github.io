@@ -10,94 +10,12 @@
 <atom:link href="https://exeter-data-analytics.github.io/posts.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.57</generator>
-<lastBuildDate>Thu, 18 Jul 2024 23:00:00 GMT</lastBuildDate>
-<item>
-  <title>Integrating GitHub Copilot with RStudio and VScode</title>
-  <dc:creator>Stephen Lang &amp; Dan Padfield</dc:creator>
-  <link>https://exeter-data-analytics.github.io/posts/github_copilot_integration/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="outline" class="level1">
-<h1>Outline</h1>
-<p><a href="https://docs.github.com/en/copilot">GitHub Copilot</a> an AI coding assistant that can be ran directly within your coding environment (e.g.&nbsp;RStudio or VSCode). These tools should be used with care, and you still need to understand what the code does as you are ultimately responsible for your code and its output.</p>
-<p>This walkthrough will provide the necessary steps to add Copilot to RStudio and VSCode.</p>
-</section>
-<section id="prerequisites" class="level1">
-<h1>Prerequisites</h1>
-<p>There are two ways of getting GitHub Copilot for free. The first is to use <a href="https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/about-github-copilot-free">GitHub Copilot Free</a> which gives you 2000 autocompletions a month.</p>
-<p>However, the method we recommend is to get <a href="https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-your-github-copilot-pro-subscription/getting-free-access-to-copilot-pro-as-a-student-teacher-or-maintainer">GitHub Copilot Pro free</a> as a student or teacher. This method will also allow you to use GitHub Copilot on the RStudio servers. This susbscription gives you unlimited access to GitHub Copilot while you are a student or researcher at the University.</p>
-<p>To do this, you will need to request GitHub Education benefits using the following steps:</p>
-<ol type="1">
-<li>Sign up for a GitHub account (ideally using your university account)</li>
-<li>From your new GitHub account, <a href="https://education.github.com/discount_requests/application">apply for free GitHub Education benefits</a> (i.e., upload photo of your Unicard)</li>
-<li>Once GitHub Education email to say your application is approved, head to <a href="https://github.com/settings/copilot" class="uri">https://github.com/settings/copilot</a> and click the <code>Start free trial</code> button</li>
-<li>The next screen will have a green button to <code>Get access to GitHub Copilot</code></li>
-<li>Finally, you just have to check policies (<a href="https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-copilot-policies-as-an-individual-subscriber#enabling-or-disabling-suggestions-matching-public-code">for additional details see here</a>) and click <code>Save and complete setup</code></li>
-<li>You’re now ready to set up GitHub Copilot!</li>
-</ol>
-</section>
-<section id="setting-up-copilot-in-rstudio" class="level1">
-<h1>Setting up Copilot in RStudio</h1>
-<ol type="1">
-<li>To set up the GitHub Copilot for RStudio, we navigate to <code>Tools</code> &gt; <code>Global Options</code> &gt; <code>Copilot</code> (see image below)</li>
-<li>From the Copilot tab, check the <code>Enable Copilot</code> box and hit <code>Apply</code></li>
-<li>You should then see a <code>You are not currently signed in</code> message below the checkbox. Click the <code>Sign in</code> button.</li>
-<li>Copy the 8-digit code, click the link, select <code>Continue</code> and paste the code</li>
-<li>Copilot should show as activated (if not click the <code>Activate</code> button in Copilot options)</li>
-<li>Copilot will now provide suggestions for code as you type (you can see status in bottom right of the code window)</li>
-</ol>
-<p><a href="rstudio_options.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://exeter-data-analytics.github.io/posts/github_copilot_integration/rstudio_options.png" class="img-fluid"></a></p>
-</section>
-<section id="setting-up-copilot-for-visual-studio-code" class="level1">
-<h1>Setting up Copilot for Visual Studio Code</h1>
-<ol type="1">
-<li>On VSCode we just have to install the <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot">GitHub Copilot extension</a></li>
-<li>Once installed, we open the Copilot extension and use it to sign into our GitHub account</li>
-<li>Copilot will now give you suggestions as you type, and you can also use the additional <code>Copilot chat</code> feature (messages icon on left of window) to open a dialogue</li>
-</ol>
-<p><a href="vscode_copilot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://exeter-data-analytics.github.io/posts/github_copilot_integration/vscode_copilot.png" class="img-fluid"></a></p>
-</section>
-<section id="general-copilot-usage-and-pointers" class="level1">
-<h1>General Copilot usage and pointers</h1>
-<p>Now we have Copilot ready to provide suggestions for our code in our chosen software!</p>
-<ul>
-<li>To approve Copilot suggestions that appear, press <code>Tab</code></li>
-<li>To give Copilot guidance on code suggestions, provide <code>#code comments</code> that describe steps required</li>
-<li>Make sure to check both the generated code itself and sense-check outputs to ensure that it is doing what is expected</li>
-<li>The Copilot chat extension (installed automatically alongside Copilot) can be used for a broader range of tasks – <a href="https://docs.github.com/en/copilot/using-github-copilot/example-use-cases/example-prompts-for-copilot-chat?tool=vscode">see examples here</a></li>
-<li>If you also use the <code>Tab</code> autocompletion capability of RStudio or VSCode to navigate files or autocomplete functions, sometimes Copilot’s suggestion comes up and <code>Tab</code> approves Copilot rather than the autocompletion. To stop this, you can play around with the <code>Show code suggestions after keyboard idle (ms)</code> in the Settings.</li>
-</ul>
-<p><a href="rstudio_options2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://exeter-data-analytics.github.io/posts/github_copilot_integration/rstudio_options2.png" class="img-fluid"></a></p>
-<section id="additional-resources" class="level3">
-<h3 class="anchored" data-anchor-id="additional-resources">Additional Resources</h3>
-<ul>
-<li><a href="https://docs.github.com/en/copilot/responsible-use-of-github-copilot-features/responsible-use-of-github-copilot-chat-in-your-ide">Responsible use of GitHub Copilot Chat in your IDE</a></li>
-</ul>
-</section>
-<section id="acknowledgements" class="level3">
-<h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
-<p>We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.</p>
-<ul>
-<li><a href="https://docs.github.com/en/copilot">GitHub Copilot documentation</a></li>
-</ul>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>Coding, RStudio, R, VScode, GitHub</category>
-  <guid>https://exeter-data-analytics.github.io/posts/github_copilot_integration/</guid>
-  <pubDate>Thu, 18 Jul 2024 23:00:00 GMT</pubDate>
-</item>
+<lastBuildDate>Tue, 29 Apr 2025 23:00:00 GMT</lastBuildDate>
 <item>
   <title>intRos: Geometric Morphometrics</title>
   <dc:creator>Dr. M.D. Sharma</dc:creator>
   <dc:creator>Hironori Shinohara</dc:creator>
+  <dc:creator>Dr. R. Vasudeva</dc:creator>
   <link>https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/</link>
   <description><![CDATA[ 
 
@@ -112,9 +30,9 @@
 <section id="prerequisites" class="level1">
 <h1>Prerequisites</h1>
 <ul>
-<li>Have R installed</li>
+<li>Windows 11 or similar OS (for digitisation using tpsDig)</li>
 <li>Download and install the tpsUtil and tpsDig</li>
-<li>Be using R for your research</li>
+<li>Have R installed and be familiar with use of R</li>
 </ul>
 </section>
 <section id="learning-objectives" class="level1">
@@ -141,7 +59,7 @@ Learning objectives
 </div>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Geomorph is a package for geometric morphometric analysis of two- and three-dimensional landmark data in R. It provides functions for data manipulation, shape alignment, multivariate statistics, visualization, and more. In this tutorial, we will use the <em>Tribolium castaneum</em> dataset, which contains landmark coordinates for the abdomen and pronotum, to demonstrate some of the basic functionalities of geomorph. For simplicity, we will use the tpsUtil and tpsDig programs and integrate them within this workflow. Users are welcome to utilise the digitisation process within geomorph, if they wish to do this (see section 5 of the GeoMorph manual).</p>
+<p>Geomorph is a package for geometric morphometric analysis of two- and three-dimensional landmark data in R. It provides functions for data manipulation, shape alignment, multivariate statistics, visualization, and more. In this tutorial, we will use the <em>Tribolium castaneum</em> dataset, which contains landmark coordinates for elytra and pronotum, to demonstrate some of the basic functionalities of geomorph. For simplicity, we will use the tpsUtil and tpsDig programs and integrate them within this workflow. Users are welcome to utilise the digitisation process within geomorph, if they wish to do this (see section 5 of the GeoMorph manual).</p>
 <p>This tutorial has been developed as a companion to [manuscript in prep].</p>
 </section>
 <section id="data-preparation" class="level2">
@@ -172,7 +90,7 @@ SCALE=scale factor
 <section id="using-tpsutil-and-tpsdig" class="level4">
 <h4 class="anchored" data-anchor-id="using-tpsutil-and-tpsdig"><strong>Using tpsUtil and tpsDig</strong></h4>
 <p>Download and install the <a href="https://sbmorphometrics.org/morphmet/tpsutilw32.exe">tpsUtil32</a> and <a href="https://sbmorphometrics.org/morphmet/tpsdig2w64.exe">tpsDig2w64</a> software from the <a href="https://sbmorphometrics.org/">Stony Brook Morphometrics</a> website. tpsUtil32 is a utility tool and tpsDig2w64 helps digitize coordinates of landmarks and capture outlines.</p>
-<p>Open tpsUtil, select “Build tps file from images”, select the “input” directory where all your images are stored and then select the location and name for the “output file”. In this example, we have called the tps file – <a href="./data/full_body/Tribolium_castaneum.tps"><em>Tribolium_castaneum.</em>tps</a> and saved it in the root of the data folder.</p>
+<p><a href="./img/T_castaneum_images.zip">Download this zip file</a>, and unzip it into a folder on your computer. Remember the name and location of this folder as you will need it in the next few steps. Open tpsUtil, select “Build tps file from images”, select the “input” directory where all your images are stored and then select the location and name for the “output file”. In this example, we have called the tps file – <a href="./data/full_body/01_Tribolium_castaneum.tps">01_<em>Tribolium_castaneum</em>.tps</a> and saved it in the root of our data folder.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -185,11 +103,11 @@ SCALE=scale factor
 </tr>
 </tbody>
 </table>
-<p>Click on the “Setup” button to see the list of files that were found in the folder you pointed towards. Exclude any files that should not need digitisation. Press create when ready. This will create a TPS file that we can use for landmarking all our images</p>
+<p>Click on the “Setup” button to see the list of files that were found in the folder you pointed towards. Exclude any files that should not need digitisation. Press create when ready. This will create a TPS file that we can use for landmarking all our images.</p>
 </section>
 <section id="randomise" class="level4">
 <h4 class="anchored" data-anchor-id="randomise"><strong>Randomise</strong></h4>
-<p>Now, randomise the order of the files by selecting “randomly order specimens” from the Operations menu. This helps spread out any confounding factors (e.g.&nbsp;photos taken at different times of day / different lighting etc.). Hit create, and save the new file as <a href="./data/full_body/Tribolium_castaneum_randomised.tps"><em>Tribolium_castaneum</em>_randomised.tps</a>. Please make sure you take a look at this file, within a text editor, and then adjust any file paths that need adjusting.</p>
+<p>Now, using tpsUtil, randomise the order of the files by selecting “randomly order specimens” from the Operations menu. This helps spread out any confounding factors (e.g.&nbsp;photos taken at different times of day / different lighting etc.). In this example, the <a href="./data/full_body/01_Tribolium_castaneum.tps">01_<em>Tribolium_castaneum</em>.tps</a> file you created in the earlier step is used as the input. Load that file, hit create, and save the new file as <a href="./data/full_body/02_Tribolium_castaneum_randomised.tps">02_<em>Tribolium_castaneum</em>_randomised.tps</a>. Please make sure you take a look at this file, within a text editor, and then adjust any file paths that need adjusting.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
 <p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/util_002.jpg" class="img-fluid quarto-figure quarto-figure-left figure-img" width="334"></p>
@@ -198,14 +116,41 @@ SCALE=scale factor
 </section>
 <section id="lets-set-some-landmarks" class="level4">
 <h4 class="anchored" data-anchor-id="lets-set-some-landmarks"><strong>Let’s set some landmarks</strong></h4>
-<p>Start the tpsDig program, open the image you want to landmark and then use the multi-point tool to set landmarks on this image. To make viewing easier, you can adjust the colour, size, and numbering of points under Options &gt; Image Tools &gt; Colors. Labels at width 35 look readable.. I would suggest initially doing this for 5-10 files before proceeding with a larger batch.</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/land_000.jpg" class="img-fluid" style="width:100.0%" alt="landmark pronotum">Once the landmarks and curves have been digitized for the current specimen, click on the right arrow button or press ALT+N. Similarly, you can press ALT+P or the left arrow to go to the previous specimen</p>
-<p>The template mode (a choice on the Options menu) has been selected, so, the landmarks from the previous specimen will be copied onto the next image as long as it does not have any landmarks already entered. You can then drag the landmarks to their appropriate locations. Note that the first landmark you move will translate the locations of all the landmarks. Subsequent landmarks can be moved individually. This option helps minimize the chance of making the common error of digitizing the landmarks out of order.</p>
-<p>When you are done landmarking, save the file with a unique name. Our landmarked example is available as <a href="./data/full_body/Tc_rand_pronutum.TPS">Tc_rand_pronutum.tps</a></p>
+<p>Start the tpsDig program, open the <a href="./data/full_body/02_Tribolium_castaneum_randomised.tps">02_<em>Tribolium_castaneum</em>_randomised.tps</a> file image you want to landmark images in, and then use the multi-point tool to set landmarks on this image. To make viewing easier, you can adjust the colour, size, and numbering of points under Options &gt; Image Tools &gt; Colors. Labels at width 35 look readable to me.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/tpsDig2_000.jpg" class="img-fluid" width="334"></p>
+<p>However, you may find a completely different setting, more useful for your set-up (e.g.&nbsp;due to display screen size, resolution etc.). I would suggest initially doing this for 5-10 files and finding a setting that you are comfortable with, before proceeding with a larger batch.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/land_000.jpg" class="img-fluid" alt="initial landmarking">Use the <em>landmark tool</em> (accessed via <img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/land_001.jpg" class="img-fluid" width="20" alt="landmark tool"> in the top tool bar), to click on the points identified in numbers 1-17 in the image above. Pay careful attention to the order of the landmarks. If you choose to use a different order, you will need to change the link files accordingly.</p>
+<p>After the initial landmarks have been sitiuated, use the <em>background curve</em> tool (accessed via <img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/land_002.jpg" width="27" height="20">in the top tool bar) to draw a multipoint line between landmark 1 and landmark 2. Usually, you need to just have a few well-spaced points that follow the outline of the shape you are measuring and one must start and end with a landmark.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/land_003.jpg" class="img-fluid" alt="use the background curve tool">Repeat this process to follow the curves between landmark 2-3 and then 12-13. Press the right mouse button, double-click, or click on the Edit mode button on the toolbar to start a new curve.</p>
+<p>In edit mode, moving the cursor over the curve will select it and the number of points will be displayed on the status panel. If one right-clicks on the curve a context menu will be displayed that will allow one to: delete the entire curve, delete a selected point (if the cursor was on a curve point), resample the curve, switch back to digitize landmark mode, or just cancel the context menu.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/land_004.jpg" class="img-fluid">Now, while hovering your mouse pointer over one of the blue lines, right-click on the image, select “Resample Curve” and enter 12 number of points.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/land_006.jpg" class="img-fluid"></p>
+<p>When Resample is selected, then a window will be opened that displays the current number of points on the selected curve and allows one to specify a new number. If the “By steps” option is selected then the new number must be less than the existing number. Points will be deleted to achieve the desired number of points. Usually one will wish to use the “<em>By length</em>” option. With this option the new number of points can be less than, equal to, or larger than the existing number of points. The new points will be computed by linear interpolation along the curve. They will be approximately equally spaced (it is difficult to achieve exact equal spacing because deleting points changes the length of the curve when the curve changes shape as a result of the deletion of points). In both cases the minimum number of new points is two.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/land_005.jpg" class="img-fluid quarto-figure quarto-figure-left figure-img" width="230"></p>
+</figure>
+</div>
+<p>Repeat this step for each of the three lines. This will convert these curve points to landmark points for further processing. <strong>Note:</strong> other software may not recognize curve points as landmark points. The tpsUtil program has an option to append curve points as landmarks in order after any existing landmarks.</p>
+<p>Now, before moving on to other images, select the <em>template</em> mode (a choice on the Options menu). This will copy the landmarks from the current specimen onto the next image as long as the next image does not have any landmarks already entered. You can then drag the landmarks to their appropriate locations to make landmarking more efficient. <em>Note that the first landmark you move will translate the locations of all the landmarks. This does not necessarily need to be landmark number one, basically whichever you click on first and drag, decides the shifts associated with the other landmarks.</em> Subsequent landmarks can be moved individually. This option helps minimize the chance of making the common error of digitizing the landmarks out of order.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/land_007.jpg" class="img-fluid"></p>
+<p>Once the landmarks and curves have been digitized for the current specimen, click on the right arrow button or press ALT+N. Similarly, you can press ALT+P or the left arrow to go to the previous specimen</p>
+<p>When you are done landmarking, save the file with a unique name and then open this file within tpsUtil to restore the original “Restore original order. This step will reorder the specimens in your TPS file back into their original order using the “OrigNum” keyword in the variables field. Our landmarked and order restored example is available as <a href="./data/full_body/03_Tribolium_castaneum_landmarked_original_order.TPS">03_<em>Tribolium_castaneum</em>_landmarked_original_order.TPS</a></p>
+</section>
+<section id="convert-curve-to-landmarks" class="level4">
+<h4 class="anchored" data-anchor-id="convert-curve-to-landmarks"><strong>Convert curve to landmarks:</strong></h4>
+<p>Now, load the <a href="./data/full_body/03_Tribolium_castaneum_landmarked_original_order.TPS">03_<em>Tribolium_castaneum</em>_landmarked_original_order.TPS</a> file within the tpsUtil program and use the option to append curve points as landmarks in order after any existing landmarks. Save this file as <a href="./data/full_body/04_Tribolium_castaneum_curves_removed.TPS">04_Tribolium_castaneum_curves_removed.TPS</a></p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/land_008.jpg" class="img-fluid" width="282"></p>
+<p>When opened in tpsDig, this file will appear like this - note that the blue lines are gone and they have been replaced by actual landmarks.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/land_009.jpg" class="img-fluid"></p>
+</section>
+<section id="delete-extra-landmarks" class="level4">
+<h4 class="anchored" data-anchor-id="delete-extra-landmarks"><strong>Delete extra landmarks:</strong></h4>
+<p>05_Tribolium_castaneum_overlapping_lm_removed.TPS</p>
 </section>
 <section id="set-a-scale" class="level4">
 <h4 class="anchored" data-anchor-id="set-a-scale"><strong>Set a scale:</strong></h4>
-<p>Open the scale image within tpsDig, and zoom-in to a size that seems easy to work with. Click on the image tools icon and go to the Measure tab. To set a scale factor, enter the known length of a structure in the edit box and then digitize the two endpoints of the scale. Enter just the numerical value, do not enter the units. Press the OK button to accept the scale factor or the cancel button to ignore any changes you may have made in the scale factor. Make a note of this scale factor as we will be including it in all the .tps files that use this particular calibration image.</p>
+<p>Open the scale image within tpsDig, and zoom-in to a size that seems easy to work with. Click on the image tools icon and go to the Measure tab. To set a scale factor, enter the known length of a structure in the edit box and then digitize the two endpoints of the scale. Enter just the numerical value, do not enter the units. Press the OK button to accept the scale factor or the cancel button to ignore any changes you may have made in the scale factor. <em>Make a note of this scale factor as we will be including it in all the .tps files that use this particular calibration image.</em></p>
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
@@ -234,14 +179,14 @@ SCALE=scale factor
 </tbody>
 </table>
 <p>When drawing the program will display a “rubber band” line and will beep when you are sufficiently close to another landmark so that one can lift the left mouse button to end the current link. To delete the last link drawn, right-click on an unused portion of the background. To delete a specific link, right-click on it.</p>
-<p>Press "Create File" when done.. keep this file safe - you will be needing it soon. In this example, the link file is called <a href="./data/full_body/pronotum.nts">pronotum.nts</a>.</p>
+<p>Press “Create File” when done.. keep this file safe - you will be needing it soon. In this example, the link file is called <a href="./data/full_body/pronotum.nts">pronotum.nts</a>.</p>
 </section>
 <section id="make-a-sliders-file" class="level4">
 <h4 class="anchored" data-anchor-id="make-a-sliders-file"><strong>Make a sliders file:</strong></h4>
 <p>This file defines how semi landmarks can be slide so as to minimize bending energy during a generalized Procrustes analysis (GPA) superimposition. The locations of the landmarks on the first specimen in a TPS or NTS file are displayed. With the mouse, one can draw links between any triplets of landmarks. The middle landmark of a triplet is then considered a semi landmark (it will be displayed using an open circle) and it will be allowed to slide in a direction parallel to the difference between the other two landmarks. Note: this program does not do the actual sliding. It is just used as a convenience to build the file that defines which points slide between which other points.</p>
 <p>This image illustrates the sliders used for the pronotum (two fixed landmarks).</p>
 <p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/sliders_000.jpg" class="img-fluid" width="300"></p>
-<p>This image illustrates sliders used for the abdomen and pronotum in another beetle species (note the 4 fixed landmarks for the pronotum and the 7 fixed landmarks for the abdomen). Have a look at our sliders file here: <a href="./data/full_body/pronotum_sliders.nts">pronotum_sliders.nts</a>.</p>
+<p>This image illustrates sliders used for the elytra and pronotum in another beetle species (note the 4 fixed landmarks for the pronotum and the 7 fixed landmarks for the elytra). Have a look at our sliders file here: <a href="./data/full_body/pronotum_sliders.nts">pronotum_sliders.nts</a>.</p>
 <p><img src="https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/img/sliders_001.jpg" class="img-fluid"></p>
 <p>This file has to be entered into the tpsRelw program using the “Open sliders file …” menu option.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -507,14 +452,14 @@ font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">readland.tps</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"data/full_body/Tc_rand_pronutum.tps"</span>, <span class="at" style="color: #657422;
+font-style: inherit;">"data/full_body/03_Tribolium_castaneum_landmarked_original_order.TPS"</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">specID=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"ID"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-No curves detected; all points appear to be fixed landmarks.</code></pre>
+ 36 curve points detected per specimen and are appended to fixed landmarks.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -602,7 +547,90 @@ font-style: inherit;"># PCA &lt;- gm.prcomp(Y.gpa$coords)</span></span></code></
   <category>Geomorph</category>
   <category>tpsDig</category>
   <guid>https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/</guid>
-  <pubDate>Tue, 28 Nov 2023 00:00:00 GMT</pubDate>
+  <pubDate>Tue, 29 Apr 2025 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Integrating GitHub Copilot with RStudio and VScode</title>
+  <dc:creator>Stephen Lang &amp; Dan Padfield</dc:creator>
+  <link>https://exeter-data-analytics.github.io/posts/github_copilot_integration/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="outline" class="level1">
+<h1>Outline</h1>
+<p><a href="https://docs.github.com/en/copilot">GitHub Copilot</a> an AI coding assistant that can be ran directly within your coding environment (e.g.&nbsp;RStudio or VSCode). These tools should be used with care, and you still need to understand what the code does as you are ultimately responsible for your code and its output.</p>
+<p>This walkthrough will provide the necessary steps to add Copilot to RStudio and VSCode.</p>
+</section>
+<section id="prerequisites" class="level1">
+<h1>Prerequisites</h1>
+<p>There are two ways of getting GitHub Copilot for free. The first is to use <a href="https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/about-github-copilot-free">GitHub Copilot Free</a> which gives you 2000 autocompletions a month.</p>
+<p>However, the method we recommend is to get <a href="https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-your-github-copilot-pro-subscription/getting-free-access-to-copilot-pro-as-a-student-teacher-or-maintainer">GitHub Copilot Pro free</a> as a student or teacher. This method will also allow you to use GitHub Copilot on the RStudio servers. This susbscription gives you unlimited access to GitHub Copilot while you are a student or researcher at the University.</p>
+<p>To do this, you will need to request GitHub Education benefits using the following steps:</p>
+<ol type="1">
+<li>Sign up for a GitHub account (ideally using your university account)</li>
+<li>From your new GitHub account, <a href="https://education.github.com/discount_requests/application">apply for free GitHub Education benefits</a> (i.e., upload photo of your Unicard)</li>
+<li>Once GitHub Education email to say your application is approved, head to <a href="https://github.com/settings/copilot" class="uri">https://github.com/settings/copilot</a> and click the <code>Start free trial</code> button</li>
+<li>The next screen will have a green button to <code>Get access to GitHub Copilot</code></li>
+<li>Finally, you just have to check policies (<a href="https://docs.github.com/en/copilot/managing-copilot/managing-copilot-as-an-individual-subscriber/managing-copilot-policies-as-an-individual-subscriber#enabling-or-disabling-suggestions-matching-public-code">for additional details see here</a>) and click <code>Save and complete setup</code></li>
+<li>You’re now ready to set up GitHub Copilot!</li>
+</ol>
+</section>
+<section id="setting-up-copilot-in-rstudio" class="level1">
+<h1>Setting up Copilot in RStudio</h1>
+<ol type="1">
+<li>To set up the GitHub Copilot for RStudio, we navigate to <code>Tools</code> &gt; <code>Global Options</code> &gt; <code>Copilot</code> (see image below)</li>
+<li>From the Copilot tab, check the <code>Enable Copilot</code> box and hit <code>Apply</code></li>
+<li>You should then see a <code>You are not currently signed in</code> message below the checkbox. Click the <code>Sign in</code> button.</li>
+<li>Copy the 8-digit code, click the link, select <code>Continue</code> and paste the code</li>
+<li>Copilot should show as activated (if not click the <code>Activate</code> button in Copilot options)</li>
+<li>Copilot will now provide suggestions for code as you type (you can see status in bottom right of the code window)</li>
+</ol>
+<p><a href="rstudio_options.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://exeter-data-analytics.github.io/posts/github_copilot_integration/rstudio_options.png" class="img-fluid"></a></p>
+</section>
+<section id="setting-up-copilot-for-visual-studio-code" class="level1">
+<h1>Setting up Copilot for Visual Studio Code</h1>
+<ol type="1">
+<li>On VSCode we just have to install the <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot">GitHub Copilot extension</a></li>
+<li>Once installed, we open the Copilot extension and use it to sign into our GitHub account</li>
+<li>Copilot will now give you suggestions as you type, and you can also use the additional <code>Copilot chat</code> feature (messages icon on left of window) to open a dialogue</li>
+</ol>
+<p><a href="vscode_copilot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://exeter-data-analytics.github.io/posts/github_copilot_integration/vscode_copilot.png" class="img-fluid"></a></p>
+</section>
+<section id="general-copilot-usage-and-pointers" class="level1">
+<h1>General Copilot usage and pointers</h1>
+<p>Now we have Copilot ready to provide suggestions for our code in our chosen software!</p>
+<ul>
+<li>To approve Copilot suggestions that appear, press <code>Tab</code></li>
+<li>To give Copilot guidance on code suggestions, provide <code>#code comments</code> that describe steps required</li>
+<li>Make sure to check both the generated code itself and sense-check outputs to ensure that it is doing what is expected</li>
+<li>The Copilot chat extension (installed automatically alongside Copilot) can be used for a broader range of tasks – <a href="https://docs.github.com/en/copilot/using-github-copilot/example-use-cases/example-prompts-for-copilot-chat?tool=vscode">see examples here</a></li>
+<li>If you also use the <code>Tab</code> autocompletion capability of RStudio or VSCode to navigate files or autocomplete functions, sometimes Copilot’s suggestion comes up and <code>Tab</code> approves Copilot rather than the autocompletion. To stop this, you can play around with the <code>Show code suggestions after keyboard idle (ms)</code> in the Settings.</li>
+</ul>
+<p><a href="rstudio_options2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://exeter-data-analytics.github.io/posts/github_copilot_integration/rstudio_options2.png" class="img-fluid"></a></p>
+<section id="additional-resources" class="level3">
+<h3 class="anchored" data-anchor-id="additional-resources">Additional Resources</h3>
+<ul>
+<li><a href="https://docs.github.com/en/copilot/responsible-use-of-github-copilot-features/responsible-use-of-github-copilot-chat-in-your-ide">Responsible use of GitHub Copilot Chat in your IDE</a></li>
+</ul>
+</section>
+<section id="acknowledgements" class="level3">
+<h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
+<p>We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.</p>
+<ul>
+<li><a href="https://docs.github.com/en/copilot">GitHub Copilot documentation</a></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>Coding, RStudio, R, VScode, GitHub</category>
+  <guid>https://exeter-data-analytics.github.io/posts/github_copilot_integration/</guid>
+  <pubDate>Thu, 18 Jul 2024 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>intRos: Tidy data manipulation</title>

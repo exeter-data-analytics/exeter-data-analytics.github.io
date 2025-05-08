@@ -23,9 +23,9 @@ Geometric morphometrics is a field of study that uses mathematical and statistic
 
 # Prerequisites
 
--   Have R installed
+-   Windows 11 or similar OS (for digitisation using tpsDig)
 -   Download and install the tpsUtil and tpsDig
--   Be using R for your research
+-   Have R installed and be familiar with use of R
 
 # Learning objectives
 
@@ -83,29 +83,73 @@ Each specimen is separated by a blank line, and each line starts with a keyword 
 
 Download and install the [tpsUtil32](https://sbmorphometrics.org/morphmet/tpsutilw32.exe) and [tpsDig2w64](https://sbmorphometrics.org/morphmet/tpsdig2w64.exe) software from the [Stony Brook Morphometrics](https://sbmorphometrics.org/) website. tpsUtil32 is a utility tool and tpsDig2w64 helps digitize coordinates of landmarks and capture outlines.
 
-Open tpsUtil, select "Build tps file from images", select the "input" directory where all your images are stored and then select the location and name for the "output file". In this example, we have called the tps file -- [*Tribolium_castaneum.*tps](./data/full_body/Tribolium_castaneum.tps) and saved it in the root of the data folder.
+[Download this zip file](./img/T_castaneum_images.zip), and unzip it into a folder on your computer. Remember the name and location of this folder as you will need it in the next few steps. Open tpsUtil, select "Build tps file from images", select the "input" directory where all your images are stored and then select the location and name for the "output file". In this example, we have called the tps file -- [01\_*Tribolium_castaneum*.tps](./data/full_body/01_Tribolium_castaneum.tps) and saved it in the root of our data folder.
 
 |  |  |
-|------------------------------------|------------------------------------|
+|----|----|
 | ![Build tps file from images](img/util_000.jpg) | ![Build tps file](img/util_001.jpg) |
 
-Click on the "Setup" button to see the list of files that were found in the folder you pointed towards. Exclude any files that should not need digitisation. Press create when ready. This will create a TPS file that we can use for landmarking all our images
+Click on the "Setup" button to see the list of files that were found in the folder you pointed towards. Exclude any files that should not need digitisation. Press create when ready. This will create a TPS file that we can use for landmarking all our images.
 
 #### **Randomise**
 
-Now, using tpsUtil, randomise the order of the files by selecting "randomly order specimens" from the Operations menu. This helps spread out any confounding factors (e.g. photos taken at different times of day / different lighting etc.). In this example, the [*Tribolium_castaneum.*tps](./data/full_body/Tribolium_castaneum.tps) file you created in the earlier step is used as the input. Load that file, hit create, and save the new file as [*Tribolium_castaneum*\_randomised.tps](./data/full_body/Tribolium_castaneum_randomised.tps). Please make sure you take a look at this file, within a text editor, and then adjust any file paths that need adjusting.
+Now, using tpsUtil, randomise the order of the files by selecting "randomly order specimens" from the Operations menu. This helps spread out any confounding factors (e.g. photos taken at different times of day / different lighting etc.). In this example, the [01\_*Tribolium_castaneum*.tps](./data/full_body/01_Tribolium_castaneum.tps) file you created in the earlier step is used as the input. Load that file, hit create, and save the new file as [02\_*Tribolium_castaneum*\_randomised.tps](./data/full_body/02_Tribolium_castaneum_randomised.tps). Please make sure you take a look at this file, within a text editor, and then adjust any file paths that need adjusting.
 
 ![](img/util_002.jpg){fig-align="left" width="334"}
 
 #### **Let's set some landmarks**
 
-Start the tpsDig program, open the image you want to landmark and then use the multi-point tool to set landmarks on this image. To make viewing easier, you can adjust the colour, size, and numbering of points under Options \> Image Tools \> Colors. Labels at width 35 look readable to me. However, you may find a completely different setting, more useful for your set-up (e.g. due to display screen size, resolution etc.). I would suggest initially doing this for 5-10 files and finding a setting that you are comfortable with, before proceeding with a larger batch.
+Start the tpsDig program, open the [02\_*Tribolium_castaneum*\_randomised.tps](./data/full_body/02_Tribolium_castaneum_randomised.tps) file image you want to landmark images in, and then use the multi-point tool to set landmarks on this image. To make viewing easier, you can adjust the colour, size, and numbering of points under Options \> Image Tools \> Colors. Labels at width 35 look readable to me.
 
-![landmark pronotum](img/land_000.jpg){width="100%"}Once the landmarks and curves have been digitized for the current specimen, click on the right arrow button or press ALT+N. Similarly, you can press ALT+P or the left arrow to go to the previous specimen
+![](img/tpsDig2_000.jpg){width="334"}
 
-The *template* mode (a choice on the Options menu) has been selected, so, the landmarks from the previous specimen will be copied onto the next image as long as it does not have any landmarks already entered. You can then drag the landmarks to their appropriate locations. *Note that the first landmark you move will translate the locations of all the landmarks. This does not necessarily need to be landmark number one, basically whichever you click on first and drag, decides the shifts associated with the other landmarks.* Subsequent landmarks can be moved individually. This option helps minimize the chance of making the common error of digitizing the landmarks out of order.
+However, you may find a completely different setting, more useful for your set-up (e.g. due to display screen size, resolution etc.). I would suggest initially doing this for 5-10 files and finding a setting that you are comfortable with, before proceeding with a larger batch.
 
-When you are done landmarking, save the file with a unique name. Our landmarked example is available as [Tc_rand_pronutum.tps](./data/full_body/Tc_rand_pronutum.TPS)
+![initial landmarking](img/land_000.jpg)Use the *landmark tool* (accessed via ![landmark tool](img/land_001.jpg){width="20"} in the top tool bar), to click on the points identified in numbers 1-17 in the image above. Pay careful attention to the order of the landmarks. If you choose to use a different order, you will need to change the link files accordingly.
+
+After the initial landmarks have been sitiuated, use the *background curve* tool (accessed via ![](img/land_002.jpg){width="27" height="20"}in the top tool bar) to draw a multipoint line between landmark 1 and landmark 2. Usually, you need to just have a few well-spaced points that follow the outline of the shape you are measuring and one must start and end with a landmark.
+
+![use the background curve tool](img/land_003.jpg)Repeat this process to follow the curves between landmark 2-3 and then 12-13. Press the right mouse button, double-click, or click on the Edit mode button on the toolbar to start a new curve.
+
+In edit mode, moving the cursor over the curve will select it and the number of points will be displayed on the status panel. If one right-clicks on the curve a context menu will be displayed that will allow one to: delete the entire curve, delete a selected point (if the cursor was on a curve point), resample the curve, switch back to digitize landmark mode, or just cancel the context menu.
+
+![](img/land_004.jpg)Now, while hovering your mouse pointer over one of the blue lines, right-click on the image, select "Resample Curve" and enter 12 number of points.
+
+![](img/land_006.jpg)
+
+When Resample is selected, then a window will be opened that displays the current number of points on the selected curve and allows one to specify a new number. If the “By steps” option is selected then the new number must be less than the existing number. Points will be deleted to achieve the desired number of points. Usually one will wish to use the “*By length*” option. With this option the new number of points can be less than, equal to, or larger than the existing number of points. The new points will be computed by linear interpolation along the curve. They will be approximately equally spaced (it is difficult to achieve exact equal spacing because deleting points changes the length of the curve when the curve changes shape as a result of the deletion of points). In both cases the minimum number of new points is two.
+
+![](img/land_005.jpg){fig-align="left" width="230"}
+
+Repeat this step for each of the three lines. This will convert these curve points to landmark points for further processing. **Note:** other software may not recognize curve points as landmark points. The tpsUtil program has an option to append curve points as landmarks in order after any existing landmarks.
+
+Now, before moving on to other images, select the *template* mode (a choice on the Options menu). This will copy the landmarks from the current specimen onto the next image as long as the next image does not have any landmarks already entered. You can then drag the landmarks to their appropriate locations to make landmarking more efficient. *Note that the first landmark you move will translate the locations of all the landmarks. This does not necessarily need to be landmark number one, basically whichever you click on first and drag, decides the shifts associated with the other landmarks.* Subsequent landmarks can be moved individually. This option helps minimize the chance of making the common error of digitizing the landmarks out of order.
+
+![](img/land_007.jpg)
+
+Once the landmarks and curves have been digitized for the current specimen, click on the right arrow button or press ALT+N. Similarly, you can press ALT+P or the left arrow to go to the previous specimen
+
+When you are done landmarking, save the file with a unique name and then open this file within tpsUtil to restore the original “Restore original order. This step will reorder the specimens in your TPS file back into their original order using the “OrigNum” keyword in the variables field. Our landmarked and order restored example is available as [03\_*Tribolium_castaneum*\_landmarked_original_order.TPS](./data/full_body/03_Tribolium_castaneum_landmarked_original_order.TPS)
+
+#### **Convert curve to landmarks:**
+
+Now, load the [03\_*Tribolium_castaneum*\_landmarked_original_order.TPS](./data/full_body/03_Tribolium_castaneum_landmarked_original_order.TPS) file within the tpsUtil program and use the option to append curve points as landmarks in order after any existing landmarks. Save this file as [04_Tribolium_castaneum_curves_removed.TPS](./data/full_body/04_Tribolium_castaneum_curves_removed.TPS)
+
+![](img/land_008.jpg){width="282"}
+
+When opened in tpsDig, this file will appear like this - note that the blue lines are gone and they have been replaced by actual landmarks.
+
+![](img/land_009.jpg)
+
+#### **Delete extra landmarks:**
+
+Now, load the [04_Tribolium_castaneum_curves_removed.TPS](./data/full_body/04_Tribolium_castaneum_curves_removed.TPS) file within the tpsUtil program and use the option to *Delete/reorder landmarks*. In this case, landmarks **1**,18; **2,**29,30; **3**,41; **12**,42; and **13**,53 are overlapping with each other so we will delete the higher order landmarks in each of those sets.
+
+![](img/land_010.jpg){fig-align="left" width="240"}
+
+This window lists the identification numbers of the landmarks in the input file. You can highlight one or more landmarks (holding down the shift or control keys while clicking with the mouse) and then using the buttons at the right to move the selected landmarks up or down in the list. Landmarks can also be excluded from the output file by unchecking them or by highlighting them with the mouse and then clicking on the “Exclude” button. You can include a landmark again by clicking on its checkbox or by selecting it and then clicking on the “Include” button. Click on the “Create” button to actually create the output file and then save the file as [05_Tribolium_castaneum_overlapping_lm_removed.TPS](#0). Now, the TPS file is nearly ready to be analysed.
+
+![](img/land_011.jpg){fig-align="center"}
 
 #### **Set a scale:**
 
@@ -126,9 +170,7 @@ Within tpsUtil, select the "Make links file" option, select the Input tps file t
 
 The locations of the landmarks on the first specimen in a TPS or NTS file will be displayed. With the mouse, one can draw links between any pairs of landmarks.
 
-|                        |                        |
-|------------------------|------------------------|
-| ![](img/links_000.jpg) | ![](img/links_001.jpg) |
+![](img/links_000.jpg)
 
 When drawing the program will display a "rubber band" line and will beep when you are sufficiently close to another landmark so that one can lift the left mouse button to end the current link. To delete the last link drawn, right-click on an unused portion of the background. To delete a specific link, right-click on it.
 
@@ -222,7 +264,7 @@ library(geomorph, quietly=T)
 # Read the landmarks in
 # specID - a character specifying whether to extract the specimen ID names from the ID or IMAGE lines
 
-tribolium <- readland.tps("data/full_body/Tc_rand_pronutum.tps", specID="ID")
+tribolium <- readland.tps("data/full_body/03_Tribolium_castaneum_landmarked_original_order.TPS", specID="ID")
 # tribolium <- readland.tps("data/full_body/pronotum_slider.nts", readcurves = TRUE)
 
 # The readcurves argument is set to TRUE because we have semilandmarks in our example
