@@ -111,7 +111,7 @@ Now, open the [02\_*Tribolium_castaneum*\_randomised.tps](#0) file image you wan
 
 After the initial landmarks have been sitiuated, use the *background curve* tool (accessed via ![](img/land_002.jpg){width="27" height="20"}in the top tool bar) to draw a multipoint line between landmark 1 and landmark 2. Usually, you need to just have a few well-spaced points that follow the outline of the shape you are measuring and one must start and end with a landmark.
 
-![use the background curve tool](img/land_003.jpg)Repeat this process to follow the curves between landmark 2-3 and then 12-13. Right-click, double-click, or click on the Edit mode button on the toolbar to start a new curve.
+![use the background curve tool](img/land_003.jpg)Repeat this process to follow the curves between landmark 2-3 and then 12-13. Right-click, double-click, or click on the Edit mode button on the toolbar to start a new curve. Note: This order (*i.e.* going between 1-2, then 2-3 and finally 12-13 is important - do not jumble these steps at all).
 
 In edit mode, moving the cursor over the curve will select it and the number of points will be displayed on the status panel. If one right-clicks on the curve a context menu will be displayed that will allow one to: delete the entire curve, delete a selected point (if the cursor was on a curve point), resample the curve, switch back to digitize landmark mode, or just cancel the context menu.
 
