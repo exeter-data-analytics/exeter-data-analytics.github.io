@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dr.&nbsp;M.D.&nbsp;Sharma">
+<meta name="author" content="Dr.&nbsp;Manmohan D. Sharma">
 <meta name="author" content="Hironori Shinohara">
-<meta name="author" content="Dr.&nbsp;R. Vasudeva">
+<meta name="author" content="Dr.&nbsp;Ramakrishnan Vasudeva">
 <meta name="dcterms.date" content="2025-04-30">
 
 <title>intRos: Geometric Morphometrics – ExeDataHub</title>
@@ -172,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="quarto-title-meta-heading">Affiliation</div>
     
       <div class="quarto-title-meta-contents">
-      <p class="author">Dr.&nbsp;M.D.&nbsp;Sharma </p>
+      <p class="author">Dr.&nbsp;Manmohan D. Sharma </p>
     </div>
     <div class="quarto-title-meta-contents">
           <p class="affiliation">
@@ -188,7 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </p>
         </div>
       <div class="quarto-title-meta-contents">
-      <p class="author">Dr.&nbsp;R. Vasudeva </p>
+      <p class="author">Dr.&nbsp;Ramakrishnan Vasudeva </p>
     </div>
     <div class="quarto-title-meta-contents">
           <p class="affiliation">
@@ -210,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">2025-05-08</p>
+        <p class="date-modified">2025-05-21</p>
       </div>
     </div>
       
@@ -255,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Prerequisites</h1>
 <ul>
 <li>Windows 11 or similar OS (for digitisation using tpsDig)</li>
-<li>Download and install the tpsUtil and tpsDig</li>
+<li>Download and install the tpsUtil, tpsDig and tpsRelW tools</li>
 <li>Have R installed and be familiar with use of R</li>
 </ul>
 </section>
@@ -313,8 +313,8 @@ SCALE=scale factor
 <p>Each specimen is separated by a blank line, and each line starts with a keyword followed by an equal sign and a value. The keywords are case insensitive and can be in any order, except for LM, which must be the first line for each specimen. The LM keyword specifies the number of landmarks, followed by the x and y coordinates of each landmark in separate lines. The ID keyword specifies a unique identifier for the specimen, which can be a number or a string. The IMAGE keyword specifies the name of the image file that contains the specimen, which can be in any format supported by R. The SCALE keyword specifies a scale factor that converts the pixel coordinates to real-world units, such as millimeters or centimeters. Other keywords, such as COMMENT, CURVE, or POINT, can also be used to store additional information, but they are not required by geomorph.</p>
 <section id="using-tpsutil-and-tpsdig" class="level4">
 <h4 class="anchored" data-anchor-id="using-tpsutil-and-tpsdig"><strong>Using tpsUtil and tpsDig</strong></h4>
-<p>Download and install the <a href="https://sbmorphometrics.org/morphmet/tpsutilw32.exe">tpsUtil32</a> and <a href="https://sbmorphometrics.org/morphmet/tpsdig2w64.exe">tpsDig2w64</a> software from the <a href="https://sbmorphometrics.org/">Stony Brook Morphometrics</a> website. tpsUtil32 is a utility tool and tpsDig2w64 helps digitize coordinates of landmarks and capture outlines.</p>
-<p><a href="./img/T_castaneum_images.zip">Download this zip file</a>, and unzip it into a folder on your computer. Remember the name and location of this folder as you will need it in the next few steps. Open tpsUtil, select “Build tps file from images”, select the “input” directory where all your images are stored and then select the location and name for the “output file”. In this example, we have called the tps file – <a href="./data/full_body/01_Tribolium_castaneum.tps">01_<em>Tribolium_castaneum</em>.tps</a> and saved it in the root of our data folder.</p>
+<p>Download and install the <a href="https://sbmorphometrics.org/morphmet/tpsutilw32.exe">tpsUtil32</a>, <a href="https://sbmorphometrics.org/morphmet/tpsdig2w64.exe">tpsDig2w64</a> and <a href="https://sbmorphometrics.org/morphmet/tpsRelww64.exe">tpsRelww64</a> software from the <a href="https://sbmorphometrics.org/">Stony Brook Morphometrics</a> website. tpsUtil32 is a utility tool and tpsDig2w64 helps digitize coordinates of landmarks and capture outlines. tpsRelww64 performs a relative warp analysis.</p>
+<p><a href="./img/T_castaneum_images.zip">Download this zip file</a>, and unzip it into a folder on your computer. Remember the name and location of this folder as you will need it in the next few steps. Open tpsUtil, and under the Operation box’s dropdown menu select “Build tps file from images”, select the “input” directory where all your images are stored and then select the location and name for the “output file”. In this example, we have called the tps file – <a href="./data/full_body/01_Tribolium_castaneum.tps">01_<em>Tribolium_castaneum</em>.tps</a> and saved it in the root of our data folder.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -331,7 +331,7 @@ SCALE=scale factor
 </section>
 <section id="randomise" class="level4">
 <h4 class="anchored" data-anchor-id="randomise"><strong>Randomise</strong></h4>
-<p>Now, using tpsUtil, randomise the order of the files by selecting “randomly order specimens” from the Operations menu. This helps spread out any confounding factors (e.g.&nbsp;photos taken at different times of day / different lighting etc.). In this example, the <a href="./data/full_body/01_Tribolium_castaneum.tps">01_<em>Tribolium_castaneum</em>.tps</a> file you created in the earlier step is used as the input. Load that file, hit create, and save the new file as <a href="./data/full_body/02_Tribolium_castaneum_randomised.tps">02_<em>Tribolium_castaneum</em>_randomised.tps</a>. Please make sure you take a look at this file, within a text editor, and then adjust any file paths that need adjusting.</p>
+<p>Now, using tpsUtil, randomise the order of the files by selecting “randomly order specimens” from the Operations menu. This helps spread out any confounding factors (e.g.&nbsp;photos taken at different times of day / different lighting etc.). In this example, the <a href="./data/full_body/01_Tribolium_castaneum.tps">01_<em>Tribolium_castaneum</em>.tps</a> file you created in the earlier step is used as the input. Load that file and in the Output option choose the new file-name as <a href="./data/full_body/02_Tribolium_castaneum_randomised.tps">02_<em>Tribolium_castaneum</em>_randomised.tps</a> and press Create. This will create the randomised file. Now, you may close tpsUtil until it is needed again later. Please make sure you take a look at the file you have just created, within a text editor like <a href="https://www.contexteditor.org/">Context</a> or <a href="https://notepad-plus-plus.org/">Notepad++</a>, and then adjust any file paths that need adjusting.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
 <p><img src="img/util_002.jpg" class="img-fluid quarto-figure quarto-figure-left figure-img" width="334"></p>
@@ -340,12 +340,14 @@ SCALE=scale factor
 </section>
 <section id="lets-set-some-landmarks" class="level4">
 <h4 class="anchored" data-anchor-id="lets-set-some-landmarks"><strong>Let’s set some landmarks</strong></h4>
-<p>Start the tpsDig program, open the <a href="./data/full_body/02_Tribolium_castaneum_randomised.tps">02_<em>Tribolium_castaneum</em>_randomised.tps</a> file image you want to landmark images in, and then use the multi-point tool to set landmarks on this image. To make viewing easier, you can adjust the colour, size, and numbering of points under Options &gt; Image Tools &gt; Colors. Labels at width 35 look readable to me.</p>
+<p>Start the tpsDig program, and make some initial (one time) adjustments to the settings to make viewing and workflows easier. For e.g., first you can adjust the colour, size, and numbering of points under Options &gt; Image Tools &gt; Colors. Labels at width 35 look readable to me.</p>
 <p><img src="img/tpsDig2_000.jpg" class="img-fluid" width="334"></p>
-<p>However, you may find a completely different setting, more useful for your set-up (e.g.&nbsp;due to display screen size, resolution etc.). I would suggest initially doing this for 5-10 files and finding a setting that you are comfortable with, before proceeding with a larger batch.</p>
-<p><img src="img/land_000.jpg" class="img-fluid" alt="initial landmarking">Use the <em>landmark tool</em> (accessed via <img src="img/land_001.jpg" class="img-fluid" width="20" alt="landmark tool"> in the top tool bar), to click on the points identified in numbers 1-17 in the image above. Pay careful attention to the order of the landmarks. If you choose to use a different order, you will need to change the link files accordingly.</p>
+<p>However, you may find a completely different setting, more useful for your set-up (e.g.&nbsp;due to display screen size, resolution etc.). I would suggest initially doing this for 5-10 files and finding a setting that you are comfortable with, before proceeding with a larger batch. Similarly, under Options, select the <u><em>L</em></u><em>abel landmarks</em> and <u><em>M</em></u><em>ouse wheel zooms</em> features.<br>
+<br>
+Now, open the <a href="#0">02_<em>Tribolium_castaneum</em>_randomised.tps</a> file image you want to landmark images in, and then use the <em>landmark tool</em> (accessed via <img src="img/land_001.jpg" class="img-fluid" alt="landmark tool" width="20"> in the top tool bar) to set landmarks on this image.</p>
+<p><img src="img/land_000.jpg" class="img-fluid" alt="initial landmarking">Use the <em>landmark tool</em> (accessed via <img src="img/land_001.jpg" class="img-fluid" width="20" alt="landmark tool"> in the top tool bar), to click on the points identified in numbers 1-17 in the image above. Pay careful attention to the order of the landmarks. If you choose to use a different order, you will need to change the link and slider files accordingly. The landmarking order is particularly important if you have multiple operators who would be contributing to landmarking. In such cases, you should always take some inter-operator repeatability estimates to assess operator error within your data.</p>
 <p>After the initial landmarks have been sitiuated, use the <em>background curve</em> tool (accessed via <img src="img/land_002.jpg" width="27" height="20">in the top tool bar) to draw a multipoint line between landmark 1 and landmark 2. Usually, you need to just have a few well-spaced points that follow the outline of the shape you are measuring and one must start and end with a landmark.</p>
-<p><img src="img/land_003.jpg" class="img-fluid" alt="use the background curve tool">Repeat this process to follow the curves between landmark 2-3 and then 12-13. Press the right mouse button, double-click, or click on the Edit mode button on the toolbar to start a new curve.</p>
+<p><img src="img/land_003.jpg" class="img-fluid" alt="use the background curve tool">Repeat this process to follow the curves between landmark 2-3 and then 12-13. Right-click, double-click, or click on the Edit mode button on the toolbar to start a new curve.</p>
 <p>In edit mode, moving the cursor over the curve will select it and the number of points will be displayed on the status panel. If one right-clicks on the curve a context menu will be displayed that will allow one to: delete the entire curve, delete a selected point (if the cursor was on a curve point), resample the curve, switch back to digitize landmark mode, or just cancel the context menu.</p>
 <p><img src="img/land_004.jpg" class="img-fluid">Now, while hovering your mouse pointer over one of the blue lines, right-click on the image, select “Resample Curve” and enter 12 number of points.</p>
 <p><img src="img/land_006.jpg" class="img-fluid"></p>
@@ -376,7 +378,8 @@ SCALE=scale factor
 <p><img src="img/land_010.jpg" class="img-fluid quarto-figure quarto-figure-left figure-img" width="240"></p>
 </figure>
 </div>
-<p>This window lists the identification numbers of the landmarks in the input file. You can highlight one or more landmarks (holding down the shift or control keys while clicking with the mouse) and then using the buttons at the right to move the selected landmarks up or down in the list. Landmarks can also be excluded from the output file by unchecking them or by highlighting them with the mouse and then clicking on the “Exclude” button. You can include a landmark again by clicking on its checkbox or by selecting it and then clicking on the “Include” button. Click on the “Create” button to actually create the output file and then save the file as <a href="./data/full_body/05_Tribolium_castaneum_overlapping_lm_removed.TPS">05_Tribolium_castaneum_overlapping_lm_removed.TPS</a>. Now, the TPS file is nearly ready to be analysed.</p>
+<p>This window lists the identification numbers of the landmarks in the input file. You can highlight one or more landmarks (holding down the shift or control keys while clicking with the mouse) and then using the buttons at the right to move the selected landmarks up or down in the list. Landmarks can also be excluded from the output file by unchecking them or by highlighting them with the mouse and then clicking on the “Exclude” button. You can include a landmark again by clicking on its checkbox or by selecting it and then clicking on the “Include” button. Remember to keep the <em>Plot new nums</em> option checked in this step.</p>
+<p>Set the <em>Output</em> filename as <a href="./data/full_body/05_Tribolium_castaneum_overlapping_lm_removed.TPS">05_Tribolium_castaneum_overlapping_lm_removed.TPS</a> and then click on the “Create” button to actually create the file. Now, the TPS file is nearly ready to be analysed.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/land_011.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
@@ -403,23 +406,33 @@ SCALE=scale factor
 </section>
 <section id="split-pronotum-elytra-landmarks" class="level4">
 <h4 class="anchored" data-anchor-id="split-pronotum-elytra-landmarks"><strong>Split Pronotum &amp; Elytra landmarks:</strong></h4>
-<p>Now, load the <a href="./data/full_body/05_Tribolium_castaneum_overlapping_lm_removed.TPS">05_Tribolium_castaneum_overlapping_lm_removed.TPS</a> file within the tpsUtil program and use the option to <em>Delete/reorder landmarks</em>. In this case, once we will delete all the elytra landmarks and save the output as <a href="#0">06_Tribolium_castaneum_pronotum.TPS</a> and then repeat this process to delete the pronotum landmarks and save the output as <a href="#0">07_Tribolium_castaneum_elytra.TPS</a></p>
+<p>Now, load the <a href="./data/full_body/05_Tribolium_castaneum_overlapping_lm_removed.TPS">05_Tribolium_castaneum_overlapping_lm_removed.TPS</a> file within the tpsUtil program and use the option to <em>Delete/reorder landmarks</em>. In this case, once we will delete all the elytra landmarks and save the output as <a href="#0">06_Tribolium_castaneum_pronotum.TPS</a> and then repeat this process to delete the pronotum landmarks and save the output as <a href="#0">07_Tribolium_castaneum_elytra.TPS</a>. As earlier, please pay attention to the file-names within the <em>Input</em> and <em>Output</em> boxes and press Create when you are ready to create the outputs.</p>
+<p><img src="img/land_013.jpg" class="img-fluid" width="282"></p>
+<p><img src="img/land_012.jpg" class="img-fluid"></p>
+<p><img src="img/land_014.jpg" class="img-fluid"></p>
 </section>
 <section id="make-a-link-file" class="level4">
 <h4 class="anchored" data-anchor-id="make-a-link-file"><strong>Make a link file:</strong></h4>
-<p>Within tpsUtil, select the “Make links file” option, select the <a href="#0">06_Tribolium_castaneum_pronotum.TPS</a> file as an input (if trying this with a different file, note that at-least one image should be completely landmarked) and select an output destination for the link file as <a href="#0">06_Tribolium_castaneum_pronotum_links.TPS</a>.</p>
+<p>Within tpsUtil, select the “Make links file” option, select the <a href="./data/full_body/06_Tribolium_castaneum_pronotum.TPS">06_Tribolium_castaneum_pronotum.TPS</a> file as an input (if trying this with a different file, note that at-least one image should be completely landmarked) and select an output destination for the link file as <a href="./data/full_body/06_Tribolium_castaneum_pronotum_links.TPS">06_Tribolium_castaneum_pronotum_links.TPS</a>.</p>
 <p>The locations of the landmarks on the first specimen in a TPS or NTS file will be displayed. With the mouse, one can draw links between any pairs of landmarks.</p>
-<p><img src="img/links_000.jpg" class="img-fluid"></p>
 <p>When drawing the program will display a “rubber band” line and will beep when you are sufficiently close to another landmark so that one can lift the left mouse button to end the current link. To delete the last link drawn, right-click on an unused portion of the background. To delete a specific link, right-click on it.</p>
-<p>Press “Create File” when done.. keep this file safe - you will be needing it soon. Repeat this step for <a href="#0">07_Tribolium_castaneum_elytra.TPS</a> to create <a href="#0">07_Tribolium_castaneum_elytra_links.TPS</a>.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="img/links_001.jpg" class="img-fluid quarto-figure quarto-figure-left figure-img" width="370"></p>
+</figure>
+</div>
+<p>Press “Create File” when done.. keep this file safe - you will be needing it soon. Repeat this step for <a href="./data/full_body/07_Tribolium_castaneum_elytra.TPS">07_Tribolium_castaneum_elytra.TPS</a> to create <a href="./data/full_body/07_Tribolium_castaneum_elytra_links.NTS">07_Tribolium_castaneum_elytra_links.NTS</a>.</p>
+<p><img src="img/links_000.jpg" class="img-fluid"></p>
 </section>
 <section id="make-a-sliders-file" class="level4">
 <h4 class="anchored" data-anchor-id="make-a-sliders-file"><strong>Make a sliders file:</strong></h4>
-<p>This file defines how semi landmarks can be slide so as to minimize bending energy during a generalized Procrustes analysis (GPA) superimposition. The locations of the landmarks on the first specimen in a TPS or NTS file are displayed. With the mouse, one can draw links between any triplets of landmarks. The middle landmark of a triplet is then considered a semi landmark (it will be displayed using an open circle) and it will be allowed to slide in a direction parallel to the difference between the other two landmarks. Note: this program does not do the actual sliding. It is just used as a convenience to build the file that defines which points slide between which other points.</p>
-<p>This image illustrates the sliders used for the pronotum (two fixed landmarks).</p>
-<p><img src="img/sliders_000.jpg" class="img-fluid" width="300"></p>
-<p>This image illustrates sliders used for the elytra and pronotum in another beetle species (note the 4 fixed landmarks for the pronotum and the 7 fixed landmarks for the elytra). Have a look at our sliders file here: <a href="./data/full_body/pronotum_sliders.nts">pronotum_sliders.nts</a>.</p>
-<p><img src="img/sliders_001.jpg" class="img-fluid"></p>
+<p>This file defines how semi landmarks can be slid so as to minimize bending energy during a generalized Procrustes analysis (GPA) superimposition. The locations of the landmarks on the first specimen in a TPS or NTS file are displayed. With the mouse, one can draw links between any triplets of landmarks. The middle landmark of a triplet is then considered a semi landmark (it will be displayed using an open circle) and it will be allowed to slide in a direction parallel to the difference between the other two landmarks. Note: this program does not do the actual sliding. It is just used as a convenience to build the file that defines which points slide between which other points.</p>
+<p>Within tpsUtil, select the “Make sliders file” option, select the <a href="./data/full_body/06_Tribolium_castaneum_pronotum.TPS">06_Tribolium_castaneum_pronotum.TPS</a> file as an input and select an output destination for the link file as 06_Tribolium_castaneum_pronotum_sliders.NTS. Click setup, and then go-ahead and draw the connections as described above.</p>
+<p><img src="img/sliders_000.jpg" class="img-fluid" width="299"></p>
+<p>This image illustrates the sliders used for the pronotum (two fixed landmarks). When ready, click <em>Create</em>&nbsp;to complete this step for the pronotum.</p>
+<p><img src="img/sliders_001.jpg" class="img-fluid" width="481"></p>
+<p>Now, repeat these steps for <a href="./data/full_body/07_Tribolium_castaneum_elytra.TPS">07_Tribolium_castaneum_elytra.TPS</a> and create 07_Tribolium_castaneum_elytra_sliders.NTS. This image illustrates sliders used for elytra here (note the 2 fixed landmarks for the pronotum and the 7 fixed landmarks for the elytra). Have a look at our sliders files here: <a href="./data/full_body/06_Tribolium_castaneum_pronotum_links.NTS">06_Tribolium_castaneum_pronotum_sliders.NTS</a> and <a href="./data/full_body/07_Tribolium_castaneum_elytra_sliders.NTS">07_Tribolium_castaneum_elytra_sliders.NTS</a></p>
+<p><img src="img/sliders_002.jpg" class="img-fluid"></p>
 <p>This file has to be entered into the tpsRelw program using the “Open sliders file …” menu option.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
