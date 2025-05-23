@@ -86,7 +86,7 @@ Download and install the [tpsUtil32](https://sbmorphometrics.org/morphmet/tpsuti
 [Download this zip file](./img/T_castaneum_images.zip), and unzip it into a folder on your computer. Remember the name and location of this folder as you will need it in the next few steps. Open tpsUtil, and under the Operation box's dropdown menu select "Build tps file from images", select the "input" directory where all your images are stored and then select the location and name for the "output file". In this example, we have called the tps file -- [01\_*Tribolium_castaneum*.tps](./data/full_body/01_Tribolium_castaneum.tps) and saved it in the root of our data folder.
 
 |  |  |
-|------------------------------------|------------------------------------|
+|----|----|
 | ![Build tps file from images](img/util_000.jpg) | ![Build tps file](img/util_001.jpg) |
 
 Click on the "Setup" button to see the list of files that were found in the folder you pointed towards. Exclude any files that should not need digitisation. Press create when ready. This will create a TPS file that we can use for landmarking all our images.

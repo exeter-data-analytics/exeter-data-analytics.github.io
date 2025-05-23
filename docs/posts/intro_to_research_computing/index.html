@@ -6,8 +6,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Dr.&nbsp;Stephen Lang">
+<meta name="author" content="Dr.&nbsp;M.D.&nbsp;Sharma">
+<meta name="author" content="Dr.&nbsp;Tom Horton">
+<meta name="dcterms.date" content="2025-03-07">
+<meta name="description" content="Intro to Research Computing - removing barriers.">
 
-<title>intRos: Walkthroughs – ExeDataHub</title>
+<title>Introduction to Research Computing – ExeDataHub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +28,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,77 +71,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-description','listing-date','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="ExeDataHub" href="posts.xml" data-external="1"></head>
+<link rel="stylesheet" href="../../styles.css">
+</head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ExeDataHub</span>
     </a>
   </div>
@@ -149,19 +94,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./series.html"> 
+    <a class="nav-link" href="../../series.html"> 
 <span class="menu-text">Series</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./presentations.html"> 
+    <a class="nav-link" href="../../presentations.html"> 
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" aria-current="page"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Walkthroughs</span></a>
   </li>  
   <li class="nav-item compact">
@@ -177,7 +122,74 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Introduction to Research Computing</h1>
+                  <div>
+        <div class="description">
+          Intro to Research Computing - removing barriers.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">ARC</div>
+                <div class="quarto-category">HPC</div>
+                <div class="quarto-category">Cloud</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author">Dr.&nbsp;Stephen Lang </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              University of Exeter
+            </p>
+        </div>
+      <div class="quarto-title-meta-contents">
+      <p class="author">Dr.&nbsp;M.D.&nbsp;Sharma </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              University of Exeter
+            </p>
+        </div>
+      <div class="quarto-title-meta-contents">
+      <p class="author">Dr.&nbsp;Tom Horton </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              University of Exeter
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 7, 2025</p>
+      </div>
+    </div>
+    
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">May 23, 2025</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -185,260 +197,91 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-are-intros" id="toc-what-are-intros" class="nav-link active" data-scroll-target="#what-are-intros">What are intRos?</a></li>
-  <li><a href="#get-started" id="toc-get-started" class="nav-link" data-scroll-target="#get-started">Get started</a></li>
+  <li><a href="#what-is-this-about" id="toc-what-is-this-about" class="nav-link active" data-scroll-target="#what-is-this-about">What is this about?</a></li>
+  <li><a href="#why-should-i-learn-this" id="toc-why-should-i-learn-this" class="nav-link" data-scroll-target="#why-should-i-learn-this">Why should I learn this?</a></li>
+  <li><a href="#ok-how-do-i-sign-up" id="toc-ok-how-do-i-sign-up" class="nav-link" data-scroll-target="#ok-how-do-i-sign-up">OK, how do I sign-up?</a>
+  <ul class="collapse">
+  <li><a href="#day-1---an-introduction-to-research-computing" id="toc-day-1---an-introduction-to-research-computing" class="nav-link" data-scroll-target="#day-1---an-introduction-to-research-computing">Day 1 - An Introduction to Research Computing</a></li>
+  <li><a href="#day-2---research-computing-case-studies-and-problem-solving" id="toc-day-2---research-computing-case-studies-and-problem-solving" class="nav-link" data-scroll-target="#day-2---research-computing-case-studies-and-problem-solving">Day 2 - Research Computing Case Studies and Problem Solving</a></li>
+  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  </ul></li>
   </ul>
 </nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div><div class="category" data-category="ARC">ARC <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Cloud">Cloud <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Coding, RStudio, R, VScode, GitHub">Coding, RStudio, R, VScode, GitHub <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Geomorph">Geomorph <span class="quarto-category-count">(1)</span></div><div class="category" data-category="HPC">HPC <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(6)</span></div><div class="category" data-category="RStudio">RStudio <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RStudio projects">RStudio projects <span class="quarto-category-count">(1)</span></div><div class="category" data-category="flextable">flextable <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="git">git <span class="quarto-category-count">(1)</span></div><div class="category" data-category="here">here <span class="quarto-category-count">(1)</span></div><div class="category" data-category="tidyverse">tidyverse <span class="quarto-category-count">(3)</span></div><div class="category" data-category="tpsDig">tpsDig <span class="quarto-category-count">(1)</span></div></div></div>
-<!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">intRos: Walkthroughs</h1>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="what-are-intros" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-intros">What are intRos?</h2>
-<p>The intRos walkthroughs are designed to be a place to provide brief introductions and walkthroughs for activities that are common when programming for research purposes. For example, using <strong>ggplot2</strong> and making publication-ready plots. Or making reproducible tables in R using <strong>flextable</strong>. These intRos are aimed to be brief and designed to get you started using these tools. Throughout we highlight where we find information and our favourite resources for when we get stuck!</p>
-<p>We hope that intRos will be added to through time by other members of the University. If you would like to contribute, please get in touch.</p>
-</section>
-<section id="get-started" class="level2">
-<h2 class="anchored" data-anchor-id="get-started">Get started</h2>
-<p>All of the available intRos can be found below. All of the reproducible quarto (.qmd) files can be found at the source <a href="https://github.com/exeter-data-analytics/exeter-data-analytics.github.io">GitHub</a> repository for this website. You can navigate to each of the directories individually in the <code>posts/</code> folder, or better still clone the repo using <code>git clone</code> and open the project in RStudio.</p>
-<hr>
-
-
-
-</section>
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title" data-direction="asc">
-          Title
-        </option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
     </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="what-is-this-about" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-this-about">What is this about?</h2>
+<p>These workshops are a valuable opportunity for you to up-skill yourself with tools of the future — please do join us if you think these workshops might apply to you!</p>
+</section>
+<section id="why-should-i-learn-this" class="level2">
+<h2 class="anchored" data-anchor-id="why-should-i-learn-this">Why should I learn this?</h2>
+<blockquote class="blockquote">
+<p>“The revolution is here. Understanding how Research Computing works and being able to apply this to your workstream could help your work and increase your impact. If you are all at sea with Research Computing then this is where to start.”</p>
+</blockquote>
+<p>The key goals of these workshops are to remove barriers to people using Research Computing and up-skill our research community to be able to make better use of the facilities available.</p>
+</section>
+<section id="ok-how-do-i-sign-up" class="level2">
+<h2 class="anchored" data-anchor-id="ok-how-do-i-sign-up">OK, how do I sign-up?</h2>
+<p>The current sign-up period has closed now. However, please feel free to <a href="https://forms.office.com/e/5aZMAVGENa">fill up this form</a> to express your interest in these workshops and we will look into arranging additional sessions.</p>
+<section id="day-1---an-introduction-to-research-computing" class="level3">
+<h3 class="anchored" data-anchor-id="day-1---an-introduction-to-research-computing">Day 1 - An Introduction to Research Computing</h3>
+<p><strong>Outline</strong>: We will deliver “An introduction to Research Computing”, which will be followed by examples of specific case studies based on the research needs of those of you who filled in the questionnaire. To aid in developing ARC skillsets there will be a worked example given to attendees to work through in preparation for the second session.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="R,Geomorph,tpsDig" data-listing-date-sort="1745967600000" data-listing-file-modified-sort="1747986648652" data-listing-date-modified-sort="1747986648000" data-listing-reading-time-sort="21" data-listing-word-count-sort="4145">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_geometric_morphometrics/index.html" class="no-external">intRos: Geometric Morphometrics</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/intro_to_geometric_morphometrics/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/intro_to_geometric_morphometrics/index.html" class="no-external">Geometric morphometrics is a field of study that uses mathematical and statistical methods to analyze the shape and variation of biological forms. It is based on the use of…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/intro_to_geometric_morphometrics/index.html" class="no-external">
-<div class="listing-date">
-2025-04-30
-</div>
-<div class="listing-reading-time">
-21 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="ARC,HPC,Cloud" data-listing-date-sort="1741305600000" data-listing-file-modified-sort="1747987935636" data-listing-date-modified-sort="1747987935000" data-listing-reading-time-sort="2" data-listing-word-count-sort="353">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_research_computing/index.html" class="no-external">Introduction to Research Computing</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/intro_to_research_computing/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/intro_to_research_computing/index.html" class="no-external">Intro to Research Computing - removing barriers.</a>
+<div class="callout-title-container flex-fill">
+Note
 </div>
 </div>
-<div class="metadata">
-<a href="./posts/intro_to_research_computing/index.html" class="no-external">
-<div class="listing-date">
-2025-03-07
-</div>
-<div class="listing-reading-time">
-2 min
-</div>
-</a>
+<div class="callout-body-container callout-body">
+<p><strong>Skill level:</strong> Foundational to intermediate</p>
+<p><strong>Prerequisites</strong>: None</p>
+<p><strong>When and where:</strong> 0900-1300 10th June Exchange Red</p>
+<p><strong>Catering</strong>: Drinks and lunch provided.</p>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="Coding, RStudio, R, VScode, GitHub" data-listing-date-sort="1721343600000" data-listing-file-modified-sort="1746649930653" data-listing-date-modified-sort="1746649930000" data-listing-reading-time-sort="3" data-listing-word-count-sort="597">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/github_copilot_integration/index.html" class="no-external">Integrating GitHub Copilot with RStudio and VScode</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/github_copilot_integration/index.html" class="no-external"></a>
+</section>
+<section id="day-2---research-computing-case-studies-and-problem-solving" class="level3">
+<h3 class="anchored" data-anchor-id="day-2---research-computing-case-studies-and-problem-solving">Day 2 - Research Computing Case Studies and Problem Solving</h3>
+<p><strong>Outline</strong>: Firstly, attendees will discuss best practices to overcome some of the challenges they identified in the earlier workshop. Secondarily, attendees will build upon the skills acquired within the self-learning exercise and use these skills to develop basics of two key types of research computing - virtual and high-performance for their specific research needs.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="listing-description">
-<a href="./posts/github_copilot_integration/index.html" class="no-external">Sign up to GitHub Copilot for code autocompletion in RStudio and VSCode</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/github_copilot_integration/index.html" class="no-external">
-<div class="listing-date">
-2024-07-19
-</div>
-<div class="listing-reading-time">
-3 min
-</div>
-</a>
+<div class="callout-title-container flex-fill">
+Note
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="tidyverse,R" data-listing-date-sort="1700438400000" data-listing-file-modified-sort="1702027065458" data-listing-date-modified-sort="1702027065000" data-listing-reading-time-sort="8" data-listing-word-count-sort="1493">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_tidy_data_manipulation/index.html" class="no-external">intRos: Tidy data manipulation</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/intro_to_tidy_data_manipulation/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/intro_to_tidy_data_manipulation/index.html" class="no-external">Tidy and transfrom your data using reproducible code in R</a>
+<div class="callout-body-container callout-body">
+<p><strong>Skill level:</strong> Foundational to intermediate</p>
+<p><strong>Prerequisites</strong>: 1) A laptop, and 2) Completion of the worked example provided in the first meeting.</p>
+<p><strong>When and where:</strong> 0900-1300 17th June Exchange Green</p>
+<p><strong>Catering</strong>: Drinks and lunch provided.</p>
 </div>
 </div>
-<div class="metadata">
-<a href="./posts/intro_to_tidy_data_manipulation/index.html" class="no-external">
-<div class="listing-date">
-2023-11-20
-</div>
-<div class="listing-reading-time">
-8 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="R,RStudio,git" data-listing-date-sort="1682031600000" data-listing-file-modified-sort="1702027065438" data-listing-date-modified-sort="1702027065000" data-listing-reading-time-sort="10" data-listing-word-count-sort="1910">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/install_rstudio_git/index.html" class="no-external">intRos: Installing, R, RStudio, and Git</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/install_rstudio_git/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/install_rstudio_git/index.html" class="no-external">A primer on how to install R, RStudio, and Git.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/install_rstudio_git/index.html" class="no-external">
-<div class="listing-date">
-2023-04-21
-</div>
-<div class="listing-reading-time">
-10 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="R,ggplot2,tidyverse" data-listing-date-sort="1677196800000" data-listing-file-modified-sort="1702027065449" data-listing-date-modified-sort="1702027065000" data-listing-reading-time-sort="17" data-listing-word-count-sort="3287">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_ggplot2/index.html" class="no-external">intRos: Publication ready plots using ggplot2</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/intro_to_ggplot2/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/intro_to_ggplot2/index.html" class="no-external">Make publication ready plots in R using ggplot2 and learn some new tips and tricks</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/intro_to_ggplot2/index.html" class="no-external">
-<div class="listing-date">
-2023-02-24
-</div>
-<div class="listing-reading-time">
-17 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="flextable,R" data-listing-date-sort="1676332800000" data-listing-file-modified-sort="1702027065445" data-listing-date-modified-sort="1702027065000" data-listing-reading-time-sort="12" data-listing-word-count-sort="2310">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_flextable/index.html" class="no-external">intRos: Reproducible tables with flextable</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/intro_to_flextable/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/intro_to_flextable/index.html" class="no-external">Make reproducible tables of summary stats and contrasts tables with flextable in R</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/intro_to_flextable/index.html" class="no-external">
-<div class="listing-date">
-2023-02-14
-</div>
-<div class="listing-reading-time">
-12 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="R,RStudio projects,tidyverse,here" data-listing-date-sort="1672704000000" data-listing-file-modified-sort="1702027065458" data-listing-date-modified-sort="1702027065000" data-listing-reading-time-sort="10" data-listing-word-count-sort="1869">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_projects/index.html" class="no-external">intRos: Managing research projects with R Studio</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/intro_to_projects/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/intro_to_projects/index.html" class="no-external">Manage your different research projects with R Studio and the {here} package</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/intro_to_projects/index.html" class="no-external">
-<div class="listing-date">
-2023-01-03
-</div>
-<div class="listing-reading-time">
-10 min
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</section>
+<section id="additional-resources" class="level3">
+<h3 class="anchored" data-anchor-id="additional-resources">Additional Resources</h3>
+</section>
+<section id="acknowledgements" class="level3">
+<h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
+<p>The inaugural set of workshops has been funded by a Researcher Led Initiative grant to Dr.&nbsp;Tom Horton, in collaboration with Dr.&nbsp;M.D.&nbsp;Sharma and Dr.&nbsp;Stephen Lang at the University of Exeter (Penryn Campus).</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -859,6 +702,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://giscus.app/client.js" data-repo="exeter-data-analytics/exeter-data-analytics.github.io" data-repo-id="R_kgDOJW1l0Q" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
 </div> <!-- /content -->
 
 

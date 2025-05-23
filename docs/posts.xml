@@ -571,6 +571,90 @@ font-style: inherit;"># PCA &lt;- gm.prcomp(Y.gpa$coords)</span></span></code></
   <pubDate>Tue, 29 Apr 2025 23:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Introduction to Research Computing</title>
+  <dc:creator>Dr. Stephen Lang</dc:creator>
+  <dc:creator>Dr. M.D. Sharma</dc:creator>
+  <dc:creator>Dr. Tom Horton</dc:creator>
+  <link>https://exeter-data-analytics.github.io/posts/intro_to_research_computing/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="what-is-this-about" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-this-about">What is this about?</h2>
+<p>These workshops are a valuable opportunity for you to up-skill yourself with tools of the future — please do join us if you think these workshops might apply to you!</p>
+</section>
+<section id="why-should-i-learn-this" class="level2">
+<h2 class="anchored" data-anchor-id="why-should-i-learn-this">Why should I learn this?</h2>
+<blockquote class="blockquote">
+<p>“The revolution is here. Understanding how Research Computing works and being able to apply this to your workstream could help your work and increase your impact. If you are all at sea with Research Computing then this is where to start.”</p>
+</blockquote>
+<p>The key goals of these workshops are to remove barriers to people using Research Computing and up-skill our research community to be able to make better use of the facilities available.</p>
+</section>
+<section id="ok-how-do-i-sign-up" class="level2">
+<h2 class="anchored" data-anchor-id="ok-how-do-i-sign-up">OK, how do I sign-up?</h2>
+<p>The current sign-up period has closed now. However, please feel free to <a href="https://forms.office.com/e/5aZMAVGENa">fill up this form</a> to express your interest in these workshops and we will look into arranging additional sessions.</p>
+<section id="day-1---an-introduction-to-research-computing" class="level3">
+<h3 class="anchored" data-anchor-id="day-1---an-introduction-to-research-computing">Day 1 - An Introduction to Research Computing</h3>
+<p><strong>Outline</strong>: We will deliver “An introduction to Research Computing”, which will be followed by examples of specific case studies based on the research needs of those of you who filled in the questionnaire. To aid in developing ARC skillsets there will be a worked example given to attendees to work through in preparation for the second session.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Skill level:</strong> Foundational to intermediate</p>
+<p><strong>Prerequisites</strong>: None</p>
+<p><strong>When and where:</strong> 0900-1300 10th June Exchange Red</p>
+<p><strong>Catering</strong>: Drinks and lunch provided.</p>
+</div>
+</div>
+</section>
+<section id="day-2---research-computing-case-studies-and-problem-solving" class="level3">
+<h3 class="anchored" data-anchor-id="day-2---research-computing-case-studies-and-problem-solving">Day 2 - Research Computing Case Studies and Problem Solving</h3>
+<p><strong>Outline</strong>: Firstly, attendees will discuss best practices to overcome some of the challenges they identified in the earlier workshop. Secondarily, attendees will build upon the skills acquired within the self-learning exercise and use these skills to develop basics of two key types of research computing - virtual and high-performance for their specific research needs.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Skill level:</strong> Foundational to intermediate</p>
+<p><strong>Prerequisites</strong>: 1) A laptop, and 2) Completion of the worked example provided in the first meeting.</p>
+<p><strong>When and where:</strong> 0900-1300 17th June Exchange Green</p>
+<p><strong>Catering</strong>: Drinks and lunch provided.</p>
+</div>
+</div>
+</section>
+<section id="additional-resources" class="level3">
+<h3 class="anchored" data-anchor-id="additional-resources">Additional Resources</h3>
+</section>
+<section id="acknowledgements" class="level3">
+<h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
+<p>The inaugural set of workshops has been funded by a Researcher Led Initiative grant to Dr.&nbsp;Tom Horton, in collaboration with Dr.&nbsp;M.D.&nbsp;Sharma and Dr.&nbsp;Stephen Lang at the University of Exeter (Penryn Campus).</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>ARC</category>
+  <category>HPC</category>
+  <category>Cloud</category>
+  <guid>https://exeter-data-analytics.github.io/posts/intro_to_research_computing/</guid>
+  <pubDate>Fri, 07 Mar 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Integrating GitHub Copilot with RStudio and VScode</title>
   <dc:creator>Stephen Lang &amp; Dan Padfield</dc:creator>
   <link>https://exeter-data-analytics.github.io/posts/github_copilot_integration/</link>

@@ -1,0 +1,66 @@
+---
+title: "Introduction to Research Computing"
+author: 
+  - name: Dr. Stephen Lang
+    affiliation: University of Exeter
+  - name: Dr. M.D. Sharma
+    affiliation: University of Exeter
+  - name: Dr. Tom Horton
+    affiliation: University of Exeter
+description: "Intro to Research Computing - removing barriers."
+date: "2025-03-07"
+date-modified: last-modified
+categories: [ARC, HPC, Cloud]
+execute:
+  message: false
+  warning: false
+draft: false
+---
+
+## What is this about?
+
+These workshops are a valuable opportunity for you to up-skill yourself with tools of the future — please do join us if you think these workshops might apply to you!
+
+## Why should I learn this?
+
+> "The revolution is here. Understanding how Research Computing works and being able to apply this to your workstream could help your work and increase your impact. If you are all at sea with Research Computing then this is where to start."
+
+The key goals of these workshops are to remove barriers to people using Research Computing and up-skill our research community to be able to make better use of the facilities available.
+
+## OK, how do I sign-up?
+
+The current sign-up period has closed now. However, please feel free to [fill up this form](https://forms.office.com/e/5aZMAVGENa) to express your interest in these workshops and we will look into arranging additional sessions.
+
+### Day 1 - An Introduction to Research Computing
+
+**Outline**: We will deliver "An introduction to Research Computing", which will be followed by examples of specific case studies based on the research needs of those of you who filled in the questionnaire. To aid in developing ARC skillsets there will be a worked example given to attendees to work through in preparation for the second session.
+
+::: callout-note
+**Skill level:** Foundational to intermediate
+
+**Prerequisites**: None
+
+**When and where:** 0900-1300 10th June Exchange Red
+
+**Catering**: Drinks and lunch provided.
+:::
+
+### Day 2 - Research Computing Case Studies and Problem Solving
+
+**Outline**: Firstly, attendees will discuss best practices to overcome some of the challenges they identified in the earlier workshop. Secondarily, attendees will build upon the skills acquired within the self-learning exercise and use these skills to develop basics of two key types of research computing - virtual and high-performance for their specific research needs.
+
+::: callout-note
+**Skill level:** Foundational to intermediate
+
+**Prerequisites**: 1) A laptop, and 2) Completion of the worked example provided in the first meeting.
+
+**When and where:** 0900-1300 17th June Exchange Green
+
+**Catering**: Drinks and lunch provided.
+:::
+
+### Additional Resources
+
+### Acknowledgements
+
+The inaugural set of workshops has been funded by a Researcher Led Initiative grant to Dr. Tom Horton, in collaboration with Dr. M.D. Sharma and Dr. Stephen Lang at the University of Exeter (Penryn Campus).
