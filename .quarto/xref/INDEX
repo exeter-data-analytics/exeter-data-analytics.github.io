@@ -49,5 +49,8 @@
   },
   "posts/intro_to_research_computing/index.qmd": {
     "index.html": "67ebca4b"
+  },
+  "posts/intro_to_research_computing/tips.qmd": {
+    "tips.html": "65203cfb"
   }
 }

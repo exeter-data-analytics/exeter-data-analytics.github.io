@@ -1,0 +1,83 @@
+---
+title: "intRos: Research Computing - Tips"
+author: 
+  - name: Dr. Stephen Lang
+    affiliation: University of Exeter
+  - name: Dr. M.D. Sharma
+    affiliation: University of Exeter
+  - name: Dr. Tom Horton
+    affiliation: University of Exeter
+description: "Intro to Research Computing - Tips."
+date: "2025-05-23"
+date-modified: last-modified
+categories: [ARC, HPC, Cloud]
+execute:
+  message: false
+  warning: false
+draft: false
+---
+
+## What is this about?
+
+Several common themes and issues have emerged within the responses collected from researchers regarding their computing needs and challenges. Below are some valuable tips designed to address these challenges and improve the efficiency and effectiveness of research-related computing tasks. These tips are tailored to the diverse needs of the respondents, who span various career stages (e.g., postgraduates, postdocs, lecturers) and research fields (e.g., genomics, deep learning, geospatial analysis), while remaining broadly applicable to enhance their use of advanced computing resources.
+
+#### 1. **Optimizing Code for Performance**
+
+Many researchers are working with computationally intensive tasks, such as simulations and machine learning models, which can benefit from optimized code.
+
+-   **Profile your code**: Use profiling tools (e.g., cProfile in Python or profvis in R) to identify bottlenecks and focus optimization efforts where they’ll have the most impact.
+-   **Use efficient data structures**: Opt for memory- and speed-efficient options, such as NumPy arrays instead of Python lists, to handle large datasets effectively.
+-   **Vectorize operations**: Leverage vectorized operations in Python (e.g., with NumPy or Pandas) or R (e.g., avoiding loops with apply functions) to speed up computations by minimizing iterative processing.
+
+#### 2. **Parallel Computing**
+
+Several respondents highlighted the need for faster processing of large datasets or simulations, making parallel computing a key skill to develop.
+
+-   **Learn parallel computing basics**: Understand multi-threading and multi-processing to distribute tasks across multiple cores, reducing computation time.
+-   **Use built-in libraries**: Implement libraries like multiprocessing in Python or parallel in R to parallelize tasks on your local machine efficiently.
+-   **Scale with advanced tools**: For larger-scale parallelism, explore frameworks like Dask or Apache Spark, which can distribute computations across clusters, especially when using cloud based resources.
+
+#### 3. **Using High-Performance Computing (HPC) Resources**
+
+Researchers frequently mentioned needing significant computational power and storage, which ARC can provide if used effectively.
+
+-   **Familiarize yourself with the system**: Learn the basics of your HPC platform, including how to submit jobs, monitor resource usage (e.g., CPU, memory), and manage data transfers. Bespoke, community contributed tutorials are available for the Athena HPC on the [CornwallARC](https://universityofexeteruk.sharepoint.com/sites/CornwallARC) site. Similar tutorials are being developed for ISCA HPC by the RIT team on the [ExeterARC](https://universityofexeteruk.sharepoint.com/sites/ExeterARC) site.
+-   **Optimize job submissions**: Use job schedulers like SLURM to request appropriate resources (e.g., number of CPUs, memory, runtime) tailored to your task, avoiding over- or under-allocation. Over- or under- allocation can be detrimental to all users on shared systems.
+-   **Test locally first**: Where possible, run smaller versions of your code on your local machine or a virtual machine to debug and optimize your code before scaling up to larger, shared resources (like Athena or ISCA HPC or the RStudio servers), minimizing trial-and-error on the server.
+
+#### 4. **Memory Management**
+
+Memory crashes and handling large datasets were recurring challenges, especially for those working with genomics, geospatial data, or machine learning. The key here is to know your data and be aware of the basics of data-handling within the software you are using - then you can try to optimse appropriately.
+
+-   **Use memory-efficient data types**: Reduce memory usage by choosing appropriate data types (e.g., float32 instead of float64 in NumPy) for your variables.
+-   **Load data in chunks**: Process large files incrementally or use streaming techniques to avoid loading entire datasets into memory at once.
+-   **Consider specialized formats**: Adopt formats like HDF5 or NetCDF for efficient storage and retrieval of large scientific datasets, which are well-suited for HPC environments.
+-   **Consider appropriate compute platforms**: When using bespoke servers or HPC systems, look for the resources available on different machines and choose the most appropriate server or queue to submit your jobs to. For e.g. if you have a large amount of data that needs to be read-in prior to compute - you may want to select a high-memory server (or queue) instead.
+
+#### 5. **Data Storage and Management**
+
+Effective data organization is crucial for researchers dealing with large and dynamic datasets, such as sequencing or geospatial data.
+
+-   **Organize your data**: Maintain clear directory structures and consistent file-naming conventions to easily locate and manage files. Avoid using spaces or special-characters in your file-naming conventions.
+-   **Backup regularly**: Use institutional storage solutions or cloud backups to protect critical data and code from loss. Remember that the storage on compute platforms is finite and should not be used for short- or long-term data dumping. These spaces are usually not backed-up – your data, is your responsibility.
+-   **Use databases for large datasets**: For complex or live data (e.g., vessel tracking), consider using databases like PostgreSQL to query and manage data efficiently. However, these may need a combination of computational resources for your work-flow (e.g. a virtual machine for the database, while the computation happens on another server).
+
+#### 6. **Software and Tool Usage**
+
+Researchers use a variety of tools (e.g., Python, R, Matlab, GIS software), and maximizing their potential can streamline workflows.
+
+-   **Read documentation**: Consult official documentation or user guides for your software and libraries to understand their full capabilities and best practices. This is one of the core essentials that is ignored by researchers - Read the Friendly Manual!
+-   **Follow best practices**: Seek out tutorials specific to your research area (e.g., bioinformatics pipelines in Python, geospatial analysis in R) to optimize your approach.
+-   **Stay updated**: Keep software and libraries current to benefit from performance enhancements and new features, especially on shared research computing systems.
+
+#### **7. Collaboration and Sharing**
+
+Collaboration and reproducibility are key in research, embrace these good-practice measures in your daily scientific computing workflows.
+
+-   **Use version control**: Employ tools like Git (with platforms like GitHub or GitLab) to track code changes and collaborate with others seamlessly.
+-   **Share data responsibly**: Deposit data-sets in institutional repositories (e.g. ORE) or platforms like Figshare, Dryad or Open Science Framework, ensuring proper attribution and access control.
+-   **Document your work**: Add clear comments to your code and maintain documentation (e.g., README files) to make your workflows understandable and reproducible.
+
+### Acknowledgements
+
+The inaugural set of workshops has been funded by a Researcher Led Initiative grant to Dr. Tom Horton, in collaboration with Dr. M.D. Sharma and Dr. Stephen Lang at the University of Exeter (Penryn Campus).

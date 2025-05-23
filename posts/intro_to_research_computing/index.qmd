@@ -61,6 +61,16 @@ The current sign-up period has closed now. However, please feel free to [fill up
 
 ### Additional Resources
 
+Many respondents, especially early-career researchers, expressed a desire to improve their computing skills or learn how to use advanced reseach computing resources effectively.
+
+::: callout-note
+-   **Check out our tips [here!](./tips.html)**
+
+-   **Take advantage of online resources**: Explore platforms like [CornwallARC](https://universityofexeteruk.sharepoint.com/sites/CornwallARC) and [ExeterARC](https://universityofexeteruk.sharepoint.com/sites/ExeterARC) for institution specific knowledge bases. Engage with discipline specific training sessions offered by [ExeDataHub](https://exeter-data-analytics.github.io/) or [CfRR](https://coding-for-reproducible-research.github.io) - these are essential to gain hands-on experience with tools and techniques. Other online resources like Coursera, edX, or DataCamp can also be very useful for programming and data analysis learning.
+
+-   **Ask for Help**: Join the ExeDataHub [Ask for Help](https://teams.microsoft.com/l/channel/19%3Afca419ee420d452489888196bf05aae8%40thread.tacv2/Ask%20for%20Help?groupId=fc065562-31db-4628-a506-1a58dcfd1c8b&tenantId=912a5d77-fb98-4eee-af32-1334d8f04a53) channel to ask questions, share knowledge, and learn from peers. Active engagement with this resource is essential for the community to thrive.
+:::
+
 ### Acknowledgements
 
 The inaugural set of workshops has been funded by a Researcher Led Initiative grant to Dr. Tom Horton, in collaboration with Dr. M.D. Sharma and Dr. Stephen Lang at the University of Exeter (Penryn Campus).

@@ -79,6 +79,24 @@ Note
 </section>
 <section id="additional-resources" class="level3">
 <h3 class="anchored" data-anchor-id="additional-resources">Additional Resources</h3>
+<p>Many respondents, especially early-career researchers, expressed a desire to improve their computing skills or learn how to use advanced reseach computing resources effectively.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p><strong>Check out our tips <a href="./tips.html">here!</a></strong></p></li>
+<li><p><strong>Take advantage of online resources</strong>: Explore platforms like <a href="https://universityofexeteruk.sharepoint.com/sites/CornwallARC">CornwallARC</a> and <a href="https://universityofexeteruk.sharepoint.com/sites/ExeterARC">ExeterARC</a> for institution specific knowledge bases. Engage with discipline specific training sessions offered by <a href="https://exeter-data-analytics.github.io/">ExeDataHub</a> or <a href="https://coding-for-reproducible-research.github.io">CfRR</a> - these are essential to gain hands-on experience with tools and techniques. Other online resources like Coursera, edX, or DataCamp can also be very useful for programming and data analysis learning.</p></li>
+<li><p><strong>Ask for Help</strong>: Join the ExeDataHub <a href="https://teams.microsoft.com/l/channel/19%3Afca419ee420d452489888196bf05aae8%40thread.tacv2/Ask%20for%20Help?groupId=fc065562-31db-4628-a506-1a58dcfd1c8b&amp;tenantId=912a5d77-fb98-4eee-af32-1334d8f04a53">Ask for Help</a> channel to ask questions, share knowledge, and learn from peers. Active engagement with this resource is essential for the community to thrive.</p></li>
+</ul>
+</div>
+</div>
 </section>
 <section id="acknowledgements" class="level3">
 <h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
@@ -93,6 +111,100 @@ Note
   <category>HPC</category>
   <category>Cloud</category>
   <guid>https://exeter-data-analytics.github.io/posts/intro_to_research_computing/</guid>
+  <pubDate>Thu, 22 May 2025 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>intRos: Research Computing - Tips</title>
+  <dc:creator>Dr. Stephen Lang</dc:creator>
+  <dc:creator>Dr. M.D. Sharma</dc:creator>
+  <dc:creator>Dr. Tom Horton</dc:creator>
+  <link>https://exeter-data-analytics.github.io/posts/intro_to_research_computing/tips.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="what-is-this-about" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-this-about">What is this about?</h2>
+<p>Several common themes and issues have emerged within the responses collected from researchers regarding their computing needs and challenges. Below are some valuable tips designed to address these challenges and improve the efficiency and effectiveness of research-related computing tasks. These tips are tailored to the diverse needs of the respondents, who span various career stages (e.g., postgraduates, postdocs, lecturers) and research fields (e.g., genomics, deep learning, geospatial analysis), while remaining broadly applicable to enhance their use of advanced computing resources.</p>
+<section id="optimizing-code-for-performance" class="level4">
+<h4 class="anchored" data-anchor-id="optimizing-code-for-performance">1. <strong>Optimizing Code for Performance</strong></h4>
+<p>Many researchers are working with computationally intensive tasks, such as simulations and machine learning models, which can benefit from optimized code.</p>
+<ul>
+<li><strong>Profile your code</strong>: Use profiling tools (e.g., cProfile in Python or profvis in R) to identify bottlenecks and focus optimization efforts where they’ll have the most impact.</li>
+<li><strong>Use efficient data structures</strong>: Opt for memory- and speed-efficient options, such as NumPy arrays instead of Python lists, to handle large datasets effectively.</li>
+<li><strong>Vectorize operations</strong>: Leverage vectorized operations in Python (e.g., with NumPy or Pandas) or R (e.g., avoiding loops with apply functions) to speed up computations by minimizing iterative processing.</li>
+</ul>
+</section>
+<section id="parallel-computing" class="level4">
+<h4 class="anchored" data-anchor-id="parallel-computing">2. <strong>Parallel Computing</strong></h4>
+<p>Several respondents highlighted the need for faster processing of large datasets or simulations, making parallel computing a key skill to develop.</p>
+<ul>
+<li><strong>Learn parallel computing basics</strong>: Understand multi-threading and multi-processing to distribute tasks across multiple cores, reducing computation time.</li>
+<li><strong>Use built-in libraries</strong>: Implement libraries like multiprocessing in Python or parallel in R to parallelize tasks on your local machine efficiently.</li>
+<li><strong>Scale with advanced tools</strong>: For larger-scale parallelism, explore frameworks like Dask or Apache Spark, which can distribute computations across clusters, especially when using cloud based resources.</li>
+</ul>
+</section>
+<section id="using-high-performance-computing-hpc-resources" class="level4">
+<h4 class="anchored" data-anchor-id="using-high-performance-computing-hpc-resources">3. <strong>Using High-Performance Computing (HPC) Resources</strong></h4>
+<p>Researchers frequently mentioned needing significant computational power and storage, which ARC can provide if used effectively.</p>
+<ul>
+<li><strong>Familiarize yourself with the system</strong>: Learn the basics of your HPC platform, including how to submit jobs, monitor resource usage (e.g., CPU, memory), and manage data transfers. Bespoke, community contributed tutorials are available for the Athena HPC on the <a href="https://universityofexeteruk.sharepoint.com/sites/CornwallARC">CornwallARC</a> site. Similar tutorials are being developed for ISCA HPC by the RIT team on the <a href="https://universityofexeteruk.sharepoint.com/sites/ExeterARC">ExeterARC</a> site.</li>
+<li><strong>Optimize job submissions</strong>: Use job schedulers like SLURM to request appropriate resources (e.g., number of CPUs, memory, runtime) tailored to your task, avoiding over- or under-allocation. Over- or under- allocation can be detrimental to all users on shared systems.</li>
+<li><strong>Test locally first</strong>: Where possible, run smaller versions of your code on your local machine or a virtual machine to debug and optimize your code before scaling up to larger, shared resources (like Athena or ISCA HPC or the RStudio servers), minimizing trial-and-error on the server.</li>
+</ul>
+</section>
+<section id="memory-management" class="level4">
+<h4 class="anchored" data-anchor-id="memory-management">4. <strong>Memory Management</strong></h4>
+<p>Memory crashes and handling large datasets were recurring challenges, especially for those working with genomics, geospatial data, or machine learning. The key here is to know your data and be aware of the basics of data-handling within the software you are using - then you can try to optimse appropriately.</p>
+<ul>
+<li><strong>Use memory-efficient data types</strong>: Reduce memory usage by choosing appropriate data types (e.g., float32 instead of float64 in NumPy) for your variables.</li>
+<li><strong>Load data in chunks</strong>: Process large files incrementally or use streaming techniques to avoid loading entire datasets into memory at once.</li>
+<li><strong>Consider specialized formats</strong>: Adopt formats like HDF5 or NetCDF for efficient storage and retrieval of large scientific datasets, which are well-suited for HPC environments.</li>
+<li><strong>Consider appropriate compute platforms</strong>: When using bespoke servers or HPC systems, look for the resources available on different machines and choose the most appropriate server or queue to submit your jobs to. For e.g.&nbsp;if you have a large amount of data that needs to be read-in prior to compute - you may want to select a high-memory server (or queue) instead.</li>
+</ul>
+</section>
+<section id="data-storage-and-management" class="level4">
+<h4 class="anchored" data-anchor-id="data-storage-and-management">5. <strong>Data Storage and Management</strong></h4>
+<p>Effective data organization is crucial for researchers dealing with large and dynamic datasets, such as sequencing or geospatial data.</p>
+<ul>
+<li><strong>Organize your data</strong>: Maintain clear directory structures and consistent file-naming conventions to easily locate and manage files. Avoid using spaces or special-characters in your file-naming conventions.</li>
+<li><strong>Backup regularly</strong>: Use institutional storage solutions or cloud backups to protect critical data and code from loss. Remember that the storage on compute platforms is finite and should not be used for short- or long-term data dumping. These spaces are usually not backed-up – your data, is your responsibility.</li>
+<li><strong>Use databases for large datasets</strong>: For complex or live data (e.g., vessel tracking), consider using databases like PostgreSQL to query and manage data efficiently. However, these may need a combination of computational resources for your work-flow (e.g.&nbsp;a virtual machine for the database, while the computation happens on another server).</li>
+</ul>
+</section>
+<section id="software-and-tool-usage" class="level4">
+<h4 class="anchored" data-anchor-id="software-and-tool-usage">6. <strong>Software and Tool Usage</strong></h4>
+<p>Researchers use a variety of tools (e.g., Python, R, Matlab, GIS software), and maximizing their potential can streamline workflows.</p>
+<ul>
+<li><strong>Read documentation</strong>: Consult official documentation or user guides for your software and libraries to understand their full capabilities and best practices. This is one of the core essentials that is ignored by researchers - Read the Friendly Manual!</li>
+<li><strong>Follow best practices</strong>: Seek out tutorials specific to your research area (e.g., bioinformatics pipelines in Python, geospatial analysis in R) to optimize your approach.</li>
+<li><strong>Stay updated</strong>: Keep software and libraries current to benefit from performance enhancements and new features, especially on shared research computing systems.</li>
+</ul>
+</section>
+<section id="collaboration-and-sharing" class="level4">
+<h4 class="anchored" data-anchor-id="collaboration-and-sharing"><strong>7. Collaboration and Sharing</strong></h4>
+<p>Collaboration and reproducibility are key in research, embrace these good-practice measures in your daily scientific computing workflows.</p>
+<ul>
+<li><strong>Use version control</strong>: Employ tools like Git (with platforms like GitHub or GitLab) to track code changes and collaborate with others seamlessly.</li>
+<li><strong>Share data responsibly</strong>: Deposit data-sets in institutional repositories (e.g.&nbsp;ORE) or platforms like Figshare, Dryad or Open Science Framework, ensuring proper attribution and access control.</li>
+<li><strong>Document your work</strong>: Add clear comments to your code and maintain documentation (e.g., README files) to make your workflows understandable and reproducible.</li>
+</ul>
+</section>
+<section id="acknowledgements" class="level3">
+<h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
+<p>The inaugural set of workshops has been funded by a Researcher Led Initiative grant to Dr.&nbsp;Tom Horton, in collaboration with Dr.&nbsp;M.D.&nbsp;Sharma and Dr.&nbsp;Stephen Lang at the University of Exeter (Penryn Campus).</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>ARC</category>
+  <category>HPC</category>
+  <category>Cloud</category>
+  <guid>https://exeter-data-analytics.github.io/posts/intro_to_research_computing/tips.html</guid>
   <pubDate>Thu, 22 May 2025 23:00:00 GMT</pubDate>
 </item>
 <item>
