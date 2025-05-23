@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Research Computing"
+title: "intRos: Research Computing"
 author: 
   - name: Dr. Stephen Lang
     affiliation: University of Exeter
@@ -8,7 +8,7 @@ author:
   - name: Dr. Tom Horton
     affiliation: University of Exeter
 description: "Intro to Research Computing - removing barriers."
-date: "2025-03-07"
+date: "2025-05-23"
 date-modified: last-modified
 categories: [ARC, HPC, Cloud]
 execute:
