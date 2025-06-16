@@ -250,6 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#find-your-instance" id="toc-find-your-instance" class="nav-link" data-scroll-target="#find-your-instance">Find your instance:</a></li>
   <li><a href="#stopping-your-instance" id="toc-stopping-your-instance" class="nav-link" data-scroll-target="#stopping-your-instance">Stopping Your Instance:</a></li>
+  <li><a href="#rebuilding-your-instance" id="toc-rebuilding-your-instance" class="nav-link" data-scroll-target="#rebuilding-your-instance">Rebuilding Your Instance:</a></li>
   <li><a href="#restarting-your-instance" id="toc-restarting-your-instance" class="nav-link" data-scroll-target="#restarting-your-instance">Restarting Your Instance:</a></li>
   <li><a href="#deleting-an-instance." id="toc-deleting-an-instance." class="nav-link" data-scroll-target="#deleting-an-instance.">Deleting an instance.</a></li>
   </ul></li>
@@ -938,8 +939,15 @@ Important
 <h3 class="anchored" data-anchor-id="stopping-your-instance">Stopping Your Instance:</h3>
 <p>If you wish to keep your data, use the <em>Shut Off instance</em> option. In this state the data written to disk will be preserved, but the instance will be ‘<em>off</em>’ (this is the equivalent of turning off a computer).</p>
 <p>Use the dropdown next to your instance and select <em>Shut Off Instance</em> (near the bottom)</p>
-<p><img src="./img/openstack-shutoff-1.png" class="img-fluid"></p>
-<p>You will be asked to confirm - <strong>double check</strong> it is the instance you intend to shut down.</p>
+<p><img src="images/clipboard-3895278222.png" class="img-fluid">You will be asked to confirm - <strong>double check</strong> it is the instance you intend to shut down.</p>
+</section>
+<section id="rebuilding-your-instance" class="level3">
+<h3 class="anchored" data-anchor-id="rebuilding-your-instance">Rebuilding Your Instance:</h3>
+<p>In OpenStack, rebuilding an instance means recreating it from a fresh image, effectively reinstalling the operating system and losing any data on the instance’s root disk. This process preserves the instance’s UUID, attached volumes, and network settings, such as fixed and floating IP addresses. It’s a way to “reset” an instance to a clean state without needing to delete and recreate it entirely.</p>
+<p>Use the dropdown next to your instance and select <em>Rebuild Instance</em> (near the bottom)</p>
+<p><img src="images/clipboard-1820862628.png" class="img-fluid"></p>
+<p>You will then be asked to choose an image that you want to <em>Rebuild</em> from. Select the correct image for your needs and press <em>Rebuild Instance</em>.</p>
+<p><img src="images/clipboard-3037362299.png" class="img-fluid"></p>
 </section>
 <section id="restarting-your-instance" class="level3">
 <h3 class="anchored" data-anchor-id="restarting-your-instance">Restarting Your Instance:</h3>
@@ -963,6 +971,7 @@ Caution
 </div>
 </div>
 <p>When you’re completely finished with the workshop, click the drop-down menu next to your instance and select <em>Delete Instance</em>. It will ask you to confirm - You can then watch the status change from <em>Shutting down</em> to <em>Deleted</em>.</p>
+<p><img src="images/clipboard-2155257801.png" class="img-fluid"></p>
 </section>
 </section>
 <section id="specific-use-cases" class="level1" data-number="8">

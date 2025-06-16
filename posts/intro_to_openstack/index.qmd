@@ -584,9 +584,19 @@ If you wish to keep your data, use the *Shut Off instance* option. In this state
 
 Use the dropdown next to your instance and select *Shut Off Instance* (near the bottom)
 
-![](./img/openstack-shutoff-1.png)
+![](images/clipboard-3895278222.png)You will be asked to confirm - **double check** it is the instance you intend to shut down.
 
-You will be asked to confirm - **double check** it is the instance you intend to shut down.
+### Rebuilding Your Instance:
+
+In OpenStack, rebuilding an instance means recreating it from a fresh image, effectively reinstalling the operating system and losing any data on the instance's root disk. This process preserves the instance's UUID, attached volumes, and network settings, such as fixed and floating IP addresses. It's a way to "reset" an instance to a clean state without needing to delete and recreate it entirely.
+
+Use the dropdown next to your instance and select *Rebuild Instance* (near the bottom)
+
+![](images/clipboard-1820862628.png)
+
+You will then be asked to choose an image that you want to *Rebuild* from. Select the correct image for your needs and press *Rebuild Instance*.
+
+![](images/clipboard-3037362299.png)
 
 ### Restarting Your Instance:
 
@@ -602,6 +612,8 @@ Double check the IP address of your instance as it may change - you will need to
 :::
 
 When you’re completely finished with the workshop, click the drop-down menu next to your instance and select *Delete Instance*. It will ask you to confirm - You can then watch the status change from *Shutting down* to *Deleted*.
+
+![](images/clipboard-2155257801.png)
 
 # Specific Use Cases
 
@@ -662,7 +674,6 @@ Now, if you go back and look at the modified rules - they should look something 
 ## Using VSCode to interact with this *Instance*
 
 First, follow [this guide to setup VS Code for your platform.](https://code.visualstudio.com/docs/setup/setup-overview#_set-up-vs-code-for-your-platform) Once VS Code is installed, you can use the **Visual Studio Code Remote - SSH** extension to open a remote folder on any remote machine, virtual machine, or container with a running SSH server and take full advantage of VS Code's feature set. Once connected to a server, you can interact with files and folders anywhere on the remote filesystem. [See this guide to learn how to connect to this instance over SSH](https://code.visualstudio.com/docs/remote/ssh).
-
 
 # Acknowledgements
 
