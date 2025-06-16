@@ -9,9 +9,6 @@ description: "Introduction to Openstack at the University of Exeter"
 date: "2025-06-16"
 date-modified: last-modified
 categories: [HPC, OpenStack, Virtual Machine]
-contributes:
-  filters: 
-    - timer
 execute:
   message: false
   warning: false
@@ -452,12 +449,17 @@ Once it turns **white** and the ‘Status’ changes to ‘Active’, you should
 
 **Congratulations you have 'configured' and 'turned on' a new computer to use for the rest of this workshop.**
 
-Next, you will learn how to connect to it from your PC. However, before you proceed any further - take a 20 minute break. The cloud-init script would be working in the background to finish installing software and configuring your machine during that time.
+Next, you will learn how to connect to it from your PC.
 
-::: {#00001 .timer seconds="6000" starton="interaction"}
+::: callout-important
+# Take a 20 minute break!
+
+Before you proceed any further - let's take a 20 minute break.
+
+The cloud-init script would be working in the background to finish installing software and configuring your machine during that time.
 :::
 
-# Connect to your instance
+# Connecting to your Instance
 
 ::: callout-important
 #### Prerequisite
@@ -660,3 +662,8 @@ Now, if you go back and look at the modified rules - they should look something 
 ## Using VSCode to interact with this *Instance*
 
 First, follow [this guide to setup VS Code for your platform.](https://code.visualstudio.com/docs/setup/setup-overview#_set-up-vs-code-for-your-platform) Once VS Code is installed, you can use the **Visual Studio Code Remote - SSH** extension to open a remote folder on any remote machine, virtual machine, or container with a running SSH server and take full advantage of VS Code's feature set. Once connected to a server, you can interact with files and folders anywhere on the remote filesystem. [See this guide to learn how to connect to this instance over SSH](https://code.visualstudio.com/docs/remote/ssh).
+
+
+# Acknowledgements
+
+The inaugural set of workshops has been funded by a Researcher Led Initiative grant to Dr. Tom Horton, in collaboration with Dr. M.D. Sharma and Dr. Stephen Lang at the University of Exeter (Penryn Campus).
