@@ -279,54 +279,6 @@ power_state:
 ```
 :::
 
-``` yaml
-#cloud-config
-users:
- - default
- - name: user123
-   gecos: "Your Name"
-   sudo: ALL=(ALL) NOPASSWD:ALL
-   shell: /bin/bash
-   lock_passwd: false
-   ssh-import-id: user123
-   hashed_passwd: “$6$rTACxh6 ... <snip> ... xwWllho2N7nKq1nn1”
-# You have to keep the $6$ in front of the hashed password
-# Enable password auth and also add the key authorised public key genrated earlier.
-ssh_pwauth: True
-ssh_authorized_keys:
-  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzQvmzIky0rcNMF5NMzOu4QIZDNeCgFVhk8ADsO4kmkR/0M65ON3ovalRB7/U/Hb5ifrh422Sr4SJ/QiI6/xPJ0ZzieLAtEEByGDBdK5mNWHpYb045xZVc/QZBBP8SeQeoXz52xKYog8w0Lq7SlPxiRi53meWagCYCQOONcYAhmunrbfItgArWMj0abYm26Hv3crSoVKXp1grzPAzIqr93ARc3JNu499ytMgWMV9U4IcSBjePS1ocZ537OF8UwifXsN9DffRS0LAoA09s7m4QnfFzZqJl9ivs09aY6bfmNiZbbCpf6vncqqmRRyyVt9Fzr+UTNNT+yCFF9v0q+7Qq/
-# Update system package database
-package_update: true
-# Upgrade all packages to the latest versions
-package_upgrade: true
-# Install specified basic tools using the package manager
-packages:
-  - openssh-server
-  - nload
-  - htop
-  - vim
-  - multitail
-  - tmux
-  - x2goserver
-  - x2goserver-xsession
-  - xfce4
-  - xfce4-goodies
-# Install Mamba using the Miniforge distribution
-runcmd:
-  - echo "Starting Miniforge installation..."
-  - wget -O /tmp/Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
-  - chmod +x /tmp/Miniforge3.sh
-  - /tmp/Miniforge3.sh -b -p /opt/miniforge3
-  - echo "Miniforge installation complete. Initializing conda for all users..."
-  - /opt/miniforge3/bin/conda init bash --system
-  - echo "Conda initialization for all users complete. Users may need to log out and back in."
-  - systemctl set-default graphical.target
-power_state:
-   delay: 0
-   mode: reboot
-   message: "Rebooting instance after cloud-init completion"
-   condition: True
-```
 
 Copy paste the above script into a text editor like Notepad++, Context, Subline etc. and edit the requisite sections such as name, gecos, hashed_password etc. as needed.
 
@@ -363,6 +315,6 @@ Once it turns **white** and the ‘Status’ changes to ‘Active’, you should
 
 **Congratulations you have 'configured' and 'turned on' a new computer to use for the rest of this workshop.**
 
-[Next, you will learn how to connect to it from your PC.](02_Connect_to_your_instsance.html)
+[Next, you will learn how to connect to it from your PC.](02_Connect_to_your_instsance.html) However, before you proceed any further - take a 10 minute break. The cloud-init script would be workign in the background to finish installing software and configuring your machine during that time.
 
 ### 

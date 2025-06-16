@@ -18,7 +18,7 @@ draft: false
 ## Prerequisite
 
 ::: callout-important
-Download and install a tool like Putty, MobaXTerm or Termius on your computer.\
+Download and install [X2Go](https://wiki.x2go.org) alongside a tool like Putty, MobaXTerm or Termius on your computer. \
 \
 The most commonly used, but basic program is [PuTTy](https://www.putty.org/).\
 \
@@ -31,9 +31,7 @@ End-Users are responsible for ensuring that they comply with the license conditi
 
 ## Connect to your instance
 
-In addition to being extremely comprehensive, the OpenStack system has a relatively easy (but detailed!) interface for interacting with its offerings. All you have to do is log in via a web-browser and most of the functionality of the is available for you and relatively easy to use.
-
-To get started go to the following URL and login with your University of Exeter username (in the format of *user123*) the domain (exeter.ac.uk), and the password you use when logging onto your university resources.
+Check the IP address of your instance and copy it to your clipboard.
 
 ![](img/openstack-console-18.png)
 
