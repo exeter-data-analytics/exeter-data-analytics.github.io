@@ -22,8 +22,8 @@
 
 
 
-<section id="learning-objectives" class="level1">
-<h1>Learning objectives</h1>
+<section id="learning-objectives" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Learning objectives</h1>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -43,8 +43,8 @@ Note
 </div>
 </div>
 </section>
-<section id="outline" class="level1">
-<h1>Outline</h1>
+<section id="outline" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Outline</h1>
 <p>This course will give you an introduction into the Openstack Cloud Environment. OpenStack allows you to set up a private computer within the University’s Advanced Research Computing ecosystem. <a href="https://www.openstack.org/software/">Click here to learn more about OpenStack.</a> Several other courses in our series will use OpenStack and you may later use it for your own research.</p>
 <p>We are going to introduce a lot of new concepts. Here is an overview of the 3 steps you need to start your course.</p>
 <ol type="1">
@@ -69,21 +69,21 @@ Managing your instance
 </div></li>
 </ol>
 </section>
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
+<section id="introduction" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Introduction</h1>
 <p>For this workshop we will provide an overview of the internal OpenStack provision, part of the University of Exeter’s Advanced Research Computing facilities and see how, as researchers, we can use this flexible resource to get work done efficiently.</p>
 <p>You should be able to access OpenStack and all of the functionality below via your own account to do your research. The aim of this workshop is to give you an introduction to OpenStack and Unix so you are ready to take full advantage of its capabilities!</p>
 <p>Firstly some concepts and terminology might be confusing so here is some explanation of the advantages of using OpenStack.</p>
-<section id="some-terminology" class="level2">
-<h2 class="anchored" data-anchor-id="some-terminology">Some Terminology</h2>
+<section id="some-terminology" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="some-terminology"><span class="header-section-number">3.1</span> Some Terminology</h2>
 <p><strong><em>An Image:</em></strong> This is the starting point or template for the course. Think of it as a master copy of the computer which contains all the programs and data that are required to follow the course. We will use it as a template to start your own Instance.</p>
 <p><strong><em>An Instance:</em></strong> Almost the first thing you will do is create your own copy of the image - we call this an instance or a virtual machine. It contains everything that was in the image plus any files you create during the course.</p>
 <p><strong><em>A Volume</em></strong> This can be thought of as an additional hard disk which you can add or remove from an instance.</p>
 <p><strong><em>Remote Desktop</em></strong> We can’t plug a monitor and keyboard into a virtual machine (instance) so we need a program on our computer which connects to the instance allows us to see and control the instance from our desktop. In the course we will use a program called X2Go.</p>
 <p><strong><em>Command Line Client</em></strong> It is not really necessary to connect to an instance using remote desktop software. It is possible to connect only via a command line interfaces - you will not get any menus, icons images - you will only be able to type commands to tell the instance what you want to do.</p>
 </section>
-<section id="why-use-virtual-machines" class="level2">
-<h2 class="anchored" data-anchor-id="why-use-virtual-machines">Why Use Virtual Machines?</h2>
+<section id="why-use-virtual-machines" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="why-use-virtual-machines"><span class="header-section-number">3.2</span> Why Use Virtual Machines?</h2>
 <p>Instead of relying on dedicated physical hardware for every task, <strong>virtual machines (VMs)</strong> offer a highly flexible and efficient alternative. Imagine a scenario where you have a set number of powerful physical computers. Rather than assigning one computer to each user, VMs allow you to <strong>pool the resources</strong> of these physical machines and then divide them into multiple isolated virtual environments.</p>
 <p>This approach offers significant advantages:</p>
 <ul>
@@ -104,8 +104,8 @@ Managing your instance
 <p>Let’s go to the next section and learn about the OpenStack Console.</p>
 </section>
 </section>
-<section id="logging-into-the-console" class="level2">
-<h2 class="anchored" data-anchor-id="logging-into-the-console">Logging Into the Console</h2>
+<section id="logging-into-the-console" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="logging-into-the-console"><span class="header-section-number">3.3</span> Logging Into the Console</h2>
 <p>In addition to being extremely comprehensive, the Exeter OpenStack cloud has a relatively easy (but detailed!) interface for interacting with its offerings. All you have to do is log in via a web-browser and most of the functionality of the system is available for you and relatively easy to use.</p>
 <p>To get started go to the following URL and login with your University of Exeter username (in the format of <em>user123</em>) the domain (exeter.ac.uk), and the password you use when logging onto your university resources.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -233,8 +233,8 @@ Note
 <p>So let’s get on and launch our first instance!</p>
 </section>
 </section>
-<section id="create-your-instance" class="level2">
-<h2 class="anchored" data-anchor-id="create-your-instance">Create your Instance</h2>
+<section id="create-your-instance" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="create-your-instance"><span class="header-section-number">3.4</span> Create your Instance</h2>
 <p>In this section of the workshop we will create our <em>Instance</em> in Exeter’s OpenStack system.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1276,8 +1276,8 @@ Note
 <p>Next, you will learn how to connect to it from your PC. However, before you proceed any further - take a 20 minute break. The cloud-init script would be working in the background to finish installing software and configuring your machine during that time.</p>
 </section>
 </section>
-<section id="connect-to-your-instance" class="level2">
-<h2 class="anchored" data-anchor-id="connect-to-your-instance">Connect to your instance</h2>
+<section id="connect-to-your-instance" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="connect-to-your-instance"><span class="header-section-number">3.5</span> Connect to your instance</h2>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1390,8 +1390,8 @@ How to install X2Go
 <p>Click Yes. If using a key-pair authentication, you will be connected automatically. If you have opted for password based authentication, then enter the password you chose when creating the crypt-sha512 hash.</p>
 </section>
 </section>
-<section id="managing-your-openstack-instances" class="level2">
-<h2 class="anchored" data-anchor-id="managing-your-openstack-instances">Managing Your OpenStack Instances</h2>
+<section id="managing-your-openstack-instances" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="managing-your-openstack-instances"><span class="header-section-number">3.6</span> Managing Your OpenStack Instances</h2>
 <p>This section contains some instructions on how to manage you OpenStack instances.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1442,10 +1442,10 @@ Caution
 <p>When you’re completely finished with the workshop, click the drop-down menu next to your instance and select <em>Delete Instance</em>. It will ask you to confirm - You can then watch the status change from <em>Shutting down</em> to <em>Deleted</em>.</p>
 </section>
 </section>
-<section id="specific-use-cases" class="level2">
-<h2 class="anchored" data-anchor-id="specific-use-cases">Specific Use Cases</h2>
+<section id="specific-use-cases" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="specific-use-cases"><span class="header-section-number">3.7</span> Specific Use Cases</h2>
 <p>Here, we have configured a virtual machine that has an installation of RStudio Server (Open Source Edition) and it also has XRDP (a remote desktop for Ubuntu) installed on it. In this section, we will show you how to modify your Security Groups to allow access to these applications from your laptop.</p>
-<p>Go to the <em>Network</em> tab and then to the <em>Security Groups</em> pane within it. Click on <em>Manage Rules</em> on the far, right-hand side.</p>
+<p>Go to the <em>Network</em> tab and then to the <em>Security Groups</em> pane within it. Click on <em>Manage Rules</em> on the far right-hand side.</p>
 <p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-12.png" class="img-fluid"></p>
 <p>Click on Add Rule to create the new rules we need.</p>
 <p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-13.png" class="img-fluid"></p>
@@ -1454,12 +1454,8 @@ Caution
 <p>Now, we can add another rule for RDP. This is a well known service so we can select RDP from the drop down options and click <em>Add</em>.<br>
 <img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/clipboard-1799424740.png" class="img-fluid"></p>
 <p>Finally, the new rules should look something like this:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/clipboard-3745716289.png" class="img-fluid figure-img"></p>
-<figcaption>Now, you can access your RStudio Server’s web interface at <a href="http://10.121.4.35:8787/" class="uri">http://10.121.4.35:8787/</a> (substitute the IP address shown here with your own VM’s IP address.</figcaption>
-</figure>
-</div>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/clipboard-3745716289.png" class="img-fluid"></p>
+<p>Now, you can access your RStudio Server’s web interface at <a href="http://10.121.4.35:8787/" class="uri">http://10.121.4.35:8787/</a> (substitute the IP address shown here with your own VM’s IP address.</p>
 <p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/clipboard-2673567999.png" class="img-fluid"></p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1471,7 +1467,7 @@ Caution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Note that the RStudio Server interface requires you to use a username and password combination. So, this example will only work if you chose Option 2 in the Option 2</p>
+<p>Note that the RStudio Server interface requires you to use a username and password combination. So, this example will only work if you chose Option 2 in the <em>Cloud Config</em> section.</p>
 </div>
 </div>
 

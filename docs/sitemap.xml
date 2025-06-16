@@ -34,7 +34,7 @@
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/index.html</loc>
-    <lastmod>2025-05-21T22:26:42.872Z</lastmod>
+    <lastmod>2025-05-23T07:50:48.000Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/install_rstudio_git/index.html</loc>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/index.html</loc>
-    <lastmod>2023-12-06T11:08:50.142Z</lastmod>
+    <lastmod>2023-11-28T21:23:25.240Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/presentations/ggplot2_flextable/ggplot2_flextable.html</loc>
@@ -70,14 +70,18 @@
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_openstack/index.html</loc>
-    <lastmod>2025-06-16T16:21:40.773Z</lastmod>
+    <lastmod>2025-06-16T16:31:29.386Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_openstack/01_OpenStack_Console.html</loc>
-    <lastmod>2025-06-15T23:30:02.895Z</lastmod>
+    <lastmod>2025-06-16T08:35:03.678Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_openstack/02_Connect_to_your_instance.html</loc>
-    <lastmod>2025-06-15T23:42:18.553Z</lastmod>
+    <lastmod>2025-06-16T08:36:41.622Z</lastmod>
+  </url>
+  <url>
+    <loc>https://exeter-data-analytics.github.io/posts/intro_to_openstack/09_manage_your_instances.html</loc>
+    <lastmod>2025-06-16T08:40:03.095Z</lastmod>
   </url>
 </urlset>

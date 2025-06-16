@@ -12,6 +12,11 @@ categories: [HPC, OpenStack, Virtual Machine]
 execute:
   message: false
   warning: false
+format:
+  html:
+    number-sections: true
+    number-depth: 2 # Number headings up to level 2
+    toc: true
 draft: false
 ---
 
@@ -589,7 +594,7 @@ When you’re completely finished with the workshop, click the drop-down menu ne
 
 Here, we have configured a virtual machine that has an installation of RStudio Server (Open Source Edition) and it also has XRDP (a remote desktop for Ubuntu) installed on it. In this section, we will show you how to modify your [Security Groups] to allow access to these applications from your laptop.
 
-Go to the *Network* tab and then to the *Security Groups* pane within it. Click on *Manage Rules* on the far, right-hand side.
+Go to the *Network* tab and then to the *Security Groups* pane within it. Click on *Manage Rules* on the far right-hand side.
 
 ![](img/openstack-connect-12.png)
 
@@ -606,10 +611,12 @@ Now, we can add another rule for RDP. This is a well known service so we can sel
 
 Finally, the new rules should look something like this:
 
-![Now, you can access your RStudio Server's web interface at <http://10.121.4.35:8787/> (substitute the IP address shown here with your own VM's IP address. ](img/clipboard-3745716289.png)
+![](img/clipboard-3745716289.png)
+
+Now, you can access your RStudio Server's web interface at <http://10.121.4.35:8787/> (substitute the IP address shown here with your own VM's IP address.
 
 ![](img/clipboard-2673567999.png)
 
 ::: callout-caution
-Note that the RStudio Server interface requires you to use a username and password combination. So, this example will only work if you chose [Option 2](#sec-option-2) in the [Option 2]
+Note that the RStudio Server interface requires you to use a username and password combination. So, this example will only work if you chose [Option 2](#sec-option-2) in the *Cloud Config* section.
 :::

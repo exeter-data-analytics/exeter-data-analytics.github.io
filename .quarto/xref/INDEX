@@ -64,5 +64,8 @@
   },
   "posts/intro_to_openstack/02_Connect_to_your_instance.qmd": {
     "02_Connect_to_your_instance.html": "6a70d277"
+  },
+  "posts/intro_to_openstack/09_manage_your_instances.qmd": {
+    "09_manage_your_instances.html": "c4356bd3"
   }
 }
