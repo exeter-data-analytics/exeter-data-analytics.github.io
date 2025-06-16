@@ -12,13 +12,13 @@ categories: [HPC, OpenStack, Virtual Machine]
 execute:
   message: false
   warning: false
-draft: false
+draft: true
 ---
 
 ## Prerequisite
 
 ::: callout-important
-Download and install [X2Go](https://wiki.x2go.org) alongside a tool like Putty, MobaXTerm or Termius on your computer. \
+Download and install [X2Go](https://wiki.x2go.org) alongside a tool like Putty, MobaXTerm or Termius on your computer.\
 \
 The most commonly used, but basic program is [PuTTy](https://www.putty.org/).\
 \

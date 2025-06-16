@@ -1,5 +1,5 @@
 ---
-title: "Introduction to OpenStack"
+title: "intRos: Introduction to OpenStack"
 author: 
   - name: MD Sharma
     affiliation: University of Exeter
@@ -18,7 +18,7 @@ draft: false
 # Learning objectives
 
 ::: callout-note
-**By the end of this section you will be expected to:**
+**By the end of this workshop you will be expected to:**
 
 -   Log into the UoE OpenStack Console and start your instance of the appropriate workshop.
 -   Log in to the OpenStack instance from your own computer.
@@ -97,6 +97,419 @@ Essentially, virtual machines empower you to create, modify, and manage your com
 
 [Let's go to the next section and learn about the OpenStack Console.](./01_OpenStack_Console.html)
 
-### Acknowledgements
+## Logging Into the Console
 
-We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.
+In addition to being extremely comprehensive, the Exeter OpenStack cloud has a relatively easy (but detailed!) interface for interacting with its offerings. All you have to do is log in via a web-browser and most of the functionality of the is available for you and relatively easy to use.
+
+To get started go to the following URL and login with your University of Exeter username (in the format of *user123*) the domain (exeter.ac.uk), and the password you use when logging onto your university resources.
+
+::: callout-warning
+We have set up a single workshop project which we will be using for training. Please do **NOT** abuse this project and do **NOT** put any personal, confidential or important data on the machines you will set-up during the training. You will all log in to the same management console and will be able to see machines which your friends and colleagues on the course will start.
+:::
+
+### <https://stack.exeter.ac.uk/>
+
+![](img/openstack-login-01.png)
+
+::: callout-important
+This resource is only accessible within the University of Exeter network. So, if you are accessing this workshop from home or anywhere outside the campuses, you will need to connect to the University VPN service to be able to access the system.
+:::
+
+Once logged in, you will see a web-page that looks similar to this:
+
+![](img/openstack-console-01.png)
+
+As a first step - let's associate ourselves with the correct project. This is specially important for all users who may have access to multiple "projects" associated with their research groups. In this instance, please click on the *Project* dropdown and select *ARC_Intro_Penryn - Workshop* as your project. If done correctly, you should see a tick mark next to the selected project, as illustrated below.
+
+![](images/clipboard-739322012.png)
+
+We can now take a look at the various tabs. These include:
+
+::: callout-note
+## Instances
+
+This is the list of virtual machines that have been created.
+:::
+
+::: callout-note
+## Compute
+
+The service OpenStack is known for. It enables you to create Linux and Windows Virtual machines. Best of all their computational and/or disk capacity can be increased or decreased at the click of a button! This section has most of the things we need for this course.
+:::
+
+::: callout-note
+## Volumes
+
+A storage unit. These can be created and attached to any compute which you have running. Ideal for moving large amounts of data between machines. Think of it as a removal hard drive which you can attach to any machine.
+:::
+
+::: callout-note
+## Images
+
+These are the templates from which you create instances.
+:::
+
+::: callout-note
+## Object store
+
+This is another type of storage, but is relatively slow. It is ideal for archive or when storing large files (i.e. several Gb).However, it is currently disabled on the system. if you want to know more about it, please as your Research IT support team for assistance.
+:::
+
+Click on “Compute” and then “Overview” at the top left.
+
+On this page you’ll get a summary of the state for your account. You can see an example below. Note that we are using a shared project where you’ll also see everyone else’s instances. If you were using your own *project* (or your reserch group's project), you would only see your instances (or that of your research group).
+
+![](img/openstack-console-03.png)
+
+You see here that we have a certain allocation of resources (memory, disk space, CPUs). We can choose how to allocate these to accomplish our scientific goals. For instance, we may need one very large machine with lots of resource to do a single task (e.g. a genome assembly). Or we may want lots of smaller machines, each doing a small task (e.g. a webserver and a database server). We may want half the machines running Unix and the other half running Windows. The point is, ***we*** are in control of the compute and can choose what suits ***us*** best and it can all be done, by us at the touch of a button.
+
+In the example above, we have been allocated up-to 32 instances and a total of 32 cores with roughly 60GB of RAM so that each of the workshop attendees can spin up a virtual machine with 1*vCPU and 1GB of RAM.*
+
+Click on “Compute” and then “Instances” at the top left. When this tutorial was created, there were no existing instances within the workshop project, so, those of you following this tutorial within the second workshop, will see a page with *No items to display* and anyone who sign in after a few instances have been created, would see a list of instances that pre-exist at that time.\
+\
+![](img/openstack-console-04.png)
+
+*Ok, so how do we actually do all this?* Well, from this page we can create our own servers on Exeter’s OpenStack using an image of a machine the Research IT team have created earlier for you. Servers which are created in this manner are called ‘*Instances*’. We can create as many servers as we like, start them, log-in to them, do some work, transfer data to/from them or destroy them altogether. We let the Research IT team worry about the hardware, power, cooling and maintenance - all we need to do is specify how powerful a computer we want (tiny, small, medium, large or extra-large).
+
+The reason we are using the OpenStack here is that many of you have to analyse large datasets. But you only need to cruch those datasets occasionally. In the case of high-throughput sequencing data (e.g. Illumina or Oxford Nanopore) you will find that your desktop PC may not be powerful enough to cope with the data. Also installing and configuring many pieces of software (often written by other scientists), is frequently painful as they often require other programs (also often written by other scientists) to be installed as well. Factor in some obscure incompatibility and you can quickly end up in a situation where two programs that you need refuse to co-exist. With OpenStack, you can just start a server instance based on an image created by someone else who has already done all the hard work of installation and configuration. You may also want to use an existing docker- or singularity- container within such an instance to carry out your workflow.
+
+So let’s get on and launch our first instance!
+
+## Create your Instance
+
+In this section of the workshop we will create our Instance in Exeter’s OpenStack system.
+
+::: callout-important
+If you have an instance from a previous session do not create another one. Please go to the Managing OpenStack page and restart your existing instance.
+
+Otherwise let’s get on and launch the instance we need for our workshop !
+:::
+
+Click on the “Launch Instance” button.
+
+![](img/openstack-console-05.png)
+
+Give your instance your name (e.g. “Jane Doe's Instance”)
+
+![](img/openstack-console-06.png)Remember that everyone is sharing the same project- so you will need to be identify your instance from everyone elses. The example above ("*my_first_VM*") may be suitable for your own project, but it is not appropriate in a shared project.
+
+Click ‘Next’ and proceed to choose the image of the machine you want to replicate. In this example, we will be using the Ubuntu 22.04 (Desktop) image. Click on the highlighted arrow across from the *"Ubuntu 22.04 (Desktop)"* name and input a *Volume Size* of 20GB. Make sure to toggle the *Delete Volume on Instance Delete* option in this case.
+
+::: callout-caution
+When you are making your own VMs, within your own research project, you may chose to use different options based on your needs. Here, we have limited resources available for the workshop, so we need to make sure that everyone follows the instructions.
+:::
+
+![](img/openstack-console-07.png)
+
+Click Next and select the desired flavour for this instance. Here, we would like you to select the *ARC_Intro_Penryn - small* flavour that will allow you to launch an instance with 1vCPU and 1GB of RAM. When you register your own project for access to OpenStack, you will see additional options for these flavours.
+
+![](img/openstack-console-08.png)
+
+### Security Groups
+
+Click ‘Next’ to move on through Networks and Network Ports section and arrive at the Security Groups section. Here, click on the default security group to expand it, and to have a look at what has already been allowed in the firewall.
+
+![](img/openstack-console-09.png)
+
+Here, we can see that SSH (port 22) has been allowed over the *tcp* protocol from *anywhere (0.0.0.0/0)*. That is all we need to begin with, so we can go ahead and click Next.
+
+::: callout-tip
+#### Security Groups
+
+If you are planning on using additional software that may need some ports to be opended up, then you can create your own security group with relevant ports allowed. For e.g. if you want to use VNC type software for remote desktop access to your instance, you will need to allow port 5901 etc. over tcp.
+:::
+
+### Key Pairs and Cloud Config
+
+Setting up virtual machine (VM) instances in a cloud environment like OpenStack requires robust security measures and efficient configuration methods. This section details the critical steps involved in establishing secure access using SSH keypairs and automating initial VM setup with cloud-init, providing a foundational understanding for workshop participants.
+
+Click ‘Next’ to move into the Key Pair section ::: callout-tip \## Key Pair OpenStack leverages SSH keypairs to secure VM instances at their launch time. When an instance is provisioned, OpenStack injects the user's public key into the appropriate authorized_keys file on the new VM, making it ready for secure SSH access using the corresponding private key held by the user.
+
+::: callout-tip
+### Private Key
+
+The private key, which is the secret component, must remain securely on the user's local workstation and should never be uploaded to the cloud provider. This distinction is crucial for maintaining the integrity of the security model.
+:::
+
+![](img/openstack-console-10.png)A key pair allows you to SSH into your newly created instance. You may select an existing key pair, import a key pair, or generate a new key pair. Click on the *Create Key Pair* button highlighted above and then enter a *Key Pair Name* and *Key Type* in the pop-up box that appears next. Key Pairs are how you login to your instance after it is launched.
+
+![](img/openstack-console-11.png)
+
+Choose a key pair name you will recognize. Names may only include alphanumeric characters, spaces, or dashes. Once the Key Pair is generated, you will need to copy the Private Key to your clipborad and save it in a safe space. Do not forget where you keep this key - you will not be able to login to the instance without this key pair if you have not enabled any other login mechanism.
+
+![](img/openstack-console-12.png)
+
+Once copied, click *Done.* Open a text editor like Notepad++, Context or similar and save this SSH Key. The image below shows the successfully created *Key Pair.*
+
+![](img/openstack-console-13.png)
+
+::: callout-tip
+### Key Pair vs Password
+
+The choice of authentication method for remote access significantly impacts the security and operational efficiency of cloud environments. While password-based authentication is familiar, SSH keypair authentication offers substantial advantages, making it the preferred standard in cloud platforms like OpenStack.\
+\
+Password authentication relies on a user remembering a secret string (the password) and providing it to the server for verification.\
+\
+SSH keypair authentication provides a superior level of cryptographic strength that even extremely long, complex passwords cannot match. The public keys, generated using sophisticated mathematical algorithms, are virtually impossible to guess or brute-force, offering a robust defense against common attack vectors - as long as un-authorized users do not gain access to your private key.
+:::
+
+Click Next to move on to the *Configuration* section*.*
+
+::: callout-tip
+### Cloud Config
+
+Beyond establishing secure access, automating the initial configuration of virtual machines is crucial for efficiency, consistency, and scalability in cloud environments. Cloud-init serves as the industry-standard tool for this purpose.
+:::
+
+When a new cloud instance is deployed, cloud-init takes initial configuration data, often referred to as "user-data" or "vendor-data," and automatically applies these settings during the instance's first boot process. This functions much like a dynamic to-do list that cloud-init executes, configuring the VM according to predefined instructions. The significant advantage of cloud-init lies in its ability to reuse these configuration instructions across numerous deployments, consistently producing reliable results.
+
+Cloud-init is capable of handling a wide array of initial configuration tasks. These include essential activities such as setting the hostname, configuring network interfaces, creating and managing user accounts, installing necessary software packages, and executing custom scripts. This comprehensive automation streamlines the deployment process, ensuring that all cloud instances are configured uniformly, thereby minimizing the potential for human error.
+
+Below are two minimal cloud-init script examples to configure essentials such as adding a local user account with ability to install research related applications (e.g. sudo apt install package-name). This will be all you really need for most use cases, but for additional configuration options, please refer to the [cloud-init documentation](https://cloudinit.readthedocs.io/en/latest/). Amend the settings as required to look as below (changing the ‘**user123**’, ‘**User OneTwoThree**’ and **hashed_passwd** lines):
+
+::: callout-tip
+#### Option 1
+
+Use this config if you only want key-pair authentication:
+
+``` yaml
+#cloud-config
+# Use this config if you only want key-pair authentication.
+# Update system package database
+package_update: true
+# Upgrade all packages to the latest versions
+package_upgrade: true
+# Install specified basic tools using the package manager
+packages:
+  - openssh-server
+  - nload
+  - htop
+  - vim
+  - multitail
+  - tmux
+  - x2goserver
+  - x2goserver-xsession
+  - xfce4
+  - xfce4-goodies
+# Install Mamba using the Miniforge distribution
+runcmd:
+  - echo "Starting Miniforge installation..."
+  - wget -O /tmp/Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+  - chmod +x /tmp/Miniforge3.sh
+  - /tmp/Miniforge3.sh -b -p /opt/miniforge3
+  - echo "Miniforge installation complete. Initializing conda for all users..."
+  - /opt/miniforge3/bin/conda init bash --system
+  - echo "Conda initialization for all users complete. Users may need to log out and back in."
+  - systemctl set-default graphical.target
+power_state:
+   delay: 0
+   mode: reboot
+   message: "Rebooting instance after cloud-init completion"
+   condition: True
+```
+:::
+
+::: callout-tip
+#### Option 2
+
+Use this config if you want password authentication (or password authentication in addition to key pair auth shown earlier)
+
+``` yaml
+users:
+ - default
+ - name: user123
+   gecos: "Your Name"
+   sudo: ALL=(ALL) NOPASSWD:ALL
+   shell: /bin/bash
+   lock_passwd: false
+   ssh-import-id: user123
+   hashed_passwd: “$6$rTACxh6 ... <snip> ... xwWllho2N7nKq1nn1”
+# You have to keep the $6$ in front of the hashed password
+# Enable password auth 
+ssh_pwauth: True
+# Update system package database
+package_update: true
+# Upgrade all packages to the latest versions
+package_upgrade: true
+# Install specified basic tools using the package manager
+packages:
+  - openssh-server
+  - nload
+  - htop
+  - vim
+  - multitail
+  - tmux
+  - x2goserver
+  - x2goserver-xsession
+  - xfce4
+  - xfce4-goodies
+# Install Mamba using the Miniforge distribution
+runcmd:
+  - echo "Starting Miniforge installation..."
+  - wget -O /tmp/Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+  - chmod +x /tmp/Miniforge3.sh
+  - /tmp/Miniforge3.sh -b -p /opt/miniforge3
+  - echo "Miniforge installation complete. Initializing conda for all users..."
+  - /opt/miniforge3/bin/conda init bash --system
+  - echo "Conda initialization for all users complete. Users may need to log out and back in."
+  - systemctl set-default graphical.target
+power_state:
+   delay: 0
+   mode: reboot
+   message: "Rebooting instance after cloud-init completion"
+   condition: True
+```
+:::
+
+Copy paste the above script into a text editor like Notepad++, Context, Subline etc. and edit the requisite sections such as name, gecos, hashed_password etc. as needed.
+
+::: callout-note
+**Note:** The ‘**hashed_passwd**’ string is a crypt-sha512 hash (i.e., an encrypted version) of the password you will use to log in with (we advise not using your university password). Hashed passwords can be generated using a web page such as [https://www.mkpasswd.net](https://www.mkpasswd.net/index.php). You need to replace all of the ‘hashed_passwd’ field inside the double quotes with the hashed password you have generated.\
+![](img/openstack-console-14.png)
+:::
+
+Once you have your template ready, paste it into the *Customisation Script* section:
+
+![](img/openstack-console-15.png)
+
+Click Next and skip over the Server Groups, Scheduler Hints and Metadata sections.
+
+![](img/openstack-console-16.png)
+
+You have just configured an instance! Well done!\
+\
+In summary, you have given your instance a name, chosen which source machine image to base the instance on, selected the size of the instance (i.e. amount of memory, disk space and processor power), configured the basic apps you wanted to pre-install on it and also configured how you can access it (key-pair vs username+password).
+
+We’re ready to launch it! Click ‘Launch Instance’. At this point you wait for the instance to come online. This may take a few seconds for a small instance or about 10 minutes for an xx-large one.
+
+Below you can see an example of an instance starting up (or spawning). It is running in the University data centre. Note that we don’t need to worry or think about the underlying hardware the system is running on. That’s all taken care of for us by OpenStack and the Research IT team.
+
+![](img/openstack-console-17.png)
+
+Once it turns **white** and the ‘Status’ changes to ‘Active’, you should copy the IP address to the clipboard.
+
+![](img/openstack-console-18.png)
+
+::: callout-note
+**Note**: above is an example where the IP address is *10.121.4.232* (yours will be different). We will need it in a moment to connect via X2Go remote desktop. Make sure you copy the whole address and nothing but the address.
+:::
+
+**Congratulations you have 'configured' and 'turned on' a new computer to use for the rest of this workshop.**
+
+Next, you will learn how to connect to it from your PC. However, before you proceed any further - take a 10 minute break. The cloud-init script would be working in the background to finish installing software and configuring your machine during that time.
+
+## Connect to your instance
+
+#### Prerequisite
+
+::: callout-important
+Download and install [X2Go](https://wiki.x2go.org) alongside a tool like Putty, MobaXTerm or Termius on your computer.\
+\
+The most commonly used, but basic program is [PuTTy](https://www.putty.org/).\
+\
+The one we recommend for Windows users is [MobaXTerm](#0) - it provides all the important **remote network tools** (SSH, X11, RDP, VNC, FTP, MOSH, ...) and **Unix commands** (bash, ls, cat, sed, grep, awk, rsync, ...) to Windows desktop, in a **single portable exe file** which works out of the box.\
+\
+[Termius](https://termius.com/) is another recommended SSH client that works on macOS, Windows, Linux, iOS and Andriod.\
+\
+End-Users are responsible for ensuring that they comply with the license conditions for any of these software.
+:::
+
+Check the IP address of your instance and copy it to your clipboard.
+
+![](img/openstack-console-18.png)
+
+### Command Line Connection
+
+The simplest way you can connect to your instance is using SSH (secure shell). If you are happy using the command line only there are some other software that has additional functionality, and looks better. There are many choices - just Google ‘windows ssh client’
+
+The most commonly used, but basic program is [PuTTy](https://www.putty.org/). The one we recommend for Windows users is [MobaXTerm](#0) - it provides all the important **remote network tools** (SSH, X11, RDP, VNC, FTP, MOSH, ...) and **Unix commands** (bash, ls, cat, sed, grep, awk, rsync, ...) to Windows desktop, in a **single portable exe file** which works out of the box.
+
+[Termius](https://termius.com/) is another recommended SSH client that works on macOS, Windows, Linux, iOS and Andriod.
+
+### Graphical connection using X2Go
+
+For some modules you will need a full graphical desktop connection. This is a bit more complicated to set up, but will give you a full graphical desktop environment to work on. For this we use [X2go](https://wiki.x2go.org/doku.php)
+
+::: callout-important
+#### How to install X2Go
+
+[See here for detailed instructions](https://wiki.x2go.org/doku.php/doc:installation:x2goclient) on how to install X2Go client for your operating system. Note that you may need privilege escalation (a.k.a admin rights) on your machine to do this. If you have a University provided Windows laptop, you may also look for X2Go within the Company Portal for easy installation.
+:::
+
+Once X2Go is installed, start the program from your desktop shortcut.
+
+![](img/openstack-connect-01.png)
+
+Or look for it in your start menu
+
+![](img/openstack-connect-02.png)You may get a message like this, it only affects some features you don’t need.
+
+![](img/openstack-connect-03.png)
+
+N.B - on some versions of windows you might get a different message - select 'Allow Access' if you have administrative rights or else click ‘keep blocking’ or ‘cancel’.
+
+You should now see the main screen
+
+![](img/openstack-connect-04.png)
+
+Now you need to tell your computer where to connect to:
+
+Click on the ‘new session’ icon to set up a new connection \[ on a new installation you may not need to perform this step - the Session dialog will load automatically - if it doesn’t …..\]![](img/openstack-connect-05.png)
+
+Enter the information as higlighted above. Make sure you use the IP address you copied earlier and use an appropriate name. Once this has been done we need to change the display settings so you can work comfortably at the correct screen resolution.
+
+![](img/openstack-connect-06.png)
+
+Select the ‘Input/Output’ tab at the top and change the display to use the *Fullscreen* display as shown below. You may instead want to *Use whole display* instead.:
+
+![](img/openstack-connect-07.png)
+
+Once completed, click on OK. Your screen should now look like this:\
+![](img/openstack-connect-08.png)
+
+Click anywhere in the **white** area. The first time you connect to your instance (or if the IP address changes after a reboot) you will see a message like:
+
+![](img/openstack-connect-09.png)
+
+Click Yes. If using a key-pair authentication, you will be connected automatically. If you have opted for password based authentication, then enter the password you chose when creating the crypt-sha512 hash.
+
+## Managing Your OpenStack Instances
+
+This section contains some instructions on how to manage you OpenStack instances.
+
+::: callout-important
+When you’re not working on the course it is important and considerate to turn off your instance to avoid using unnecessary resource. If your instance is running, even if you are not doing anything on it, it will be using resource and may hinder others using the resources.
+:::
+
+### Find your instance:
+
+Log onto the [OpenStack console](https://stack.exeter.ac.uk/dashboard/project/instances/) and find your instance. Click on *Compute - Instances* and if you cannot find your instance easily, use the filter button.
+
+![search for your instance](./img/manage_001.jpg)
+
+### Stopping Your Instance:
+
+If you wish to keep your data, use the ‘Shut Off instance’ option. In this state the data written to disk will be preserved, but the instance will be ‘off’. It is the equivalent of turning off a computer.
+
+Use the dropdown next to your instance and select “Shut Off Instance” (near the bottom)
+
+![](./img/openstack-shutoff-1.png)
+
+You will be asked to confirm - Double check it is the instance you intend to shut down.
+
+### Restarting Your Instance:
+
+If the status of your instance is Shutoff - click Start Instance.
+
+Double check the IP address of your instance as it may change - you will need to use the new IP address to connect to you instance. In X2Go click on the drop down arrow to get the menu of options.\
+![](./img/x2go-session-prefs-1.png)
+
+### Deleting an instance.
+
+::: callout-caution
+**Note:** this will destroy all work done to date.
+:::
+
+When you’re completely finished done with the workshop, click the drop-down menu next to your instance and select ‘Delete Instance’. It will ask you to confirm - You can then watch the status change from ‘shutting down’ to Deleted’.
+
+### Placeholder for end

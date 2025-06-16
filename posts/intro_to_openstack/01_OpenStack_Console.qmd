@@ -12,7 +12,7 @@ categories: [HPC, OpenStack, Virtual Machine]
 execute:
   message: false
   warning: false
-draft: false
+draft: true
 ---
 
 ## Logging Into the Console
@@ -278,7 +278,6 @@ power_state:
    condition: True
 ```
 :::
-
 
 Copy paste the above script into a text editor like Notepad++, Context, Subline etc. and edit the requisite sections such as name, gecos, hashed_password etc. as needed.
 

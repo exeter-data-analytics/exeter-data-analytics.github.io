@@ -12,7 +12,7 @@ categories: [HPC, OpenStack, Virtual Machine]
 execute:
   message: false
   warning: false
-draft: false
+draft: true
 ---
 
 # **Managing Your OpenStack Instances**
