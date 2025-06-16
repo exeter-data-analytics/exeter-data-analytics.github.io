@@ -104,8 +104,9 @@ Managing your instance
 <p>Let’s go to the next section and learn about the OpenStack Console.</p>
 </section>
 </section>
-<section id="logging-into-the-console" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="logging-into-the-console"><span class="header-section-number">3.3</span> Logging Into the Console</h2>
+</section>
+<section id="logging-into-the-console" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Logging Into the Console</h1>
 <p>In addition to being extremely comprehensive, the Exeter OpenStack cloud has a relatively easy (but detailed!) interface for interacting with its offerings. All you have to do is log in via a web-browser and most of the functionality of the system is available for you and relatively easy to use.</p>
 <p>To get started go to the following URL and login with your University of Exeter username (in the format of <em>user123</em>) the domain (exeter.ac.uk), and the password you use when logging onto your university resources.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -233,8 +234,8 @@ Note
 <p>So let’s get on and launch our first instance!</p>
 </section>
 </section>
-<section id="create-your-instance" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="create-your-instance"><span class="header-section-number">3.4</span> Create your Instance</h2>
+<section id="create-your-instance" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Create your Instance</h1>
 <p>In this section of the workshop we will create our <em>Instance</em> in Exeter’s OpenStack system.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1276,8 +1277,8 @@ Note
 <p>Next, you will learn how to connect to it from your PC. However, before you proceed any further - take a 20 minute break. The cloud-init script would be working in the background to finish installing software and configuring your machine during that time.</p>
 </section>
 </section>
-<section id="connect-to-your-instance" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="connect-to-your-instance"><span class="header-section-number">3.5</span> Connect to your instance</h2>
+<section id="connect-to-your-instance" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Connect to your instance</h1>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1390,8 +1391,8 @@ How to install X2Go
 <p>Click Yes. If using a key-pair authentication, you will be connected automatically. If you have opted for password based authentication, then enter the password you chose when creating the crypt-sha512 hash.</p>
 </section>
 </section>
-<section id="managing-your-openstack-instances" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="managing-your-openstack-instances"><span class="header-section-number">3.6</span> Managing Your OpenStack Instances</h2>
+<section id="managing-your-openstack-instances" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Managing Your OpenStack Instances</h1>
 <p>This section contains some instructions on how to manage you OpenStack instances.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1442,8 +1443,8 @@ Caution
 <p>When you’re completely finished with the workshop, click the drop-down menu next to your instance and select <em>Delete Instance</em>. It will ask you to confirm - You can then watch the status change from <em>Shutting down</em> to <em>Deleted</em>.</p>
 </section>
 </section>
-<section id="specific-use-cases" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="specific-use-cases"><span class="header-section-number">3.7</span> Specific Use Cases</h2>
+<section id="specific-use-cases" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Specific Use Cases</h1>
 <p>Here, we have configured a virtual machine that has an installation of RStudio Server (Open Source Edition) and it also has XRDP (a remote desktop for Ubuntu) installed on it. In this section, we will show you how to modify your Security Groups to allow access to these applications from your laptop.</p>
 <p>Go to the <em>Network</em> tab and then to the <em>Security Groups</em> pane within it. Click on <em>Manage Rules</em> on the far right-hand side.</p>
 <p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-12.png" class="img-fluid"></p>
@@ -1472,7 +1473,6 @@ Caution
 </div>
 
 
-</section>
 </section>
 
  ]]></description>
