@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="MD Sharma">
+<meta name="author" content="Stephen Lang">
+<meta name="dcterms.date" content="2025-03-07">
+<meta name="description" content="Introduction to Openstack Console">
+
+<title>ExeDataHub - OpenStack Console</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ExeDataHub</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../series.html" rel="" target="">
+ <span class="menu-text">Series</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../presentations.html" rel="" target="">
+ <span class="menu-text">Presentations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html" rel="" target="">
+ <span class="menu-text">Walkthroughs</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/exeter-data-analytics/exeter-data-analytics.github.io" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">OpenStack Console</h1>
+                  <div>
+        <div class="description">
+          Introduction to Openstack Console
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">HPC</div>
+                <div class="quarto-category">OpenStack</div>
+                <div class="quarto-category">Virtual Machine</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author">MD Sharma </p>
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              University of Exeter
+            </p>
+        </div>
+        <div class="quarto-title-meta-contents">
+      <p class="author">Stephen Lang </p>
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              University of Exeter
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 7, 2025</p>
+      </div>
+    </div>
+    
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">June 16, 2025</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#logging-into-the-console" id="toc-logging-into-the-console" class="nav-link active" data-scroll-target="#logging-into-the-console">Logging Into the Console</a>
+  <ul class="collapse">
+  <li><a href="#httpsstack.exeter.ac.uk" id="toc-httpsstack.exeter.ac.uk" class="nav-link" data-scroll-target="#httpsstack.exeter.ac.uk">https://stack.exeter.ac.uk/</a></li>
+  </ul></li>
+  <li><a href="#create-your-instance" id="toc-create-your-instance" class="nav-link" data-scroll-target="#create-your-instance">Create your Instance</a>
+  <ul class="collapse">
+  <li><a href="#security-groups" id="toc-security-groups" class="nav-link" data-scroll-target="#security-groups">Security Groups</a></li>
+  <li><a href="#key-pairs-and-cloud-config" id="toc-key-pairs-and-cloud-config" class="nav-link" data-scroll-target="#key-pairs-and-cloud-config">Key Pairs and Cloud Config</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="logging-into-the-console" class="level2">
+<h2 class="anchored" data-anchor-id="logging-into-the-console">Logging Into the Console</h2>
+<p>In addition to being extremely comprehensive, the Exeter OpenStack cloud has a relatively easy (but detailed!) interface for interacting with its offerings. All you have to do is log in via a web-browser and most of the functionality of the is available for you and relatively easy to use.</p>
+<p>To get started go to the following URL and login with your University of Exeter username (in the format of <em>user123</em>) the domain (exeter.ac.uk), and the password you use when logging onto your university resources.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We have set up a single workshop project which we will be using for training. Please do <strong>NOT</strong> abuse this project and do <strong>NOT</strong> put any personal, confidential or important data on the machines you will set-up during the training. You will all log in to the same management console and will be able to see machines which your friends and colleagues on the course will start.</p>
+</div>
+</div>
+<section id="httpsstack.exeter.ac.uk" class="level3">
+<h3 class="anchored" data-anchor-id="httpsstack.exeter.ac.uk"><a href="https://stack.exeter.ac.uk/" class="uri">https://stack.exeter.ac.uk/</a></h3>
+<p><img src="img/openstack-login-01.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This resource is only accessible within the University of Exeter network. So, if you are accessing this workshop from home or anywhere outside the campuses, you will need to connect to the University VPN service to be able to access the system.</p>
+</div>
+</div>
+<p>Once logged in, you will see a web-page that looks similar to this:</p>
+<p><img src="img/openstack-console-01.png" class="img-fluid"></p>
+<p>As a first step - let’s associate ourselves with the correct project. This is specially important for all users who may have access to multiple “projects” associated with their research groups. In this instance, please click on the <em>Project</em> dropdown and select <em>ARC_Intro_Penryn - Workshop</em>&nbsp;as your project. If done correctly, you should see a tick mark next to the selected project, as illustrated below.</p>
+<p><img src="images/clipboard-739322012.png" class="img-fluid"></p>
+<p>We can now take a look at the various tabs. These include:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Instances
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is the list of virtual machines that have been created.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Compute
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The service OpenStack is known for. It enables you to create Linux and Windows Virtual machines. Best of all their computational and/or disk capacity can be increased or decreased at the click of a button! This section has most of the things we need for this course.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Volumes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A storage unit. These can be created and attached to any compute which you have running. Ideal for moving large amounts of data between machines. Think of it as a removal hard drive which you can attach to any machine.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Images
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These are the templates from which you create instances.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Object store
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is another type of storage, but is relatively slow. It is ideal for archive or when storing large files (i.e.&nbsp;several Gb).However, it is currently disabled on the system. if you want to know more about it, please as your Research IT support team for assistance.</p>
+</div>
+</div>
+<p>Click on “Compute” and then “Overview” at the top left.</p>
+<p>On this page you’ll get a summary of the state for your account. You can see an example below. Note that we are using a shared project where you’ll also see everyone else’s instances. If you were using your own <em>project</em> (or your reserch group’s project), you would only see your instances (or that of your research group).</p>
+<p><img src="img/openstack-console-03.png" class="img-fluid"></p>
+<p>You see here that we have a certain allocation of resources (memory, disk space, CPUs). We can choose how to allocate these to accomplish our scientific goals. For instance, we may need one very large machine with lots of resource to do a single task (e.g.&nbsp;a genome assembly). Or we may want lots of smaller machines, each doing a small task (e.g.&nbsp;a webserver and a database server). We may want half the machines running Unix and the other half running Windows. The point is, <strong><em>we</em></strong> are in control of the compute and can choose what suits <strong><em>us</em></strong> best and it can all be done, by us at the touch of a button.</p>
+<p>In the example above, we have been allocated up-to 32 instances and a total of 32 cores with roughly 60GB of RAM so that each of the workshop attendees can spin up a virtual machine with 1<em>vCPU and 1GB of RAM.</em></p>
+<p>Click on “Compute” and then “Instances” at the top left. When this tutorial was created, there were no existing instances within the workshop project, so, those of you following this tutorial within the second workshop, will see a page with <em>No items to display</em> and anyone who sign in after a few instances have been created, would see a list of instances that pre-exist at that time.<br>
+<br>
+<img src="img/openstack-console-04.png" class="img-fluid"></p>
+<p><em>Ok, so how do we actually do all this?</em> Well, from this page we can create our own servers on Exeter’s OpenStack using an image of a machine the Research IT team have created earlier for you. Servers which are created in this manner are called ‘<em>Instances</em>’. We can create as many servers as we like, start them, log-in to them, do some work, transfer data to/from them or destroy them altogether. We let the Research IT team worry about the hardware, power, cooling and maintenance - all we need to do is specify how powerful a computer we want (tiny, small, medium, large or extra-large).</p>
+<p>The reason we are using the OpenStack here is that many of you have to analyse large datasets. But you only need to cruch those datasets occasionally. In the case of high-throughput sequencing data (e.g.&nbsp;Illumina or Oxford Nanopore) you will find that your desktop PC may not be powerful enough to cope with the data. Also installing and configuring many pieces of software (often written by other scientists), is frequently painful as they often require other programs (also often written by other scientists) to be installed as well. Factor in some obscure incompatibility and you can quickly end up in a situation where two programs that you need refuse to co-exist. With OpenStack, you can just start a server instance based on an image created by someone else who has already done all the hard work of installation and configuration. You may also want to use an existing docker- or singularity- container within such an instance to carry out your workflow.</p>
+<p>So let’s get on and launch our first instance!</p>
+</section>
+</section>
+<section id="create-your-instance" class="level2">
+<h2 class="anchored" data-anchor-id="create-your-instance">Create your Instance</h2>
+<p>In this section of the workshop we will create our Instance in Exeter’s OpenStack system.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you have an instance from a previous session do not create another one. Please go to the Managing OpenStack page and restart your existing instance.</p>
+<p>Otherwise let’s get on and launch the instance we need for our workshop !</p>
+</div>
+</div>
+<p>Click on the “Launch Instance” button.</p>
+<p><img src="img/openstack-console-05.png" class="img-fluid"></p>
+<p>Give your instance your name (e.g.&nbsp;“Jane Doe’s Instance”)</p>
+<p><img src="img/openstack-console-06.png" class="img-fluid">Remember that everyone is sharing the same project- so you will need to be identify your instance from everyone elses. The example above (“<em>my_first_VM</em>”) may be suitable for your own project, but it is not appropriate in a shared project.</p>
+<p>Click ‘Next’ and proceed to choose the image of the machine you want to replicate. In this example, we will be using the Ubuntu 22.04 (Desktop) image. Click on the highlighted arrow across from the <em>“Ubuntu 22.04 (Desktop)”</em> name and input a <em>Volume Size</em> of 20GB. Make sure to toggle the <em>Delete Volume on Instance Delete</em> option in this case.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you are making your own VMs, within your own research project, you may chose to use different options based on your needs. Here, we have limited resources available for the workshop, so we need to make sure that everyone follows the instructions.</p>
+</div>
+</div>
+<p><img src="img/openstack-console-07.png" class="img-fluid"></p>
+<p>Click Next and select the desired flavour for this instance. Here, we would like you to select the <em>ARC_Intro_Penryn - small</em> flavour that will allow you to launch an instance with 1vCPU and 1GB of RAM. When you register your own project for access to OpenStack, you will see additional options for these flavours.</p>
+<p><img src="img/openstack-console-08.png" class="img-fluid"></p>
+<section id="security-groups" class="level3">
+<h3 class="anchored" data-anchor-id="security-groups">Security Groups</h3>
+<p>Click ‘Next’ to move on through Networks and Network Ports section and arrive at the Security Groups section. Here, click on the default security group to expand it, and to have a look at what has already been allowed in the firewall.</p>
+<p><img src="img/openstack-console-09.png" class="img-fluid"></p>
+<p>Here, we can see that SSH (port 22) has been allowed over the <em>tcp</em> protocol from <em>anywhere (0.0.0.0/0)</em>. That is all we need to begin with, so we can go ahead and click Next.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Security Groups
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are planning on using additional software that may need some ports to be opended up, then you can create your own security group with relevant ports allowed. For e.g.&nbsp;if you want to use VNC type software for remote desktop access to your instance, you will need to allow port 5901 etc. over tcp.</p>
+</div>
+</div>
+</section>
+<section id="key-pairs-and-cloud-config" class="level3">
+<h3 class="anchored" data-anchor-id="key-pairs-and-cloud-config">Key Pairs and Cloud Config</h3>
+<p>Setting up virtual machine (VM) instances in a cloud environment like OpenStack requires robust security measures and efficient configuration methods. This section details the critical steps involved in establishing secure access using SSH keypairs and automating initial VM setup with cloud-init, providing a foundational understanding for workshop participants.</p>
+<p>Click ‘Next’ to move into the Key Pair section ::: callout-tip ## Key Pair OpenStack leverages SSH keypairs to secure VM instances at their launch time. When an instance is provisioned, OpenStack injects the user’s public key into the appropriate authorized_keys file on the new VM, making it ready for secure SSH access using the corresponding private key held by the user.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Private Key
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The private key, which is the secret component, must remain securely on the user’s local workstation and should never be uploaded to the cloud provider. This distinction is crucial for maintaining the integrity of the security model.</p>
+</div>
+</div>
+<p><img src="img/openstack-console-10.png" class="img-fluid">A key pair allows you to SSH into your newly created instance. You may select an existing key pair, import a key pair, or generate a new key pair. Click on the <em>Create Key Pair</em> button highlighted above and then enter a <em>Key Pair Name</em> and <em>Key Type</em> in the pop-up box that appears next. Key Pairs are how you login to your instance after it is launched.</p>
+<p><img src="img/openstack-console-11.png" class="img-fluid"></p>
+<p>Choose a key pair name you will recognize. Names may only include alphanumeric characters, spaces, or dashes. Once the Key Pair is generated, you will need to copy the Private Key to your clipborad and save it in a safe space. Do not forget where you keep this key - you will not be able to login to the instance without this key pair if you have not enabled any other login mechanism.</p>
+<p><img src="img/openstack-console-12.png" class="img-fluid"></p>
+<p>Once copied, click <em>Done.</em> Open a text editor like Notepad++, Context or similar and save this SSH Key. The image below shows the successfully created <em>Key Pair.</em></p>
+<p><img src="img/openstack-console-13.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Pair vs Password
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The choice of authentication method for remote access significantly impacts the security and operational efficiency of cloud environments. While password-based authentication is familiar, SSH keypair authentication offers substantial advantages, making it the preferred standard in cloud platforms like OpenStack.<br>
+<br>
+Password authentication relies on a user remembering a secret string (the password) and providing it to the server for verification.</p>
+<p><br>
+SSH keypair authentication provides a superior level of cryptographic strength that even extremely long, complex passwords cannot match. The public keys, generated using sophisticated mathematical algorithms, are virtually impossible to guess or brute-force, offering a robust defense against common attack vectors - as long as un-authorized users do not gain access to your private key.</p>
+</div>
+</div>
+<p>Click Next to move on to the <em>Configuration</em> section<em>.</em></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Cloud Config
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Beyond establishing secure access, automating the initial configuration of virtual machines is crucial for efficiency, consistency, and scalability in cloud environments. Cloud-init serves as the industry-standard tool for this purpose.</p>
+</div>
+</div>
+<p>When a new cloud instance is deployed, cloud-init takes initial configuration data, often referred to as “user-data” or “vendor-data,” and automatically applies these settings during the instance’s first boot process. This functions much like a dynamic to-do list that cloud-init executes, configuring the VM according to predefined instructions. The significant advantage of cloud-init lies in its ability to reuse these configuration instructions across numerous deployments, consistently producing reliable results.</p>
+<p>Cloud-init is capable of handling a wide array of initial configuration tasks. These include essential activities such as setting the hostname, configuring network interfaces, creating and managing user accounts, installing necessary software packages, and executing custom scripts. This comprehensive automation streamlines the deployment process, ensuring that all cloud instances are configured uniformly, thereby minimizing the potential for human error.</p>
+<p>Below is a minimal cloud-init script to configure essentials such as adding a local user account with ability to install research related applications (e.g.&nbsp;sudo apt install package-name). This will be all you really need for most use cases, but for additional configuration options, please refer to the <a href="https://cloudinit.readthedocs.io/en/latest/">cloud-init documentation</a>. Amend the settings as required to look as below (changing&nbsp;the ‘<strong>user123</strong>’, ‘<strong>User OneTwoThree</strong>’ and <strong>hashed_passwd</strong> lines):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#cloud-config</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">users</span><span class="kw">:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="kw">-</span><span class="at"> default</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> user123</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">gecos</span><span class="kw">:</span><span class="at"> User OneTwoThree</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">sudo</span><span class="kw">:</span><span class="at"> ALL=(ALL) NOPASSWD:ALL</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">shell</span><span class="kw">:</span><span class="at"> /bin/bash</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">lock_passwd</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">ssh-import-id</span><span class="kw">:</span><span class="at"> ab123</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">hashed_passwd</span><span class="kw">:</span><span class="at"> “$6$rTACxh6DNbF/$p ... &lt;snip&gt; ... xwWllho2N7nKq1nn1”</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># You have to keep the $6$ in front of the hashed password</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Update system package database</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">package_update</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Upgrade all packages to the latest versions</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">package_upgrade</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Install specified basic tools using the package manager</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">packages</span><span class="kw">:</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> openssh-server</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> ntop</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> nload</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> htop</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> vim</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> multitail</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> tmux</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Mamba using the Miniforge distribution</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">runcmd</span><span class="kw">:</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Starting Miniforge installation..."</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> wget -O /tmp/Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> chmod +x /tmp/Miniforge3.sh</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> /tmp/Miniforge3.sh -b -p /opt/miniforge3</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Miniforge installation complete. Initializing conda for all users..."</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> /opt/miniforge3/bin/conda init bash --system</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Conda initialization for all users complete. Users may need to log out and back in."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Copy paste the above script into a text editor like Notepad++, Context, Subline etc. and edit the requisite sections such as name, gecos, hashed_password etc. as needed.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Note:</strong> The ‘<strong>hashed_passwd</strong>’ string is a crypt-sha512 hash (i.e., an encrypted version) of the password you will use to log in with (we advise not using your university password). Hashed passwords can be generated using a web page such as&nbsp;<a href="https://www.mkpasswd.net/index.php">https://www.mkpasswd.net</a>. You need to replace all of the ‘hashed_passwd’ field inside the double quotes with the hashed password you have generated.<br>
+<img src="img/openstack-console-14.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Once you have your template ready, paste it into the <em>Customisation Script</em> section:</p>
+<p><img src="img/openstack-console-15.png" class="img-fluid"></p>
+<p>Click Next and skip over the Server Groups, Scheduler Hints and Metadata sections.</p>
+<p><img src="img/openstack-console-16.png" class="img-fluid"></p>
+<p>You have just configured an instance! Well done!<br>
+<br>
+In summary, you have given your instance a name, chosen which source machine image to base the instance on, selected the size of the instance (i.e.&nbsp;amount of memory, disk space and processor power), configured the basic apps you wanted to pre-install on it and also configured how you can access it (key-pair vs username+password).</p>
+<p>We’re ready to launch it! Click ‘Launch Instance’. At this point you wait for the instance to come online. This may take a few seconds for a small instance or about 10 minutes for an xx-large one.</p>
+<p>Below you can see an example of an instance starting up (or spawning). It is running in the University data centre. Note that we don’t need to worry or think about the underlying hardware the system is running on. That’s all taken care of for us by OpenStack and the Research IT team.</p>
+<p><img src="img/openstack-console-17.png" class="img-fluid"></p>
+<p>Once it turns <strong>white</strong> and the ‘Status’ changes to ‘Active’, you should copy the IP address to the clipboard.</p>
+<p><img src="img/openstack-console-18.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Note</strong>: above is an example where the IP address is <em>10.121.4.232</em> (yours will be different). We will need it in a moment to connect via X2Go remote desktop. Make sure you copy the whole address and nothing but the address.</p>
+</div>
+</div>
+<p><strong>Congratulations you have ‘configured’ and ‘turned on’ a new computer to use for the rest of this workshop.</strong></p>
+<p><a href="02_Connect_to_your_instsance.html">Next, you will learn how to connect to it from your PC.</a></p>
+</section>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section"></h3>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="exeter-data-analytics/exeter-data-analytics.github.io" data-repo-id="R_kgDOJW1l0Q" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

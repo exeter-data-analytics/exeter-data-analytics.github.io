@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts.html</loc>
-    <lastmod>2023-11-28T21:23:25.000Z</lastmod>
+    <lastmod>2025-06-15T23:42:20.394Z</lastmod>
   </url>
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/github_copilot_integration/index.html</loc>
@@ -63,5 +63,21 @@
   <url>
     <loc>https://exeter-data-analytics.github.io/posts/intro_to_research_computing/tips.html</loc>
     <lastmod>2025-05-23T09:18:39.251Z</lastmod>
+  </url>
+  <url>
+    <loc>https://exeter-data-analytics.github.io/posts/intro_to_openstack/manage.html</loc>
+    <lastmod>2025-06-15T17:29:02.892Z</lastmod>
+  </url>
+  <url>
+    <loc>https://exeter-data-analytics.github.io/posts/intro_to_openstack/index.html</loc>
+    <lastmod>2025-06-15T17:34:58.119Z</lastmod>
+  </url>
+  <url>
+    <loc>https://exeter-data-analytics.github.io/posts/intro_to_openstack/01_OpenStack_Console.html</loc>
+    <lastmod>2025-06-15T23:30:02.895Z</lastmod>
+  </url>
+  <url>
+    <loc>https://exeter-data-analytics.github.io/posts/intro_to_openstack/02_Connect_to_your_instance.html</loc>
+    <lastmod>2025-06-15T23:42:18.553Z</lastmod>
   </url>
 </urlset>

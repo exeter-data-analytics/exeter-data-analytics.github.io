@@ -1,0 +1,102 @@
+---
+title: "Introduction to OpenStack"
+author: 
+  - name: MD Sharma
+    affiliation: University of Exeter
+  - name: Stephen Lang
+    affiliation: University of Exeter
+description: "Introduction to Openstack at the University of Exeter"
+date: "2025-03-07"
+date-modified: last-modified
+categories: [HPC, OpenStack, Virtual Machine]
+execute:
+  message: false
+  warning: false
+draft: false
+---
+
+# Learning objectives
+
+::: callout-note
+**By the end of this section you will be expected to:**
+
+-   Log into the UoE OpenStack Console and start your instance of the appropriate workshop.
+-   Log in to the OpenStack instance from your own computer.
+-   Be ready to start the tutorials at your own pace.
+:::
+
+# Outline
+
+This course will give you an introduction into the Openstack Cloud Environment. OpenStack allows you to set up a private computer within the University's Advanced Research Computing ecosystem. [Click here to learn more about OpenStack.](https://www.openstack.org/software/) Several other courses in our series will use OpenStack and you may later use it for your own research.
+
+We are going to introduce a lot of new concepts. Here is an overview of the 3 steps you need to start your course.
+
+1.  **Openstack Console**
+
+    First log onto the OpenStack console: <https://stack.exeter.ac.uk> Use the information in the OpenStack Console section of the provided document to log on. Follow the sections "Introduction" and "Tour of OpenStack Cloud" in the course material.
+
+2.  **Create your training Instance.**
+
+    Follow the sections "Create our Instance" in the course material. Use the information in the "OpenStack Image" section of the provided document.
+
+3.  **Login to your instance.**
+
+    The course notes explain 3 ways to connect to your instance (X2Go, PuTTy and MobaXterm). You only need to use one of these.
+
+    ::: callout-important
+    ## Managing your instance {#sec-managing-your-instance}
+
+    [Here are some instructions](./manage.html) on how to stop and start your instances at the start of end of each session.
+    :::
+
+# Introduction
+
+For this workshop we will provide an overview of the internal OpenStack provision, part of the University of Exeter's Advanced Research Computing facilities and see how, as researchers, we can use this flexible resource to get work done efficiently.
+
+You should be able to access OpenStack and all of the functionality below via your own account to do your research. The aim of this workshop is to give you an introduction to OpenStack and Unix so you are ready to take full advantage of its capabilities!
+
+Firstly some concepts and terminology might be confusing so here is some explanation of the advantages of using OpenStack.
+
+## Some Terminology
+
+***An Image:*** This is the starting point or template for the course. Think of it as a master copy of the computer which contains all the programs and data that are required to follow the course. We will use it as a template to start your own Instance.
+
+***An Instance:*** Almost the first thing you will do is create your own copy of the image - we call this an instance or a virtual machine. It contains everything that was in the image plus any files you create during the course.
+
+***A Volume*** This can be thought of as an additional hard disk which you can add or remove from an instance.
+
+***Remote Desktop*** We can’t plug a monitor and keyboard into a virtual machine (instance) so we need a program on our computer which connects to the instance allows us to see and control the instance from our desktop. In the course we will use a program called X2Go.
+
+***Command Line Client*** It is not really necessary to connect to an instance using remote desktop software. It is possible to connect only via a command line interfaces - you will not get any menus, icons images - you will only be able to type commands to tell the instance what you want to do.
+
+## Why Use Virtual Machines?
+
+Instead of relying on dedicated physical hardware for every task, **virtual machines (VMs)** offer a highly flexible and efficient alternative. Imagine a scenario where you have a set number of powerful physical computers. Rather than assigning one computer to each user, VMs allow you to **pool the resources** of these physical machines and then divide them into multiple isolated virtual environments.
+
+This approach offers significant advantages:
+
+-   **Optimal Resource Utilization:** Physical machines often sit idle or are underutilized. VMs allow you to share resources like disk space, memory, and processors among many virtual instances. This means you can run more virtual machines than you have physical ones, making the most of your hardware. When a VM isn't heavily used, its resources can be dynamically allocated to other, more active VMs.
+
+-   **Cost and Environmental Benefits:** By maximizing hardware utilization, you can reduce the number of physical servers needed. This translates to lower initial purchasing costs, reduced energy consumption for operation and cooling, and a smaller physical footprint. This makes virtual machines a **greener option** in many cases, contributing to sustainability efforts.
+
+### The Power of Full Control
+
+One of the most compelling reasons to use virtual machines is the **full control you gain over your environment**. Each virtual machine acts like an independent computer, allowing you to configure and customize it precisely to your needs.
+
+Here's how this translates into practical benefits:
+
+-   **Instant Provisioning and Customization:** You can quickly launch new virtual machines with a wide variety of pre-configured **machine images**. These images can range from basic operating systems to specialized environments equipped with specific software for scientific modeling, data analysis, or development. This eliminates the need for lengthy manual installations and configurations.
+
+-   **Share and Collaborate with Ease:** If you've developed a specific computational environment or analysis workflow, you can create and share your own VM images. This allows collaborators to instantly access and replicate your setup, ensuring consistency and simplifying the sharing of complex projects.
+
+-   **Dynamic Resource Scalability:** Need more storage or processing power for a task? With VMs, you can often **add storage on-the-fly** by attaching virtual volumes, or **increase processing power and RAM with just a few clicks**. This agility means you can adapt your environment as your computational demands change, without the need for physical hardware upgrades or downtime.
+
+-   **Flexible Testing and Development:** VMs are invaluable for researchers. You can easily create a machone to test the inner workings of the code you are developing before deploying them to larger, more complex systems. This isolated testing environment prevents conflicts and ensures smooth transitions.
+
+Essentially, virtual machines empower you to create, modify, and manage your computational environment with unparalleled flexibility, giving you complete command over your digital workspace.
+
+[Let's go to the next section and learn about the OpenStack Console.](./01_OpenStack_Console.html)
+
+### Acknowledgements
+
+We did not create this content alone! Inspiration, tips, and resources have been borrowed from multiple sources.

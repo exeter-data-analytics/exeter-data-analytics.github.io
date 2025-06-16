@@ -52,5 +52,17 @@
   },
   "posts/intro_to_research_computing/tips.qmd": {
     "tips.html": "65203cfb"
+  },
+  "posts/intro_to_openstack/manage.qmd": {
+    "manage.html": "716c94cc"
+  },
+  "posts/intro_to_openstack/index.qmd": {
+    "index.html": "763a2d3e"
+  },
+  "posts/intro_to_openstack/01_OpenStack_Console.qmd": {
+    "01_OpenStack_Console.html": "ac1a2410"
+  },
+  "posts/intro_to_openstack/02_Connect_to_your_instance.qmd": {
+    "02_Connect_to_your_instance.html": "6a70d277"
   }
 }

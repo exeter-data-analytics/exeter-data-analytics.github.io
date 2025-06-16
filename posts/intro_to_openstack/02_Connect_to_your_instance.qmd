@@ -1,0 +1,99 @@
+---
+title: "OpenStack Console"
+author: 
+  - name: MD Sharma
+    affiliation: University of Exeter
+  - name: Stephen Lang
+    affiliation: University of Exeter
+description: "Introduction to Openstack Console"
+date: "2025-03-07"
+date-modified: last-modified
+categories: [HPC, OpenStack, Virtual Machine]
+execute:
+  message: false
+  warning: false
+draft: false
+---
+
+## Prerequisite
+
+::: callout-important
+Download and install a tool like Putty, MobaXTerm or Termius on your computer.\
+\
+The most commonly used, but basic program is [PuTTy](https://www.putty.org/).\
+\
+The one we recommend for Windows users is [MobaXTerm](#0) - it provides all the important **remote network tools** (SSH, X11, RDP, VNC, FTP, MOSH, ...) and **Unix commands** (bash, ls, cat, sed, grep, awk, rsync, ...) to Windows desktop, in a **single portable exe file** which works out of the box.\
+\
+[Termius](https://termius.com/) is another recommended SSH client that works on macOS, Windows, Linux, iOS and Andriod.\
+\
+End-Users are responsible for ensuring that they comply with the license conditions for any of these software.
+:::
+
+## Connect to your instance
+
+In addition to being extremely comprehensive, the OpenStack system has a relatively easy (but detailed!) interface for interacting with its offerings. All you have to do is log in via a web-browser and most of the functionality of the is available for you and relatively easy to use.
+
+To get started go to the following URL and login with your University of Exeter username (in the format of *user123*) the domain (exeter.ac.uk), and the password you use when logging onto your university resources.
+
+![](img/openstack-console-18.png)
+
+### Command Line Connection
+
+The simplest way you can connect to your instance is using SSH (secure shell). If you are happy using the command line only there are some other software that has additional functionality, and looks better. There are many choices - just Google ‘windows ssh client’
+
+The most commonly used, but basic program is [PuTTy](https://www.putty.org/). The one we recommend for Windows users is [MobaXTerm](#0) - it provides all the important **remote network tools** (SSH, X11, RDP, VNC, FTP, MOSH, ...) and **Unix commands** (bash, ls, cat, sed, grep, awk, rsync, ...) to Windows desktop, in a **single portable exe file** which works out of the box.
+
+[Termius](https://termius.com/) is another recommended SSH client that works on macOS, Windows, Linux, iOS and Andriod.
+
+### Graphical connection using X2Go
+
+For some modules you will need a full graphical desktop connection. This is a bit more complicated to set up, but will give you a full graphical desktop environment to work on. For this we use [X2go](https://wiki.x2go.org/doku.php)
+
+::: callout-important
+## How to install X2Go
+
+<https://wiki.x2go.org/doku.php/doc:installation:x2goclient>
+:::
+
+Start the program from your desktop
+
+![](img/openstack-connect-01.png)
+
+Or look for it in your start menu
+
+![](img/openstack-connect-02.png)You may get a message like this, it only affects some features you don’t need.
+
+![](img/openstack-connect-03.png)
+
+N.B - on some versions of windows you might get a different message - select 'Allow Access' if you have administrative rights or else click ‘keep blocking’ or ‘cancel’.
+
+You should now see the main screen
+
+![](img/openstack-connect-04.png)
+
+Now you need to tell your computer where to connect to:
+
+Click on the ‘new session’ icon to set up a new connection \[ on a new installation you may not need to perform this step - the Session dialog will load automatically - if it doesn’t …..\]![](img/openstack-connect-05.png)
+
+Enter the information as higlighted above. Make sure you use the IP address you copied earlier and use an appropriate name. Once this has been done we need to change the display settings so you can work comfortably at the correct screen resolution
+
+#### ![](img/openstack-connect-06.png)
+
+#### Select the ‘Input/Output’ tab at the top and change the display to use the Fullscreen display as shown below:
+
+![](img/openstack-connect-07.png)
+
+#### Once completed, click on OK
+
+Your screen should now look like this:\
+![](img/openstack-connect-08.png)
+
+#### Click anywhere in the white area
+
+The first time you connect to your instance (or if the IP address changes after a reboot) you will see a message like:
+
+![](img/openstack-connect-09.png)
+
+click Yes.
+
+Enter the password given to you by your instructor:

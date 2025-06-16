@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>intRos: Walkthroughs – ExeDataHub</title>
+<title>ExeDataHub - intRos: Walkthroughs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -47,13 +47,7 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -62,7 +56,6 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -79,7 +72,8 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-title','listing-description','listing-date','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
+      page: 9,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
@@ -98,81 +92,54 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
 <link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="ExeDataHub" href="posts.xml" data-external="1"></head>
+<link rel="alternate" type="application/rss+xml" title="ExeDataHub" href="posts.xml"></head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">ExeDataHub</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./series.html"> 
-<span class="menu-text">Series</span></a>
+    <a class="nav-link" href="./series.html" rel="" target="">
+ <span class="menu-text">Series</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./presentations.html"> 
-<span class="menu-text">Presentations</span></a>
+    <a class="nav-link" href="./presentations.html" rel="" target="">
+ <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" aria-current="page"> 
-<span class="menu-text">Walkthroughs</span></a>
+    <a class="nav-link active" href="./posts.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Walkthroughs</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/exeter-data-analytics/exeter-data-analytics.github.io"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/exeter-data-analytics/exeter-data-analytics.github.io" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -189,7 +156,7 @@ window.Quarto = {
   <li><a href="#get-started" id="toc-get-started" class="nav-link" data-scroll-target="#get-started">Get started</a></li>
   </ul>
 </nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(9)</span></div><div class="category" data-category="ARC">ARC <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Cloud">Cloud <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Coding, RStudio, R, VScode, GitHub">Coding, RStudio, R, VScode, GitHub <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Geomorph">Geomorph <span class="quarto-category-count">(1)</span></div><div class="category" data-category="HPC">HPC <span class="quarto-category-count">(2)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(6)</span></div><div class="category" data-category="RStudio">RStudio <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RStudio projects">RStudio projects <span class="quarto-category-count">(1)</span></div><div class="category" data-category="flextable">flextable <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="git">git <span class="quarto-category-count">(1)</span></div><div class="category" data-category="here">here <span class="quarto-category-count">(1)</span></div><div class="category" data-category="tidyverse">tidyverse <span class="quarto-category-count">(3)</span></div><div class="category" data-category="tpsDig">tpsDig <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(13)</span></div><div class="category" data-category="ARC">ARC <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Cloud">Cloud <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Coding, RStudio, R, VScode, GitHub">Coding, RStudio, R, VScode, GitHub <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Geomorph">Geomorph <span class="quarto-category-count">(1)</span></div><div class="category" data-category="HPC">HPC <span class="quarto-category-count">(6)</span></div><div class="category" data-category="OpenStack">OpenStack <span class="quarto-category-count">(4)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(6)</span></div><div class="category" data-category="RStudio">RStudio <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RStudio projects">RStudio projects <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Virtual Machine">Virtual Machine <span class="quarto-category-count">(4)</span></div><div class="category" data-category="flextable">flextable <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="git">git <span class="quarto-category-count">(1)</span></div><div class="category" data-category="here">here <span class="quarto-category-count">(1)</span></div><div class="category" data-category="tidyverse">tidyverse <span class="quarto-category-count">(3)</span></div><div class="category" data-category="tpsDig">tpsDig <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -208,9 +175,7 @@ window.Quarto = {
   </div>
   
 
-
 </header>
-
 
 <section id="what-are-intros" class="level2">
 <h2 class="anchored" data-anchor-id="what-are-intros">What are intRos?</h2>
@@ -250,20 +215,22 @@ window.Quarto = {
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="ARC,HPC,Cloud" data-listing-date-sort="1747954800000" data-listing-file-modified-sort="1747992182663" data-listing-date-modified-sort="1747992182000" data-listing-reading-time-sort="3" data-listing-word-count-sort="476">
+<div class="quarto-post image-right" data-index="0" data-categories="ARC,HPC,Cloud" data-listing-date-sort="1747954800000" data-listing-file-modified-sort="1747992182000" data-listing-date-modified-sort="1747992182000" data-listing-reading-time-sort="3">
 <div class="body">
+<a href="./posts/intro_to_research_computing/index.html">
 <h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_research_computing/index.html" class="no-external">intRos: Research Computing</a>
+intRos: Research Computing
 </h3>
 <div class="listing-subtitle">
-<a href="./posts/intro_to_research_computing/index.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./posts/intro_to_research_computing/index.html" class="no-external">Intro to Research Computing - removing barriers.</a>
+<p>Intro to Research Computing - removing barriers.</p>
 </div>
+</a>
 </div>
 <div class="metadata">
-<a href="./posts/intro_to_research_computing/index.html" class="no-external">
+<a href="./posts/intro_to_research_computing/index.html">
 <div class="listing-date">
 2025-05-23
 </div>
@@ -273,20 +240,22 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="ARC,HPC,Cloud" data-listing-date-sort="1747954800000" data-listing-file-modified-sort="1747991919251" data-listing-date-modified-sort="1747991919000" data-listing-reading-time-sort="6" data-listing-word-count-sort="1036">
+<div class="quarto-post image-right" data-index="1" data-categories="ARC,HPC,Cloud" data-listing-date-sort="1747954800000" data-listing-file-modified-sort="1747991919000" data-listing-date-modified-sort="1747991919000" data-listing-reading-time-sort="6">
 <div class="body">
+<a href="./posts/intro_to_research_computing/tips.html">
 <h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_research_computing/tips.html" class="no-external">intRos: Research Computing - Tips</a>
+intRos: Research Computing - Tips
 </h3>
 <div class="listing-subtitle">
-<a href="./posts/intro_to_research_computing/tips.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./posts/intro_to_research_computing/tips.html" class="no-external">Intro to Research Computing - Tips.</a>
+<p>Intro to Research Computing - Tips.</p>
 </div>
+</a>
 </div>
 <div class="metadata">
-<a href="./posts/intro_to_research_computing/tips.html" class="no-external">
+<a href="./posts/intro_to_research_computing/tips.html">
 <div class="listing-date">
 2025-05-23
 </div>
@@ -296,20 +265,22 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="R,Geomorph,tpsDig" data-listing-date-sort="1745967600000" data-listing-file-modified-sort="1747986648652" data-listing-date-modified-sort="1747986648000" data-listing-reading-time-sort="21" data-listing-word-count-sort="4145">
+<div class="quarto-post image-right" data-index="2" data-categories="R,Geomorph,tpsDig" data-listing-date-sort="1745967600000" data-listing-file-modified-sort="1747986648000" data-listing-date-modified-sort="1747986648000" data-listing-reading-time-sort="21">
 <div class="body">
+<a href="./posts/intro_to_geometric_morphometrics/index.html">
 <h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_geometric_morphometrics/index.html" class="no-external">intRos: Geometric Morphometrics</a>
+intRos: Geometric Morphometrics
 </h3>
 <div class="listing-subtitle">
-<a href="./posts/intro_to_geometric_morphometrics/index.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./posts/intro_to_geometric_morphometrics/index.html" class="no-external">Geometric morphometrics is a field of study that uses mathematical and statistical methods to analyze the shape and variation of biological forms. It is based on the use of…</a>
+Geometric morphometrics is a field of study that uses mathematical and statistical methods to analyze the shape and variation of biological forms. It is based on the use of…
 </div>
+</a>
 </div>
 <div class="metadata">
-<a href="./posts/intro_to_geometric_morphometrics/index.html" class="no-external">
+<a href="./posts/intro_to_geometric_morphometrics/index.html">
 <div class="listing-date">
 2025-04-30
 </div>
@@ -319,20 +290,122 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="Coding, RStudio, R, VScode, GitHub" data-listing-date-sort="1721343600000" data-listing-file-modified-sort="1746649930653" data-listing-date-modified-sort="1746649930000" data-listing-reading-time-sort="3" data-listing-word-count-sort="597">
+<div class="quarto-post image-right" data-index="3" data-categories="HPC,OpenStack,Virtual Machine" data-listing-date-sort="1741305600000" data-listing-file-modified-sort="1750030290523" data-listing-date-modified-sort="1750030290000" data-listing-reading-time-sort="13">
 <div class="body">
+<a href="./posts/intro_to_openstack/01_OpenStack_Console.html">
 <h3 class="no-anchor listing-title">
-<a href="./posts/github_copilot_integration/index.html" class="no-external">Integrating GitHub Copilot with RStudio and VScode</a>
+OpenStack Console
 </h3>
 <div class="listing-subtitle">
-<a href="./posts/github_copilot_integration/index.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./posts/github_copilot_integration/index.html" class="no-external">Sign up to GitHub Copilot for code autocompletion in RStudio and VSCode</a>
+<p>Introduction to Openstack Console</p>
 </div>
+</a>
 </div>
 <div class="metadata">
-<a href="./posts/github_copilot_integration/index.html" class="no-external">
+<a href="./posts/intro_to_openstack/01_OpenStack_Console.html">
+<div class="listing-date">
+2025-03-07
+</div>
+<div class="listing-reading-time">
+13 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="HPC,OpenStack,Virtual Machine" data-listing-date-sort="1741305600000" data-listing-file-modified-sort="1750030928093" data-listing-date-modified-sort="1750030928000" data-listing-reading-time-sort="3">
+<div class="body">
+<a href="./posts/intro_to_openstack/02_Connect_to_your_instance.html">
+<h3 class="no-anchor listing-title">
+OpenStack Console
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<p>Introduction to Openstack Console</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/intro_to_openstack/02_Connect_to_your_instance.html">
+<div class="listing-date">
+2025-03-07
+</div>
+<div class="listing-reading-time">
+3 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="HPC,OpenStack,Virtual Machine" data-listing-date-sort="1741305600000" data-listing-file-modified-sort="1750010123933" data-listing-date-modified-sort="1750010123000" data-listing-reading-time-sort="2">
+<div class="body">
+<a href="./posts/intro_to_openstack/09_manage_your_instances.html">
+<h3 class="no-anchor listing-title">
+Managing OpenStack Instances
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<p>Managing OpenStack Instances</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/intro_to_openstack/09_manage_your_instances.html">
+<div class="listing-date">
+2025-03-07
+</div>
+<div class="listing-reading-time">
+2 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-categories="HPC,OpenStack,Virtual Machine" data-listing-date-sort="1741305600000" data-listing-file-modified-sort="1750010059612" data-listing-date-modified-sort="1750010059000" data-listing-reading-time-sort="6">
+<div class="body">
+<a href="./posts/intro_to_openstack/index.html">
+<h3 class="no-anchor listing-title">
+Introduction to OpenStack
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<p>Introduction to Openstack at the University of Exeter</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/intro_to_openstack/index.html">
+<div class="listing-date">
+2025-03-07
+</div>
+<div class="listing-reading-time">
+6 min
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-categories="Coding, RStudio, R, VScode, GitHub" data-listing-date-sort="1721343600000" data-listing-file-modified-sort="1746649930000" data-listing-date-modified-sort="1746649930000" data-listing-reading-time-sort="3">
+<div class="body">
+<a href="./posts/github_copilot_integration/index.html">
+<h3 class="no-anchor listing-title">
+Integrating GitHub Copilot with RStudio and VScode
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<p>Sign up to GitHub Copilot for code autocompletion in RStudio and VSCode</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/github_copilot_integration/index.html">
 <div class="listing-date">
 2024-07-19
 </div>
@@ -342,20 +415,22 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="tidyverse,R" data-listing-date-sort="1700438400000" data-listing-file-modified-sort="1702027065458" data-listing-date-modified-sort="1702027065000" data-listing-reading-time-sort="8" data-listing-word-count-sort="1493">
+<div class="quarto-post image-right" data-index="8" data-categories="tidyverse,R" data-listing-date-sort="1700438400000" data-listing-file-modified-sort="1702027065000" data-listing-date-modified-sort="1702027065000" data-listing-reading-time-sort="8">
 <div class="body">
+<a href="./posts/intro_to_tidy_data_manipulation/index.html">
 <h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_tidy_data_manipulation/index.html" class="no-external">intRos: Tidy data manipulation</a>
+intRos: Tidy data manipulation
 </h3>
 <div class="listing-subtitle">
-<a href="./posts/intro_to_tidy_data_manipulation/index.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./posts/intro_to_tidy_data_manipulation/index.html" class="no-external">Tidy and transfrom your data using reproducible code in R</a>
+<p>Tidy and transfrom your data using reproducible code in R</p>
 </div>
+</a>
 </div>
 <div class="metadata">
-<a href="./posts/intro_to_tidy_data_manipulation/index.html" class="no-external">
+<a href="./posts/intro_to_tidy_data_manipulation/index.html">
 <div class="listing-date">
 2023-11-20
 </div>
@@ -365,20 +440,22 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="R,RStudio,git" data-listing-date-sort="1682031600000" data-listing-file-modified-sort="1702027065438" data-listing-date-modified-sort="1702027065000" data-listing-reading-time-sort="10" data-listing-word-count-sort="1910">
+<div class="quarto-post image-right" data-index="9" data-categories="R,RStudio,git" data-listing-date-sort="1682031600000" data-listing-file-modified-sort="1702027065000" data-listing-date-modified-sort="1702027065000" data-listing-reading-time-sort="10">
 <div class="body">
+<a href="./posts/install_rstudio_git/index.html">
 <h3 class="no-anchor listing-title">
-<a href="./posts/install_rstudio_git/index.html" class="no-external">intRos: Installing, R, RStudio, and Git</a>
+intRos: Installing, R, RStudio, and Git
 </h3>
 <div class="listing-subtitle">
-<a href="./posts/install_rstudio_git/index.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./posts/install_rstudio_git/index.html" class="no-external">A primer on how to install R, RStudio, and Git.</a>
+<p>A primer on how to install R, RStudio, and Git.</p>
 </div>
+</a>
 </div>
 <div class="metadata">
-<a href="./posts/install_rstudio_git/index.html" class="no-external">
+<a href="./posts/install_rstudio_git/index.html">
 <div class="listing-date">
 2023-04-21
 </div>
@@ -388,20 +465,22 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="R,ggplot2,tidyverse" data-listing-date-sort="1677196800000" data-listing-file-modified-sort="1702027065449" data-listing-date-modified-sort="1702027065000" data-listing-reading-time-sort="17" data-listing-word-count-sort="3287">
+<div class="quarto-post image-right" data-index="10" data-categories="R,ggplot2,tidyverse" data-listing-date-sort="1677196800000" data-listing-file-modified-sort="1702027065000" data-listing-date-modified-sort="1702027065000" data-listing-reading-time-sort="17">
 <div class="body">
+<a href="./posts/intro_to_ggplot2/index.html">
 <h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_ggplot2/index.html" class="no-external">intRos: Publication ready plots using ggplot2</a>
+intRos: Publication ready plots using ggplot2
 </h3>
 <div class="listing-subtitle">
-<a href="./posts/intro_to_ggplot2/index.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./posts/intro_to_ggplot2/index.html" class="no-external">Make publication ready plots in R using ggplot2 and learn some new tips and tricks</a>
+<p>Make publication ready plots in R using ggplot2 and learn some new tips and tricks</p>
 </div>
+</a>
 </div>
 <div class="metadata">
-<a href="./posts/intro_to_ggplot2/index.html" class="no-external">
+<a href="./posts/intro_to_ggplot2/index.html">
 <div class="listing-date">
 2023-02-24
 </div>
@@ -411,20 +490,22 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="flextable,R" data-listing-date-sort="1676332800000" data-listing-file-modified-sort="1702027065445" data-listing-date-modified-sort="1702027065000" data-listing-reading-time-sort="12" data-listing-word-count-sort="2310">
+<div class="quarto-post image-right" data-index="11" data-categories="flextable,R" data-listing-date-sort="1676332800000" data-listing-file-modified-sort="1702027065000" data-listing-date-modified-sort="1702027065000" data-listing-reading-time-sort="12">
 <div class="body">
+<a href="./posts/intro_to_flextable/index.html">
 <h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_flextable/index.html" class="no-external">intRos: Reproducible tables with flextable</a>
+intRos: Reproducible tables with flextable
 </h3>
 <div class="listing-subtitle">
-<a href="./posts/intro_to_flextable/index.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./posts/intro_to_flextable/index.html" class="no-external">Make reproducible tables of summary stats and contrasts tables with flextable in R</a>
+<p>Make reproducible tables of summary stats and contrasts tables with flextable in R</p>
 </div>
+</a>
 </div>
 <div class="metadata">
-<a href="./posts/intro_to_flextable/index.html" class="no-external">
+<a href="./posts/intro_to_flextable/index.html">
 <div class="listing-date">
 2023-02-14
 </div>
@@ -434,20 +515,22 @@ window.Quarto = {
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="R,RStudio projects,tidyverse,here" data-listing-date-sort="1672704000000" data-listing-file-modified-sort="1702027065458" data-listing-date-modified-sort="1702027065000" data-listing-reading-time-sort="10" data-listing-word-count-sort="1869">
+<div class="quarto-post image-right" data-index="12" data-categories="R,RStudio projects,tidyverse,here" data-listing-date-sort="1672704000000" data-listing-file-modified-sort="1702027065000" data-listing-date-modified-sort="1702027065000" data-listing-reading-time-sort="10">
 <div class="body">
+<a href="./posts/intro_to_projects/index.html">
 <h3 class="no-anchor listing-title">
-<a href="./posts/intro_to_projects/index.html" class="no-external">intRos: Managing research projects with R Studio</a>
+intRos: Managing research projects with R Studio
 </h3>
 <div class="listing-subtitle">
-<a href="./posts/intro_to_projects/index.html" class="no-external"></a>
+
 </div>
 <div class="listing-description">
-<a href="./posts/intro_to_projects/index.html" class="no-external">Manage your different research projects with R Studio and the {here} package</a>
+<p>Manage your different research projects with R Studio and the {here} package</p>
 </div>
+</a>
 </div>
 <div class="metadata">
-<a href="./posts/intro_to_projects/index.html" class="no-external">
+<a href="./posts/intro_to_projects/index.html">
 <div class="listing-date">
 2023-01-03
 </div>
@@ -461,6 +544,9 @@ window.Quarto = {
 <div class="listing-no-matching d-none">
 No matching items
 </div>
+<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -497,7 +583,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -529,50 +626,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/exeter-data-analytics\.github\.io\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -582,17 +640,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -604,130 +653,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -771,7 +697,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -797,32 +722,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -883,7 +782,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 
