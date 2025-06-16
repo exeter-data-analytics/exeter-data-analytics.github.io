@@ -452,11 +452,11 @@ Once it turns **white** and the ‘Status’ changes to ‘Active’, you should
 Next, you will learn how to connect to it from your PC. However, before you proceed any further - take a 20 minute break. The cloud-init script would be working in the background to finish installing software and configuring your machine during that time.
 
 ``` html
-<div id="UNIQUE-ID"></div>
+<div id="timer1"></div>
 <script src="_extensions/produnis/timer/timer.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        initializeTimer("UNIQUE-ID", 1200, interaction); 
+        initializeTimer("timer1", 1200, interaction); 
     });
 </script>
 ```
