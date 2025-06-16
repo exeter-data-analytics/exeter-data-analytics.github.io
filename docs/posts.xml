@@ -10,7 +10,1384 @@
 <atom:link href="https://exeter-data-analytics.github.io/posts.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Thu, 22 May 2025 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 15 Jun 2025 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>intRos: Introduction to OpenStack</title>
+  <dc:creator>MD Sharma</dc:creator>
+  <dc:creator>Stephen Lang</dc:creator>
+  <link>https://exeter-data-analytics.github.io/posts/intro_to_openstack/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="learning-objectives" class="level1">
+<h1>Learning objectives</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>By the end of this workshop you will be expected to:</strong></p>
+<ul>
+<li>Log into the UoE OpenStack Console and start your instance of the appropriate workshop.</li>
+<li>Log in to the OpenStack instance from your own computer.</li>
+<li>Be ready to start the tutorials at your own pace.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="outline" class="level1">
+<h1>Outline</h1>
+<p>This course will give you an introduction into the Openstack Cloud Environment. OpenStack allows you to set up a private computer within the University’s Advanced Research Computing ecosystem. <a href="https://www.openstack.org/software/">Click here to learn more about OpenStack.</a> Several other courses in our series will use OpenStack and you may later use it for your own research.</p>
+<p>We are going to introduce a lot of new concepts. Here is an overview of the 3 steps you need to start your course.</p>
+<ol type="1">
+<li><p><strong>Openstack Console</strong></p>
+<p>First log onto the OpenStack console: <a href="https://stack.exeter.ac.uk" class="uri">https://stack.exeter.ac.uk</a> Use the information in the OpenStack Console section of the provided document to log on. Follow the sections “Introduction” and “Tour of OpenStack Cloud” in the course material.</p></li>
+<li><p><strong>Create your training Instance.</strong></p>
+<p>Follow the sections “Create our Instance” in the course material. Use the information in the “OpenStack Image” section of the provided document.</p></li>
+<li><p><strong>Login to your instance.</strong></p>
+<p>The course notes explain 3 ways to connect to your instance (X2Go, PuTTy and MobaXterm). You only need to use one of these.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Managing your instance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="./manage.html">Here are some instructions</a> on how to stop and start your instances at the start of end of each session.</p>
+</div>
+</div></li>
+</ol>
+</section>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>For this workshop we will provide an overview of the internal OpenStack provision, part of the University of Exeter’s Advanced Research Computing facilities and see how, as researchers, we can use this flexible resource to get work done efficiently.</p>
+<p>You should be able to access OpenStack and all of the functionality below via your own account to do your research. The aim of this workshop is to give you an introduction to OpenStack and Unix so you are ready to take full advantage of its capabilities!</p>
+<p>Firstly some concepts and terminology might be confusing so here is some explanation of the advantages of using OpenStack.</p>
+<section id="some-terminology" class="level2">
+<h2 class="anchored" data-anchor-id="some-terminology">Some Terminology</h2>
+<p><strong><em>An Image:</em></strong> This is the starting point or template for the course. Think of it as a master copy of the computer which contains all the programs and data that are required to follow the course. We will use it as a template to start your own Instance.</p>
+<p><strong><em>An Instance:</em></strong> Almost the first thing you will do is create your own copy of the image - we call this an instance or a virtual machine. It contains everything that was in the image plus any files you create during the course.</p>
+<p><strong><em>A Volume</em></strong> This can be thought of as an additional hard disk which you can add or remove from an instance.</p>
+<p><strong><em>Remote Desktop</em></strong> We can’t plug a monitor and keyboard into a virtual machine (instance) so we need a program on our computer which connects to the instance allows us to see and control the instance from our desktop. In the course we will use a program called X2Go.</p>
+<p><strong><em>Command Line Client</em></strong> It is not really necessary to connect to an instance using remote desktop software. It is possible to connect only via a command line interfaces - you will not get any menus, icons images - you will only be able to type commands to tell the instance what you want to do.</p>
+</section>
+<section id="why-use-virtual-machines" class="level2">
+<h2 class="anchored" data-anchor-id="why-use-virtual-machines">Why Use Virtual Machines?</h2>
+<p>Instead of relying on dedicated physical hardware for every task, <strong>virtual machines (VMs)</strong> offer a highly flexible and efficient alternative. Imagine a scenario where you have a set number of powerful physical computers. Rather than assigning one computer to each user, VMs allow you to <strong>pool the resources</strong> of these physical machines and then divide them into multiple isolated virtual environments.</p>
+<p>This approach offers significant advantages:</p>
+<ul>
+<li><p><strong>Optimal Resource Utilization:</strong> Physical machines often sit idle or are underutilized. VMs allow you to share resources like disk space, memory, and processors among many virtual instances. This means you can run more virtual machines than you have physical ones, making the most of your hardware. When a VM isn’t heavily used, its resources can be dynamically allocated to other, more active VMs.</p></li>
+<li><p><strong>Cost and Environmental Benefits:</strong> By maximizing hardware utilization, you can reduce the number of physical servers needed. This translates to lower initial purchasing costs, reduced energy consumption for operation and cooling, and a smaller physical footprint. This makes virtual machines a <strong>greener option</strong> in many cases, contributing to sustainability efforts.</p></li>
+</ul>
+<section id="the-power-of-full-control" class="level3">
+<h3 class="anchored" data-anchor-id="the-power-of-full-control">The Power of Full Control</h3>
+<p>One of the most compelling reasons to use virtual machines is the <strong>full control you gain over your environment</strong>. Each virtual machine acts like an independent computer, allowing you to configure and customize it precisely to your needs.</p>
+<p>Here’s how this translates into practical benefits:</p>
+<ul>
+<li><p><strong>Instant Provisioning and Customization:</strong> You can quickly launch new virtual machines with a wide variety of pre-configured <strong>machine images</strong>. These images can range from basic operating systems to specialized environments equipped with specific software for scientific modeling, data analysis, or development. This eliminates the need for lengthy manual installations and configurations.</p></li>
+<li><p><strong>Share and Collaborate with Ease:</strong> If you’ve developed a specific computational environment or analysis workflow, you can create and share your own VM images. This allows collaborators to instantly access and replicate your setup, ensuring consistency and simplifying the sharing of complex projects.</p></li>
+<li><p><strong>Dynamic Resource Scalability:</strong> Need more storage or processing power for a task? With VMs, you can often <strong>add storage on-the-fly</strong> by attaching virtual volumes, or <strong>increase processing power and RAM with just a few clicks</strong>. This agility means you can adapt your environment as your computational demands change, without the need for physical hardware upgrades or downtime.</p></li>
+<li><p><strong>Flexible Testing and Development:</strong> VMs are invaluable for researchers. You can easily create a machone to test the inner workings of the code you are developing before deploying them to larger, more complex systems. This isolated testing environment prevents conflicts and ensures smooth transitions.</p></li>
+</ul>
+<p>Essentially, virtual machines empower you to create, modify, and manage your computational environment with unparalleled flexibility, giving you complete command over your digital workspace.</p>
+<p>Let’s go to the next section and learn about the OpenStack Console.</p>
+</section>
+</section>
+<section id="logging-into-the-console" class="level2">
+<h2 class="anchored" data-anchor-id="logging-into-the-console">Logging Into the Console</h2>
+<p>In addition to being extremely comprehensive, the Exeter OpenStack cloud has a relatively easy (but detailed!) interface for interacting with its offerings. All you have to do is log in via a web-browser and most of the functionality of the is available for you and relatively easy to use.</p>
+<p>To get started go to the following URL and login with your University of Exeter username (in the format of <em>user123</em>) the domain (exeter.ac.uk), and the password you use when logging onto your university resources.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We have set up a single workshop project which we will be using for training. Please do <strong>NOT</strong> abuse this project and do <strong>NOT</strong> put any personal, confidential or important data on the machines you will set-up during the training. You will all log in to the same management console and will be able to see machines which your friends and colleagues on the course will start.</p>
+</div>
+</div>
+<section id="httpsstack.exeter.ac.uk" class="level4">
+<h4 class="anchored" data-anchor-id="httpsstack.exeter.ac.uk"><a href="https://stack.exeter.ac.uk/" class="uri">https://stack.exeter.ac.uk/</a></h4>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-login-01.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This resource is only accessible within the University of Exeter network. So, if you are accessing this workshop from home or anywhere outside the campuses, you will need to connect to the University VPN service to be able to access the system. If using WiFi on campus, please use Eduroam or UoE_Secure only.</p>
+</div>
+</div>
+<p>Once logged in, you will see a web-page that looks similar to this:</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-01.png" class="img-fluid"></p>
+<p>As a first step - let’s associate ourselves with the correct project. This is specially important for all users who may have access to multiple “projects” associated with their research groups. In this instance, please click on the <em>Project</em> dropdown and select <em>ARC_Intro_Penryn - Workshop</em>&nbsp;as your project. If done correctly, you should see a tick mark next to the selected project, as illustrated below.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/images/clipboard-739322012.png" class="img-fluid"></p>
+<p>We can now take a look at the various tabs. These include:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Instances
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is the list of virtual machines that have been created.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Compute
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The service OpenStack is known for. It enables you to create Linux and Windows Virtual machines. Best of all their computational and/or disk capacity can be increased or decreased at the click of a button! This section has most of the things we need for this course.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Volumes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A storage unit. These can be created and attached to any compute which you have running. Ideal for moving large amounts of data between machines. Think of it as a removal hard drive which you can attach to any machine.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Images
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These are the templates from which you create instances.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Object store
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is another type of storage, but is relatively slow. It is ideal for archive or when storing large files (i.e.&nbsp;several Gb).However, it is currently disabled on the system. if you want to know more about it, please as your Research IT support team for assistance.</p>
+</div>
+</div>
+<p>Click on “Compute” and then “Overview” at the top left.</p>
+<p>On this page you’ll get a summary of the state for your account. You can see an example below.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that we are using a shared project where you’ll also see everyone else’s instances. If you were using your own <em>project</em> (or your research group’s project), you would only see your instances (or that of your research group).</p>
+</div>
+</div>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-03.png" class="img-fluid"></p>
+<p>You see here that we have a certain allocation of resources (memory, disk space, CPUs). We can choose how to allocate these to accomplish our scientific goals. For instance, we may need one very large machine with lots of resource to do a single task (e.g.&nbsp;a genome assembly). Or we may want lots of smaller machines, each doing a small task (e.g.&nbsp;a webserver and a database server). We may want half the machines running Unix and the other half running Windows. The point is, <strong><em>we</em></strong> are in control of the compute and can choose what suits <strong><em>us</em></strong> best and it can all be done, by us at the touch of a button.</p>
+<p>In the example above, we have been allocated up-to 32 instances and a total of 32 cores with roughly 60GB of RAM so that each of the workshop attendees can spin up a virtual machine with 1<em>vCPU and 2GB of RAM.</em></p>
+<p>Click on “Compute” and then “Instances” at the top left. When this tutorial was created, there were no existing instances within the workshop project, so, those of you following this tutorial within the second workshop, will see a page with <em>No items to display</em> and anyone who sign in after a few instances have been created, would see a list of instances that pre-exist at that time.<br>
+<br>
+<img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-04.png" class="img-fluid"></p>
+<p><em>Ok, so how do we actually do all this?</em> Well, from this page we can create our own servers on Exeter’s OpenStack using an image of a machine the Research IT team have created earlier for you. Servers which are created in this manner are called ‘<em>Instances</em>’. We can create as many servers as we like, start them, log-in to them, do some work, transfer data to/from them or destroy them altogether. We let the Research IT team worry about the hardware, power, cooling and maintenance - all we need to do is specify how powerful a computer we want (tiny, small, medium, large or extra-large).</p>
+<p>The reason we are using the OpenStack here is that many of you have to analyse large datasets. But you only need to cruch those datasets occasionally. In the case of high-throughput sequencing data (e.g.&nbsp;Illumina or Oxford Nanopore) you will find that your desktop PC may not be powerful enough to cope with the data. Also installing and configuring many pieces of software (often written by other scientists), is frequently painful as they often require other programs (also often written by other scientists) to be installed as well. Factor in some obscure incompatibility and you can quickly end up in a situation where two programs that you need refuse to co-exist. With OpenStack, you can just start a server instance based on an image created by someone else who has already done all the hard work of installation and configuration. You may also want to use an existing docker- or singularity- container within such an instance to carry out your workflow.</p>
+<p>So let’s get on and launch our first instance!</p>
+</section>
+</section>
+<section id="create-your-instance" class="level2">
+<h2 class="anchored" data-anchor-id="create-your-instance">Create your Instance</h2>
+<p>In this section of the workshop we will create our Instance in Exeter’s OpenStack system.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you have an instance from a previous session do not create another one. Please go to the Managing Your OpenStack Instances and restart your existing instance.</p>
+<p>Otherwise let’s get on and launch the instance we need for our workshop !</p>
+</div>
+</div>
+<p>Click on the “Launch Instance” button.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-05.png" class="img-fluid"></p>
+<p>Give your instance your name (e.g.&nbsp;“Jane Doe’s Instance”)</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-06.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember that everyone is sharing the same project- so you will need to be identify your instance from everyone elses. The example above (“<em>my_first_VM</em>”) may be suitable for your own project, but it is not appropriate in a shared project.</p>
+</div>
+</div>
+<p>Click ‘Next’ and proceed to choose the image of the machine you want to replicate. In this example, we will be using the Ubuntu 22.04 server image. Click on the highlighted arrow across from the <em>“ubuntu_22.04”</em> name and input a <em>Volume Size</em> of 20GB. Make sure to toggle the <em>Delete Volume on Instance Delete</em> option in this case.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you are making your own VMs, within your own research project, you may chose to use different options based on your needs. Here, we have limited resources available for the workshop, so we need to make sure that everyone follows the instructions.</p>
+</div>
+</div>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-07.png" class="img-fluid"></p>
+<p>Click Next and select the desired flavour for this instance. Here, we would like you to select the <em>ARC_Intro_Penryn - small</em> flavour that will allow you to launch an instance with 1vCPU and 2GB of RAM. When you register your own project for access to OpenStack, you will see additional options for these flavours.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-08.png" class="img-fluid"></p>
+<section id="security-groups" class="level3">
+<h3 class="anchored" data-anchor-id="security-groups">Security Groups</h3>
+<p>Click ‘Next’ to move on through Networks and Network Ports section and arrive at the Security Groups section. Here, click on the default security group to expand it, and to have a look at what has already been allowed in the firewall.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-09.png" class="img-fluid"></p>
+<p>Here, we can see that SSH (port 22) has been allowed over the <em>tcp</em> protocol from <em>anywhere (0.0.0.0/0)</em>. That is all we need to begin with, so we can go ahead and click Next.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Security Groups
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are planning on using additional software that may need some ports to be opended up, then you can create your own security group with relevant ports allowed. For e.g.&nbsp;if you want to use VNC type software for remote desktop access to your instance, you will need to allow port 5901 etc. over tcp.</p>
+<p>Our recipe for this workshop includes an installation of RStudio Server Open Source edition within the VM. We will show you how to edit the default security group to allow access to port 8787 for the RStudio Server later in the tutorial.</p>
+</div>
+</div>
+</section>
+<section id="key-pairs-and-cloud-config" class="level3">
+<h3 class="anchored" data-anchor-id="key-pairs-and-cloud-config">Key Pairs and Cloud Config</h3>
+<p>Setting up virtual machine (VM) instances in a cloud environment like OpenStack requires robust security measures and efficient configuration methods. This section details the critical steps involved in establishing secure access using SSH keypairs and automating initial VM setup with cloud-init, providing a foundational understanding for workshop participants.</p>
+<p>Click ‘Next’ to move into the Key Pair section. OpenStack leverages SSH keypairs to secure VM instances at their launch time. When an instance is provisioned, OpenStack injects the user’s public key into the appropriate authorized_keys file on the new VM, making it ready for secure SSH access using the corresponding private key held by the user.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Private Key
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The private key, which is the secret component, must remain securely on the user’s local workstation and should never be uploaded to the cloud provider. This distinction is crucial for maintaining the integrity of the security model.</p>
+</div>
+</div>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-10.png" class="img-fluid">A key pair allows you to SSH into your newly created instance. You may select an existing key pair, import a key pair, or generate a new key pair. Click on the <em>Create Key Pair</em> button highlighted above and then enter a <em>Key Pair Name</em> and <em>Key Type</em> in the pop-up box that appears next. Key Pairs are how you login to your instance after it is launched.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-11.png" class="img-fluid"></p>
+<p>Choose a key pair name you will recognize. Here we chose <em>user123_computer_name_projectX</em> to remind ourselves what the default username as and which VM this key is associated with. Names may only include alphanumeric characters, spaces, or dashes. Once the Key Pair is generated, you will need to copy the Private Key to your clipborad and save it in a safe space. Do not forget where you keep this key - you will not be able to login to the instance without this key pair if you have not enabled any other login mechanism.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-12.png" class="img-fluid"></p>
+<p>Once copied, click <em>Done.</em> Open a text editor like Notepad++, Context or similar and save this SSH Key. The image below shows the successfully created <em>Key Pair.</em> On most browsers, the key pair will automatically get downloaded when you click done as well.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-13.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Pair vs Password
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The choice of authentication method for remote access significantly impacts the security and operational efficiency of cloud environments. While password-based authentication is familiar, SSH keypair authentication offers substantial advantages, making it the preferred standard in cloud platforms like OpenStack.<br>
+<br>
+Password authentication relies on a user remembering a secret string (the password) and providing it to the server for verification.<br>
+<br>
+SSH keypair authentication provides a superior level of cryptographic strength that even extremely long, complex passwords cannot match. The public keys, generated using sophisticated mathematical algorithms, are virtually impossible to guess or brute-force, offering a robust defense against common attack vectors - as long as un-authorized users do not gain access to your private key.</p>
+</div>
+</div>
+<p>Click Next to move on to the <em>Configuration</em> section<em>.</em></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Cloud Config
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Beyond establishing secure access, automating the initial configuration of virtual machines is crucial for efficiency, consistency, and scalability in cloud environments. Cloud-init serves as the industry-standard tool for this purpose.</p>
+</div>
+</div>
+<p>When a new cloud instance is deployed, cloud-init takes initial configuration data, often referred to as “user-data” or “vendor-data,” and automatically applies these settings during the instance’s first boot process. This functions much like a dynamic to-do list that cloud-init executes, configuring the VM according to predefined instructions. The significant advantage of cloud-init lies in its ability to reuse these configuration instructions across numerous deployments, consistently producing reliable results.</p>
+<p>Cloud-init is capable of handling a wide array of initial configuration tasks. These include essential activities such as setting the hostname, configuring network interfaces, creating and managing user accounts, installing necessary software packages, and executing custom scripts. This comprehensive automation streamlines the deployment process, ensuring that all cloud instances are configured uniformly, thereby minimizing the potential for human error.</p>
+<p>Below are two minimal cloud-init script examples to configure essentials such as adding a local user account with ability to install research related applications (e.g.&nbsp;sudo apt install package-name). This will be all you really need for most use cases, but for additional configuration options, please refer to the <a href="https://cloudinit.readthedocs.io/en/latest/">cloud-init documentation</a>. Amend the settings as required to look as below (changing&nbsp;the ‘<strong>user123</strong>’, ‘<strong>User OneTwoThree</strong>’ and <strong>hashed_passwd</strong> lines):</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Option 1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use this config if you only want key-pair authentication:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#cloud-config</span></span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Use this config if you only want key-pair authentication.</span></span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Change the default user to the name of my choice.</span></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># and give it sudo rights.</span></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">system_info</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span></span>
+<span id="cb1-6"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">default_user</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span></span>
+<span id="cb1-7"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">name</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> user123</span></span>
+<span id="cb1-8"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gecos</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Your Name"</span></span>
+<span id="cb1-9"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">groups</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">[</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sudo</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">]</span></span>
+<span id="cb1-10"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> ALL=(ALL) NOPASSWD:ALL</span></span>
+<span id="cb1-11"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">shell</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> /bin/bash</span></span>
+<span id="cb1-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Update system package database</span></span>
+<span id="cb1-13"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">package_update</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">true</span></span>
+<span id="cb1-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Upgrade all packages to the latest versions</span></span>
+<span id="cb1-15"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">package_upgrade</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">true</span></span>
+<span id="cb1-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Install specified basic tools using the package manager</span></span>
+<span id="cb1-17"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">packages</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span></span>
+<span id="cb1-18"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> openssh-server</span></span>
+<span id="cb1-19"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> ubuntu-desktop</span></span>
+<span id="cb1-20"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> nload</span></span>
+<span id="cb1-21"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> htop</span></span>
+<span id="cb1-22"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> vim</span></span>
+<span id="cb1-23"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> multitail</span></span>
+<span id="cb1-24"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> tmux</span></span>
+<span id="cb1-25"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> r-base</span></span>
+<span id="cb1-26"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> gdebi-core</span></span>
+<span id="cb1-27"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> x2goserver</span></span>
+<span id="cb1-28"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> x2goserver-xsession</span></span>
+<span id="cb1-29"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> xfce4</span></span>
+<span id="cb1-30"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> xfce4-goodies</span></span>
+<span id="cb1-31"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Install Mamba using the Miniforge distribution</span></span>
+<span id="cb1-32"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">runcmd</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span></span>
+<span id="cb1-33"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> echo "Starting Miniforge installation..."</span></span>
+<span id="cb1-34"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> wget -O /tmp/Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"</span></span>
+<span id="cb1-35"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> chmod +x /tmp/Miniforge3.sh</span></span>
+<span id="cb1-36"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> /tmp/Miniforge3.sh -b -p /opt/miniforge3</span></span>
+<span id="cb1-37"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> echo "Miniforge installation complete. Initializing conda for all users..."</span></span>
+<span id="cb1-38"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> /opt/miniforge3/bin/conda init bash --system</span></span>
+<span id="cb1-39"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> echo "Conda initialization for all users complete. Users may need to log out and back in."</span></span>
+<span id="cb1-40"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> echo "Installing RStudio Server Open Source v2025.05.1+513 ..."</span></span>
+<span id="cb1-41"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> wget -O /tmp/RStudio_Server.deb https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2025.05.1-513-amd64.deb</span></span>
+<span id="cb1-42"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> gdebi -n /tmp/RStudio_Server.deb</span></span>
+<span id="cb1-43"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> systemctl set-default graphical.target</span></span>
+<span id="cb1-44"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">power_state</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span></span>
+<span id="cb1-45"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">delay</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb1-46"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mode</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> reboot</span></span>
+<span id="cb1-47"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">message</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Rebooting instance after cloud-init completion"</span></span>
+<span id="cb1-48"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">condition</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">True</span></span></code></pre></div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Option 2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use this config if you want password authentication (or password authentication alongside key pair auth as an alternative shown earlier)</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#cloud-config</span></span>
+<span id="cb2-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Change the default user to the name of my choice.</span></span>
+<span id="cb2-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># and give it sudo rights.</span></span>
+<span id="cb2-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">system_info</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span></span>
+<span id="cb2-5"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">default_user</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span></span>
+<span id="cb2-6"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">name</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> user123</span></span>
+<span id="cb2-7"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gecos</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Your Name"</span></span>
+<span id="cb2-8"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> ALL=(ALL) NOPASSWD:ALL</span></span>
+<span id="cb2-9"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">shell</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> /bin/bash</span></span>
+<span id="cb2-10"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lock_passwd</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">false</span></span>
+<span id="cb2-11"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">hashed_passwd</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> “$6$rTACxh6 ... &lt;snip&gt; ... xwWllho2N7nKq1nn1”</span></span>
+<span id="cb2-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># You have to keep the $6$ in front of the hashed password</span></span>
+<span id="cb2-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Enable password auth </span></span>
+<span id="cb2-14"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ssh_pwauth</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">True</span></span>
+<span id="cb2-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Update system package database</span></span>
+<span id="cb2-16"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">package_update</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">true</span></span>
+<span id="cb2-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Upgrade all packages to the latest versions</span></span>
+<span id="cb2-18"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">package_upgrade</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">true</span></span>
+<span id="cb2-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Install specified basic tools using the package manager</span></span>
+<span id="cb2-20"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">packages</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span></span>
+<span id="cb2-21"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> openssh-server</span></span>
+<span id="cb2-22"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> ubuntu-desktop</span></span>
+<span id="cb2-23"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> nload</span></span>
+<span id="cb2-24"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> htop</span></span>
+<span id="cb2-25"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> vim</span></span>
+<span id="cb2-26"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> multitail</span></span>
+<span id="cb2-27"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> tmux</span></span>
+<span id="cb2-28"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> r-base</span></span>
+<span id="cb2-29"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> gdebi-core</span></span>
+<span id="cb2-30"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> x2goserver</span></span>
+<span id="cb2-31"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> x2goserver-xsession</span></span>
+<span id="cb2-32"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> xfce4</span></span>
+<span id="cb2-33"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> xfce4-goodies</span></span>
+<span id="cb2-34"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Install Mamba using the Miniforge distribution</span></span>
+<span id="cb2-35"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">runcmd</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span></span>
+<span id="cb2-36"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> echo "Starting Miniforge installation..."</span></span>
+<span id="cb2-37"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> wget -O /tmp/Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"</span></span>
+<span id="cb2-38"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> chmod +x /tmp/Miniforge3.sh</span></span>
+<span id="cb2-39"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> /tmp/Miniforge3.sh -b -p /opt/miniforge3</span></span>
+<span id="cb2-40"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> echo "Miniforge installation complete. Initializing conda for all users..."</span></span>
+<span id="cb2-41"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> /opt/miniforge3/bin/conda init bash --system</span></span>
+<span id="cb2-42"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> echo "Conda initialization for all users complete. Users may need to log out and back in."</span></span>
+<span id="cb2-43"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> echo "Installing RStudio Server Open Source v2025.05.1+513 ..."</span></span>
+<span id="cb2-44"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> wget -O /tmp/RStudio_Server.deb https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2025.05.1-513-amd64.deb</span></span>
+<span id="cb2-45"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> gdebi -n /tmp/RStudio_Server.deb</span></span>
+<span id="cb2-46"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> systemctl set-default graphical.target</span></span>
+<span id="cb2-47"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> systemctl set-default graphical.target</span></span>
+<span id="cb2-48"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">power_state</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span></span>
+<span id="cb2-49"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">delay</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb2-50"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mode</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> reboot</span></span>
+<span id="cb2-51"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">message</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Rebooting instance after cloud-init completion"</span></span>
+<span id="cb2-52"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">condition</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">True</span></span></code></pre></div>
+</div>
+</div>
+<p>Copy paste the above script into a text editor like Notepad++, Context, Sublime etc. and edit the requisite sections such as name, gecos, hashed_password etc. as needed.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Note:</strong> The ‘<strong>hashed_passwd</strong>’ string is a <strong>crypt-sha512</strong> hash (i.e., an encrypted version) of the password you will use to log in with (we advise not using your university password). Hashed passwords can be generated using a web page such as&nbsp;<a href="https://www.mkpasswd.net/index.php">https://www.mkpasswd.net</a>. You need to replace all of the ‘hashed_passwd’ field inside the double quotes with the hashed password you have generated.<br>
+<img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-14.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Once you have your template ready, paste it into the <em>Customisation Script</em> section:</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-15.png" class="img-fluid"></p>
+<p>Click Next and skip over the Server Groups, Scheduler Hints and Metadata sections.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-16.png" class="img-fluid"></p>
+<p>You have just configured an instance! Well done!<br>
+<br>
+In summary, you have given your instance a name, chosen which source machine image to base the instance on, selected the size of the instance (i.e.&nbsp;amount of memory, disk space and processor power), configured the basic apps you wanted to pre-install on it and also configured how you can access it (key-pair vs username+password).</p>
+<p>We’re ready to launch it! Click ‘Launch Instance’. At this point you wait for the instance to come online. This may take a few seconds for a small instance or about 10 minutes for an xx-large one.</p>
+<p>Below you can see an example of an instance starting up (or spawning). It is running in the University data centre. Note that we don’t need to worry or think about the underlying hardware the system is running on. That’s all taken care of for us by OpenStack and the Research IT team.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-17.png" class="img-fluid"></p>
+<p>Once it turns <strong>white</strong> and the ‘Status’ changes to ‘Active’, you should copy the IP address to the clipboard.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-18.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Note</strong>: above is an example where the IP address is <em>10.121.4.147</em> (yours will be different). We will need it in a moment to connect via X2Go remote desktop. Make sure you copy the whole address and nothing but the address.</p>
+</div>
+</div>
+<p><strong>Congratulations you have ‘configured’ and ‘turned on’ a new computer to use for the rest of this workshop.</strong></p>
+<p>Next, you will learn how to connect to it from your PC. However, before you proceed any further - take a 15 minute break. The cloud-init script would be working in the background to finish installing software and configuring your machine during that time.</p>
+{{&lt; countdown "15:00" &gt;}}
+</section>
+</section>
+<section id="connect-to-your-instance" class="level2">
+<h2 class="anchored" data-anchor-id="connect-to-your-instance">Connect to your instance</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prerequisite
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download and install <a href="https://wiki.x2go.org">X2Go</a> alongside a tool like Putty, MobaXTerm or Termius on your computer.<br>
+<br>
+The most commonly used, but basic program is <a href="https://www.putty.org/">PuTTy</a>.<br>
+<br>
+The one we recommend for Windows users is MobaXTerm - it provides all the important <strong>remote network tools</strong> (SSH, X11, RDP, VNC, FTP, MOSH, …) and <strong>Unix commands</strong> (bash, ls, cat, sed, grep, awk, rsync, …) to Windows desktop, in a <strong>single portable exe file</strong> which works out of the box.<br>
+<br>
+<a href="https://termius.com/">Termius</a> is another recommended SSH client that works on macOS, Windows, Linux, iOS and Andriod.<br>
+<br>
+End-Users are responsible for ensuring that they comply with the license conditions for any of these software.</p>
+</div>
+</div>
+<p>Check the IP address of your instance and copy it to your clipboard.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-18.png" class="img-fluid"></p>
+<section id="command-line-connection" class="level3">
+<h3 class="anchored" data-anchor-id="command-line-connection">Command Line Connection</h3>
+<p>The simplest way you can connect to your instance is using SSH (secure shell). If you are happy using the command line only, there are some other software that have additional functionality, and look better. There are many choices - just Google ‘windows ssh client’ or ‘OSX SSH Client’</p>
+<p>The most commonly used, but basic program is <a href="https://www.putty.org/">PuTTy</a>. The one we recommend for Windows users is MobaXTerm - it provides all the important <strong>remote network tools</strong> (SSH, X11, RDP, VNC, FTP, MOSH, …) and <strong>Unix commands</strong> (bash, ls, cat, sed, grep, awk, rsync, …) to Windows desktop, in a <strong>single portable exe file</strong> which works out of the box.</p>
+<p><a href="https://termius.com/">Termius</a> is another recommended SSH client that works on macOS, Windows, Linux, iOS and Andriod. Check out these detailed instructions on how to connect via SSH with an <a href="https://termius.com/documentation/connect-via-ssh-with-a-password">SSH Password</a> or <a href="https://termius.com/documentation/connect-via-ssh-with-an-ssh-key">SSH Key</a>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We do not recommend using Git Bash for this. Git Bash is an application for Microsoft Windows environments which provides an emulation layer for a Git command line experience. It does not have all the functionality one would usually need when accessing servers in this manner.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are using a native terminal on MacOS or Unix, you could initiate a command line connection using:</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ssh</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-i</span> /path/to/your-private-key.key user123@<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>vm-ip-address<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span></code></pre></div>
+</div>
+</div>
+</section>
+<section id="console-connection-using-the-browser" class="level3">
+<h3 class="anchored" data-anchor-id="console-connection-using-the-browser">Console connection using the browser</h3>
+<p>Within your OpenStack web console, navigate to the <a href="https://stack.exeter.ac.uk/dashboard/project/instances/">instance list</a> and click on your instance in the list. In this example, we will click on the <em>keypair_only</em> instance.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-10.png" class="img-fluid"></p>
+<p>In the next window click on the <em>Console</em> tab. Here, you will be able to see the main GUI of your computer. If you used the cloud-init Option 2 - then you will be able to login at this interface using the password you had used. If you used Option 1 during the cloud-init stage, then you will not be able to login using this method as you would not be aware of correct password to use. I this case, you would need to reset the user password (covered elsewhere) to be able to use the method described here.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-11.png" class="img-fluid"></p>
+</section>
+<section id="graphical-connection-using-x2go" class="level3">
+<h3 class="anchored" data-anchor-id="graphical-connection-using-x2go">Graphical connection using X2Go</h3>
+<p>For some modules you will need a full graphical desktop connection. This is a bit more complicated to set up, but will give you a full graphical desktop environment to work on. For this we use <a href="https://wiki.x2go.org/doku.php">X2go</a></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to install X2Go
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://wiki.x2go.org/doku.php/doc:installation:x2goclient">See here for detailed instructions</a> on how to install X2Go client for your operating system. Note that you may need privilege escalation (a.k.a admin rights) on your machine to do this. If you have a University provided Windows laptop, you may also look for X2Go within the <strong>Company Portal</strong> for easy installation.</p>
+<p>If you are on a University provided Mac running OSX, look for X2Go within the UoE <strong>Self Service app</strong> that has been pre-installed on your Mac device.</p>
+</div>
+</div>
+<p>Once X2Go is installed, start the program from your desktop shortcut.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-01.png" class="img-fluid"></p>
+<p>Or look for it in your start menu</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-02.png" class="img-fluid">You may get a message like this, it only affects some features you don’t need.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-03.png" class="img-fluid"></p>
+<p>N.B - on some versions of windows you might get a different message - select ‘Allow Access’ if you have administrative rights or else click ‘keep blocking’ or ‘cancel’.</p>
+<p>You should now see the main screen</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-04.png" class="img-fluid"></p>
+<p>Now you need to tell your computer where to connect to. On a new installation the Session dialog (image below) will load automatically and you can start filling it up as shown below. On an existing installation of X2Go, you will need to Click on the ‘new session’ icon to set up a new connection.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-05.png" class="img-fluid"></p>
+<p>Enter the information as higlighted above. Make sure you use the IP address you copied earlier and use an appropriate name. If you decide to use the <em>Key</em> Pair, then click the <em>Try auto login</em> checkbox as well. If not using a key Pair, you can omit those two fields.</p>
+<p>Once this has been done we need to change the display settings so you can work comfortably at the correct screen resolution.</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-06.png" class="img-fluid"></p>
+<p>Select the ‘Input/Output’ tab at the top and change the display to use the <em>Fullscreen</em> display as shown below. You may instead want to <em>Use whole display</em> instead.:</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-07.png" class="img-fluid"></p>
+<p>Once completed, click on OK. Your screen should now look like this:<br>
+<img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-08.png" class="img-fluid"></p>
+<p>Click anywhere in the <strong>white</strong> area. The first time you connect to your instance (or if the IP address changes after a reboot) you will see a message like:</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-09.png" class="img-fluid"></p>
+<p>Click Yes. If using a key-pair authentication, you will be connected automatically. If you have opted for password based authentication, then enter the password you chose when creating the crypt-sha512 hash.</p>
+</section>
+</section>
+<section id="managing-your-openstack-instances" class="level2">
+<h2 class="anchored" data-anchor-id="managing-your-openstack-instances">Managing Your OpenStack Instances</h2>
+<p>This section contains some instructions on how to manage you OpenStack instances.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you’re not working on the course it is important and considerate to turn off your instance to avoid using unnecessary resource. If your instance is running, even if you are not doing anything on it, it will be using resource and may hinder others using the resources.</p>
+</div>
+</div>
+<section id="find-your-instance" class="level3">
+<h3 class="anchored" data-anchor-id="find-your-instance">Find your instance:</h3>
+<p>Log onto the <a href="https://stack.exeter.ac.uk/dashboard/project/instances/">OpenStack console</a> and find your instance. Click on <em>Compute - Instances</em> and if you cannot find your instance easily, use the filter button.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/manage_001.jpg" class="img-fluid figure-img"></p>
+<figcaption>search for your instance</figcaption>
+</figure>
+</div>
+</section>
+<section id="stopping-your-instance" class="level3">
+<h3 class="anchored" data-anchor-id="stopping-your-instance">Stopping Your Instance:</h3>
+<p>If you wish to keep your data, use the ‘Shut Off instance’ option. In this state the data written to disk will be preserved, but the instance will be ‘off’. It is the equivalent of turning off a computer.</p>
+<p>Use the dropdown next to your instance and select “Shut Off Instance” (near the bottom)</p>
+<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-shutoff-1.png" class="img-fluid"></p>
+<p>You will be asked to confirm - Double check it is the instance you intend to shut down.</p>
+</section>
+<section id="restarting-your-instance" class="level3">
+<h3 class="anchored" data-anchor-id="restarting-your-instance">Restarting Your Instance:</h3>
+<p>If the status of your instance is Shutoff - click Start Instance.</p>
+<p>Double check the IP address of your instance as it may change - you will need to use the new IP address to connect to you instance. In X2Go click on the drop down arrow to get the menu of options.<br>
+<img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/x2go-session-prefs-1.png" class="img-fluid"></p>
+</section>
+<section id="deleting-an-instance." class="level3">
+<h3 class="anchored" data-anchor-id="deleting-an-instance.">Deleting an instance.</h3>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Note:</strong> this will destroy all work done to date.</p>
+</div>
+</div>
+<p>When you’re completely finished done with the workshop, click the drop-down menu next to your instance and select ‘Delete Instance’. It will ask you to confirm - You can then watch the status change from ‘shutting down’ to Deleted’.</p>
+</section>
+<section id="placeholder-for-end" class="level3">
+<h3 class="anchored" data-anchor-id="placeholder-for-end">Placeholder for end</h3>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <category>HPC</category>
+  <category>OpenStack</category>
+  <category>Virtual Machine</category>
+  <guid>https://exeter-data-analytics.github.io/posts/intro_to_openstack/</guid>
+  <pubDate>Sun, 15 Jun 2025 23:00:00 GMT</pubDate>
+</item>
 <item>
   <title>intRos: Research Computing</title>
   <dc:creator>Dr. Stephen Lang</dc:creator>
@@ -765,1356 +2142,6 @@ font-style: inherit;"># PCA &lt;- gm.prcomp(Y.gpa$coords)</span></span></code></
   <category>tpsDig</category>
   <guid>https://exeter-data-analytics.github.io/posts/intro_to_geometric_morphometrics/</guid>
   <pubDate>Tue, 29 Apr 2025 23:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>intRos: Introduction to OpenStack</title>
-  <dc:creator>MD Sharma</dc:creator>
-  <dc:creator>Stephen Lang</dc:creator>
-  <link>https://exeter-data-analytics.github.io/posts/intro_to_openstack/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="learning-objectives" class="level1">
-<h1>Learning objectives</h1>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>By the end of this workshop you will be expected to:</strong></p>
-<ul>
-<li>Log into the UoE OpenStack Console and start your instance of the appropriate workshop.</li>
-<li>Log in to the OpenStack instance from your own computer.</li>
-<li>Be ready to start the tutorials at your own pace.</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="outline" class="level1">
-<h1>Outline</h1>
-<p>This course will give you an introduction into the Openstack Cloud Environment. OpenStack allows you to set up a private computer within the University’s Advanced Research Computing ecosystem. <a href="https://www.openstack.org/software/">Click here to learn more about OpenStack.</a> Several other courses in our series will use OpenStack and you may later use it for your own research.</p>
-<p>We are going to introduce a lot of new concepts. Here is an overview of the 3 steps you need to start your course.</p>
-<ol type="1">
-<li><p><strong>Openstack Console</strong></p>
-<p>First log onto the OpenStack console: <a href="https://stack.exeter.ac.uk" class="uri">https://stack.exeter.ac.uk</a> Use the information in the OpenStack Console section of the provided document to log on. Follow the sections “Introduction” and “Tour of OpenStack Cloud” in the course material.</p></li>
-<li><p><strong>Create your training Instance.</strong></p>
-<p>Follow the sections “Create our Instance” in the course material. Use the information in the “OpenStack Image” section of the provided document.</p></li>
-<li><p><strong>Login to your instance.</strong></p>
-<p>The course notes explain 3 ways to connect to your instance (X2Go, PuTTy and MobaXterm). You only need to use one of these.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Managing your instance
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><a href="./manage.html">Here are some instructions</a> on how to stop and start your instances at the start of end of each session.</p>
-</div>
-</div></li>
-</ol>
-</section>
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>For this workshop we will provide an overview of the internal OpenStack provision, part of the University of Exeter’s Advanced Research Computing facilities and see how, as researchers, we can use this flexible resource to get work done efficiently.</p>
-<p>You should be able to access OpenStack and all of the functionality below via your own account to do your research. The aim of this workshop is to give you an introduction to OpenStack and Unix so you are ready to take full advantage of its capabilities!</p>
-<p>Firstly some concepts and terminology might be confusing so here is some explanation of the advantages of using OpenStack.</p>
-<section id="some-terminology" class="level2">
-<h2 class="anchored" data-anchor-id="some-terminology">Some Terminology</h2>
-<p><strong><em>An Image:</em></strong> This is the starting point or template for the course. Think of it as a master copy of the computer which contains all the programs and data that are required to follow the course. We will use it as a template to start your own Instance.</p>
-<p><strong><em>An Instance:</em></strong> Almost the first thing you will do is create your own copy of the image - we call this an instance or a virtual machine. It contains everything that was in the image plus any files you create during the course.</p>
-<p><strong><em>A Volume</em></strong> This can be thought of as an additional hard disk which you can add or remove from an instance.</p>
-<p><strong><em>Remote Desktop</em></strong> We can’t plug a monitor and keyboard into a virtual machine (instance) so we need a program on our computer which connects to the instance allows us to see and control the instance from our desktop. In the course we will use a program called X2Go.</p>
-<p><strong><em>Command Line Client</em></strong> It is not really necessary to connect to an instance using remote desktop software. It is possible to connect only via a command line interfaces - you will not get any menus, icons images - you will only be able to type commands to tell the instance what you want to do.</p>
-</section>
-<section id="why-use-virtual-machines" class="level2">
-<h2 class="anchored" data-anchor-id="why-use-virtual-machines">Why Use Virtual Machines?</h2>
-<p>Instead of relying on dedicated physical hardware for every task, <strong>virtual machines (VMs)</strong> offer a highly flexible and efficient alternative. Imagine a scenario where you have a set number of powerful physical computers. Rather than assigning one computer to each user, VMs allow you to <strong>pool the resources</strong> of these physical machines and then divide them into multiple isolated virtual environments.</p>
-<p>This approach offers significant advantages:</p>
-<ul>
-<li><p><strong>Optimal Resource Utilization:</strong> Physical machines often sit idle or are underutilized. VMs allow you to share resources like disk space, memory, and processors among many virtual instances. This means you can run more virtual machines than you have physical ones, making the most of your hardware. When a VM isn’t heavily used, its resources can be dynamically allocated to other, more active VMs.</p></li>
-<li><p><strong>Cost and Environmental Benefits:</strong> By maximizing hardware utilization, you can reduce the number of physical servers needed. This translates to lower initial purchasing costs, reduced energy consumption for operation and cooling, and a smaller physical footprint. This makes virtual machines a <strong>greener option</strong> in many cases, contributing to sustainability efforts.</p></li>
-</ul>
-<section id="the-power-of-full-control" class="level3">
-<h3 class="anchored" data-anchor-id="the-power-of-full-control">The Power of Full Control</h3>
-<p>One of the most compelling reasons to use virtual machines is the <strong>full control you gain over your environment</strong>. Each virtual machine acts like an independent computer, allowing you to configure and customize it precisely to your needs.</p>
-<p>Here’s how this translates into practical benefits:</p>
-<ul>
-<li><p><strong>Instant Provisioning and Customization:</strong> You can quickly launch new virtual machines with a wide variety of pre-configured <strong>machine images</strong>. These images can range from basic operating systems to specialized environments equipped with specific software for scientific modeling, data analysis, or development. This eliminates the need for lengthy manual installations and configurations.</p></li>
-<li><p><strong>Share and Collaborate with Ease:</strong> If you’ve developed a specific computational environment or analysis workflow, you can create and share your own VM images. This allows collaborators to instantly access and replicate your setup, ensuring consistency and simplifying the sharing of complex projects.</p></li>
-<li><p><strong>Dynamic Resource Scalability:</strong> Need more storage or processing power for a task? With VMs, you can often <strong>add storage on-the-fly</strong> by attaching virtual volumes, or <strong>increase processing power and RAM with just a few clicks</strong>. This agility means you can adapt your environment as your computational demands change, without the need for physical hardware upgrades or downtime.</p></li>
-<li><p><strong>Flexible Testing and Development:</strong> VMs are invaluable for researchers. You can easily create a machone to test the inner workings of the code you are developing before deploying them to larger, more complex systems. This isolated testing environment prevents conflicts and ensures smooth transitions.</p></li>
-</ul>
-<p>Essentially, virtual machines empower you to create, modify, and manage your computational environment with unparalleled flexibility, giving you complete command over your digital workspace.</p>
-<p>Let’s go to the next section and learn about the OpenStack Console.</p>
-</section>
-</section>
-<section id="logging-into-the-console" class="level2">
-<h2 class="anchored" data-anchor-id="logging-into-the-console">Logging Into the Console</h2>
-<p>In addition to being extremely comprehensive, the Exeter OpenStack cloud has a relatively easy (but detailed!) interface for interacting with its offerings. All you have to do is log in via a web-browser and most of the functionality of the is available for you and relatively easy to use.</p>
-<p>To get started go to the following URL and login with your University of Exeter username (in the format of <em>user123</em>) the domain (exeter.ac.uk), and the password you use when logging onto your university resources.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We have set up a single workshop project which we will be using for training. Please do <strong>NOT</strong> abuse this project and do <strong>NOT</strong> put any personal, confidential or important data on the machines you will set-up during the training. You will all log in to the same management console and will be able to see machines which your friends and colleagues on the course will start.</p>
-</div>
-</div>
-<section id="httpsstack.exeter.ac.uk" class="level4">
-<h4 class="anchored" data-anchor-id="httpsstack.exeter.ac.uk"><a href="https://stack.exeter.ac.uk/" class="uri">https://stack.exeter.ac.uk/</a></h4>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-login-01.png" class="img-fluid"></p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This resource is only accessible within the University of Exeter network. So, if you are accessing this workshop from home or anywhere outside the campuses, you will need to connect to the University VPN service to be able to access the system. If using WiFi on campus, please use Eduroam or UoE_Secure only.</p>
-</div>
-</div>
-<p>Once logged in, you will see a web-page that looks similar to this:</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-01.png" class="img-fluid"></p>
-<p>As a first step - let’s associate ourselves with the correct project. This is specially important for all users who may have access to multiple “projects” associated with their research groups. In this instance, please click on the <em>Project</em> dropdown and select <em>ARC_Intro_Penryn - Workshop</em>&nbsp;as your project. If done correctly, you should see a tick mark next to the selected project, as illustrated below.</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/images/clipboard-739322012.png" class="img-fluid"></p>
-<p>We can now take a look at the various tabs. These include:</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Instances
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This is the list of virtual machines that have been created.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Compute
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The service OpenStack is known for. It enables you to create Linux and Windows Virtual machines. Best of all their computational and/or disk capacity can be increased or decreased at the click of a button! This section has most of the things we need for this course.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Volumes
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A storage unit. These can be created and attached to any compute which you have running. Ideal for moving large amounts of data between machines. Think of it as a removal hard drive which you can attach to any machine.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Images
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>These are the templates from which you create instances.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Object store
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This is another type of storage, but is relatively slow. It is ideal for archive or when storing large files (i.e.&nbsp;several Gb).However, it is currently disabled on the system. if you want to know more about it, please as your Research IT support team for assistance.</p>
-</div>
-</div>
-<p>Click on “Compute” and then “Overview” at the top left.</p>
-<p>On this page you’ll get a summary of the state for your account. You can see an example below.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Note that we are using a shared project where you’ll also see everyone else’s instances. If you were using your own <em>project</em> (or your research group’s project), you would only see your instances (or that of your research group).</p>
-</div>
-</div>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-03.png" class="img-fluid"></p>
-<p>You see here that we have a certain allocation of resources (memory, disk space, CPUs). We can choose how to allocate these to accomplish our scientific goals. For instance, we may need one very large machine with lots of resource to do a single task (e.g.&nbsp;a genome assembly). Or we may want lots of smaller machines, each doing a small task (e.g.&nbsp;a webserver and a database server). We may want half the machines running Unix and the other half running Windows. The point is, <strong><em>we</em></strong> are in control of the compute and can choose what suits <strong><em>us</em></strong> best and it can all be done, by us at the touch of a button.</p>
-<p>In the example above, we have been allocated up-to 32 instances and a total of 32 cores with roughly 60GB of RAM so that each of the workshop attendees can spin up a virtual machine with 1<em>vCPU and 2GB of RAM.</em></p>
-<p>Click on “Compute” and then “Instances” at the top left. When this tutorial was created, there were no existing instances within the workshop project, so, those of you following this tutorial within the second workshop, will see a page with <em>No items to display</em> and anyone who sign in after a few instances have been created, would see a list of instances that pre-exist at that time.<br>
-<br>
-<img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-04.png" class="img-fluid"></p>
-<p><em>Ok, so how do we actually do all this?</em> Well, from this page we can create our own servers on Exeter’s OpenStack using an image of a machine the Research IT team have created earlier for you. Servers which are created in this manner are called ‘<em>Instances</em>’. We can create as many servers as we like, start them, log-in to them, do some work, transfer data to/from them or destroy them altogether. We let the Research IT team worry about the hardware, power, cooling and maintenance - all we need to do is specify how powerful a computer we want (tiny, small, medium, large or extra-large).</p>
-<p>The reason we are using the OpenStack here is that many of you have to analyse large datasets. But you only need to cruch those datasets occasionally. In the case of high-throughput sequencing data (e.g.&nbsp;Illumina or Oxford Nanopore) you will find that your desktop PC may not be powerful enough to cope with the data. Also installing and configuring many pieces of software (often written by other scientists), is frequently painful as they often require other programs (also often written by other scientists) to be installed as well. Factor in some obscure incompatibility and you can quickly end up in a situation where two programs that you need refuse to co-exist. With OpenStack, you can just start a server instance based on an image created by someone else who has already done all the hard work of installation and configuration. You may also want to use an existing docker- or singularity- container within such an instance to carry out your workflow.</p>
-<p>So let’s get on and launch our first instance!</p>
-</section>
-</section>
-<section id="create-your-instance" class="level2">
-<h2 class="anchored" data-anchor-id="create-your-instance">Create your Instance</h2>
-<p>In this section of the workshop we will create our Instance in Exeter’s OpenStack system.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you have an instance from a previous session do not create another one. Please go to the Managing Your OpenStack Instances and restart your existing instance.</p>
-<p>Otherwise let’s get on and launch the instance we need for our workshop !</p>
-</div>
-</div>
-<p>Click on the “Launch Instance” button.</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-05.png" class="img-fluid"></p>
-<p>Give your instance your name (e.g.&nbsp;“Jane Doe’s Instance”)</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-06.png" class="img-fluid"></p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Remember that everyone is sharing the same project- so you will need to be identify your instance from everyone elses. The example above (“<em>my_first_VM</em>”) may be suitable for your own project, but it is not appropriate in a shared project.</p>
-</div>
-</div>
-<p>Click ‘Next’ and proceed to choose the image of the machine you want to replicate. In this example, we will be using the Ubuntu 22.04 server image. Click on the highlighted arrow across from the <em>“ubuntu_22.04”</em> name and input a <em>Volume Size</em> of 20GB. Make sure to toggle the <em>Delete Volume on Instance Delete</em> option in this case.</p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>When you are making your own VMs, within your own research project, you may chose to use different options based on your needs. Here, we have limited resources available for the workshop, so we need to make sure that everyone follows the instructions.</p>
-</div>
-</div>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-07.png" class="img-fluid"></p>
-<p>Click Next and select the desired flavour for this instance. Here, we would like you to select the <em>ARC_Intro_Penryn - small</em> flavour that will allow you to launch an instance with 1vCPU and 2GB of RAM. When you register your own project for access to OpenStack, you will see additional options for these flavours.</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-08.png" class="img-fluid"></p>
-<section id="security-groups" class="level3">
-<h3 class="anchored" data-anchor-id="security-groups">Security Groups</h3>
-<p>Click ‘Next’ to move on through Networks and Network Ports section and arrive at the Security Groups section. Here, click on the default security group to expand it, and to have a look at what has already been allowed in the firewall.</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-09.png" class="img-fluid"></p>
-<p>Here, we can see that SSH (port 22) has been allowed over the <em>tcp</em> protocol from <em>anywhere (0.0.0.0/0)</em>. That is all we need to begin with, so we can go ahead and click Next.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Security Groups
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you are planning on using additional software that may need some ports to be opended up, then you can create your own security group with relevant ports allowed. For e.g.&nbsp;if you want to use VNC type software for remote desktop access to your instance, you will need to allow port 5901 etc. over tcp.</p>
-</div>
-</div>
-</section>
-<section id="key-pairs-and-cloud-config" class="level3">
-<h3 class="anchored" data-anchor-id="key-pairs-and-cloud-config">Key Pairs and Cloud Config</h3>
-<p>Setting up virtual machine (VM) instances in a cloud environment like OpenStack requires robust security measures and efficient configuration methods. This section details the critical steps involved in establishing secure access using SSH keypairs and automating initial VM setup with cloud-init, providing a foundational understanding for workshop participants.</p>
-<p>Click ‘Next’ to move into the Key Pair section. OpenStack leverages SSH keypairs to secure VM instances at their launch time. When an instance is provisioned, OpenStack injects the user’s public key into the appropriate authorized_keys file on the new VM, making it ready for secure SSH access using the corresponding private key held by the user.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Private Key
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The private key, which is the secret component, must remain securely on the user’s local workstation and should never be uploaded to the cloud provider. This distinction is crucial for maintaining the integrity of the security model.</p>
-</div>
-</div>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-10.png" class="img-fluid">A key pair allows you to SSH into your newly created instance. You may select an existing key pair, import a key pair, or generate a new key pair. Click on the <em>Create Key Pair</em> button highlighted above and then enter a <em>Key Pair Name</em> and <em>Key Type</em> in the pop-up box that appears next. Key Pairs are how you login to your instance after it is launched.</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-11.png" class="img-fluid"></p>
-<p>Choose a key pair name you will recognize. Here we chose <em>user123_computer_name_projectX</em> to remind ourselves what the default username as and which VM this key is associated with. Names may only include alphanumeric characters, spaces, or dashes. Once the Key Pair is generated, you will need to copy the Private Key to your clipborad and save it in a safe space. Do not forget where you keep this key - you will not be able to login to the instance without this key pair if you have not enabled any other login mechanism.</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-12.png" class="img-fluid"></p>
-<p>Once copied, click <em>Done.</em> Open a text editor like Notepad++, Context or similar and save this SSH Key. The image below shows the successfully created <em>Key Pair.</em> On most browsers, the key pair will automatically get downloaded when you click done as well.</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-13.png" class="img-fluid"></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Key Pair vs Password
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The choice of authentication method for remote access significantly impacts the security and operational efficiency of cloud environments. While password-based authentication is familiar, SSH keypair authentication offers substantial advantages, making it the preferred standard in cloud platforms like OpenStack.<br>
-<br>
-Password authentication relies on a user remembering a secret string (the password) and providing it to the server for verification.<br>
-<br>
-SSH keypair authentication provides a superior level of cryptographic strength that even extremely long, complex passwords cannot match. The public keys, generated using sophisticated mathematical algorithms, are virtually impossible to guess or brute-force, offering a robust defense against common attack vectors - as long as un-authorized users do not gain access to your private key.</p>
-</div>
-</div>
-<p>Click Next to move on to the <em>Configuration</em> section<em>.</em></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Cloud Config
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Beyond establishing secure access, automating the initial configuration of virtual machines is crucial for efficiency, consistency, and scalability in cloud environments. Cloud-init serves as the industry-standard tool for this purpose.</p>
-</div>
-</div>
-<p>When a new cloud instance is deployed, cloud-init takes initial configuration data, often referred to as “user-data” or “vendor-data,” and automatically applies these settings during the instance’s first boot process. This functions much like a dynamic to-do list that cloud-init executes, configuring the VM according to predefined instructions. The significant advantage of cloud-init lies in its ability to reuse these configuration instructions across numerous deployments, consistently producing reliable results.</p>
-<p>Cloud-init is capable of handling a wide array of initial configuration tasks. These include essential activities such as setting the hostname, configuring network interfaces, creating and managing user accounts, installing necessary software packages, and executing custom scripts. This comprehensive automation streamlines the deployment process, ensuring that all cloud instances are configured uniformly, thereby minimizing the potential for human error.</p>
-<p>Below are two minimal cloud-init script examples to configure essentials such as adding a local user account with ability to install research related applications (e.g.&nbsp;sudo apt install package-name). This will be all you really need for most use cases, but for additional configuration options, please refer to the <a href="https://cloudinit.readthedocs.io/en/latest/">cloud-init documentation</a>. Amend the settings as required to look as below (changing&nbsp;the ‘<strong>user123</strong>’, ‘<strong>User OneTwoThree</strong>’ and <strong>hashed_passwd</strong> lines):</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Option 1
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Use this config if you only want key-pair authentication:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#cloud-config</span></span>
-<span id="cb1-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Use this config if you only want key-pair authentication.</span></span>
-<span id="cb1-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Change the default user to the name of my choice.</span></span>
-<span id="cb1-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># and give it sudo rights.</span></span>
-<span id="cb1-5"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">system_info</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb1-6"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">default_user</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb1-7"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">name</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> user123</span></span>
-<span id="cb1-8"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">gecos</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Your Name"</span></span>
-<span id="cb1-9"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">groups</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">[</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">sudo</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">]</span></span>
-<span id="cb1-10"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> ALL=(ALL) NOPASSWD:ALL</span></span>
-<span id="cb1-11"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">shell</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> /bin/bash</span></span>
-<span id="cb1-12"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Update system package database</span></span>
-<span id="cb1-13"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">package_update</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">true</span></span>
-<span id="cb1-14"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Upgrade all packages to the latest versions</span></span>
-<span id="cb1-15"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">package_upgrade</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">true</span></span>
-<span id="cb1-16"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Install specified basic tools using the package manager</span></span>
-<span id="cb1-17"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">packages</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb1-18"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> openssh-server</span></span>
-<span id="cb1-19"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> nload</span></span>
-<span id="cb1-20"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> htop</span></span>
-<span id="cb1-21"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> vim</span></span>
-<span id="cb1-22"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> multitail</span></span>
-<span id="cb1-23"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> tmux</span></span>
-<span id="cb1-24"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> r-base</span></span>
-<span id="cb1-25"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> gdebi-core</span></span>
-<span id="cb1-26"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> x2goserver</span></span>
-<span id="cb1-27"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> x2goserver-xsession</span></span>
-<span id="cb1-28"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> xfce4</span></span>
-<span id="cb1-29"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> xfce4-goodies</span></span>
-<span id="cb1-30"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Install Mamba using the Miniforge distribution</span></span>
-<span id="cb1-31"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">runcmd</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb1-32"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> echo "Starting Miniforge installation..."</span></span>
-<span id="cb1-33"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> wget -O /tmp/Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"</span></span>
-<span id="cb1-34"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> chmod +x /tmp/Miniforge3.sh</span></span>
-<span id="cb1-35"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> /tmp/Miniforge3.sh -b -p /opt/miniforge3</span></span>
-<span id="cb1-36"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> echo "Miniforge installation complete. Initializing conda for all users..."</span></span>
-<span id="cb1-37"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> /opt/miniforge3/bin/conda init bash --system</span></span>
-<span id="cb1-38"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> echo "Conda initialization for all users complete. Users may need to log out and back in."</span></span>
-<span id="cb1-39"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> echo "Installing RStudio Server Open Source v2025.05.1+513 ..."</span></span>
-<span id="cb1-40"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> wget -O /tmp/RStudio_Server.deb https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2025.05.1-513-amd64.deb</span></span>
-<span id="cb1-41"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> gdebi /tmp/RStudio_Server.deb</span></span>
-<span id="cb1-42"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> systemctl set-default graphical.target</span></span>
-<span id="cb1-43"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">power_state</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb1-44"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">delay</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span></span>
-<span id="cb1-45"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mode</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> reboot</span></span>
-<span id="cb1-46"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">message</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Rebooting instance after cloud-init completion"</span></span>
-<span id="cb1-47"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">condition</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">True</span></span></code></pre></div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Option 2
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Use this config if you want password authentication (or password authentication alongside key pair auth as an alternative shown earlier)</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#cloud-config</span></span>
-<span id="cb2-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Change the default user to the name of my choice.</span></span>
-<span id="cb2-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># and give it sudo rights.</span></span>
-<span id="cb2-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">system_info</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb2-5"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">default_user</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb2-6"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">name</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> user123</span></span>
-<span id="cb2-7"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">gecos</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Your Name"</span></span>
-<span id="cb2-8"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> ALL=(ALL) NOPASSWD:ALL</span></span>
-<span id="cb2-9"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">shell</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> /bin/bash</span></span>
-<span id="cb2-10"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lock_passwd</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">false</span></span>
-<span id="cb2-11"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ssh-import-id</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> user123</span></span>
-<span id="cb2-12"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">hashed_passwd</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> “$6$rTACxh6 ... &lt;snip&gt; ... xwWllho2N7nKq1nn1”</span></span>
-<span id="cb2-13"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># You have to keep the $6$ in front of the hashed password</span></span>
-<span id="cb2-14"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Enable password auth </span></span>
-<span id="cb2-15"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ssh_pwauth</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">True</span></span>
-<span id="cb2-16"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Update system package database</span></span>
-<span id="cb2-17"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">package_update</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">true</span></span>
-<span id="cb2-18"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Upgrade all packages to the latest versions</span></span>
-<span id="cb2-19"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">package_upgrade</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">true</span></span>
-<span id="cb2-20"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Install specified basic tools using the package manager</span></span>
-<span id="cb2-21"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">packages</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb2-22"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> openssh-server</span></span>
-<span id="cb2-23"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> nload</span></span>
-<span id="cb2-24"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> htop</span></span>
-<span id="cb2-25"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> vim</span></span>
-<span id="cb2-26"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> multitail</span></span>
-<span id="cb2-27"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> tmux</span></span>
-<span id="cb2-28"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> r-base</span></span>
-<span id="cb2-29"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> gdebi-core</span></span>
-<span id="cb2-30"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> x2goserver</span></span>
-<span id="cb2-31"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> x2goserver-xsession</span></span>
-<span id="cb2-32"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> xfce4</span></span>
-<span id="cb2-33"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> xfce4-goodies</span></span>
-<span id="cb2-34"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Install Mamba using the Miniforge distribution</span></span>
-<span id="cb2-35"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">runcmd</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb2-36"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> echo "Starting Miniforge installation..."</span></span>
-<span id="cb2-37"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> wget -O /tmp/Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"</span></span>
-<span id="cb2-38"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> chmod +x /tmp/Miniforge3.sh</span></span>
-<span id="cb2-39"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> /tmp/Miniforge3.sh -b -p /opt/miniforge3</span></span>
-<span id="cb2-40"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> echo "Miniforge installation complete. Initializing conda for all users..."</span></span>
-<span id="cb2-41"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> /opt/miniforge3/bin/conda init bash --system</span></span>
-<span id="cb2-42"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> echo "Conda initialization for all users complete. Users may need to log out and back in."</span></span>
-<span id="cb2-43"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> echo "Installing RStudio Server Open Source v2025.05.1+513 ..."</span></span>
-<span id="cb2-44"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> wget -O /tmp/RStudio_Server.deb https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2025.05.1-513-amd64.deb</span></span>
-<span id="cb2-45"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> gdebi /tmp/RStudio_Server.deb</span></span>
-<span id="cb2-46"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> systemctl set-default graphical.target</span></span>
-<span id="cb2-47"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> systemctl set-default graphical.target</span></span>
-<span id="cb2-48"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">power_state</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb2-49"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">delay</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span></span>
-<span id="cb2-50"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mode</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> reboot</span></span>
-<span id="cb2-51"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">message</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Rebooting instance after cloud-init completion"</span></span>
-<span id="cb2-52"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">condition</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">True</span></span></code></pre></div>
-</div>
-</div>
-<p>Copy paste the above script into a text editor like Notepad++, Context, Subline etc. and edit the requisite sections such as name, gecos, hashed_password etc. as needed.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Note:</strong> The ‘<strong>hashed_passwd</strong>’ string is a <strong>crypt-sha512</strong> hash (i.e., an encrypted version) of the password you will use to log in with (we advise not using your university password). Hashed passwords can be generated using a web page such as&nbsp;<a href="https://www.mkpasswd.net/index.php">https://www.mkpasswd.net</a>. You need to replace all of the ‘hashed_passwd’ field inside the double quotes with the hashed password you have generated.<br>
-<img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-14.png" class="img-fluid"></p>
-</div>
-</div>
-<p>Once you have your template ready, paste it into the <em>Customisation Script</em> section:</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-15.png" class="img-fluid"></p>
-<p>Click Next and skip over the Server Groups, Scheduler Hints and Metadata sections.</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-16.png" class="img-fluid"></p>
-<p>You have just configured an instance! Well done!<br>
-<br>
-In summary, you have given your instance a name, chosen which source machine image to base the instance on, selected the size of the instance (i.e.&nbsp;amount of memory, disk space and processor power), configured the basic apps you wanted to pre-install on it and also configured how you can access it (key-pair vs username+password).</p>
-<p>We’re ready to launch it! Click ‘Launch Instance’. At this point you wait for the instance to come online. This may take a few seconds for a small instance or about 10 minutes for an xx-large one.</p>
-<p>Below you can see an example of an instance starting up (or spawning). It is running in the University data centre. Note that we don’t need to worry or think about the underlying hardware the system is running on. That’s all taken care of for us by OpenStack and the Research IT team.</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-17.png" class="img-fluid"></p>
-<p>Once it turns <strong>white</strong> and the ‘Status’ changes to ‘Active’, you should copy the IP address to the clipboard.</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-18.png" class="img-fluid"></p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Note</strong>: above is an example where the IP address is <em>10.121.4.147</em> (yours will be different). We will need it in a moment to connect via X2Go remote desktop. Make sure you copy the whole address and nothing but the address.</p>
-</div>
-</div>
-<p><strong>Congratulations you have ‘configured’ and ‘turned on’ a new computer to use for the rest of this workshop.</strong></p>
-<p>Next, you will learn how to connect to it from your PC. However, before you proceed any further - take a 15 minute break. The cloud-init script would be working in the background to finish installing software and configuring your machine during that time.</p>
-{{&lt; countdown "15:00" &gt;}}
-</section>
-</section>
-<section id="connect-to-your-instance" class="level2">
-<h2 class="anchored" data-anchor-id="connect-to-your-instance">Connect to your instance</h2>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Prerequisite
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download and install <a href="https://wiki.x2go.org">X2Go</a> alongside a tool like Putty, MobaXTerm or Termius on your computer.<br>
-<br>
-The most commonly used, but basic program is <a href="https://www.putty.org/">PuTTy</a>.<br>
-<br>
-The one we recommend for Windows users is MobaXTerm - it provides all the important <strong>remote network tools</strong> (SSH, X11, RDP, VNC, FTP, MOSH, …) and <strong>Unix commands</strong> (bash, ls, cat, sed, grep, awk, rsync, …) to Windows desktop, in a <strong>single portable exe file</strong> which works out of the box.<br>
-<br>
-<a href="https://termius.com/">Termius</a> is another recommended SSH client that works on macOS, Windows, Linux, iOS and Andriod.<br>
-<br>
-End-Users are responsible for ensuring that they comply with the license conditions for any of these software.</p>
-</div>
-</div>
-<p>Check the IP address of your instance and copy it to your clipboard.</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-console-18.png" class="img-fluid"></p>
-<section id="command-line-connection" class="level3">
-<h3 class="anchored" data-anchor-id="command-line-connection">Command Line Connection</h3>
-<p>The simplest way you can connect to your instance is using SSH (secure shell). If you are happy using the command line only, there are some other software that have additional functionality, and look better. There are many choices - just Google ‘windows ssh client’ or ‘OSX SSH Client’</p>
-<p>The most commonly used, but basic program is <a href="https://www.putty.org/">PuTTy</a>. The one we recommend for Windows users is MobaXTerm - it provides all the important <strong>remote network tools</strong> (SSH, X11, RDP, VNC, FTP, MOSH, …) and <strong>Unix commands</strong> (bash, ls, cat, sed, grep, awk, rsync, …) to Windows desktop, in a <strong>single portable exe file</strong> which works out of the box.</p>
-<p><a href="https://termius.com/">Termius</a> is another recommended SSH client that works on macOS, Windows, Linux, iOS and Andriod.</p>
-<p>We do not recommend using Git Bash for this. Git Bash is an application for Microsoft Windows environments which provides an emulation layer for a Git command line experience. It does not have all the functionality one would usually need when accessing servers in this manner.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you are using a native terminal on MacOS or Unix, you could initiate a command line connection using:</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ssh</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-i</span> /path/to/your-private-key.pem user123@<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span>vm-ip-address<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span></span></code></pre></div>
-</div>
-</div>
-</section>
-<section id="graphical-connection-using-x2go" class="level3">
-<h3 class="anchored" data-anchor-id="graphical-connection-using-x2go">Graphical connection using X2Go</h3>
-<p>For some modules you will need a full graphical desktop connection. This is a bit more complicated to set up, but will give you a full graphical desktop environment to work on. For this we use <a href="https://wiki.x2go.org/doku.php">X2go</a></p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-How to install X2Go
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><a href="https://wiki.x2go.org/doku.php/doc:installation:x2goclient">See here for detailed instructions</a> on how to install X2Go client for your operating system. Note that you may need privilege escalation (a.k.a admin rights) on your machine to do this. If you have a University provided Windows laptop, you may also look for X2Go within the <strong>Company Portal</strong> for easy installation.</p>
-<p>If you are on a University provided Mac running OSX, look for X2Go within the UoE <strong>Self Service app</strong> that has been pre-installed on your Mac device.</p>
-</div>
-</div>
-<p>Once X2Go is installed, start the program from your desktop shortcut.</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-01.png" class="img-fluid"></p>
-<p>Or look for it in your start menu</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-02.png" class="img-fluid">You may get a message like this, it only affects some features you don’t need.</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-03.png" class="img-fluid"></p>
-<p>N.B - on some versions of windows you might get a different message - select ‘Allow Access’ if you have administrative rights or else click ‘keep blocking’ or ‘cancel’.</p>
-<p>You should now see the main screen</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-04.png" class="img-fluid"></p>
-<p>Now you need to tell your computer where to connect to:</p>
-<p>Click on the ‘new session’ icon to set up a new connection [ on a new installation you may not need to perform this step - the Session dialog will load automatically - if it doesn’t …..]<img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-05.png" class="img-fluid"></p>
-<p>Enter the information as higlighted above. Make sure you use the IP address you copied earlier and use an appropriate name. Once this has been done we need to change the display settings so you can work comfortably at the correct screen resolution.</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-06.png" class="img-fluid"></p>
-<p>Select the ‘Input/Output’ tab at the top and change the display to use the <em>Fullscreen</em> display as shown below. You may instead want to <em>Use whole display</em> instead.:</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-07.png" class="img-fluid"></p>
-<p>Once completed, click on OK. Your screen should now look like this:<br>
-<img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-08.png" class="img-fluid"></p>
-<p>Click anywhere in the <strong>white</strong> area. The first time you connect to your instance (or if the IP address changes after a reboot) you will see a message like:</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-09.png" class="img-fluid"></p>
-<p>Click Yes. If using a key-pair authentication, you will be connected automatically. If you have opted for password based authentication, then enter the password you chose when creating the crypt-sha512 hash.</p>
-</section>
-</section>
-<section id="managing-your-openstack-instances" class="level2">
-<h2 class="anchored" data-anchor-id="managing-your-openstack-instances">Managing Your OpenStack Instances</h2>
-<p>This section contains some instructions on how to manage you OpenStack instances.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>When you’re not working on the course it is important and considerate to turn off your instance to avoid using unnecessary resource. If your instance is running, even if you are not doing anything on it, it will be using resource and may hinder others using the resources.</p>
-</div>
-</div>
-<section id="find-your-instance" class="level3">
-<h3 class="anchored" data-anchor-id="find-your-instance">Find your instance:</h3>
-<p>Log onto the <a href="https://stack.exeter.ac.uk/dashboard/project/instances/">OpenStack console</a> and find your instance. Click on <em>Compute - Instances</em> and if you cannot find your instance easily, use the filter button.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/manage_001.jpg" class="img-fluid figure-img"></p>
-<figcaption>search for your instance</figcaption>
-</figure>
-</div>
-</section>
-<section id="stopping-your-instance" class="level3">
-<h3 class="anchored" data-anchor-id="stopping-your-instance">Stopping Your Instance:</h3>
-<p>If you wish to keep your data, use the ‘Shut Off instance’ option. In this state the data written to disk will be preserved, but the instance will be ‘off’. It is the equivalent of turning off a computer.</p>
-<p>Use the dropdown next to your instance and select “Shut Off Instance” (near the bottom)</p>
-<p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-shutoff-1.png" class="img-fluid"></p>
-<p>You will be asked to confirm - Double check it is the instance you intend to shut down.</p>
-</section>
-<section id="restarting-your-instance" class="level3">
-<h3 class="anchored" data-anchor-id="restarting-your-instance">Restarting Your Instance:</h3>
-<p>If the status of your instance is Shutoff - click Start Instance.</p>
-<p>Double check the IP address of your instance as it may change - you will need to use the new IP address to connect to you instance. In X2Go click on the drop down arrow to get the menu of options.<br>
-<img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/x2go-session-prefs-1.png" class="img-fluid"></p>
-</section>
-<section id="deleting-an-instance." class="level3">
-<h3 class="anchored" data-anchor-id="deleting-an-instance.">Deleting an instance.</h3>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Note:</strong> this will destroy all work done to date.</p>
-</div>
-</div>
-<p>When you’re completely finished done with the workshop, click the drop-down menu next to your instance and select ‘Delete Instance’. It will ask you to confirm - You can then watch the status change from ‘shutting down’ to Deleted’.</p>
-</section>
-<section id="placeholder-for-end" class="level3">
-<h3 class="anchored" data-anchor-id="placeholder-for-end">Placeholder for end</h3>
-
-
-</section>
-</section>
-</section>
-
- ]]></description>
-  <category>HPC</category>
-  <category>OpenStack</category>
-  <category>Virtual Machine</category>
-  <guid>https://exeter-data-analytics.github.io/posts/intro_to_openstack/</guid>
-  <pubDate>Fri, 07 Mar 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Integrating GitHub Copilot with RStudio and VScode</title>

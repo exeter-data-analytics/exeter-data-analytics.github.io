@@ -10,10 +10,10 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/intro_to_openstack/index.html",
       "/posts/intro_to_research_computing/index.html",
       "/posts/intro_to_research_computing/tips.html",
       "/posts/intro_to_geometric_morphometrics/index.html",
-      "/posts/intro_to_openstack/index.html",
       "/posts/github_copilot_integration/index.html",
       "/posts/intro_to_tidy_data_manipulation/index.html",
       "/posts/install_rstudio_git/index.html",

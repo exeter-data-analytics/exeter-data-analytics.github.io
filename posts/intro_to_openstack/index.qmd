@@ -6,7 +6,7 @@ author:
   - name: Stephen Lang
     affiliation: University of Exeter
 description: "Introduction to Openstack at the University of Exeter"
-date: "2025-03-07"
+date: "2025-06-16"
 date-modified: last-modified
 categories: [HPC, OpenStack, Virtual Machine]
 execute:
@@ -350,7 +350,6 @@ system_info:
    sudo: ALL=(ALL) NOPASSWD:ALL
    shell: /bin/bash
    lock_passwd: false
-   ssh-import-id: user123
    hashed_passwd: “$6$rTACxh6 ... <snip> ... xwWllho2N7nKq1nn1”
 # You have to keep the $6$ in front of the hashed password
 # Enable password auth 
@@ -396,7 +395,7 @@ power_state:
 ```
 :::
 
-Copy paste the above script into a text editor like Notepad++, Context, Subline etc. and edit the requisite sections such as name, gecos, hashed_password etc. as needed.
+Copy paste the above script into a text editor like Notepad++, Context, Sublime etc. and edit the requisite sections such as name, gecos, hashed_password etc. as needed.
 
 ::: callout-note
 **Note:** The ‘**hashed_passwd**’ string is a **crypt-sha512** hash (i.e., an encrypted version) of the password you will use to log in with (we advise not using your university password). Hashed passwords can be generated using a web page such as [https://www.mkpasswd.net](https://www.mkpasswd.net/index.php). You need to replace all of the ‘hashed_passwd’ field inside the double quotes with the hashed password you have generated.\
@@ -461,17 +460,29 @@ The simplest way you can connect to your instance is using SSH (secure shell). I
 
 The most commonly used, but basic program is [PuTTy](https://www.putty.org/). The one we recommend for Windows users is [MobaXTerm](#0) - it provides all the important **remote network tools** (SSH, X11, RDP, VNC, FTP, MOSH, ...) and **Unix commands** (bash, ls, cat, sed, grep, awk, rsync, ...) to Windows desktop, in a **single portable exe file** which works out of the box.
 
-[Termius](https://termius.com/) is another recommended SSH client that works on macOS, Windows, Linux, iOS and Andriod.
+[Termius](https://termius.com/) is another recommended SSH client that works on macOS, Windows, Linux, iOS and Andriod. Check out these detailed instructions on how to connect via SSH with an [SSH Password](https://termius.com/documentation/connect-via-ssh-with-a-password) or [SSH Key](https://termius.com/documentation/connect-via-ssh-with-an-ssh-key).
 
+::: callout-warning
 We do not recommend using Git Bash for this. Git Bash is an application for Microsoft Windows environments which provides an emulation layer for a Git command line experience. It does not have all the functionality one would usually need when accessing servers in this manner.
+:::
 
 ::: callout-tip
 If you are using a native terminal on MacOS or Unix, you could initiate a command line connection using:
 
 ``` bash
-ssh -i /path/to/your-private-key.pem user123@<vm-ip-address>
+ssh -i /path/to/your-private-key.key user123@<vm-ip-address>
 ```
 :::
+
+### Console connection using the browser
+
+Within your OpenStack web console, navigate to the [instance list](https://stack.exeter.ac.uk/dashboard/project/instances/) and click on your instance in the list. In this example, we will click on the *keypair_only* instance.
+
+![](img/openstack-connect-10.png)
+
+In the next window click on the *Console* tab. Here, you will be able to see the main GUI of your computer. If you used the cloud-init [Option 2] - then you will be able to login at this interface using the password you had used. If you used [Option 1] during the cloud-init stage, then you will not be able to login using this method as you would not be aware of correct password to use. I this case, you would need to reset the user password (covered elsewhere) to be able to use the method described here.
+
+![](img/openstack-connect-11.png)
 
 ### Graphical connection using X2Go
 
@@ -501,11 +512,13 @@ You should now see the main screen
 
 ![](img/openstack-connect-04.png)
 
-Now you need to tell your computer where to connect to:
+Now you need to tell your computer where to connect to. On a new installation the Session dialog (image below) will load automatically and you can start filling it up as shown below. On an existing installation of X2Go, you will need to Click on the ‘new session’ icon to set up a new connection.
 
-Click on the ‘new session’ icon to set up a new connection \[ on a new installation you may not need to perform this step - the Session dialog will load automatically - if it doesn’t …..\]![](img/openstack-connect-05.png)
+![](img/openstack-connect-05.png)
 
-Enter the information as higlighted above. Make sure you use the IP address you copied earlier and use an appropriate name. Once this has been done we need to change the display settings so you can work comfortably at the correct screen resolution.
+Enter the information as higlighted above. Make sure you use the IP address you copied earlier and use an appropriate name. If you decide to use the *Key* Pair, then click the *Try auto login* checkbox as well. If not using a key Pair, you can omit those two fields.
+
+Once this has been done we need to change the display settings so you can work comfortably at the correct screen resolution.
 
 ![](img/openstack-connect-06.png)
 
