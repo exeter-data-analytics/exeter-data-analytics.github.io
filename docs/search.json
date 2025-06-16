@@ -761,5 +761,19 @@
     "title": "intRos: Introduction to OpenStack",
     "section": "3.7 Specific Use Cases",
     "text": "3.7 Specific Use Cases\nHere, we have configured a virtual machine that has an installation of RStudio Server (Open Source Edition) and it also has XRDP (a remote desktop for Ubuntu) installed on it. In this section, we will show you how to modify your Security Groups to allow access to these applications from your laptop.\nGo to the Network tab and then to the Security Groups pane within it. Click on Manage Rules on the far right-hand side.\n\nClick on Add Rule to create the new rules we need.\n\nRStudio Server listens on tcp port 8787 by default and XRDP listens on tcp port 3389. First, let’s add a custom rule for RStudio as follows:\n\nNow, we can add another rule for RDP. This is a well known service so we can select RDP from the drop down options and click Add.\n\nFinally, the new rules should look something like this:\n\nNow, you can access your RStudio Server’s web interface at http://10.121.4.35:8787/ (substitute the IP address shown here with your own VM’s IP address.\n\n\n\n\n\n\n\nCaution\n\n\n\nNote that the RStudio Server interface requires you to use a username and password combination. So, this example will only work if you chose Option 2 in the Cloud Config section."
+  },
+  {
+    "objectID": "posts/intro_to_openstack/index.html#allowing-access-to-rstudio-server",
+    "href": "posts/intro_to_openstack/index.html#allowing-access-to-rstudio-server",
+    "title": "intRos: Introduction to OpenStack",
+    "section": "8.1 Allowing access to RStudio Server",
+    "text": "8.1 Allowing access to RStudio Server\nRStudio Server listens on tcp port 8787 by default and XRDP listens on tcp port 3389. First, let’s add a custom rule for RStudio as follows:\n\nNow, you can access your RStudio Server’s web interface at http://10.121.4.35:8787/ (substitute the IP address shown here with your own VM’s IP address).\n\n\n\n\n\n\n\nCaution\n\n\n\nNote that the RStudio Server interface requires you to use a username and password combination. So, this example will only work if you chose Option 2 in the Cloud Config section."
+  },
+  {
+    "objectID": "posts/intro_to_openstack/index.html#allowing-access-to-remote-desktop-protocol",
+    "href": "posts/intro_to_openstack/index.html#allowing-access-to-remote-desktop-protocol",
+    "title": "intRos: Introduction to OpenStack",
+    "section": "8.2 Allowing access to Remote Desktop Protocol",
+    "text": "8.2 Allowing access to Remote Desktop Protocol\nNow, we can add another rule for RDP. This is a well known service so we can select RDP from the drop down options and click Add. \nFinally, the new rules should look something like this:"
   }
 ]

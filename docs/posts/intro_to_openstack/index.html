@@ -253,7 +253,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#restarting-your-instance" id="toc-restarting-your-instance" class="nav-link" data-scroll-target="#restarting-your-instance">Restarting Your Instance:</a></li>
   <li><a href="#deleting-an-instance." id="toc-deleting-an-instance." class="nav-link" data-scroll-target="#deleting-an-instance.">Deleting an instance.</a></li>
   </ul></li>
-  <li><a href="#specific-use-cases" id="toc-specific-use-cases" class="nav-link" data-scroll-target="#specific-use-cases"><span class="header-section-number">8</span> Specific Use Cases</a></li>
+  <li><a href="#specific-use-cases" id="toc-specific-use-cases" class="nav-link" data-scroll-target="#specific-use-cases"><span class="header-section-number">8</span> Specific Use Cases</a>
+  <ul class="collapse">
+  <li><a href="#allowing-access-to-rstudio-server" id="toc-allowing-access-to-rstudio-server" class="nav-link" data-scroll-target="#allowing-access-to-rstudio-server"><span class="header-section-number">8.1</span> Allowing access to RStudio Server</a></li>
+  <li><a href="#allowing-access-to-remote-desktop-protocol" id="toc-allowing-access-to-remote-desktop-protocol" class="nav-link" data-scroll-target="#allowing-access-to-remote-desktop-protocol"><span class="header-section-number">8.2</span> Allowing access to Remote Desktop Protocol</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -603,7 +607,8 @@ Cloud Config
 </div>
 <p>When a new cloud instance is deployed, cloud-init takes initial configuration data, often referred to as “user-data” or “vendor-data,” and automatically applies these settings during the instance’s first boot process. This functions much like a dynamic to-do list that cloud-init executes, configuring the VM according to predefined instructions. The significant advantage of cloud-init lies in its ability to reuse these configuration instructions across numerous deployments, consistently producing reliable results.</p>
 <p>Cloud-init is capable of handling a wide array of initial configuration tasks. These include essential activities such as setting the hostname, configuring network interfaces, creating and managing user accounts, installing necessary software packages, and executing custom scripts. This comprehensive automation streamlines the deployment process, ensuring that all cloud instances are configured uniformly, thereby minimizing the potential for human error.</p>
-<p>Below are two minimal cloud-init script examples to configure essentials such as adding a local user account with ability to install research related applications (e.g.&nbsp;<code>sudo apt install package-name</code>). This will be all you really need for most use cases, but for additional configuration options, please refer to the cloud-init documentation. Amend the settings as required to look as below (changing&nbsp;the ‘user123’, ‘Your Name’ and hashed_passwd lines):</p>
+<p>Below are two minimal cloud-init script examples to configure essentials such as adding a local user account with ability to install research related applications (e.g.&nbsp;<code>sudo apt install package-name</code>). This will be all you really need for most use cases, but for additional configuration options, please refer to the cloud-init documentation.</p>
+<p>We recommend that you use the Option 2 example for this workflow. Amend the settings as required to look as below (changing&nbsp;the ‘<em>user123</em>’, ‘<em>Your Name</em>’ and <em>hashed_passwd</em> lines):</p>
 <div id="option-1" class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -948,12 +953,10 @@ Caution
 <p><img src="img/openstack-connect-12.png" class="img-fluid"></p>
 <p>Click on <em>Add Rule</em> to create the new rules we need.</p>
 <p><img src="img/openstack-connect-13.png" class="img-fluid"></p>
+<section id="allowing-access-to-rstudio-server" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="allowing-access-to-rstudio-server"><span class="header-section-number">8.1</span> Allowing access to RStudio Server</h2>
 <p>RStudio Server listens on tcp port 8787 by default and XRDP listens on tcp port 3389. First, let’s add a custom rule for RStudio as follows:</p>
 <p><img src="img/openstack-connect-15.png" class="img-fluid"></p>
-<p>Now, we can add another rule for RDP. This is a well known service so we can select RDP from the drop down options and click <em>Add</em>.<br>
-<img src="img/clipboard-1799424740.png" class="img-fluid"></p>
-<p>Finally, the new rules should look something like this:</p>
-<p><img src="img/clipboard-3745716289.png" class="img-fluid"></p>
 <p>Now, you can access your RStudio Server’s web interface at <a href="http://10.121.4.35:8787/" class="uri">http://10.121.4.35:8787/</a> (substitute the IP address shown here with your own VM’s IP address).</p>
 <p><img src="img/clipboard-2673567999.png" class="img-fluid"></p>
 <div class="callout callout-style-default callout-caution callout-titled">
@@ -969,8 +972,15 @@ Caution
 <p>Note that the RStudio Server interface requires you to use a username and password combination. So, this example will only work if you chose <a href="#option-2">Option 2</a> in the <em>Cloud Config</em> section.</p>
 </div>
 </div>
+</section>
+<section id="allowing-access-to-remote-desktop-protocol" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="allowing-access-to-remote-desktop-protocol"><span class="header-section-number">8.2</span> Allowing access to Remote Desktop Protocol</h2>
+<p>Now, we can add another rule for RDP. This is a well known service so we can select RDP from the drop down options and click <em>Add</em>. <img src="img/clipboard-1799424740.png" class="img-fluid"></p>
+<p>Finally, the new rules should look something like this:</p>
+<p><img src="img/clipboard-3745716289.png" class="img-fluid"></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

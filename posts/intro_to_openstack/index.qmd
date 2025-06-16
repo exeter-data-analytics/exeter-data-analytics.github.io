@@ -280,7 +280,9 @@ When a new cloud instance is deployed, cloud-init takes initial configuration da
 
 Cloud-init is capable of handling a wide array of initial configuration tasks. These include essential activities such as setting the hostname, configuring network interfaces, creating and managing user accounts, installing necessary software packages, and executing custom scripts. This comprehensive automation streamlines the deployment process, ensuring that all cloud instances are configured uniformly, thereby minimizing the potential for human error.
 
-Below are two minimal cloud-init script examples to configure essentials such as adding a local user account with ability to install research related applications (e.g. `sudo apt install package-name`). This will be all you really need for most use cases, but for additional configuration options, please refer to the cloud-init documentation. Amend the settings as required to look as below (changing the ‘user123’, ‘Your Name’ and hashed_passwd lines):
+Below are two minimal cloud-init script examples to configure essentials such as adding a local user account with ability to install research related applications (e.g. `sudo apt install package-name`). This will be all you really need for most use cases, but for additional configuration options, please refer to the cloud-init documentation.
+
+We recommend that you use the Option 2 example for this workflow. Amend the settings as required to look as below (changing the ‘*user123*’, ‘*Your Name*’ and *hashed_passwd* lines):
 
 ::: {#option-1 .callout-tip}
 #### Option 1
@@ -602,16 +604,11 @@ Click on *Add Rule* to create the new rules we need.
 
 ![](img/openstack-connect-13.png)
 
+## Allowing access to RStudio Server
+
 RStudio Server listens on tcp port 8787 by default and XRDP listens on tcp port 3389. First, let's add a custom rule for RStudio as follows:
 
 ![](img/openstack-connect-15.png)
-
-Now, we can add another rule for RDP. This is a well known service so we can select RDP from the drop down options and click *Add*.\
-![](img/clipboard-1799424740.png)
-
-Finally, the new rules should look something like this:
-
-![](img/clipboard-3745716289.png)
 
 Now, you can access your RStudio Server's web interface at <http://10.121.4.35:8787/> (substitute the IP address shown here with your own VM's IP address).
 
@@ -620,3 +617,11 @@ Now, you can access your RStudio Server's web interface at <http://10.121.4.35:8
 ::: callout-caution
 Note that the RStudio Server interface requires you to use a username and password combination. So, this example will only work if you chose [Option 2] in the *Cloud Config* section.
 :::
+
+## Allowing access to Remote Desktop Protocol
+
+Now, we can add another rule for RDP. This is a well known service so we can select RDP from the drop down options and click *Add*. ![](img/clipboard-1799424740.png)
+
+Finally, the new rules should look something like this:
+
+![](img/clipboard-3745716289.png)
