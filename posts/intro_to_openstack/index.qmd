@@ -282,8 +282,8 @@ Cloud-init is capable of handling a wide array of initial configuration tasks. T
 
 Below are two minimal cloud-init script examples to configure essentials such as adding a local user account with ability to install research related applications (e.g. `sudo apt install package-name`). This will be all you really need for most use cases, but for additional configuration options, please refer to the cloud-init documentation. Amend the settings as required to look as below (changing the ‘user123’, ‘Your Name’ and hashed_passwd lines):
 
-::: callout-tip
-#### Option 1 {#sec-option-1}
+::: {#option-1 .callout-tip}  
+#### Option 1
 
 Use this config if you only want key-pair authentication:
 
@@ -344,8 +344,8 @@ power_state:
 ```
 :::
 
-::: callout-tip
-#### Option 2 {#sec-option-2}
+::: {#option-2 .callout-tip}  
+#### Option 2 
 
 Use this config if you want password authentication (or password authentication alongside key pair auth as an alternative shown earlier)
 
@@ -407,6 +407,7 @@ power_state:
    message: "Rebooting instance after cloud-init completion"
    condition: True
 ```
+
 :::
 
 Copy paste the above script into a text editor like Notepad++, Context, Sublime etc. and edit the requisite sections such as name, gecos, hashed_password etc. as needed.
@@ -492,7 +493,7 @@ Within your OpenStack web console, navigate to the [instance list](https://stack
 
 ![](img/openstack-connect-10.png)
 
-In the next window click on the *Console* tab. Here, you will be able to see the main GUI of your computer. If you used the cloud-init [Option 2](#sec-option-2) - then you will be able to login at this interface using the password you had used. If you used [Option 1](#sec-option-2) during the cloud-init stage, then you will not be able to login using this method as you would not be aware of the correct password to use. In this case, you would need to reset the user password (covered elsewhere) to be able to use the method described here.
+In the next window click on the *Console* tab. Here, you will be able to see the main GUI of your computer. If you used the cloud-init [Option 2](@option-2) - then you will be able to login at this interface using the password you had used. If you used [Option 1](@option-1) during the cloud-init stage, then you will not be able to login using this method as you would not be aware of the correct password to use. In this case, you would need to reset the user password (covered elsewhere) to be able to use the method described here.
 
 ![](img/openstack-connect-11.png)
 
@@ -598,7 +599,7 @@ Go to the *Network* tab and then to the *Security Groups* pane within it. Click 
 
 ![](img/openstack-connect-12.png)
 
-Click on Add Rule to create the new rules we need.
+Click on *Add Rule* to create the new rules we need.
 
 ![](img/openstack-connect-13.png)
 
@@ -613,10 +614,10 @@ Finally, the new rules should look something like this:
 
 ![](img/clipboard-3745716289.png)
 
-Now, you can access your RStudio Server's web interface at <http://10.121.4.35:8787/> (substitute the IP address shown here with your own VM's IP address.
+Now, you can access your RStudio Server's web interface at <http://10.121.4.35:8787/> (substitute the IP address shown here with your own VM's IP address).
 
 ![](img/clipboard-2673567999.png)
 
 ::: callout-caution
-Note that the RStudio Server interface requires you to use a username and password combination. So, this example will only work if you chose [Option 2](#sec-option-2) in the *Cloud Config* section.
+Note that the RStudio Server interface requires you to use a username and password combination. So, this example will only work if you chose [Option 2](@option-2) in the *Cloud Config* section.
 :::

@@ -362,7 +362,7 @@ Cloud Config
 <p>When a new cloud instance is deployed, cloud-init takes initial configuration data, often referred to as “user-data” or “vendor-data,” and automatically applies these settings during the instance’s first boot process. This functions much like a dynamic to-do list that cloud-init executes, configuring the VM according to predefined instructions. The significant advantage of cloud-init lies in its ability to reuse these configuration instructions across numerous deployments, consistently producing reliable results.</p>
 <p>Cloud-init is capable of handling a wide array of initial configuration tasks. These include essential activities such as setting the hostname, configuring network interfaces, creating and managing user accounts, installing necessary software packages, and executing custom scripts. This comprehensive automation streamlines the deployment process, ensuring that all cloud instances are configured uniformly, thereby minimizing the potential for human error.</p>
 <p>Below are two minimal cloud-init script examples to configure essentials such as adding a local user account with ability to install research related applications (e.g.&nbsp;<code>sudo apt install package-name</code>). This will be all you really need for most use cases, but for additional configuration options, please refer to the cloud-init documentation. Amend the settings as required to look as below (changing&nbsp;the ‘user123’, ‘Your Name’ and hashed_passwd lines):</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div id="option-1" class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -789,7 +789,7 @@ background-color: null;
 font-style: inherit;">True</span></span></code></pre></div>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div id="option-2" class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1347,7 +1347,7 @@ font-style: inherit;">&gt;</span></span></code></pre></div>
 <h3 class="anchored" data-anchor-id="console-connection-using-the-browser">Console connection using the browser</h3>
 <p>Within your OpenStack web console, navigate to the <a href="https://stack.exeter.ac.uk/dashboard/project/instances/">instance list</a> and click on your instance in the list. In this example, we will click on the <em>keypair_only</em> instance.</p>
 <p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-10.png" class="img-fluid"></p>
-<p>In the next window click on the <em>Console</em> tab. Here, you will be able to see the main GUI of your computer. If you used the cloud-init Option 2 - then you will be able to login at this interface using the password you had used. If you used Option 1 during the cloud-init stage, then you will not be able to login using this method as you would not be aware of the correct password to use. In this case, you would need to reset the user password (covered elsewhere) to be able to use the method described here.</p>
+<p>In the next window click on the <em>Console</em> tab. Here, you will be able to see the main GUI of your computer. If you used the cloud-init <a href="@option-2">Option 2</a> - then you will be able to login at this interface using the password you had used. If you used <a href="@option-1">Option 1</a> during the cloud-init stage, then you will not be able to login using this method as you would not be aware of the correct password to use. In this case, you would need to reset the user password (covered elsewhere) to be able to use the method described here.</p>
 <p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-11.png" class="img-fluid"></p>
 </section>
 <section id="graphical-connection-using-x2go" class="level3">
@@ -1448,7 +1448,7 @@ Caution
 <p>Here, we have configured a virtual machine that has an installation of RStudio Server (Open Source Edition) and it also has XRDP (a remote desktop for Ubuntu) installed on it. In this section, we will show you how to modify your Security Groups to allow access to these applications from your laptop.</p>
 <p>Go to the <em>Network</em> tab and then to the <em>Security Groups</em> pane within it. Click on <em>Manage Rules</em> on the far right-hand side.</p>
 <p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-12.png" class="img-fluid"></p>
-<p>Click on Add Rule to create the new rules we need.</p>
+<p>Click on <em>Add Rule</em> to create the new rules we need.</p>
 <p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-13.png" class="img-fluid"></p>
 <p>RStudio Server listens on tcp port 8787 by default and XRDP listens on tcp port 3389. First, let’s add a custom rule for RStudio as follows:</p>
 <p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/openstack-connect-15.png" class="img-fluid"></p>
@@ -1456,7 +1456,7 @@ Caution
 <img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/clipboard-1799424740.png" class="img-fluid"></p>
 <p>Finally, the new rules should look something like this:</p>
 <p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/clipboard-3745716289.png" class="img-fluid"></p>
-<p>Now, you can access your RStudio Server’s web interface at <a href="http://10.121.4.35:8787/" class="uri">http://10.121.4.35:8787/</a> (substitute the IP address shown here with your own VM’s IP address.</p>
+<p>Now, you can access your RStudio Server’s web interface at <a href="http://10.121.4.35:8787/" class="uri">http://10.121.4.35:8787/</a> (substitute the IP address shown here with your own VM’s IP address).</p>
 <p><img src="https://exeter-data-analytics.github.io/posts/intro_to_openstack/img/clipboard-2673567999.png" class="img-fluid"></p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1468,7 +1468,7 @@ Caution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Note that the RStudio Server interface requires you to use a username and password combination. So, this example will only work if you chose Option 2 in the <em>Cloud Config</em> section.</p>
+<p>Note that the RStudio Server interface requires you to use a username and password combination. So, this example will only work if you chose <a href="@option-2">Option 2</a> in the <em>Cloud Config</em> section.</p>
 </div>
 </div>
 
