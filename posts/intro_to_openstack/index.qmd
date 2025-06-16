@@ -91,7 +91,7 @@ Here's how this translates into practical benefits:
 
 -   **Dynamic Resource Scalability:** Need more storage or processing power for a task? With VMs, you can often **add storage on-the-fly** by attaching virtual volumes, or **increase processing power and RAM with just a few clicks**. This agility means you can adapt your environment as your computational demands change, without the need for physical hardware upgrades or downtime.
 
--   **Flexible Testing and Development:** VMs are invaluable for researchers. You can easily create a machone to test the inner workings of the code you are developing before deploying them to larger, more complex systems. This isolated testing environment prevents conflicts and ensures smooth transitions.
+-   **Flexible Testing and Development:** VMs are invaluable for researchers. You can easily create a machine to test the inner workings of the code you are developing before deploying them to larger, more complex systems. This isolated testing environment prevents conflicts and ensures smooth transitions.
 
 Essentially, virtual machines empower you to create, modify, and manage your computational environment with unparalleled flexibility, giving you complete command over your digital workspace.
 
@@ -99,7 +99,7 @@ Let's go to the next section and learn about the OpenStack Console.
 
 ## Logging Into the Console
 
-In addition to being extremely comprehensive, the Exeter OpenStack cloud has a relatively easy (but detailed!) interface for interacting with its offerings. All you have to do is log in via a web-browser and most of the functionality of the is available for you and relatively easy to use.
+In addition to being extremely comprehensive, the Exeter OpenStack cloud has a relatively easy (but detailed!) interface for interacting with its offerings. All you have to do is log in via a web-browser and most of the functionality of the system is available for you and relatively easy to use.
 
 To get started go to the following URL and login with your University of Exeter username (in the format of *user123*) the domain (exeter.ac.uk), and the password you use when logging onto your university resources.
 
@@ -140,7 +140,7 @@ The service OpenStack is known for. It enables you to create Linux and Windows V
 ::: callout-note
 ## Volumes
 
-A storage unit. These can be created and attached to any compute which you have running. Ideal for moving large amounts of data between machines. Think of it as a removal hard drive which you can attach to any machine.
+A storage unit. These can be created and attached to any compute which you have running. Ideal for moving large amounts of data between machines. Think of it as a removable hard drive which you can attach to any machine.
 :::
 
 ::: callout-note
@@ -152,7 +152,7 @@ These are the templates from which you create instances.
 ::: callout-note
 ## Object store
 
-This is another type of storage, but is relatively slow. It is ideal for archive or when storing large files (i.e. several Gb).However, it is currently disabled on the system. if you want to know more about it, please as your Research IT support team for assistance.
+This is another type of storage, but is relatively slow. It is ideal for archive or when storing large files (i.e. several GB).However, it is currently disabled on the system. if you want to know more about it, please as your Research IT support team for assistance.
 :::
 
 Click on “Compute” and then “Overview” at the top left.
@@ -181,7 +181,7 @@ So let’s get on and launch our first instance!
 
 ## Create your Instance
 
-In this section of the workshop we will create our Instance in Exeter’s OpenStack system.
+In this section of the workshop we will create our *Instance* in Exeter’s OpenStack system.
 
 ::: callout-important
 If you have an instance from a previous session do not create another one. Please go to the [Managing Your OpenStack Instances] and restart your existing instance.
@@ -204,7 +204,7 @@ Remember that everyone is sharing the same project- so you will need to be ident
 Click ‘Next’ and proceed to choose the image of the machine you want to replicate. In this example, we will be using the Ubuntu 22.04 server image. Click on the highlighted arrow across from the *"ubuntu_22.04"* name and input a *Volume Size* of 20GB. Make sure to toggle the *Delete Volume on Instance Delete* option in this case.
 
 ::: callout-caution
-When you are making your own VMs, within your own research project, you may chose to use different options based on your needs. Here, we have limited resources available for the workshop, so we need to make sure that everyone follows the instructions.
+When you are making your own VMs, within your own research project, you may choose to use different options based on your needs. Here, we have limited resources available for the workshop, so we need to make sure that everyone follows the instructions.
 :::
 
 ![](img/openstack-console-07.png)
@@ -215,7 +215,7 @@ Click Next and select the desired flavour for this instance. Here, we would like
 
 ### Security Groups
 
-Click ‘Next’ to move on through Networks and Network Ports section and arrive at the Security Groups section. Here, click on the default security group to expand it, and to have a look at what has already been allowed in the firewall.
+Click ‘Next’ to move on through Networks and Network Ports section and arrive at the Security Groups section. Here, click on the default security group to expand it, and to have a look at what has already been allowed through the firewall.
 
 ![](img/openstack-console-09.png)
 
@@ -224,7 +224,7 @@ Here, we can see that SSH (port 22) has been allowed over the *tcp* protocol fro
 ::: callout-tip
 #### Security Groups
 
-If you are planning on using additional software that may need some ports to be opended up, then you can create your own security group with relevant ports allowed. For e.g. if you want to use VNC type software for remote desktop access to your instance, you will need to allow port 5901 etc. over tcp.
+If you are planning on using additional software that may need some ports to be opened up, then you can create your own security group with relevant ports allowed. For e.g. if you want to use VNC type software for remote desktop access to your instance, you will need to allow port 5901 etc. over tcp.
 
 Our recipe for this workshop includes an installation of RStudio Server Open Source edition within the VM. We will show you how to edit the default security group to allow access to port 8787 for the RStudio Server later in the tutorial.
 :::
@@ -245,7 +245,7 @@ The private key, which is the secret component, must remain securely on the user
 
 ![](img/openstack-console-11.png)
 
-Choose a key pair name you will recognize. Here we chose *user123_computer_name_projectX* to remind ourselves what the default username as and which VM this key is associated with. Names may only include alphanumeric characters, spaces, or dashes. Once the Key Pair is generated, you will need to copy the Private Key to your clipborad and save it in a safe space. Do not forget where you keep this key - you will not be able to login to the instance without this key pair if you have not enabled any other login mechanism.
+Choose a key pair name you will recognize. Here we chose *user123_computer_name_projectX* to remind ourselves what the default username as and which VM this key is associated with. Names may only include alphanumeric characters, spaces, or dashes. Once the Key Pair is generated, you will need to copy the Private Key to your clipboard and save it in a safe space. Do not forget where you keep this key - you will not be able to login to the instance without this key pair if you have not enabled any other login mechanism.
 
 ![](img/openstack-console-12.png)
 
@@ -275,10 +275,10 @@ When a new cloud instance is deployed, cloud-init takes initial configuration da
 
 Cloud-init is capable of handling a wide array of initial configuration tasks. These include essential activities such as setting the hostname, configuring network interfaces, creating and managing user accounts, installing necessary software packages, and executing custom scripts. This comprehensive automation streamlines the deployment process, ensuring that all cloud instances are configured uniformly, thereby minimizing the potential for human error.
 
-Below are two minimal cloud-init script examples to configure essentials such as adding a local user account with ability to install research related applications (e.g. sudo apt install package-name). This will be all you really need for most use cases, but for additional configuration options, please refer to the [cloud-init documentation](https://cloudinit.readthedocs.io/en/latest/). Amend the settings as required to look as below (changing the ‘**user123**’, ‘**User OneTwoThree**’ and **hashed_passwd** lines):
+Below are two minimal cloud-init script examples to configure essentials such as adding a local user account with ability to install research related applications (e.g. `sudo apt install package-name`). This will be all you really need for most use cases, but for additional configuration options, please refer to the cloud-init documentation. Amend the settings as required to look as below (changing the ‘user123’, ‘Your Name’ and hashed_passwd lines):
 
 ::: callout-tip
-#### Option 1
+#### Option 1 {#sec-option-1}
 
 Use this config if you only want key-pair authentication:
 
@@ -301,7 +301,9 @@ package_upgrade: true
 # Install specified basic tools using the package manager
 packages:
   - openssh-server
-  - ubuntu-desktop
+  - xubuntu-default-settings
+  - xubuntu-desktop
+  - xrdp
   - nload
   - htop
   - vim
@@ -325,6 +327,9 @@ runcmd:
   - echo "Installing RStudio Server Open Source v2025.05.1+513 ..."
   - wget -O /tmp/RStudio_Server.deb https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2025.05.1-513-amd64.deb
   - gdebi -n /tmp/RStudio_Server.deb
+  - echo "Enabling Lightdm and XRDP ..."
+  - systemctl enable --now lightdm
+  - systemctl enable --now xrdp
   - systemctl set-default graphical.target
 power_state:
    delay: 0
@@ -335,7 +340,7 @@ power_state:
 :::
 
 ::: callout-tip
-#### Option 2
+#### Option 2 {#sec-option-2}
 
 Use this config if you want password authentication (or password authentication alongside key pair auth as an alternative shown earlier)
 
@@ -361,7 +366,9 @@ package_upgrade: true
 # Install specified basic tools using the package manager
 packages:
   - openssh-server
-  - ubuntu-desktop
+  - xubuntu-default-settings
+  - xubuntu-desktop
+  - xrdp
   - nload
   - htop
   - vim
@@ -385,7 +392,9 @@ runcmd:
   - echo "Installing RStudio Server Open Source v2025.05.1+513 ..."
   - wget -O /tmp/RStudio_Server.deb https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2025.05.1-513-amd64.deb
   - gdebi -n /tmp/RStudio_Server.deb
-  - systemctl set-default graphical.target
+  - echo "Enabling Lightdm and XRDP ..."
+  - systemctl enable --now lightdm
+  - systemctl enable --now xrdp
   - systemctl set-default graphical.target
 power_state:
    delay: 0
@@ -430,9 +439,7 @@ Once it turns **white** and the ‘Status’ changes to ‘Active’, you should
 
 **Congratulations you have 'configured' and 'turned on' a new computer to use for the rest of this workshop.**
 
-Next, you will learn how to connect to it from your PC. However, before you proceed any further - take a 15 minute break. The cloud-init script would be working in the background to finish installing software and configuring your machine during that time.
-
-{{< countdown "15:00" >}}
+Next, you will learn how to connect to it from your PC. However, before you proceed any further - take a 20 minute break. The cloud-init script would be working in the background to finish installing software and configuring your machine during that time.
 
 ## Connect to your instance
 
@@ -480,7 +487,7 @@ Within your OpenStack web console, navigate to the [instance list](https://stack
 
 ![](img/openstack-connect-10.png)
 
-In the next window click on the *Console* tab. Here, you will be able to see the main GUI of your computer. If you used the cloud-init [Option 2] - then you will be able to login at this interface using the password you had used. If you used [Option 1] during the cloud-init stage, then you will not be able to login using this method as you would not be aware of correct password to use. I this case, you would need to reset the user password (covered elsewhere) to be able to use the method described here.
+In the next window click on the *Console* tab. Here, you will be able to see the main GUI of your computer. If you used the cloud-init [Option 2](#sec-option-2) - then you will be able to login at this interface using the password you had used. If you used [Option 1](#sec-option-2) during the cloud-init stage, then you will not be able to login using this method as you would not be aware of the correct password to use. In this case, you would need to reset the user password (covered elsewhere) to be able to use the method described here.
 
 ![](img/openstack-connect-11.png)
 
@@ -502,7 +509,7 @@ Once X2Go is installed, start the program from your desktop shortcut.
 
 Or look for it in your start menu
 
-![](img/openstack-connect-02.png)You may get a message like this, it only affects some features you don’t need.
+![](img/openstack-connect-02.png)When the programme launches for the first time, you may get a message as below, it only affects some features you don’t need.
 
 ![](img/openstack-connect-03.png)
 
@@ -516,15 +523,19 @@ Now you need to tell your computer where to connect to. On a new installation th
 
 ![](img/openstack-connect-05.png)
 
-Enter the information as higlighted above. Make sure you use the IP address you copied earlier and use an appropriate name. If you decide to use the *Key* Pair, then click the *Try auto login* checkbox as well. If not using a key Pair, you can omit those two fields.
+Enter the information as highlighted above. Make sure you use the IP address you copied earlier and use an appropriate name. If you decide to use the *Key* Pair, then click the *Try auto login* checkbox as well. If not using a key Pair, you can omit those two fields.
 
-Once this has been done we need to change the display settings so you can work comfortably at the correct screen resolution.
+Once this has been done we need to change the connection settings. If you are doing this on campus, you should select LAN here. If out of campus, please choose a connection speed based on your internet connection. Most modern fiber broadband services at home can be categorized as WAN.
 
 ![](img/openstack-connect-06.png)
 
-Select the ‘Input/Output’ tab at the top and change the display to use the *Fullscreen* display as shown below. You may instead want to *Use whole display* instead.:
+Now let's adjust the display settings so you can work comfortably at the correct screen resolution. Select the ‘Input/Output’ tab at the top and change the display to use the *Use whole display* as shown below. You may want to select *Fullscreen* instead.
 
 ![](img/openstack-connect-07.png)
+
+In the Media tab, make sure that Enable sound support and Client side printer support are disabled (unless you need those options).
+
+![](img/openstack-connect-07b.png)
 
 Once completed, click on OK. Your screen should now look like this:\
 ![](img/openstack-connect-08.png)
@@ -540,28 +551,28 @@ Click Yes. If using a key-pair authentication, you will be connected automatical
 This section contains some instructions on how to manage you OpenStack instances.
 
 ::: callout-important
-When you’re not working on the course it is important and considerate to turn off your instance to avoid using unnecessary resource. If your instance is running, even if you are not doing anything on it, it will be using resource and may hinder others using the resources.
+When you’re not working on the course please do be considerate and turn off your instance to avoid using unnecessary resource. If your instance is running, even if you are not doing anything on it, it will be using resource and may hinder others using the resources.
 :::
 
 ### Find your instance:
 
 Log onto the [OpenStack console](https://stack.exeter.ac.uk/dashboard/project/instances/) and find your instance. Click on *Compute - Instances* and if you cannot find your instance easily, use the filter button.
 
-![search for your instance](./img/manage_001.jpg)
+![](./img/manage_001.jpg)
 
 ### Stopping Your Instance:
 
-If you wish to keep your data, use the ‘Shut Off instance’ option. In this state the data written to disk will be preserved, but the instance will be ‘off’. It is the equivalent of turning off a computer.
+If you wish to keep your data, use the *Shut Off instance* option. In this state the data written to disk will be preserved, but the instance will be ‘*off*’ (this is the equivalent of turning off a computer).
 
-Use the dropdown next to your instance and select “Shut Off Instance” (near the bottom)
+Use the dropdown next to your instance and select *Shut Off Instance* (near the bottom)
 
 ![](./img/openstack-shutoff-1.png)
 
-You will be asked to confirm - Double check it is the instance you intend to shut down.
+You will be asked to confirm - **double check** it is the instance you intend to shut down.
 
 ### Restarting Your Instance:
 
-If the status of your instance is Shutoff - click Start Instance.
+If the status of your instance is *Shutoff* - click *Start* Instance.
 
 Double check the IP address of your instance as it may change - you will need to use the new IP address to connect to you instance. In X2Go click on the drop down arrow to get the menu of options.\
 ![](./img/x2go-session-prefs-1.png)
@@ -572,6 +583,33 @@ Double check the IP address of your instance as it may change - you will need to
 **Note:** this will destroy all work done to date.
 :::
 
-When you’re completely finished done with the workshop, click the drop-down menu next to your instance and select ‘Delete Instance’. It will ask you to confirm - You can then watch the status change from ‘shutting down’ to Deleted’.
+When you’re completely finished with the workshop, click the drop-down menu next to your instance and select *Delete Instance*. It will ask you to confirm - You can then watch the status change from *Shutting down* to *Deleted*.
 
-### Placeholder for end
+## Specific Use Cases
+
+Here, we have configured a virtual machine that has an installation of RStudio Server (Open Source Edition) and it also has XRDP (a remote desktop for Ubuntu) installed on it. In this section, we will show you how to modify your [Security Groups] to allow access to these applications from your laptop.
+
+Go to the *Network* tab and then to the *Security Groups* pane within it. Click on *Manage Rules* on the far, right-hand side.
+
+![](img/openstack-connect-12.png)
+
+Click on Add Rule to create the new rules we need.
+
+![](img/openstack-connect-13.png)
+
+RStudio Server listens on tcp port 8787 by default and XRDP listens on tcp port 3389. First, let's add a custom rule for RStudio as follows:
+
+![](img/openstack-connect-15.png)
+
+Now, we can add another rule for RDP. This is a well known service so we can select RDP from the drop down options and click *Add*.\
+![](img/clipboard-1799424740.png)
+
+Finally, the new rules should look something like this:
+
+![Now, you can access your RStudio Server's web interface at <http://10.121.4.35:8787/> (substitute the IP address shown here with your own VM's IP address. ](img/clipboard-3745716289.png)
+
+![](img/clipboard-2673567999.png)
+
+::: callout-caution
+Note that the RStudio Server interface requires you to use a username and password combination. So, this example will only work if you chose [Option 2](#sec-option-2) in the [Option 2]
+:::

@@ -251,8 +251,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#stopping-your-instance" id="toc-stopping-your-instance" class="nav-link" data-scroll-target="#stopping-your-instance">Stopping Your Instance:</a></li>
   <li><a href="#restarting-your-instance" id="toc-restarting-your-instance" class="nav-link" data-scroll-target="#restarting-your-instance">Restarting Your Instance:</a></li>
   <li><a href="#deleting-an-instance." id="toc-deleting-an-instance." class="nav-link" data-scroll-target="#deleting-an-instance.">Deleting an instance.</a></li>
-  <li><a href="#placeholder-for-end" id="toc-placeholder-for-end" class="nav-link" data-scroll-target="#placeholder-for-end">Placeholder for end</a></li>
   </ul></li>
+  <li><a href="#specific-use-cases" id="toc-specific-use-cases" class="nav-link" data-scroll-target="#specific-use-cases">Specific Use Cases</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -340,7 +340,7 @@ Managing your instance
 <li><p><strong>Instant Provisioning and Customization:</strong> You can quickly launch new virtual machines with a wide variety of pre-configured <strong>machine images</strong>. These images can range from basic operating systems to specialized environments equipped with specific software for scientific modeling, data analysis, or development. This eliminates the need for lengthy manual installations and configurations.</p></li>
 <li><p><strong>Share and Collaborate with Ease:</strong> If you’ve developed a specific computational environment or analysis workflow, you can create and share your own VM images. This allows collaborators to instantly access and replicate your setup, ensuring consistency and simplifying the sharing of complex projects.</p></li>
 <li><p><strong>Dynamic Resource Scalability:</strong> Need more storage or processing power for a task? With VMs, you can often <strong>add storage on-the-fly</strong> by attaching virtual volumes, or <strong>increase processing power and RAM with just a few clicks</strong>. This agility means you can adapt your environment as your computational demands change, without the need for physical hardware upgrades or downtime.</p></li>
-<li><p><strong>Flexible Testing and Development:</strong> VMs are invaluable for researchers. You can easily create a machone to test the inner workings of the code you are developing before deploying them to larger, more complex systems. This isolated testing environment prevents conflicts and ensures smooth transitions.</p></li>
+<li><p><strong>Flexible Testing and Development:</strong> VMs are invaluable for researchers. You can easily create a machine to test the inner workings of the code you are developing before deploying them to larger, more complex systems. This isolated testing environment prevents conflicts and ensures smooth transitions.</p></li>
 </ul>
 <p>Essentially, virtual machines empower you to create, modify, and manage your computational environment with unparalleled flexibility, giving you complete command over your digital workspace.</p>
 <p>Let’s go to the next section and learn about the OpenStack Console.</p>
@@ -348,7 +348,7 @@ Managing your instance
 </section>
 <section id="logging-into-the-console" class="level2">
 <h2 class="anchored" data-anchor-id="logging-into-the-console">Logging Into the Console</h2>
-<p>In addition to being extremely comprehensive, the Exeter OpenStack cloud has a relatively easy (but detailed!) interface for interacting with its offerings. All you have to do is log in via a web-browser and most of the functionality of the is available for you and relatively easy to use.</p>
+<p>In addition to being extremely comprehensive, the Exeter OpenStack cloud has a relatively easy (but detailed!) interface for interacting with its offerings. All you have to do is log in via a web-browser and most of the functionality of the system is available for you and relatively easy to use.</p>
 <p>To get started go to the following URL and login with your University of Exeter username (in the format of <em>user123</em>) the domain (exeter.ac.uk), and the password you use when logging onto your university resources.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -420,7 +420,7 @@ Volumes
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A storage unit. These can be created and attached to any compute which you have running. Ideal for moving large amounts of data between machines. Think of it as a removal hard drive which you can attach to any machine.</p>
+<p>A storage unit. These can be created and attached to any compute which you have running. Ideal for moving large amounts of data between machines. Think of it as a removable hard drive which you can attach to any machine.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -446,7 +446,7 @@ Object store
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This is another type of storage, but is relatively slow. It is ideal for archive or when storing large files (i.e.&nbsp;several Gb).However, it is currently disabled on the system. if you want to know more about it, please as your Research IT support team for assistance.</p>
+<p>This is another type of storage, but is relatively slow. It is ideal for archive or when storing large files (i.e.&nbsp;several GB).However, it is currently disabled on the system. if you want to know more about it, please as your Research IT support team for assistance.</p>
 </div>
 </div>
 <p>Click on “Compute” and then “Overview” at the top left.</p>
@@ -477,7 +477,7 @@ Note
 </section>
 <section id="create-your-instance" class="level2">
 <h2 class="anchored" data-anchor-id="create-your-instance">Create your Instance</h2>
-<p>In this section of the workshop we will create our Instance in Exeter’s OpenStack system.</p>
+<p>In this section of the workshop we will create our <em>Instance</em> in Exeter’s OpenStack system.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -520,7 +520,7 @@ Caution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>When you are making your own VMs, within your own research project, you may chose to use different options based on your needs. Here, we have limited resources available for the workshop, so we need to make sure that everyone follows the instructions.</p>
+<p>When you are making your own VMs, within your own research project, you may choose to use different options based on your needs. Here, we have limited resources available for the workshop, so we need to make sure that everyone follows the instructions.</p>
 </div>
 </div>
 <p><img src="img/openstack-console-07.png" class="img-fluid"></p>
@@ -528,7 +528,7 @@ Caution
 <p><img src="img/openstack-console-08.png" class="img-fluid"></p>
 <section id="security-groups" class="level3">
 <h3 class="anchored" data-anchor-id="security-groups">Security Groups</h3>
-<p>Click ‘Next’ to move on through Networks and Network Ports section and arrive at the Security Groups section. Here, click on the default security group to expand it, and to have a look at what has already been allowed in the firewall.</p>
+<p>Click ‘Next’ to move on through Networks and Network Ports section and arrive at the Security Groups section. Here, click on the default security group to expand it, and to have a look at what has already been allowed through the firewall.</p>
 <p><img src="img/openstack-console-09.png" class="img-fluid"></p>
 <p>Here, we can see that SSH (port 22) has been allowed over the <em>tcp</em> protocol from <em>anywhere (0.0.0.0/0)</em>. That is all we need to begin with, so we can go ahead and click Next.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -541,7 +541,7 @@ Security Groups
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you are planning on using additional software that may need some ports to be opended up, then you can create your own security group with relevant ports allowed. For e.g.&nbsp;if you want to use VNC type software for remote desktop access to your instance, you will need to allow port 5901 etc. over tcp.</p>
+<p>If you are planning on using additional software that may need some ports to be opened up, then you can create your own security group with relevant ports allowed. For e.g.&nbsp;if you want to use VNC type software for remote desktop access to your instance, you will need to allow port 5901 etc. over tcp.</p>
 <p>Our recipe for this workshop includes an installation of RStudio Server Open Source edition within the VM. We will show you how to edit the default security group to allow access to port 8787 for the RStudio Server later in the tutorial.</p>
 </div>
 </div>
@@ -565,7 +565,7 @@ Private Key
 </div>
 <p><img src="img/openstack-console-10.png" class="img-fluid">A key pair allows you to SSH into your newly created instance. You may select an existing key pair, import a key pair, or generate a new key pair. Click on the <em>Create Key Pair</em> button highlighted above and then enter a <em>Key Pair Name</em> and <em>Key Type</em> in the pop-up box that appears next. Key Pairs are how you login to your instance after it is launched.</p>
 <p><img src="img/openstack-console-11.png" class="img-fluid"></p>
-<p>Choose a key pair name you will recognize. Here we chose <em>user123_computer_name_projectX</em> to remind ourselves what the default username as and which VM this key is associated with. Names may only include alphanumeric characters, spaces, or dashes. Once the Key Pair is generated, you will need to copy the Private Key to your clipborad and save it in a safe space. Do not forget where you keep this key - you will not be able to login to the instance without this key pair if you have not enabled any other login mechanism.</p>
+<p>Choose a key pair name you will recognize. Here we chose <em>user123_computer_name_projectX</em> to remind ourselves what the default username as and which VM this key is associated with. Names may only include alphanumeric characters, spaces, or dashes. Once the Key Pair is generated, you will need to copy the Private Key to your clipboard and save it in a safe space. Do not forget where you keep this key - you will not be able to login to the instance without this key pair if you have not enabled any other login mechanism.</p>
 <p><img src="img/openstack-console-12.png" class="img-fluid"></p>
 <p>Once copied, click <em>Done.</em> Open a text editor like Notepad++, Context or similar and save this SSH Key. The image below shows the successfully created <em>Key Pair.</em> On most browsers, the key pair will automatically get downloaded when you click done as well.</p>
 <p><img src="img/openstack-console-13.png" class="img-fluid"></p>
@@ -602,7 +602,7 @@ Cloud Config
 </div>
 <p>When a new cloud instance is deployed, cloud-init takes initial configuration data, often referred to as “user-data” or “vendor-data,” and automatically applies these settings during the instance’s first boot process. This functions much like a dynamic to-do list that cloud-init executes, configuring the VM according to predefined instructions. The significant advantage of cloud-init lies in its ability to reuse these configuration instructions across numerous deployments, consistently producing reliable results.</p>
 <p>Cloud-init is capable of handling a wide array of initial configuration tasks. These include essential activities such as setting the hostname, configuring network interfaces, creating and managing user accounts, installing necessary software packages, and executing custom scripts. This comprehensive automation streamlines the deployment process, ensuring that all cloud instances are configured uniformly, thereby minimizing the potential for human error.</p>
-<p>Below are two minimal cloud-init script examples to configure essentials such as adding a local user account with ability to install research related applications (e.g.&nbsp;sudo apt install package-name). This will be all you really need for most use cases, but for additional configuration options, please refer to the <a href="https://cloudinit.readthedocs.io/en/latest/">cloud-init documentation</a>. Amend the settings as required to look as below (changing&nbsp;the ‘<strong>user123</strong>’, ‘<strong>User OneTwoThree</strong>’ and <strong>hashed_passwd</strong> lines):</p>
+<p>Below are two minimal cloud-init script examples to configure essentials such as adding a local user account with ability to install research related applications (e.g.&nbsp;<code>sudo apt install package-name</code>). This will be all you really need for most use cases, but for additional configuration options, please refer to the cloud-init documentation. Amend the settings as required to look as below (changing&nbsp;the ‘user123’, ‘Your Name’ and hashed_passwd lines):</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -632,36 +632,41 @@ Option 1
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Install specified basic tools using the package manager</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">packages</span><span class="kw">:</span></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> openssh-server</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> ubuntu-desktop</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> nload</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> htop</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> vim</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> multitail</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> tmux</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> r-base</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> gdebi-core</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> x2goserver</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> x2goserver-xsession</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> xfce4</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> xfce4-goodies</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Mamba using the Miniforge distribution</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">runcmd</span><span class="kw">:</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Starting Miniforge installation..."</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> wget -O /tmp/Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> chmod +x /tmp/Miniforge3.sh</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> /tmp/Miniforge3.sh -b -p /opt/miniforge3</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Miniforge installation complete. Initializing conda for all users..."</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> /opt/miniforge3/bin/conda init bash --system</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Conda initialization for all users complete. Users may need to log out and back in."</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Installing RStudio Server Open Source v2025.05.1+513 ..."</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> wget -O /tmp/RStudio_Server.deb https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2025.05.1-513-amd64.deb</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> gdebi -n /tmp/RStudio_Server.deb</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> systemctl set-default graphical.target</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">power_state</span><span class="kw">:</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">delay</span><span class="kw">:</span><span class="at"> </span><span class="dv">0</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">mode</span><span class="kw">:</span><span class="at"> reboot</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="st">"Rebooting instance after cloud-init completion"</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">condition</span><span class="kw">:</span><span class="at"> </span><span class="ch">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> xubuntu-default-settings</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> xubuntu-desktop</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> xrdp</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> nload</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> htop</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> vim</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> multitail</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> tmux</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> r-base</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> gdebi-core</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> x2goserver</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> x2goserver-xsession</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> xfce4</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> xfce4-goodies</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Mamba using the Miniforge distribution</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">runcmd</span><span class="kw">:</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Starting Miniforge installation..."</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> wget -O /tmp/Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> chmod +x /tmp/Miniforge3.sh</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> /tmp/Miniforge3.sh -b -p /opt/miniforge3</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Miniforge installation complete. Initializing conda for all users..."</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> /opt/miniforge3/bin/conda init bash --system</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Conda initialization for all users complete. Users may need to log out and back in."</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Installing RStudio Server Open Source v2025.05.1+513 ..."</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> wget -O /tmp/RStudio_Server.deb https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2025.05.1-513-amd64.deb</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> gdebi -n /tmp/RStudio_Server.deb</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Enabling Lightdm and XRDP ..."</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> systemctl enable --now lightdm</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> systemctl enable --now xrdp</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> systemctl set-default graphical.target</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="fu">power_state</span><span class="kw">:</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">delay</span><span class="kw">:</span><span class="at"> </span><span class="dv">0</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">mode</span><span class="kw">:</span><span class="at"> reboot</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="st">"Rebooting instance after cloud-init completion"</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">condition</span><span class="kw">:</span><span class="at"> </span><span class="ch">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -696,37 +701,41 @@ Option 2
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Install specified basic tools using the package manager</span></span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">packages</span><span class="kw">:</span></span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> openssh-server</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> ubuntu-desktop</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> nload</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> htop</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> vim</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> multitail</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> tmux</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> r-base</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> gdebi-core</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> x2goserver</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> x2goserver-xsession</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> xfce4</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> xfce4-goodies</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Mamba using the Miniforge distribution</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="fu">runcmd</span><span class="kw">:</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Starting Miniforge installation..."</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> wget -O /tmp/Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> chmod +x /tmp/Miniforge3.sh</span></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> /tmp/Miniforge3.sh -b -p /opt/miniforge3</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Miniforge installation complete. Initializing conda for all users..."</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> /opt/miniforge3/bin/conda init bash --system</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Conda initialization for all users complete. Users may need to log out and back in."</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Installing RStudio Server Open Source v2025.05.1+513 ..."</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> wget -O /tmp/RStudio_Server.deb https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2025.05.1-513-amd64.deb</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> gdebi -n /tmp/RStudio_Server.deb</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> systemctl set-default graphical.target</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> systemctl set-default graphical.target</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="fu">power_state</span><span class="kw">:</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">delay</span><span class="kw">:</span><span class="at"> </span><span class="dv">0</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">mode</span><span class="kw">:</span><span class="at"> reboot</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="st">"Rebooting instance after cloud-init completion"</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">condition</span><span class="kw">:</span><span class="at"> </span><span class="ch">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> xubuntu-default-settings</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> xubuntu-desktop</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> xrdp</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> nload</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> htop</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> vim</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> multitail</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> tmux</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> r-base</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> gdebi-core</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> x2goserver</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> x2goserver-xsession</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> xfce4</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> xfce4-goodies</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Mamba using the Miniforge distribution</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="fu">runcmd</span><span class="kw">:</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Starting Miniforge installation..."</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> wget -O /tmp/Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> chmod +x /tmp/Miniforge3.sh</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> /tmp/Miniforge3.sh -b -p /opt/miniforge3</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Miniforge installation complete. Initializing conda for all users..."</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> /opt/miniforge3/bin/conda init bash --system</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Conda initialization for all users complete. Users may need to log out and back in."</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Installing RStudio Server Open Source v2025.05.1+513 ..."</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> wget -O /tmp/RStudio_Server.deb https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2025.05.1-513-amd64.deb</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> gdebi -n /tmp/RStudio_Server.deb</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> echo "Enabling Lightdm and XRDP ..."</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> systemctl enable --now lightdm</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> systemctl enable --now xrdp</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> systemctl set-default graphical.target</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="fu">power_state</span><span class="kw">:</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">delay</span><span class="kw">:</span><span class="at"> </span><span class="dv">0</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">mode</span><span class="kw">:</span><span class="at"> reboot</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="st">"Rebooting instance after cloud-init completion"</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">condition</span><span class="kw">:</span><span class="at"> </span><span class="ch">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p>Copy paste the above script into a text editor like Notepad++, Context, Sublime etc. and edit the requisite sections such as name, gecos, hashed_password etc. as needed.</p>
@@ -770,8 +779,7 @@ Note
 </div>
 </div>
 <p><strong>Congratulations you have ‘configured’ and ‘turned on’ a new computer to use for the rest of this workshop.</strong></p>
-<p>Next, you will learn how to connect to it from your PC. However, before you proceed any further - take a 15 minute break. The cloud-init script would be working in the background to finish installing software and configuring your machine during that time.</p>
-{{&lt; countdown "15:00" &gt;}}
+<p>Next, you will learn how to connect to it from your PC. However, before you proceed any further - take a 20 minute break. The cloud-init script would be working in the background to finish installing software and configuring your machine during that time.</p>
 </section>
 </section>
 <section id="connect-to-your-instance" class="level2">
@@ -836,7 +844,7 @@ Tip
 <h3 class="anchored" data-anchor-id="console-connection-using-the-browser">Console connection using the browser</h3>
 <p>Within your OpenStack web console, navigate to the <a href="https://stack.exeter.ac.uk/dashboard/project/instances/">instance list</a> and click on your instance in the list. In this example, we will click on the <em>keypair_only</em> instance.</p>
 <p><img src="img/openstack-connect-10.png" class="img-fluid"></p>
-<p>In the next window click on the <em>Console</em> tab. Here, you will be able to see the main GUI of your computer. If you used the cloud-init <a href="#option-2">Option 2</a> - then you will be able to login at this interface using the password you had used. If you used <a href="#option-1">Option 1</a> during the cloud-init stage, then you will not be able to login using this method as you would not be aware of correct password to use. I this case, you would need to reset the user password (covered elsewhere) to be able to use the method described here.</p>
+<p>In the next window click on the <em>Console</em> tab. Here, you will be able to see the main GUI of your computer. If you used the cloud-init <a href="#sec-option-2">Option 2</a> - then you will be able to login at this interface using the password you had used. If you used <a href="#sec-option-2">Option 1</a> during the cloud-init stage, then you will not be able to login using this method as you would not be aware of the correct password to use. In this case, you would need to reset the user password (covered elsewhere) to be able to use the method described here.</p>
 <p><img src="img/openstack-connect-11.png" class="img-fluid"></p>
 </section>
 <section id="graphical-connection-using-x2go" class="level3">
@@ -859,18 +867,20 @@ How to install X2Go
 <p>Once X2Go is installed, start the program from your desktop shortcut.</p>
 <p><img src="img/openstack-connect-01.png" class="img-fluid"></p>
 <p>Or look for it in your start menu</p>
-<p><img src="img/openstack-connect-02.png" class="img-fluid">You may get a message like this, it only affects some features you don’t need.</p>
+<p><img src="img/openstack-connect-02.png" class="img-fluid">When the programme launches for the first time, you may get a message as below, it only affects some features you don’t need.</p>
 <p><img src="img/openstack-connect-03.png" class="img-fluid"></p>
 <p>N.B - on some versions of windows you might get a different message - select ‘Allow Access’ if you have administrative rights or else click ‘keep blocking’ or ‘cancel’.</p>
 <p>You should now see the main screen</p>
 <p><img src="img/openstack-connect-04.png" class="img-fluid"></p>
 <p>Now you need to tell your computer where to connect to. On a new installation the Session dialog (image below) will load automatically and you can start filling it up as shown below. On an existing installation of X2Go, you will need to Click on the ‘new session’ icon to set up a new connection.</p>
 <p><img src="img/openstack-connect-05.png" class="img-fluid"></p>
-<p>Enter the information as higlighted above. Make sure you use the IP address you copied earlier and use an appropriate name. If you decide to use the <em>Key</em> Pair, then click the <em>Try auto login</em> checkbox as well. If not using a key Pair, you can omit those two fields.</p>
-<p>Once this has been done we need to change the display settings so you can work comfortably at the correct screen resolution.</p>
+<p>Enter the information as highlighted above. Make sure you use the IP address you copied earlier and use an appropriate name. If you decide to use the <em>Key</em> Pair, then click the <em>Try auto login</em> checkbox as well. If not using a key Pair, you can omit those two fields.</p>
+<p>Once this has been done we need to change the connection settings. If you are doing this on campus, you should select LAN here. If out of campus, please choose a connection speed based on your internet connection. Most modern fiber broadband services at home can be categorized as WAN.</p>
 <p><img src="img/openstack-connect-06.png" class="img-fluid"></p>
-<p>Select the ‘Input/Output’ tab at the top and change the display to use the <em>Fullscreen</em> display as shown below. You may instead want to <em>Use whole display</em> instead.:</p>
+<p>Now let’s adjust the display settings so you can work comfortably at the correct screen resolution. Select the ‘Input/Output’ tab at the top and change the display to use the <em>Use whole display</em> as shown below. You may want to select <em>Fullscreen</em> instead.</p>
 <p><img src="img/openstack-connect-07.png" class="img-fluid"></p>
+<p>In the Media tab, make sure that Enable sound support and Client side printer support are disabled (unless you need those options).</p>
+<p><img src="img/openstack-connect-07b.png" class="img-fluid"></p>
 <p>Once completed, click on OK. Your screen should now look like this:<br>
 <img src="img/openstack-connect-08.png" class="img-fluid"></p>
 <p>Click anywhere in the <strong>white</strong> area. The first time you connect to your instance (or if the IP address changes after a reboot) you will see a message like:</p>
@@ -891,29 +901,24 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>When you’re not working on the course it is important and considerate to turn off your instance to avoid using unnecessary resource. If your instance is running, even if you are not doing anything on it, it will be using resource and may hinder others using the resources.</p>
+<p>When you’re not working on the course please do be considerate and turn off your instance to avoid using unnecessary resource. If your instance is running, even if you are not doing anything on it, it will be using resource and may hinder others using the resources.</p>
 </div>
 </div>
 <section id="find-your-instance" class="level3">
 <h3 class="anchored" data-anchor-id="find-your-instance">Find your instance:</h3>
 <p>Log onto the <a href="https://stack.exeter.ac.uk/dashboard/project/instances/">OpenStack console</a> and find your instance. Click on <em>Compute - Instances</em> and if you cannot find your instance easily, use the filter button.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./img/manage_001.jpg" class="img-fluid figure-img"></p>
-<figcaption>search for your instance</figcaption>
-</figure>
-</div>
+<p><img src="./img/manage_001.jpg" class="img-fluid"></p>
 </section>
 <section id="stopping-your-instance" class="level3">
 <h3 class="anchored" data-anchor-id="stopping-your-instance">Stopping Your Instance:</h3>
-<p>If you wish to keep your data, use the ‘Shut Off instance’ option. In this state the data written to disk will be preserved, but the instance will be ‘off’. It is the equivalent of turning off a computer.</p>
-<p>Use the dropdown next to your instance and select “Shut Off Instance” (near the bottom)</p>
+<p>If you wish to keep your data, use the <em>Shut Off instance</em> option. In this state the data written to disk will be preserved, but the instance will be ‘<em>off</em>’ (this is the equivalent of turning off a computer).</p>
+<p>Use the dropdown next to your instance and select <em>Shut Off Instance</em> (near the bottom)</p>
 <p><img src="./img/openstack-shutoff-1.png" class="img-fluid"></p>
-<p>You will be asked to confirm - Double check it is the instance you intend to shut down.</p>
+<p>You will be asked to confirm - <strong>double check</strong> it is the instance you intend to shut down.</p>
 </section>
 <section id="restarting-your-instance" class="level3">
 <h3 class="anchored" data-anchor-id="restarting-your-instance">Restarting Your Instance:</h3>
-<p>If the status of your instance is Shutoff - click Start Instance.</p>
+<p>If the status of your instance is <em>Shutoff</em> - click <em>Start</em> Instance.</p>
 <p>Double check the IP address of your instance as it may change - you will need to use the new IP address to connect to you instance. In X2Go click on the drop down arrow to get the menu of options.<br>
 <img src="./img/x2go-session-prefs-1.png" class="img-fluid"></p>
 </section>
@@ -932,13 +937,43 @@ Caution
 <p><strong>Note:</strong> this will destroy all work done to date.</p>
 </div>
 </div>
-<p>When you’re completely finished done with the workshop, click the drop-down menu next to your instance and select ‘Delete Instance’. It will ask you to confirm - You can then watch the status change from ‘shutting down’ to Deleted’.</p>
+<p>When you’re completely finished with the workshop, click the drop-down menu next to your instance and select <em>Delete Instance</em>. It will ask you to confirm - You can then watch the status change from <em>Shutting down</em> to <em>Deleted</em>.</p>
 </section>
-<section id="placeholder-for-end" class="level3">
-<h3 class="anchored" data-anchor-id="placeholder-for-end">Placeholder for end</h3>
+</section>
+<section id="specific-use-cases" class="level2">
+<h2 class="anchored" data-anchor-id="specific-use-cases">Specific Use Cases</h2>
+<p>Here, we have configured a virtual machine that has an installation of RStudio Server (Open Source Edition) and it also has XRDP (a remote desktop for Ubuntu) installed on it. In this section, we will show you how to modify your <a href="#security-groups">Security Groups</a> to allow access to these applications from your laptop.</p>
+<p>Go to the <em>Network</em> tab and then to the <em>Security Groups</em> pane within it. Click on <em>Manage Rules</em> on the far, right-hand side.</p>
+<p><img src="img/openstack-connect-12.png" class="img-fluid"></p>
+<p>Click on Add Rule to create the new rules we need.</p>
+<p><img src="img/openstack-connect-13.png" class="img-fluid"></p>
+<p>RStudio Server listens on tcp port 8787 by default and XRDP listens on tcp port 3389. First, let’s add a custom rule for RStudio as follows:</p>
+<p><img src="img/openstack-connect-15.png" class="img-fluid"></p>
+<p>Now, we can add another rule for RDP. This is a well known service so we can select RDP from the drop down options and click <em>Add</em>.<br>
+<img src="img/clipboard-1799424740.png" class="img-fluid"></p>
+<p>Finally, the new rules should look something like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/clipboard-3745716289.png" class="img-fluid figure-img"></p>
+<figcaption>Now, you can access your RStudio Server’s web interface at <a href="http://10.121.4.35:8787/" class="uri">http://10.121.4.35:8787/</a> (substitute the IP address shown here with your own VM’s IP address.</figcaption>
+</figure>
+</div>
+<p><img src="img/clipboard-2673567999.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that the RStudio Server interface requires you to use a username and password combination. So, this example will only work if you chose <a href="#sec-option-2">Option 2</a> in the <a href="#sec-option-2">Option 2</a></p>
+</div>
+</div>
 
 
-</section>
 </section>
 </section>
 
