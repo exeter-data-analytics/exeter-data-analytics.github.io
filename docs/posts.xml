@@ -1279,90 +1279,9 @@ Note
 </div>
 <p><strong>Congratulations you have ‘configured’ and ‘turned on’ a new computer to use for the rest of this workshop.</strong></p>
 <p>Next, you will learn how to connect to it from your PC. However, before you proceed any further - take a 20 minute break. The cloud-init script would be working in the background to finish installing software and configuring your machine during that time.</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb3-1"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">&lt;</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">div</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;"> id</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"timer1"</span><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">&gt;&lt;/</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">div</span><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">&gt;</span></span>
-<span id="cb3-2"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">&lt;</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">script</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;"> src</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"_extensions/produnis/timer/timer.js"</span><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">&gt;&lt;/</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">script</span><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">&gt;</span></span>
-<span id="cb3-3"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">&lt;</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">script</span><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">&gt;</span></span>
-<span id="cb3-4">    <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">document</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">addEventListener</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"DOMContentLoaded"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span> () {</span>
-<span id="cb3-5">        <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">initializeTimer</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"timer1"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1200</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">,</span> interaction)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> </span>
-<span id="cb3-6">    })<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb3-7"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">&lt;/</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">script</span><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">&gt;</span></span></code></pre></div>
+<div id="00001" class="timer" data-seconds="6000" data-starton="interaction">
+
+</div>
 </section>
 </section>
 <section id="connect-to-your-instance" class="level1" data-number="6">
@@ -1419,7 +1338,7 @@ Tip
 </div>
 <div class="callout-body-container callout-body">
 <p>If you are using a native terminal on MacOS or Unix, you could initiate a command line connection using:</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ssh</span> <span class="at" style="color: #657422;
 background-color: null;

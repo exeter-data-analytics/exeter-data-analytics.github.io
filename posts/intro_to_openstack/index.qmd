@@ -9,6 +9,9 @@ description: "Introduction to Openstack at the University of Exeter"
 date: "2025-06-16"
 date-modified: last-modified
 categories: [HPC, OpenStack, Virtual Machine]
+contributes:
+  filters: 
+    - timer
 execute:
   message: false
   warning: false
@@ -451,15 +454,8 @@ Once it turns **white** and the ‘Status’ changes to ‘Active’, you should
 
 Next, you will learn how to connect to it from your PC. However, before you proceed any further - take a 20 minute break. The cloud-init script would be working in the background to finish installing software and configuring your machine during that time.
 
-``` html
-<div id="timer1"></div>
-<script src="_extensions/produnis/timer/timer.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        initializeTimer("timer1", 1200, interaction); 
-    });
-</script>
-```
+::: {#00001 .timer seconds="6000" starton="interaction"}
+:::
 
 # Connect to your instance
 
