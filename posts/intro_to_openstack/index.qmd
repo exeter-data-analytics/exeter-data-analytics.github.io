@@ -25,9 +25,12 @@ draft: false
 ::: callout-note
 **By the end of this workshop you will be expected to:**
 
--   Log into the UoE OpenStack Console and start your instance of the appropriate workshop.
--   Log in to the OpenStack instance from your own computer.
--   Be ready to start the tutorials at your own pace.
+-   Know how to access the UoE OpenStack Console.
+-   Know how to configure and start your OpenStack *Instance.*
+-   Know how to connect to your OpenStack *Instance* from your own computer.
+-   Know how to manage your OpenStack *Instances*.
+-   Know how to make use of your *Instance* for specific use cases.
+-   Know where to ask for help and how to ask for help.
 :::
 
 # Outline
@@ -448,6 +451,16 @@ Once it turns **white** and the ‘Status’ changes to ‘Active’, you should
 
 Next, you will learn how to connect to it from your PC. However, before you proceed any further - take a 20 minute break. The cloud-init script would be working in the background to finish installing software and configuring your machine during that time.
 
+``` html
+<div id="UNIQUE-ID"></div>
+<script src="_extensions/produnis/timer/timer.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        initializeTimer("UNIQUE-ID", 1200, interaction); 
+    });
+</script>
+```
+
 # Connect to your instance
 
 ::: callout-important
@@ -610,9 +623,11 @@ RStudio Server listens on tcp port 8787 by default and XRDP listens on tcp port 
 
 ![](img/openstack-connect-15.png)
 
-Now, you can access your RStudio Server's web interface at <http://10.121.4.35:8787/> (substitute the IP address shown here with your own VM's IP address).
+Now, you can access your RStudio Server's web interface at http://10.121.4.162:8787/ (substitute the IP address shown here with your own VM's IP address).
 
-![](img/clipboard-2673567999.png)
+![](images/clipboard-3790874182.png)
+
+![](images/clipboard-184123163.png)
 
 ::: callout-caution
 Note that the RStudio Server interface requires you to use a username and password combination. So, this example will only work if you chose [Option 2] in the *Cloud Config* section.
@@ -622,6 +637,30 @@ Note that the RStudio Server interface requires you to use a username and passwo
 
 Now, we can add another rule for RDP. This is a well known service so we can select RDP from the drop down options and click *Add*. ![](img/clipboard-1799424740.png)
 
-Finally, the new rules should look something like this:
+Now, if you launch your OS specific *Remote Desktop Client* and configure it to connect to your VM as follows:
+
+![](img/rdp-setup.png)
+
+Press connect, and when prompted with a warning that the identity of the remote computer cannot be verified, click yes to connect anyway.
+
+![](images/clipboard-662576167.png)
+
+You will no see a remote desktop screen where you can proceed to enter the password you had used to create this *Instance.*
+
+![](images/clipboard-3562638128.png)
+
+After a brief wait, you will see the XUbuntu-Desktop in front of you. You may now proceed to interact with the *Instance* just like you would with a computer in front of you. When doing this for the first time, you may be presented with authentication / elevation messages (as shown below), or shown options to upgrade the operating system to the next distribution - address those prompts with care.
+
+![](images/clipboard-1893954535.png)
+
+::: callout-tip
+If you don't know what it is, ask Google and then consider accessing the Ask For Help Teams channel to ask for help!
+:::
+
+Now, if you go back and look at the modified rules - they should look something like this:
 
 ![](img/clipboard-3745716289.png)
+
+## Using VSCode to interact with this *Instance*
+
+First, follow [this guide to setup VS Code for your platform.](https://code.visualstudio.com/docs/setup/setup-overview#_set-up-vs-code-for-your-platform) Once VS Code is installed, you can use the **Visual Studio Code Remote - SSH** extension to open a remote folder on any remote machine, virtual machine, or container with a running SSH server and take full advantage of VS Code's feature set. Once connected to a server, you can interact with files and folders anywhere on the remote filesystem. [See this guide to learn how to connect to this instance over SSH](https://code.visualstudio.com/docs/remote/ssh).

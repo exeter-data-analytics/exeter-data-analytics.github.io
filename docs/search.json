@@ -648,7 +648,7 @@
     "href": "posts/intro_to_openstack/index.html",
     "title": "intRos: Introduction to OpenStack",
     "section": "",
-    "text": "Note\n\n\n\nBy the end of this workshop you will be expected to:\n\nLog into the UoE OpenStack Console and start your instance of the appropriate workshop.\nLog in to the OpenStack instance from your own computer.\nBe ready to start the tutorials at your own pace."
+    "text": "Note\n\n\n\nBy the end of this workshop you will be expected to:\n\nKnow how to access the UoE OpenStack Console.\nKnow how to configure and start your OpenStack Instance.\nKnow how to connect to your OpenStack Instance from your own computer.\nKnow how to manage your OpenStack Instances.\nKnow how to make use of your Instance for specific use cases.\nKnow where to ask for help and how to ask for help."
   },
   {
     "objectID": "posts/intro_to_openstack/01_OpenStack_Console.html",
@@ -767,13 +767,20 @@
     "href": "posts/intro_to_openstack/index.html#allowing-access-to-rstudio-server",
     "title": "intRos: Introduction to OpenStack",
     "section": "8.1 Allowing access to RStudio Server",
-    "text": "8.1 Allowing access to RStudio Server\nRStudio Server listens on tcp port 8787 by default and XRDP listens on tcp port 3389. First, let’s add a custom rule for RStudio as follows:\n\nNow, you can access your RStudio Server’s web interface at http://10.121.4.35:8787/ (substitute the IP address shown here with your own VM’s IP address).\n\n\n\n\n\n\n\nCaution\n\n\n\nNote that the RStudio Server interface requires you to use a username and password combination. So, this example will only work if you chose Option 2 in the Cloud Config section."
+    "text": "8.1 Allowing access to RStudio Server\nRStudio Server listens on tcp port 8787 by default and XRDP listens on tcp port 3389. First, let’s add a custom rule for RStudio as follows:\n\nNow, you can access your RStudio Server’s web interface at http://10.121.4.162:8787/ (substitute the IP address shown here with your own VM’s IP address).\n\n\n\n\n\n\n\n\nCaution\n\n\n\nNote that the RStudio Server interface requires you to use a username and password combination. So, this example will only work if you chose Option 2 in the Cloud Config section."
   },
   {
     "objectID": "posts/intro_to_openstack/index.html#allowing-access-to-remote-desktop-protocol",
     "href": "posts/intro_to_openstack/index.html#allowing-access-to-remote-desktop-protocol",
     "title": "intRos: Introduction to OpenStack",
     "section": "8.2 Allowing access to Remote Desktop Protocol",
-    "text": "8.2 Allowing access to Remote Desktop Protocol\nNow, we can add another rule for RDP. This is a well known service so we can select RDP from the drop down options and click Add. \nFinally, the new rules should look something like this:"
+    "text": "8.2 Allowing access to Remote Desktop Protocol\nNow, we can add another rule for RDP. This is a well known service so we can select RDP from the drop down options and click Add. \nNow, if you launch your OS specific Remote Desktop Client and configure it to connect to your VM as follows:\n\nPress connect, and when prompted with a warning that the identity of the remote computer cannot be verified, click yes to connect anyway.\n\nYou will no see a remote desktop screen where you can proceed to enter the password you had used to create this Instance.\n\nAfter a brief wait, you will see the XUbuntu-Desktop in front of you. You may now proceed to interact with the Instance just like you would with a computer in front of you. When doing this for the first time, you may be presented with authentication / elevation messages (as shown below), or shown options to upgrade the operating system to the next distribution - address those prompts with care.\n\n\n\n\n\n\n\nTip\n\n\n\nIf you don’t know what it is, ask Google and then consider accessing the Ask For Help Teams channel to ask for help!\n\n\nNow, if you go back and look at the modified rules - they should look something like this:"
+  },
+  {
+    "objectID": "posts/intro_to_openstack/index.html#using-vscode-to-interact-with-this-instance",
+    "href": "posts/intro_to_openstack/index.html#using-vscode-to-interact-with-this-instance",
+    "title": "intRos: Introduction to OpenStack",
+    "section": "8.3 Using VSCode to interact with this Instance",
+    "text": "8.3 Using VSCode to interact with this Instance\nFirst, follow this guide to setup VS Code for your platform. Once VS Code is installed, you can use the Visual Studio Code Remote - SSH extension to open a remote folder on any remote machine, virtual machine, or container with a running SSH server and take full advantage of VS Code’s feature set. Once connected to a server, you can interact with files and folders anywhere on the remote filesystem. See this guide to learn how to connect to this instance over SSH."
   }
 ]

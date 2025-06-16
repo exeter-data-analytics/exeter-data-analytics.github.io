@@ -257,6 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#allowing-access-to-rstudio-server" id="toc-allowing-access-to-rstudio-server" class="nav-link" data-scroll-target="#allowing-access-to-rstudio-server"><span class="header-section-number">8.1</span> Allowing access to RStudio Server</a></li>
   <li><a href="#allowing-access-to-remote-desktop-protocol" id="toc-allowing-access-to-remote-desktop-protocol" class="nav-link" data-scroll-target="#allowing-access-to-remote-desktop-protocol"><span class="header-section-number">8.2</span> Allowing access to Remote Desktop Protocol</a></li>
+  <li><a href="#using-vscode-to-interact-with-this-instance" id="toc-using-vscode-to-interact-with-this-instance" class="nav-link" data-scroll-target="#using-vscode-to-interact-with-this-instance"><span class="header-section-number">8.3</span> Using VSCode to interact with this <em>Instance</em></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -282,9 +283,12 @@ Note
 <div class="callout-body-container callout-body">
 <p><strong>By the end of this workshop you will be expected to:</strong></p>
 <ul>
-<li>Log into the UoE OpenStack Console and start your instance of the appropriate workshop.</li>
-<li>Log in to the OpenStack instance from your own computer.</li>
-<li>Be ready to start the tutorials at your own pace.</li>
+<li>Know how to access the UoE OpenStack Console.</li>
+<li>Know how to configure and start your OpenStack <em>Instance.</em></li>
+<li>Know how to connect to your OpenStack <em>Instance</em> from your own computer.</li>
+<li>Know how to manage your OpenStack <em>Instances</em>.</li>
+<li>Know how to make use of your <em>Instance</em> for specific use cases.</li>
+<li>Know where to ask for help and how to ask for help.</li>
 </ul>
 </div>
 </div>
@@ -786,6 +790,13 @@ Note
 </div>
 <p><strong>Congratulations you have ‘configured’ and ‘turned on’ a new computer to use for the rest of this workshop.</strong></p>
 <p>Next, you will learn how to connect to it from your PC. However, before you proceed any further - take a 20 minute break. The cloud-init script would be working in the background to finish installing software and configuring your machine during that time.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">"UNIQUE-ID"</span><span class="dt">&gt;&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> src</span><span class="op">=</span><span class="st">"_extensions/produnis/timer/timer.js"</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">document</span><span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"DOMContentLoaded"</span><span class="op">,</span> <span class="kw">function</span> () {</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">initializeTimer</span>(<span class="st">"UNIQUE-ID"</span><span class="op">,</span> <span class="dv">1200</span><span class="op">,</span> interaction)<span class="op">;</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="connect-to-your-instance" class="level1" data-number="6">
@@ -842,7 +853,7 @@ Tip
 </div>
 <div class="callout-body-container callout-body">
 <p>If you are using a native terminal on MacOS or Unix, you could initiate a command line connection using:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-i</span> /path/to/your-private-key.key user123@<span class="op">&lt;</span>vm-ip-address<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-i</span> /path/to/your-private-key.key user123@<span class="op">&lt;</span>vm-ip-address<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -957,8 +968,9 @@ Caution
 <h2 data-number="8.1" class="anchored" data-anchor-id="allowing-access-to-rstudio-server"><span class="header-section-number">8.1</span> Allowing access to RStudio Server</h2>
 <p>RStudio Server listens on tcp port 8787 by default and XRDP listens on tcp port 3389. First, let’s add a custom rule for RStudio as follows:</p>
 <p><img src="img/openstack-connect-15.png" class="img-fluid"></p>
-<p>Now, you can access your RStudio Server’s web interface at <a href="http://10.121.4.35:8787/" class="uri">http://10.121.4.35:8787/</a> (substitute the IP address shown here with your own VM’s IP address).</p>
-<p><img src="img/clipboard-2673567999.png" class="img-fluid"></p>
+<p>Now, you can access your RStudio Server’s web interface at http://10.121.4.162:8787/ (substitute the IP address shown here with your own VM’s IP address).</p>
+<p><img src="images/clipboard-3790874182.png" class="img-fluid"></p>
+<p><img src="images/clipboard-184123163.png" class="img-fluid"></p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -976,8 +988,33 @@ Caution
 <section id="allowing-access-to-remote-desktop-protocol" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="allowing-access-to-remote-desktop-protocol"><span class="header-section-number">8.2</span> Allowing access to Remote Desktop Protocol</h2>
 <p>Now, we can add another rule for RDP. This is a well known service so we can select RDP from the drop down options and click <em>Add</em>. <img src="img/clipboard-1799424740.png" class="img-fluid"></p>
-<p>Finally, the new rules should look something like this:</p>
+<p>Now, if you launch your OS specific <em>Remote Desktop Client</em> and configure it to connect to your VM as follows:</p>
+<p><img src="img/rdp-setup.png" class="img-fluid"></p>
+<p>Press connect, and when prompted with a warning that the identity of the remote computer cannot be verified, click yes to connect anyway.</p>
+<p><img src="images/clipboard-662576167.png" class="img-fluid"></p>
+<p>You will no see a remote desktop screen where you can proceed to enter the password you had used to create this <em>Instance.</em></p>
+<p><img src="images/clipboard-3562638128.png" class="img-fluid"></p>
+<p>After a brief wait, you will see the XUbuntu-Desktop in front of you. You may now proceed to interact with the <em>Instance</em> just like you would with a computer in front of you. When doing this for the first time, you may be presented with authentication / elevation messages (as shown below), or shown options to upgrade the operating system to the next distribution - address those prompts with care.</p>
+<p><img src="images/clipboard-1893954535.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you don’t know what it is, ask Google and then consider accessing the Ask For Help Teams channel to ask for help!</p>
+</div>
+</div>
+<p>Now, if you go back and look at the modified rules - they should look something like this:</p>
 <p><img src="img/clipboard-3745716289.png" class="img-fluid"></p>
+</section>
+<section id="using-vscode-to-interact-with-this-instance" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="using-vscode-to-interact-with-this-instance"><span class="header-section-number">8.3</span> Using VSCode to interact with this <em>Instance</em></h2>
+<p>First, follow <a href="https://code.visualstudio.com/docs/setup/setup-overview#_set-up-vs-code-for-your-platform">this guide to setup VS Code for your platform.</a> Once VS Code is installed, you can use the <strong>Visual Studio Code Remote - SSH</strong> extension to open a remote folder on any remote machine, virtual machine, or container with a running SSH server and take full advantage of VS Code’s feature set. Once connected to a server, you can interact with files and folders anywhere on the remote filesystem. <a href="https://code.visualstudio.com/docs/remote/ssh">See this guide to learn how to connect to this instance over SSH</a>.</p>
 
 
 </section>
