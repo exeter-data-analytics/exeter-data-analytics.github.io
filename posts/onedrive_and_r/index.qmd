@@ -8,7 +8,7 @@ author:
 description: "Link your OneDrive to R to allow you to download files to any computer, even remote servers."
 date: "2025-03-07"
 date-modified: last-modified
-categories: [OneDrive, R, Microsoft365R]
+categories: [OneDrive] [R] [Microsoft365R]
 execute:
   message: false
   warning: false
@@ -17,9 +17,11 @@ draft: true
 
 # Outline
 
-This is where we discuss the need and rationale for this walkthrough.
+Within the University of Exeter, and likely other Universities, we have a bunch of different ways of storing and sharing data (e.g. local, OneDrive, Sharepoint, long-term storage). When wanting to share data with others -  especially if you want that person to be able to access the files on a remote server - we need to be able to download files programmitically. This run through shows how you can link OneDrive to R to allow you to download files directly using R.
 
 # Prerequisites
+
+There are not any, beyond having R installed and be using OneDrive. This tutorial should work locally or on a remote machine or HPC. Our target audience is someone who has data they want to share/download using OneDrive and it is not easy to use the OneDrive Application or Website.
 
 # Learning objectives
 
@@ -28,14 +30,42 @@ This is where we discuss the need and rationale for this walkthrough.
 
 **This introduction should allow you to:**
 
--   Add here.
+- Link your OneDrive to your R session using **Microsoft365R**.
+- Navigate your OneDrive folder and look up your folders and files and also Shared folders and files using **Microsoft365R**.
+- Download folders and files using **Microsoft365R**.
+
 :::
 
-# Add lecture here
+# Linking OneDrive to R
+
+### Package install
+
+This walkthrough will lean heavy on tools from the **tidyverse** for data wrangling, and the packages **Microsoft365R**, **AzureAuth** and **AzureGraph**. The first thing we will do is load in the necessary packages. I use the R package **librarian** to install and load in packages. Although it is no longer actively maintained, it allows you to install and load packages from GitHub, Bioconductor, and CRAN all at the same time. Which is super convenient.
+
+```{r load_in}
+# install and load using librarian
+librarian::shelf(
+  tidyverse,
+  Azure / AzureAuth,
+  Azure / AzureGraph,
+  Azure / Microsoft365R
+)
+
+```
+
+### Link OneDrive to R
+
+### Navigate and download your personal files and folders
+
+### Navigate and download Shared files and folders
 
 # Summary
 
+We have shown how to link OneDrive to R, navigate folders and files and download them. This is especially useful for when you want to download files from OneDrive to a remote server or HPC.
+
 ### Additional Resources
+
+There are lots of other functions of **Microsoft365R** that we have not covered here. They can be explored here:
 
 ### Acknowledgements
 
