@@ -67,5 +67,8 @@
   },
   "posts/intro_to_openstack/09_manage_your_instances.qmd": {
     "09_manage_your_instances.html": "c4356bd3"
+  },
+  "posts/intro_to_mifish/index.qmd": {
+    "index.html": "41bf8504"
   }
 }

@@ -1,0 +1,260 @@
+---
+title: "intRos: MiFish"
+author: 
+  - name: Dr. M.D. Sharma
+    affiliation: University of Exeter
+description: "Intro to MiFish."
+date: "2025-05-23"
+date-modified: last-modified
+categories: [ARC, HPC, Bioinformatics, eDNA, Metabarcoding]
+execute:
+  message: false
+  warning: false
+draft: true
+---
+
+## What is this about?
+
+This tutorial provides a step-by-step guide for using the MiFish pipeline to analyze environmental DNA (eDNA) metabarcoding data from Illumina sequencing runs. It is designed for novices, including those new to bioinformatics, and covers installation, primer choice considerations, species detection ranges, and running the pipeline. The MiFish pipeline is a powerful tool for analyzing fish eDNA metabarcoding data, enabling the identification of fish species from environmental samples.
+
+## Overview of the MiFish Pipeline
+
+The MiFish pipeline, developed by Sato et al. (2018), is a command-line tool for processing eDNA metabarcoding data, primarily designed for fish biodiversity monitoring using the MiFish universal primers targeting the mitochondrial 12S rRNA gene. It processes Illumina sequencing data to produce taxonomic assignments, diversity metrics, and quality control outputs. The pipeline is flexible and can be adapted for other eDNA metabarcoding primers, but it is optimized for MiFish primers.
+
+::: callout-note
+### Key Features
+
+-   **Input**: Compressed Illumina paired-end/single-end FASTQ files (.fastq.gz, .bz2, .xz) or multi-FASTA files (.fasta.gz, .bz2, .xz).
+-   **Output**: Quality control reports, taxonomic assignments, diversity metrics, and optional phylogenetic trees.
+-   **Dependencies**: Linux-based system with tools like BLAST+, USEARCH, managed via Conda.
+-   **Supported Primers**: Optimized for MiFish primers but adaptable to others.
+:::
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+-   A Linux-based system (e.g., Ubuntu). Windows users can use WSL or a virtual machine.
+-   Basic command-line knowledge (e.g., navigating directories, running commands).
+-   Illumina sequencing data in FASTQ format (paired-end recommended).
+-   A reference database in FASTA format for taxonomic assignment.
+-   Internet access for downloading dependencies.
+
+## Step 1: Installation
+
+The MiFish pipeline uses Conda to manage dependencies.
+
+### Install Conda
+
+1.  Download and install Mambaforge for Linux:
+
+    ``` bash
+    wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+    bash Mambaforge-Linux-x86_64.sh
+    ```
+
+2.  Follow the prompts to install, then initialize Conda:
+
+    ``` bash
+    source ~/.bashrc
+    ```
+
+### Clone the MiFish Repository
+
+Clone the MiFish pipeline from GitHub:
+
+``` bash
+git clone https://github.com/tao-bioinfo/MiFish.git
+cd MiFish
+```
+
+### Set Up the Conda Environment
+
+Create and activate the MiFish Conda environment:
+
+``` bash
+mamba env create -f environment.yml
+mamba activate mifish
+```
+
+### Verify Installation
+
+Check that dependencies are installed:
+
+``` bash
+blastn -version
+usearch --version
+```
+
+If these commands return version information, the setup is successful.
+
+## Step 2: Prepare Your Data
+
+### Input Data Requirements
+
+-   **Sequencing Data**: Illumina paired-end FASTQ files (e.g., `sample_1.fastq.gz` and `sample_2.fastq.gz`). File names must end with `[1_or_2].fastq.gz` or `[1_or_2]_001.fastq.gz`.
+-   **Reference Database**: A FASTA file containing reference sequences (e.g., `refDB.fa`). Use the MitoFish database or a custom database.
+-   **Directory Structure**: Place all FASTQ files in a single directory (e.g., `/path/to/sequencing_data/`).
+
+### Preparing the Reference Database
+
+1.  Download a reference database (e.g., MitoFish: <http://mitofish.aori.u-tokyo.ac.jp/>) or create your own.
+
+2.  Index the database for BLAST:
+
+    ``` bash
+    makeblastdb -in refDB.fa -dbtype nucl -out refDB
+    ```
+
+3.  Ensure species names in the FASTA file use underscores (e.g., `Salmo_salar` instead of `Salmo salar`).
+
+## Step 3: Primer Choice Considerations
+
+Choosing appropriate primers is critical for eDNA metabarcoding. The MiFish pipeline is optimized for MiFish universal primers but can be adapted.
+
+### MiFish Primers
+
+-   **Target Region**: Mitochondrial 12S rRNA gene (163–185 bp).
+-   **Taxonomic Coverage**: Detects a wide range of fish species, including bony fishes and elasmobranchs. Identified 168/180 species (93.3%) in aquarium tests and 232 species in natural seawater.
+-   **Advantages**:
+    -   High specificity for fish DNA.
+    -   Suitable for degraded eDNA due to short amplicon length.
+    -   Outperforms primers like teleo or Riaz_12S in taxonomic coverage.
+-   **Limitations**:
+    -   May fail to distinguish closely related species (e.g., Thunnus congeners). Use genus-specific primers (e.g., MiFish-tuna) for such cases.
+    -   Optimized for fish; less effective for other taxa.
+
+### Alternative Primers
+
+-   **COI Primers**: Broader coverage but less specific for fish.
+-   **16S rRNA Primers**: Effective but may amplify bacterial DNA.
+-   **Teleo Primers**: Target shorter 12S regions (\~60 bp), suited for degraded DNA but with lower resolution.
+
+::: callout-tip
+### Recommendations
+
+Use MiFish primers for fish-focused studies in marine, freshwater, or estuarine ecosystems.
+
+```         
+-   Adjust pipeline parameters for other primers (see Step 5).
+
+-   Test primer specificity using in silico tools like PRIMERMINER.
+```
+:::
+
+## Step 4: Configure the Pipeline
+
+The pipeline allows customization of primer sequences and amplicon lengths.
+
+### Default MiFish Parameters
+
+-   **Forward Primer (MiFish-U-F)**: `GTCGGTAAAACTCGTGCCAGC`
+-   **Reverse Primer (MiFish-U-R)**: `CATAGTGGGGTATCTAATCCCAGTTTG`
+-   **Amplicon Length**: 204–260 bp.
+
+### Modifying for Other Primers
+
+Update primer sequences and amplicon length range:
+
+-   Estimate amplicon length from your reference database.
+-   Specify parameters: `-f` (forward primer), `-r` (reverse primer), `-m` (minimum read length), `-M` (maximum read length).
+
+Example:
+
+``` bash
+-f GCTAGCTAGCTAGCTAGC -r CTAGCTAGCTAGCTAGCT -m 150 -M 200
+```
+
+## Step 5: Run the Pipeline
+
+Run the pipeline with:
+
+``` bash
+mifish /path/to/sequencing_data/ /path/to/refDB.fa -o /path/to/output_directory -t 4
+```
+
+::: callout-tip
+### Command Explanation
+
+    -   `/path/to/sequencing_data/`: Directory with FASTQ files.
+    -   `/path/to/refDB.fa`: Path to reference database.
+    -   `-o /path/to/output_directory`: Output directory (default: `./MiFishResult`).
+    -   `-t 4`: Number of threads.
+:::
+
+### Example
+
+``` bash
+mifish ~/data/sequencing/ ~/data/refDB.fa -o ~/results/MiFishResult -t 4
+```
+
+### Output Files
+
+The `MiFishResult` directory contains:
+
+-   **QC.zip**: Quality control metrics.
+-   **read_stat.xlsx**: Read statistics.
+-   **taxonomy.xlsx**: Taxonomic assignments.
+-   **tree.zip**: Phylogenetic trees (if not using `-s`).
+-   **relative_abundance.json**: Relative abundance data (if not using `-s`).
+-   **diversity.json**: Diversity metrics (if using `-d`).
+
+## Step 6: Interpret Results
+
+### Taxonomic Assignments
+
+-   `taxonomy.xlsx`: Lists detected species per sample, based on BLAST alignments.
+-   **Detection Range**: \>230 fish species across diverse ecosystems.
+-   **Accuracy**: Denoising (via unoise3) reduces false positives.
+
+### Diversity Metrics
+
+-   `diversity.json`: Provides alpha/beta diversity metrics.
+-   Example: In Korean rivers, MiFish identified 73 species across 16 samples.
+
+### Quality Control
+
+-   Check `read_stat.xlsx` for read filtering success (e.g., 71.02% for MiFish_12S).
+-   Low counts may indicate issues with DNA extraction or primers.
+
+## Step 7: Troubleshooting
+
+-   **No Output Files**: Verify FASTQ file names.
+-   **Low Species Detection**: Check primer sequences and reference database.
+-   **Errors**: Use `--debug` and share `Sample-*` directory with developers.
+-   **Contamination**: Use PCR blanks and negative controls.
+
+## Step 8: Sharing Your Results
+
+Include:
+
+-   Primer choice rationale.
+-   Key findings from `taxonomy.xlsx` and `diversity.json`.
+-   Sequencing parameters and reference database details.
+
+### Species Detection Ranges
+
+-   **MiFish Primers**: Detect \>230 fish species across 70 families and 152 genera.
+-   **Ecosystem Variability**: Higher species counts in marine vs. freshwater ecosystems.
+-   **Limitations**: May miss closely related species without genus-specific primers.
+
+## Additional Resources
+
+-   MitoFish Database: <http://mitofish.aori.u-tokyo.ac.jp/>
+-   MiFish Pipeline GitHub: <https://github.com/tao-bioinfo/MiFish>
+-   Citation: Miya et al. (2015) for MiFish primers.
+-   Support: GitHub issues or relevant forums.
+
+
+::: callout-note
+### Tips
+-   **Check out our tips [here!](./tips.html)**
+
+-   **Take advantage of online resources**: Explore platforms like [CornwallARC](https://universityofexeteruk.sharepoint.com/sites/CornwallARC) and [ExeterARC](https://universityofexeteruk.sharepoint.com/sites/ExeterARC) for institution specific knowledge bases. Engage with discipline specific training sessions offered by [ExeDataHub](https://exeter-data-analytics.github.io/) or [CfRR](https://coding-for-reproducible-research.github.io) - these are essential to gain hands-on experience with tools and techniques. Other online resources like Coursera, edX, or DataCamp can also be very useful for programming and data analysis learning.
+
+-   **Ask for Help**: Join the ExeDataHub [Ask for Help](https://teams.microsoft.com/l/channel/19%3Afca419ee420d452489888196bf05aae8%40thread.tacv2/Ask%20for%20Help?groupId=fc065562-31db-4628-a506-1a58dcfd1c8b&tenantId=912a5d77-fb98-4eee-af32-1334d8f04a53) channel to ask questions, share knowledge, and learn from peers. Active engagement with this resource is essential for the community to thrive.
+:::
+
+## Acknowledgements
+
+The inaugural set of workshops has been funded by a Researcher Led Initiative grant to Dr. Tom Horton, in collaboration with Dr. M.D. Sharma and Dr. Stephen Lang at the University of Exeter (Penryn Campus).
